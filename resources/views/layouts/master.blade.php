@@ -201,8 +201,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </router-link>
           </li>
           <li class="nav-item">
+            <router-link to="/users" class="nav-link">
+              <i class="nav-icon yellow fas fa-users-cog"></i>
+              <p>
+               Users
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </router-link>
+          </li>
+          
+          <li class="nav-item">
             <router-link to="/matrimonial" class="nav-link">
-              <i class="nav-icon fas fa-user-friends"></i>
+              <i class="nav-icon fas fa-user-friends orange"></i>
               <p>
                 Matrimonial
                 {{-- <span class="right badge badge-danger">New</span> --}}
@@ -211,7 +221,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
           <li class="nav-item">
             <router-link to="/profile" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="nav-icon fas fa-user teal"></i>
               <p>
                 Profile
                 {{-- <span class="right badge badge-danger">New</span> --}}
