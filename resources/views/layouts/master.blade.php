@@ -160,7 +160,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                <li class="nav-item">
                 <router-link to="/dashboard" class="nav-link">
-                  <i class="nav-icon  text-blue fas fa-tachometer-alt"></i>
+                  <i class="nav-icon blue fas fa-tachometer-alt"></i>
                   <p>
                    Dashboard
                     {{-- <span class="right badge badge-danger">New</span> --}}
@@ -170,7 +170,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               
           <li class="nav-item has-treeview ">
             <a href="#" class="nav-link">
-              <i class="fas fa-users"></i>
+              <i class="fas fa-users teal"></i>
               <p>
                  Family
                 <i class="right fas fa-angle-left"></i>
@@ -179,7 +179,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" class="nav-link active">
-                  <i class="fas fa-user nav-icon"></i>
+                  <i class="fas pink fa-user nav-icon"></i>
                   <p>Add New Family Member</p>
                 </a>
               </li>
@@ -193,7 +193,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
           <li class="nav-item">
             <router-link to="/job" class="nav-link">
-              <i class="nav-icon fas fa-code"></i>
+              <i class="nav-icon indigo fas fa-code"></i>
               <p>
                 Jobs
                 {{-- <span class="right badge badge-danger">New</span> --}}
@@ -222,7 +222,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a class="nav-link" href="{{ route('logout') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
-              <i class="nav-icon fas fa-power-off text-red"></i>
+              <i class="nav-icon fas fa-power-off red"></i>
               <p>
                 {{ __('Logout') }}
                 
@@ -259,10 +259,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Anything you want
+      बेटी बचाओ बेटी पढाओ 
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Made in India by <a href="https://ideafusion.in">ideafusion</a>.</strong> All rights reserved By Shakdwipiya Pariwar.
   </footer>
 </div>
 <!-- ./wrapper -->
