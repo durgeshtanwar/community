@@ -5,7 +5,7 @@
               <div class="card-header">
                 <h3 class="card-title">Users</h3>
                 <div class="card-tools">
-                    <button class="btn btn-success">Add New User
+                    <button class="btn btn-success" data-toggle="modal" data-target="#addNew">Add New User
                         <i class="fas fa-user-plus"></i>
                     </button>
                 </div>
@@ -41,8 +41,29 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-          </div>
+                  </div>
+    <!-- Modal -->
+<div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addNewLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Create New User</button>
+      </div>
     </div>
+  </div>
+</div>
+    </div>
+    
 </template>
 
 <script>
