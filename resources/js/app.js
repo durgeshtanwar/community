@@ -9,10 +9,10 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import VueRouter from 'vue-router'
-import Datepicker from 'vuejs-datepicker';
+
 
 Vue.use(VueRouter);
-Vue.use(Datepicker);
+
 
 const routes = [
     { path: '/dashboard', component: require('./components/Dashboard.vue').default },
