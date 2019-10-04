@@ -6,7 +6,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3>Welcome! </h3>
 
                 <p>New Orders</p>
               </div>
@@ -53,7 +53,7 @@
               <div class="inner">
                 <h3>352142</h3>
 
-                <p>Uniq</p>
+                <p>Unique Invitation Code</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
