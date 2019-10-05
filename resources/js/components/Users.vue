@@ -68,6 +68,14 @@
 
 <script>
     export default {
+      data() {
+        return {
+          form: new Form({
+             username: '',
+             password: '',
+          })
+        }
+      },
         mounted() {
             console.log('Component mounted.')
         }

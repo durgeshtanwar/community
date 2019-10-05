@@ -148,6 +148,14 @@
                           </div>
                           
                       </div>
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label for="">Department</label>
+                            <input type="text" class="form-control">
+                        </select>
+                          </div>
+                          
+                      </div>
                   </div>
                  
                 </form>
