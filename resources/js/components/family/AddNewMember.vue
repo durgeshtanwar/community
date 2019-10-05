@@ -71,7 +71,18 @@
                         </div>
                         <div class="form-check">
                           <input class="form-check-input" type="radio" name="marriage" checked="">
+                          <label class="form-check-label">Engaged</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="marriage" checked="">
                           <label class="form-check-label">Single</label>
+                        </div>
+                       
+                          </div>
+                           <div class="form-group">
+                              <div class="form-check">
+                          <input class="form-check-input" type="checkbox">
+                          <label class="form-check-label">Do you want to be featured in our Matrimonial Section?</label>
                         </div>
                       </div>
                     </div>
@@ -119,6 +130,23 @@
                         <label>State</label>
                         <input type="text" class="form-control" placeholder="Enter Name ..." name="state" >
                       </div>
+                      </div>
+                  </div>
+                  <div><h3>Professional Details</h3></div>
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label for="">Occupation</label>
+                            <select class="form-control">
+                          <option>Government Job</option>
+                          <option value="">Private Job</option>
+                          <option value="">Government Job</option>
+                          <option value="">Self Employed</option>
+                          <option value="">Student</option>
+                          <option value="">Unemployed</option>
+                        </select>
+                          </div>
+                          
                       </div>
                   </div>
                  
