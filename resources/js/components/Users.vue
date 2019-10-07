@@ -89,7 +89,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Create New User</button>
+        <button type="submit" class="btn btn-primary">Create New User</button>
       </div>
       </form>
     </div>
@@ -109,7 +109,7 @@
             username:'',
             password:'',
             gotra:'',
-            usertype:''
+            usertype:'member'
           })
         }
       },

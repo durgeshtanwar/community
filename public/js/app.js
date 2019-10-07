@@ -2280,7 +2280,7 @@ __webpack_require__.r(__webpack_exports__);
         username: '',
         password: '',
         gotra: '',
-        usertype: ''
+        usertype: 'member'
       })
     };
   },
@@ -39661,7 +39661,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c(
         "button",
-        { staticClass: "btn btn-primary", attrs: { type: "button" } },
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
         [_vm._v("Create New User")]
       )
     ])
