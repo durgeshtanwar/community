@@ -47,18 +47,51 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addNewLabel">Modal title</h5>
+        <h5 class="modal-title" id="addNewLabel">Add New Member</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form @submit.prevent="createUser">
       <div class="modal-body">
-        ...
+        <div class="form-group">
+        <input v-model="form.name" type="text" name="name" placeholder=" Full Name"
+        class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
+      <has-error :form="form" field="name"></has-error>
+    </div>
+    
+    <div class="form-group">
+        <input v-model="form.email" type="email" name="email" placeholder="email address"
+        class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
+      <has-error :form="form" field="email"></has-error>
+    </div>
+
+      <div class="form-group">
+       <input v-model="form.username" type="text" name="username" placeholder="username"
+            class="form-control" :class="{ 'is-invalid': form.errors.has('username') }">
+          <has-error :form="form" field="username"></has-error>
+       </div>
+
+        <div class="form-group">
+       <input v-model="form.gotra" type="text" name="gotra" placeholder="gotra"
+            class="form-control" :class="{ 'is-invalid': form.errors.has('gotra') }">
+          <has-error :form="form" field="gotra"></has-error>
+       </div>
+
+       <div class="form-group">
+       <input v-model="form.password" type="password" name="password" placeholder="password"
+            class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
+          <has-error :form="form" field="password"></has-error>
+       </div>
+
+       
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Create New User</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
@@ -71,9 +104,18 @@
       data() {
         return {
           form: new Form({
-             username: '',
-             password: '',
+            name : '',
+            email:'',
+            username:'',
+            password:'',
+            gotra:'',
+            usertype:''
           })
+        }
+      },
+      methods: {
+        createUser() {
+          this.form.post('api/user');
         }
       },
         mounted() {
