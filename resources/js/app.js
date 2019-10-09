@@ -23,8 +23,12 @@ const routes = [
     { path: '/profile', component: require('./components/Profile.vue').default },
     { path: '/job', component: require('./components/Jobs.vue').default },
     { path: '/matrimonial', component: require('./components/Matrimonial.vue').default },
+    { path: '/bride', component: require('./components/bride.vue').default },
+    { path: '/groom', component: require('./components/groom.vue').default },
     { path: '/users', component: require('./components/Users.vue').default },
     { path: '/addFamily', component: require('./components/family/AddNewMember.vue').default }
+
+
 
 
 ]

@@ -2,7 +2,7 @@
     <div class="container-fluid ">
         <div class="row">
             <div class="col-md-4">
-                <div class="card card-primary card-outline">
+             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle" src="/images/profile.png" alt="User profile picture">
