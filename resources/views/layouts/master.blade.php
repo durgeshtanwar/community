@@ -235,31 +235,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
               </ul>
             </li>
-          <li  class="nav-item has-treeview ">
-            <router-link to="/matrimonial" class="nav-link">
-              <i class="nav-icon fas fa-user-friends orange"></i>
-              <p>
-                Matrimonial
-                <i class="right fas fa-angle-left"></i>
-                {{-- <span class="right badge badge-danger">New</span> --}}
-              </p>
-              <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="/bride" class="nav-link active">
-                      <i class="fas pink fa-user nav-icon"></i>
-                      <p>Find Bride</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/groom" class="nav-link">
-                      <i class="fas fa-circle nav-icon"></i>
-                      <p>Find Groom </p>
-                    </a>
-                  </li>
-                </ul>
-
-            </router-link>
-          </li>
+          
           <li class="nav-item">
             <router-link to="/profile" class="nav-link">
               <i class="nav-icon fas fa-user teal"></i>
