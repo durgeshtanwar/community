@@ -2034,80 +2034,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -2392,6 +2318,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      users: {},
       form: new Form({
         name: '',
         email: '',
@@ -2403,12 +2330,20 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    loadUsers: function loadUsers() {
+      var _this = this;
+
+      axios.get('api/user').then(function (_ref) {
+        var data = _ref.data;
+        return _this.users = data.data;
+      });
+    },
     createUser: function createUser() {
       this.form.post('api/user');
     }
   },
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  created: function created() {
+    this.loadUsers();
   }
 });
 
@@ -39560,7 +39495,7 @@ var staticRenderFns = [
                                 "Rendering engine: activate to sort column descending"
                             }
                           },
-                          [_vm._v("Rendering engine")]
+                          [_vm._v("Job Title")]
                         ),
                         _c(
                           "th",
@@ -39576,7 +39511,7 @@ var staticRenderFns = [
                                 "Browser: activate to sort column ascending"
                             }
                           },
-                          [_vm._v("Browser")]
+                          [_vm._v("Job Description")]
                         ),
                         _c(
                           "th",
@@ -39592,7 +39527,7 @@ var staticRenderFns = [
                                 "Platform(s): activate to sort column ascending"
                             }
                           },
-                          [_vm._v("Platform(s)")]
+                          [_vm._v("City")]
                         ),
                         _c(
                           "th",
@@ -39608,7 +39543,7 @@ var staticRenderFns = [
                                 "Engine version: activate to sort column ascending"
                             }
                           },
-                          [_vm._v("Engine version")]
+                          [_vm._v("Contact Person")]
                         ),
                         _c(
                           "th",
@@ -39624,7 +39559,7 @@ var staticRenderFns = [
                                 "CSS grade: activate to sort column ascending"
                             }
                           },
-                          [_vm._v("CSS grade")]
+                          [_vm._v("Contact Number")]
                         )
                       ])
                     ]),
@@ -39632,154 +39567,111 @@ var staticRenderFns = [
                     _c("tbody", [
                       _c("tr", { staticClass: "odd", attrs: { role: "row" } }, [
                         _c("td", { staticClass: "sorting_1" }, [
-                          _vm._v("Gecko")
+                          _vm._v("Office Helper Required")
                         ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("Firefox 1.0")]),
+                        _c("td", [
+                          _vm._v(
+                            "Office helper for the office of CA. We need a person who is alround in helping in office such as Passing files. Can do bank job too. Salery will be 8000 rupees per month"
+                          )
+                        ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("Win 98+ / OSX.2+")]),
+                        _c("td", [_vm._v("Jodhpur")]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("1.7")]),
+                        _c("td", [_vm._v("Suryansh Sharma")]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("A")])
+                        _c("td", [_vm._v("89491639000")])
                       ]),
-                      _c(
-                        "tr",
-                        { staticClass: "even", attrs: { role: "row" } },
-                        [
-                          _c("td", { staticClass: "sorting_1" }, [
-                            _vm._v("Gecko")
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("Firefox 1.5")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("Win 98+ / OSX.2+")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("1.8")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("A")])
-                        ]
-                      ),
+                      _vm._v(" "),
                       _c("tr", { staticClass: "odd", attrs: { role: "row" } }, [
                         _c("td", { staticClass: "sorting_1" }, [
-                          _vm._v("Gecko")
+                          _vm._v("Computer Operator Required")
                         ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("Firefox 2.0")]),
+                        _c("td", [
+                          _vm._v(
+                            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores delectus provident voluptatum recusandae voluptates nemo nihil eius neque fugiat quam. Sunt voluptatum aliquam odio vel eum tempore deleniti dolorum sint."
+                          )
+                        ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("Win 98+ / OSX.2+")]),
+                        _c("td", [_vm._v("Bikaner")]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("1.8")]),
+                        _c("td", [_vm._v("Rajesh Sharma")]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("A")])
+                        _c("td", [_vm._v("89491639000")])
                       ]),
-                      _c(
-                        "tr",
-                        { staticClass: "even", attrs: { role: "row" } },
-                        [
-                          _c("td", { staticClass: "sorting_1" }, [
-                            _vm._v("Gecko")
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("Firefox 3.0")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("Win 2k+ / OSX.3+")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("1.9")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("A")])
-                        ]
-                      ),
+                      _vm._v(" "),
                       _c("tr", { staticClass: "odd", attrs: { role: "row" } }, [
                         _c("td", { staticClass: "sorting_1" }, [
-                          _vm._v("Gecko")
+                          _vm._v("Data Entry Operator Required")
                         ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("Camino 1.0")]),
+                        _c("td", [
+                          _vm._v(
+                            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores delectus provident voluptatum recusandae voluptates nemo nihil eius neque fugiat quam. Sunt voluptatum aliquam odio vel eum tempore deleniti dolorum sint."
+                          )
+                        ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("OSX.2+")]),
+                        _c("td", [_vm._v("New Delhi")]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("1.8")]),
+                        _c("td", [_vm._v("Rajesh Sharma")]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("A")])
+                        _c("td", [_vm._v("89491639000")])
                       ]),
-                      _c(
-                        "tr",
-                        { staticClass: "even", attrs: { role: "row" } },
-                        [
-                          _c("td", { staticClass: "sorting_1" }, [
-                            _vm._v("Gecko")
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("Camino 1.5")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("OSX.3+")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("1.8")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("A")])
-                        ]
-                      ),
+                      _vm._v(" "),
                       _c("tr", { staticClass: "odd", attrs: { role: "row" } }, [
                         _c("td", { staticClass: "sorting_1" }, [
-                          _vm._v("Gecko")
+                          _vm._v("Teacher required for Nursery students")
                         ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("Netscape 7.2")]),
+                        _c("td", [
+                          _vm._v(
+                            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores delectus provident voluptatum recusandae voluptates nemo nihil eius neque fugiat quam. Sunt voluptatum aliquam odio vel eum tempore deleniti dolorum sint."
+                          )
+                        ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("Win 95+ / Mac OS 8.6-9.2")]),
+                        _c("td", [_vm._v("Ludhiana")]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("1.7")]),
+                        _c("td", [_vm._v("Amar Shakdwipiya")]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("A")])
+                        _c("td", [_vm._v("89491639000")])
                       ]),
-                      _c(
-                        "tr",
-                        { staticClass: "even", attrs: { role: "row" } },
-                        [
-                          _c("td", { staticClass: "sorting_1" }, [
-                            _vm._v("Gecko")
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("Netscape Browser 8")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("Win 98SE+")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("1.7")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("A")])
-                        ]
-                      ),
+                      _vm._v(" "),
                       _c("tr", { staticClass: "odd", attrs: { role: "row" } }, [
                         _c("td", { staticClass: "sorting_1" }, [
-                          _vm._v("Gecko")
+                          _vm._v("Computer Operator Required")
                         ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("Netscape Navigator 9")]),
+                        _c("td", [
+                          _vm._v(
+                            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores delectus provident voluptatum recusandae voluptates nemo nihil eius neque fugiat quam. Sunt voluptatum aliquam odio vel eum tempore deleniti dolorum sint."
+                          )
+                        ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("Win 98+ / OSX.2+")]),
+                        _c("td", [_vm._v("Bikaner")]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("1.8")]),
+                        _c("td", [_vm._v("Rajesh Sharma")]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("A")])
+                        _c("td", [_vm._v("89491639000")])
                       ]),
-                      _c(
-                        "tr",
-                        { staticClass: "even", attrs: { role: "row" } },
-                        [
-                          _c("td", { staticClass: "sorting_1" }, [
-                            _vm._v("Gecko")
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("Mozilla 1.0")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("Win 95+ / OSX.1+")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("1")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("A")])
-                        ]
-                      )
+                      _vm._v(" "),
+                      _c("tr", { staticClass: "odd", attrs: { role: "row" } }, [
+                        _c("td", { staticClass: "sorting_1" }, [
+                          _vm._v("Computer Operator Required")
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores delectus provident voluptatum recusandae voluptates nemo nihil eius neque fugiat quam. Sunt voluptatum aliquam odio vel eum tempore deleniti dolorum sint."
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Bikaner")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Rajesh Sharma")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("89491639000")])
+                      ])
                     ]),
                     _vm._v(" "),
                     _c("tfoot", [
@@ -40294,7 +40186,39 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container " }, [
-    _vm._m(0),
+    _c("div", { staticClass: "col-12 mt-5" }, [
+      _c("div", { staticClass: "card" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body table-responsive p-0" }, [
+          _c("table", { staticClass: "table table-hover" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.users, function(user) {
+                return _c("tr", { key: user.id }, [
+                  _c("td", [_vm._v("SHA-" + _vm._s(user.id))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(user.name))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(user.email))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("span", { staticClass: "tag tag-success" }, [
+                      _vm._v(_vm._s(user.usertype))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(2, true)
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -40317,7 +40241,7 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(1),
+              _vm._m(3),
               _vm._v(" "),
               _c(
                 "form",
@@ -40534,7 +40458,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(2)
+                  _vm._m(4)
                 ]
               )
             ])
@@ -40549,69 +40473,53 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-5" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _c("h3", { staticClass: "card-title" }, [_vm._v("Users")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-tools" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-success",
-                attrs: { "data-toggle": "modal", "data-target": "#addNew" }
-              },
-              [
-                _vm._v("Add New User\n                        "),
-                _c("i", { staticClass: "fas fa-user-plus" })
-              ]
-            )
-          ])
-        ]),
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Users")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-tools" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success",
+            attrs: { "data-toggle": "modal", "data-target": "#addNew" }
+          },
+          [
+            _vm._v("Add New User\n                        "),
+            _c("i", { staticClass: "fas fa-user-plus" })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
         _vm._v(" "),
-        _c("div", { staticClass: "card-body table-responsive p-0" }, [
-          _c("table", { staticClass: "table table-hover" }, [
-            _c("thead", [
-              _c("tr", [
-                _c("th", [_vm._v("ID")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("User")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Date")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Type")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Modify")])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tbody", [
-              _c("tr", [
-                _c("td", [_vm._v("183")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("John Doe")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("11-7-2014")]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("span", { staticClass: "tag tag-success" }, [
-                    _vm._v("Approved")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("a", { staticClass: "mr-2", attrs: { href: "#" } }, [
-                    _c("i", { staticClass: "fa fa-edit" })
-                  ]),
-                  _vm._v(" "),
-                  _c("a", { staticClass: "ml-2", attrs: { href: "#" } }, [
-                    _c("i", { staticClass: "fa fa-trash red" })
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ])
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Type")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Modify")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("a", { staticClass: "mr-2", attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fa fa-edit" })
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "ml-2", attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fa fa-trash red" })
       ])
     ])
   },
@@ -40694,9 +40602,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "card teal" }, [
           _c("div", { staticClass: "card-header" }, [
-            _c("h3", { staticClass: "card-title" }, [
-              _vm._v("Responsive Hover Table")
-            ]),
+            _c("h3", { staticClass: "card-title" }, [_vm._v("Bride Search")]),
             _vm._v(" "),
             _c("div", { staticClass: "card-tools" }, [
               _c(
