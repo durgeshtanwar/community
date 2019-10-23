@@ -19,7 +19,7 @@
                       <th>ID</th>
                       <th>Name</th>
                       <th>Email</th>
-                      <th>Type</th>
+                      <th>Gotra</th>
                       <th>Modify</th>
                     </tr>
                   </thead>
@@ -28,7 +28,7 @@
                       <td>SHA-{{user.id}}</td>
                       <td>{{user.name}}</td>
                       <td>{{user.email}}</td>
-                      <td><span class="tag tag-success">{{user.usertype}}</span></td>
+                      <td><span class="tag tag-success">{{user.gotra}}</span></td>
                       <td> 
                           <a href="#" class="mr-2"> <i class="fa fa-edit"></i></a>
                           <a href="#" class= "ml-2"><i class="fa fa-trash red"></i></a>

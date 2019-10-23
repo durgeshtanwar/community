@@ -117,7 +117,7 @@
                   </li>
                 </ul>
 
-                <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                
               </div>
               <!-- /.card-body -->
             </div>
@@ -125,8 +125,8 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Create New User</button>
+        <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Create New User</button> -->
       </div>
      
     </div>

@@ -2034,6 +2034,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -39393,6 +39395,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container " }, [
+      _c("h1", [_vm._v("Employment availability")]),
+      _vm._v(" "),
       _c("div", { staticClass: "row justify-content-center" }, [
         _c(
           "div",
@@ -39677,19 +39681,19 @@ var staticRenderFns = [
                     _c("tfoot", [
                       _c("tr", [
                         _c("th", { attrs: { rowspan: "1", colspan: "1" } }, [
-                          _vm._v("Rendering engine")
+                          _vm._v("Job Title")
                         ]),
                         _c("th", { attrs: { rowspan: "1", colspan: "1" } }, [
-                          _vm._v("Browser")
+                          _vm._v("Job Description")
                         ]),
                         _c("th", { attrs: { rowspan: "1", colspan: "1" } }, [
-                          _vm._v("Platform(s)")
+                          _vm._v("Cities")
                         ]),
                         _c("th", { attrs: { rowspan: "1", colspan: "1" } }, [
-                          _vm._v("Engine version")
+                          _vm._v("Contact Person")
                         ]),
                         _c("th", { attrs: { rowspan: "1", colspan: "1" } }, [
-                          _vm._v("CSS grade")
+                          _vm._v("Contact Number")
                         ])
                       ])
                     ])
@@ -40206,7 +40210,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", [
                     _c("span", { staticClass: "tag tag-success" }, [
-                      _vm._v(_vm._s(user.usertype))
+                      _vm._v(_vm._s(user.gotra))
                     ])
                   ]),
                   _vm._v(" "),
@@ -40503,7 +40507,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Email")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Type")]),
+        _c("th", [_vm._v("Gotra")]),
         _vm._v(" "),
         _c("th", [_vm._v("Modify")])
       ])
@@ -40904,39 +40908,12 @@ var staticRenderFns = [
                             ])
                           ])
                         ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-primary btn-block",
-                          attrs: { href: "#" }
-                        },
-                        [_c("b", [_vm._v("Follow")])]
                       )
                     ])
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "modal-footer" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger",
-                      attrs: { type: "button", "data-dismiss": "modal" }
-                    },
-                    [_vm._v("Close")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary",
-                      attrs: { type: "submit" }
-                    },
-                    [_vm._v("Create New User")]
-                  )
-                ])
+                _c("div", { staticClass: "modal-footer" })
               ])
             ]
           )
