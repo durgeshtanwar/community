@@ -9,14 +9,31 @@ require('./bootstrap');
 window.Vue = require('vue');
 import { Form, HasError, AlertError } from 'vform';
 
-import VueRouter from 'vue-router'
+import VueRouter from 'vue-router';
 
 window.Form = Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 
 Vue.use(VueRouter);
+import VueProgressBar from 'vue-progressbar';
+Vue.use(VueProgressBar,{
+    color: 'rgb(143, 255, 199)',
+    failedColor: 'red',
+    height: '5px'
+});
 
+import Swal from 'sweetalert2';
+window.Swal = Swal;
+
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+  });
+
+  window.Toast = Toast;
 
 const routes = [
     { path: '/dashboard', component: require('./components/Dashboard.vue').default },
@@ -27,11 +44,8 @@ const routes = [
     { path: '/groom', component: require('./components/groom.vue').default },
     { path: '/users', component: require('./components/Users.vue').default },
     { path: '/addFamily', component: require('./components/family/AddNewMember.vue').default }
-
-
-
-
 ]
+
 const router = new VueRouter({
     mode:'history',
     routes

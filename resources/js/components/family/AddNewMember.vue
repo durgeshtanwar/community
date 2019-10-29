@@ -21,7 +21,7 @@
                     <div class="col-sm-6">
                        <div class="form-group">
                         <label>Relation With Family Head</label>
-                        <select class="form-control">
+                        <select class="form-control" name="relation">
                           <option>Wife</option>
                           <option>Son</option>
                           <option>Daughter</option>
@@ -54,7 +54,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Date of Birth</label>
-                        <input type="date" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false" autocomplete="off">
+                        <input type="date" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false" autocomplete="off" name="dob">
                         
                       </div>
                     </div>
@@ -80,8 +80,8 @@
                        
                           </div>
                            <div class="form-group">
-                              <div class="form-check">
-                          <input class="form-check-input" type="checkbox">
+                           <div class="form-check">
+                          <input class="form-check-input" type="checkbox" name="matrimonial">
                           <label class="form-check-label">Do you want to be featured in our Matrimonial Section?</label>
                         </div>
                       </div>
@@ -91,7 +91,7 @@
                       <div class="form-group">
                         <label>Email ID</label>
                         <div class="form-check">
-                         <input type="email" class="form-control" placeholder="Enter your email Address">
+                         <input type="email" class="form-control" placeholder="Enter your email Address" name="email">
                         </div>
                         
                       </div>
@@ -102,13 +102,13 @@
                       <!-- text input -->
                       <div class="form-group">
                         <label>Fathers Name</label>
-                        <input type="text" class="form-control" placeholder="Enter Name ..." name="name" >
+                        <input type="text" class="form-control" placeholder="Enter Name ..." name="father_name" >
                       </div>
                     </div>
                     <div class="col-sm-6">
                        <div class="form-group">
                         <label>Mothers Name</label>
-                        <input type="text" class="form-control" placeholder="Mothers Name" name="name" >
+                        <input type="text" class="form-control" placeholder="Mothers Name" name="mother_name" >
                       </div>
                   </div>
                   </div>
@@ -132,12 +132,13 @@
                       </div>
                       </div>
                   </div>
+                  <hr>
                   <div><h3>Professional Details</h3></div>
                   <div class="row">
                       <div class="col-sm-6">
                           <div class="form-group">
                               <label for="">Occupation</label>
-                            <select class="form-control">
+                            <select class="form-control" name="occupation">
                           <option>Government Job</option>
                           <option value="">Private Job</option>
                           <option value="">Government Job</option>
@@ -151,13 +152,112 @@
                       <div class="col-sm-6">
                           <div class="form-group">
                               <label for="">Department</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="department">
                       
                           </div>
                           
                       </div>
                   </div>
-                 
+                  <hr>
+                 <div><h3>Educational Details</h3></div>
+                 <div class="font-weight-bold text-primary">Post Graduation</div>
+                
+                 <div class="row">
+                    <div class="col-sm-6">
+                   <div class="form-group">
+                     <label>Degree</label>
+                       <input type="text" class="form-control" name="post_degree" placeholder="Degree">
+                   </div>
+                   <div class="form-group">
+                     <label>City</label>
+                       <input type="text" class="form-control" name="post_uni_city" placeholder="city">
+                   </div>
+                   <div class="form-group">
+                     <label>Year of Passing</label>
+                     <input type="text" class="form-control" name="post_yop" placeholder="year of Passing">
+                   </div>
+                    
+                   </div>
+                    <div class="col-sm-6">
+                   <div class="form-group">
+                     <label>University</label>
+                       <input type="text" class="form-control" name="post_university">
+                   </div>
+                   <div class="form-group">
+                     <label>State</label>
+                       <input type="text" class="form-control" name="post_uni_state">
+                   </div>
+                   <div class="form-group">
+                     <label>Percentage</label>
+                     <input type="text" class="form-control" name="post_percentage">
+                   </div>
+                   </div>
+                 </div>
+                 <div class="font-weight-bold text-primary">Graduation Degree</div>
+                 <div class="row">
+                    
+                    <div class="col-sm-6">
+                   <div class="form-group">
+                     <label>Degree</label>
+                       <input type="text" class="form-control" name="grad_degree" placeholder="Graduation Degree">
+                   </div>
+                   <div class="form-group">
+                     <label>City</label>
+                       <input type="text" class="form-control" name="grad_uni_city" placeholder = "City" >
+                   </div>
+                   <div class="form-group">
+                     <label>Year of Passing</label>
+                     <input type="text" class="form-control" name="grad_yop" placeholder="Year of Passing">
+                   </div>
+                    
+                   </div>
+                    <div class="col-sm-6">
+                   <div class="form-group">
+                     <label>University</label>
+                       <input type="text" class="form-control" name="grad_university" placeholder="university" >
+                   </div>
+                   <div class="form-group">
+                     <label>State</label>
+                       <input type="text" class="form-control" placeholder="State" name="grad_uni_state">
+                   </div>
+                   <div class="form-group">
+                     <label>Percentage</label>
+                     <input type="text" class="form-control" name="grad_percentage" placeholder="Percentage">
+                   </div>
+                   </div>
+                 </div>
+                 <div class="font-weight-bold text-primary">10+2 (Senior Secondary Education)</div>
+                 <div class="row">
+                   <div class="col-sm-6">
+                   <div class="form-group">
+                     <label>Board</label>
+                       <input type="text" class="form-control" name="sen_board" placeholder="Board Name" >
+                   </div>
+                   <div class="form-group">
+                     <label>School Name</label>
+                       <input type="text" class="form-control" placeholder="School Name" name="School Name">
+                   </div>
+                   <div class="form-group">
+                     <label>Percentage</label>
+                     <input type="text" class="form-control" name="grad_percentage" placeholder="Percentage">
+                   </div>
+                   </div>
+                   <div class="col-sm-6">
+                   <div class="form-group">
+                     <label>School Name</label>
+                       <input type="text" class="form-control" placeholder="School Name" name="School Name">
+                   </div>
+                   <div class="form-group">
+                     <label>City</label>
+                       <input type="text" class="form-control" name="grad_uni_city" placeholder = "City" >
+                   </div>
+                   <div class="form-group">
+                     <label>Year of Passing</label>
+                     <input type="text" class="form-control" name="grad_yop" placeholder="Year of Passing">
+                   </div>
+                    
+                   </div>
+                 </div>
                 </form>
               </div>
               <!-- /.card-body -->
