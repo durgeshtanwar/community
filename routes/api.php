@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResources(['user'=>'API\UserController']);
+Route::apiResources(['userDetails'=>'API\UserDetailsController']);
+//Route::apiResources([''])

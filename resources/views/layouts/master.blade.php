@@ -200,16 +200,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </router-link>
           </li>
-          <li class="nav-item">
-            <router-link to="/users" class="nav-link">
-              <i class="nav-icon yellow fas fa-users-cog"></i>
-              <p>
-               Users
+          {{-- <li class="nav-item"> --}}
+            {{-- <router-link to="/users" class="nav-link"> --}}
+              {{-- <i class="nav-icon yellow fas fa-users-cog"></i> --}}
+              {{-- <p> --}}
+               {{-- Users --}}
                 {{-- <span class="right badge badge-danger">New</span> --}}
-              </p>
-            </router-link>
-            <ul>
-            </ul>
+              {{-- </p> --}}
+            {{-- </router-link> --}}
+            {{-- <ul> --}}
+            {{-- </ul> --}}
             
           </li>
           <li class="nav-item has-treeview ">
