@@ -33,7 +33,8 @@ class UserController extends Controller
             'email'=>'required|string|email|max:255|unique:users',
             'password'=>'required|string|min:8',
             'username'=>'required|string|unique:users|max:191',
-            'gotra'=>'string|max:191'
+            'gotra'=>'string|max:191',
+            'code'=>'string|max:191|exists:users,code'
         ]);
         //return ['message'=>'I have your data'];
         return User::create([
