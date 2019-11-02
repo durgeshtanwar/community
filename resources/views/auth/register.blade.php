@@ -57,6 +57,19 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            {{-- <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label> --}}
+
+                            <div class="col-md-12">
+                                <input id="family_cast" type="text" class="form-control @error('family_cast') is-invalid @enderror" name="family_cast" value="{{ old('family_cast') }}" required autocomplete="family_cast" placeholder="family_cast">
+
+                                @error('family_cast')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             {{-- <label for="gotra" class="col-md-4 col-form-label text-md-right">{{ __('Gotra') }}</label> --}}
 
                             <div class="col-md-12">
@@ -96,7 +109,7 @@
                                 {{-- <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label> --}}
     
                                 <div class="col-md-12">
-                                    <input id="code" type="text" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Invitation Code">
+                                    <input id="code" type="text" class="form-control @error('code') is-invalid @enderror" name="code" autocomplete="code" placeholder="Invitation Code">
     
                                     @error('code')
                                         <span class="invalid-feedback" role="alert">

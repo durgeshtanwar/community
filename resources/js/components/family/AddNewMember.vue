@@ -7,7 +7,7 @@
               <div class="card-header">
                 <h3 class="card-title">Add New Family Member</h3>
                  <div class="card-tools">
-                  
+                  {{users.gotra}}
                 </div>
               </div>
               <!-- /.card-header -->
@@ -334,7 +334,7 @@
                        <has-error :form="form" field="class_10_city"></has-error>
                    </div>
                    
-                    
+                   
                    </div>
                  </div>
                  <div class="row">
@@ -367,16 +367,17 @@
             </div>
            </div>
         </div>
+       
         </div>
         
 </template>
 
 <script>
     export default {
-      data(){
-          return{
-            users:{},
-            form: new Form({
+     data() {
+        return {
+          users:{},
+           form: new Form({
               name:'',
               relation:'',
               gender:'',
@@ -415,16 +416,17 @@
               class_10_year_of_passing:'',
               class_10_city:'',
               username:'',
-              password:''
+              password:'',
+              gotra:''
 
             })
-          }
+           
+        }
       },
      methods:{
-      loaduser(){
-          axios.get('api/userDetails').then(({data})=>(this.users = data.data));
-       
-      },
+       loadusers(){
+         axios.get('api/userDetails').then(({data})=>(this.users=data));
+       },
        createUserDetails(){
          this.$Progress.start();
           this.form.post('api/userDetails');
@@ -437,9 +439,10 @@
        },
       
       },
-      mounted() {
-      this.loaduser();
-      console.log(this.users);
-        }
+      created() {
+      this.loadusers();
+   //   console.log(this.users.data);
+      //console.log(this.users);
+              }
     }
 </script>

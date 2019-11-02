@@ -11,6 +11,13 @@ use Auth;
 
 class UserDetailsController extends Controller
 {
+
+    public function __construct()
+    {
+     $this->middleware('auth:api');
+        
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,8 +25,8 @@ class UserDetailsController extends Controller
      */
     public function index()
     {
-   return auth('api')->user();
-  // return $user = Auth::user();
+  return auth('api')->user();
+  //return $user = Auth::user();
     }
 
     /**
@@ -79,7 +86,7 @@ class UserDetailsController extends Controller
     $user->name = $request->name;
     $user->username = $request->username;
     $user->password =Hash::make($request['password']);
-    $user->gotra= Auth::user()->gotra;
+    $user->gotra= $request->gotra;
     $user->save();
      //   dd(auth('api')->user());
 

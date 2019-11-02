@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+      $this->middleware('auth:api');
+        
+    }
     /**
      * Display a  listing of the resource.
      *
@@ -34,7 +40,7 @@ class UserController extends Controller
             'password'=>'required|string|min:8',
             'username'=>'required|string|unique:users|max:191',
             'gotra'=>'string|max:191',
-            'code'=>'string|max:191|exists:users,code'
+            //'code'=>'string|max:191|exists:users,code'
         ]);
         //return ['message'=>'I have your data'];
         return User::create([
@@ -43,8 +49,8 @@ class UserController extends Controller
             'username'=>$request['username'],
             'gotra'=>$request['gotra'],
             'password'=>Hash::make($request['password']),
-            'usertype'=>$request['usertype']
-
+            'usertype'=>$request['usertype'],
+            'code'=>"1234"
         ]);
     }
 
