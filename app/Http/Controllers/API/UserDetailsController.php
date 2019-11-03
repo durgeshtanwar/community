@@ -37,6 +37,8 @@ class UserDetailsController extends Controller
      */
     public function store(Request $request)
     {
+        $gotra = Auth::user()->gotra;
+        
        $this->validate($request,[
            'name'=>'required|string|max:191',
            'relation'=>'required|string|max:191',
@@ -85,17 +87,56 @@ class UserDetailsController extends Controller
     $user->email = $request->email;
     $user->name = $request->name;
     $user->username = $request->username;
+    $user->family_cast = Auth::user()->family_cast; 
+    $user->family_head = Auth::user()->family_head;
     $user->password =Hash::make($request['password']);
-    $user->gotra= $request->gotra;
+    $user->code=rand(pow(10, 5-1), pow(10, 5)-1);
+    $user->gotra= $gotra;
+    $user->usertype = "Member";
     $user->save();
-     //   dd(auth('api')->user());
+    
+    $userdetail = new UserDetail();
+    $userdetail->name = $request->name;
+    $userdetail->relation = $request->relation;
+    $userdetail->gender = $request->gender;
+    $userdetail->dob = $request->dob;
+    $userdetail->marriage_status = $request->marriage_status;
+    $userdetail->matrimonial = $request->matrimonial; 
+    $userdetail->email = $request->email;
+    $userdetail->mobile = $request->mobile;
+    $userdetail->father_name = $request->father_name;
+    $userdetail->mother_name = $request->mother_name;   
+    $userdetail->address = $request->address;
+    $userdetail->city = $request->city;    
+    $userdetail->state = $request->state;
+    $userdetail->occupation = $request->occupation;  
+    $userdetail->department = $request->department;
+    $userdetail->post_graduate_degree = $request->post_graduate_degree;
+    $userdetail->post_graduate_university = $request->post_graduate_university;
+    $userdetail->post_graduate_university_city = $request->post_graduate_university_city; 
+    $userdetail->post_graduate_university_state = $request->post_graduate_university_state;   
+    $userdetail->post_graduate_university_percentage = $request->post_graduate_university_percentage;
+    $userdetail->post_graduate_year_of_passing = $request->post_graduate_year_of_passing;
+    $userdetail->graduate_degree = $request->graduate_degree;
+    $userdetail->graduate_university = $request->graduate_university;
+    $userdetail->graduate_university_city = $request->graduate_university_city; 
+    $userdetail->graduate_university_state = $request->graduate_university_state;   
+    $userdetail->graduate_university_percentage = $request->graduate_university_percentage;
+    $userdetail->graduate_year_of_passing = $request->graduate_year_of_passing;
+    $userdetail->class_12_board = $request->class_12_board;
+    $userdetail->class_12_school_name = $request->class_12_school_name;
+    $userdetail->class_12_percentage = $request->class_12_percentage;
+    $userdetail->class_12_year_of_passing = $request->class_12_year_of_passing;
+    $userdetail->class_12_city = $request->class_12_city;
+    $userdetail->class_10_board = $request->class_10_board;
+    $userdetail->class_10_school_name = $request->class_10_school_name;
+    $userdetail->class_10_percentage = $request->class_10_percentage;
+    $userdetail->class_10_year_of_passing = $request->class_10_year_of_passing;
+    $userdetail->class_10_city = $request->class_10_city;
+    $userdetail->user_id = Auth::User()->id;
 
-       
-        // return ['message'=>'I have your data'];
-       // return $request->all();
-    //    $userDetail = new UserDetail();
-    //    $userDetail->name = $request->
-    }
+    $userdetail->save();
+}
 
     /**
      * Display the specified resource.
@@ -106,6 +147,15 @@ class UserDetailsController extends Controller
     public function show($id)
     {
         //
+    }
+
+    // Display the list of the family members
+    public function userlist()
+    {
+       // $users = DB::table('users')->where('votes', '=', 100)->get();
+  $matchthis = ['user_id'=>Auth::User()->id];
+        return UserDetail::where($matchthis)->get();
+    //return UserDetail::latest()->paginate(10);
     }
 
     /**

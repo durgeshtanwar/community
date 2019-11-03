@@ -8,19 +8,19 @@
                   <img class="profile-user-img img-fluid img-circle" src="/images/profile.png" alt="User profile picture">
                 </div>
 
-                <h3 class="profile-username text-center">Suryansh Sharma</h3>
+                <h3 class="profile-username text-center">{{users.name}}</h3>
 
                 <p class="text-muted text-center">Software Engineer</p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
-                    <b>Membership No.</b> <a class="float-right">SHA-123</a>
+                    <b>Membership No.</b> <a class="float-right">SHA-{{users.id}}</a>
                   </li>
                   <li class="list-group-item">
                     <b>Age</b> <a class="float-right">22 years</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Status</b> <a class="float-right">Engaged</a>
+                    <b>Status</b> <a class="float-right">{{familydata.marriage_status}}</a>
                   </li>
                   <li class="list-group-item">
                     <b>Gotra</b> <a class="float-right">Mundhara</a>
@@ -113,8 +113,44 @@
 
 <script>
     export default {
-        mounted() {
-            console.log('Component mounted.')
+      data() {
+        return {
+          users:{},
+          familydata:{},
+          form: new Form({
+            name : '',
+            email:'',
+            username:'',
+            password:'',
+            gotra:'',
+            usertype:'member'
+          })
+        }
+      },
+      methods: {
+        loadUsers(){
+            axios.get('api/familylist').then(({data})=>(this.familydata = data));
+             axios.get('api/userDetails').then(({data})=>(this.users=data));
+         }
+        },
+        createUser() {
+          this.$Progress.start();
+          this.form.post('api/user');
+          Toast.fire({
+             type: 'success',
+            title: 'User created successfully'
+              })
+
+          this.$Progress.finish();
+        },
+      
+        created() {
+           this.loadUsers();
+        },
+        mounted(){
+          console.log(
+            "this. is mounted"
+          )
         }
     }
 </script>

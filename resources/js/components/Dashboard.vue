@@ -8,7 +8,7 @@
               <div class="inner">
                 <h3>Welcome! </h3>
 
-                <p>New Orders</p>
+                <h6>{{familydata.name}}</h6>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -21,9 +21,9 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3>{{users.length}}<sup style="font-size: 20px"></sup></h3>
 
-                <p>Bounce Rate</p>
+                <p>Family Members</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -36,9 +36,9 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3>{{allusers.length}}</h3>
 
-                <p>User Registrations</p>
+                <p>Total Users</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -51,7 +51,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>352142</h3>
+                <h3>{{familydata.code}}</h3>
 
                 <p>Unique Invitation Code</p>
               </div>
@@ -68,9 +68,47 @@
 </template>
 
 <script>
-    export default {
-        mounted() {
-            console.log('Component mounted.')
+   export default {
+      data() {
+        return {
+          users:{},
+          familydata:{},
+          allusers:{},
+          form: new Form({
+            name : '',
+            email:'',
+            username:'',
+            password:'',
+            gotra:'',
+            usertype:'member'
+          })
+        }
+      },
+      methods: {
+        loadUsers(){
+            axios.get('api/familylist').then(({data})=>(this.users = data));
+             axios.get('api/userDetails').then(({data})=>(this.familydata=data));
+             axios.get('api/user').then(({data})=>(this.allusers = data.data));
+         }
+        },
+        createUser() {
+          this.$Progress.start();
+          this.form.post('api/user');
+          Toast.fire({
+             type: 'success',
+            title: 'User created successfully'
+              })
+
+          this.$Progress.finish();
+        },
+      
+        created() {
+           this.loadUsers();
+        },
+        mounted(){
+          console.log(
+            "this. is mounted"
+          )
         }
     }
 </script>

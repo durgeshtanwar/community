@@ -14,7 +14,7 @@ class AddFamilyHeadToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->string('family_head')->after('family_cast');
         });
     }
 
@@ -27,6 +27,7 @@ class AddFamilyHeadToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            $table->dropColumn('family_head');
         });
     }
 }

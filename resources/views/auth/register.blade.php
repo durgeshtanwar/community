@@ -60,9 +60,22 @@
                             {{-- <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label> --}}
 
                             <div class="col-md-12">
-                                <input id="family_cast" type="text" class="form-control @error('family_cast') is-invalid @enderror" name="family_cast" value="{{ old('family_cast') }}" required autocomplete="family_cast" placeholder="family_cast">
+                                <input id="family_cast" type="text" class="form-control @error('family_cast') is-invalid @enderror" name="family_cast" value="{{ old('family_cast') }}" required autocomplete="family_cast" placeholder="family cast (like Bhojak, Shandilya etc.)">
 
                                 @error('family_cast')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            {{-- <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label> --}}
+
+                            <div class="col-md-12">
+                                <input id="family_head" type="text" class="form-control @error('family_head') is-invalid @enderror" name="family_head" value="{{ old('family_head') }}" required autocomplete="family_head" placeholder="Family Head Name (घर के मुखिया का नाम)">
+
+                                @error('family_head')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -124,6 +137,9 @@
                                     {{ __('Register') }}
                                 </button>
                             </div>
+                           
+                        </div>
+                        <div class="form-group-row text-center mt-3">
                             <p>Already a Member Click <a href="/login">Here</a> to login</p>
                         </div>
                     </form>
