@@ -21,4 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResources(['user'=>'API\UserController']);
 Route::apiResources(['userDetails'=>'API\UserDetailsController']);
 Route::get('familylist','API\UserDetailsController@userlist');
+Route::apiResources(['job'=>'API\JobsController']);
 //Route::apiResources([''])

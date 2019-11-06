@@ -23,6 +23,12 @@ Vue.use(VueProgressBar,{
     height: '5px'
 });
 
+import Vuetable from 'vuetable-2'
+Vue.use(Vuetable);
+window.Vuetable = Vuetable;
+import VuetablePagination from 'vuetable-2/src/components/VuetablePagination';
+window.VuetablePagination = VuetablePagination;
+
 import Swal from 'sweetalert2';
 window.Swal = Swal;
 
@@ -35,6 +41,19 @@ const Toast = Swal.mixin({
 
   window.Toast = Toast;
 
+//Vue.use(DatatableFactory);
+
+import VueEvents from 'vue-events'
+Vue.use(VueEvents)
+
+
+
+
+
+
+
+
+
 const routes = [
     { path: '/dashboard', component: require('./components/Dashboard.vue').default },
     { path: '/profile', component: require('./components/Profile.vue').default },
@@ -44,7 +63,9 @@ const routes = [
     { path: '/groom', component: require('./components/groom.vue').default },
     { path: '/users', component: require('./components/Users.vue').default },
     { path: '/addFamily', component: require('./components/family/AddNewMember.vue').default },
-    { path:'/family',component:require ('./components/family/familymemberlist.vue').default }
+    { path:'/family',component:require ('./components/family/familymemberlist.vue').default },
+    { path:'/addjob',component:require ('./components/addjob.vue').default },
+  //  {path:'/datatable', component:require('./components/job.vue').default}
 ]
 
 const router = new VueRouter({

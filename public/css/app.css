@@ -29666,3 +29666,7 @@ readers do not read off random characters that represent icons */
   border-top: 3px solid #007bff;
 }
 
+.main-footer {
+  margin-top: 60px;
+}
+
