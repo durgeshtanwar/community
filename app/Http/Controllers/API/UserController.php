@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\UserDetail;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -12,7 +13,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-      $this->middleware('auth:api');
+     $this->middleware('auth:api');
         
     }
     /**
@@ -68,6 +69,7 @@ class UserController extends Controller
     {
         //
     }
+   
 
     /**
      * Update the specified resource in storage.

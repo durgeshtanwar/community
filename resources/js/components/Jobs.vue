@@ -1,7 +1,7 @@
 <template>
     <div class="container ">
     <div id="people">
-      <Filterbar></Filterbar> 
+      <Filterbar style="mb-3"></Filterbar> 
   <vuetable ref="vuetable"
   api-url="api/job"
   :fields="fields"
@@ -43,6 +43,8 @@ import Filterbar from "./datatable/Filterbar";
         ],
         moreParams: {}, 
   css: {
+    ascendingIcon:"fas fa-angle-up",
+    descendingIcon:"fas fa-angle-down",
     table: {
     tableWrapper: '',
     tableHeaderClass: 'mb-0',

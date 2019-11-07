@@ -1,11 +1,11 @@
 <template>
     <div class="filter-bar ui basic segment grid">
-      <div class="ui form">
-        <div class="inline field">
+      <div class="ui form mb-3">
+        <div class="inline field ">
           <label>Search for:</label>
           <input type="text" v-model="filterText" class="three wide column" @keyup.enter="doFilter" placeholder="title, contact number">
-          <button class="ui primary button" @click="doFilter">Go</button>
-          <button class="ui button" @click="resetFilter">Reset</button>
+          <button class="btn btn-success ml-2 mr-2" @click="doFilter">Go</button>
+          <button class="btn btn-info" @click="resetFilter">Reset</button>
         </div>
       </div>
     </div>

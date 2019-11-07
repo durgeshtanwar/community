@@ -14,7 +14,7 @@ class UserDetailsController extends Controller
 
     public function __construct()
     {
-     $this->middleware('auth:api');
+  $this->middleware('auth:api');
         
     }
 
@@ -46,36 +46,13 @@ class UserDetailsController extends Controller
            'dob'=>'required|string|max:191',
            'marriage_status'=>'required|string|max:191',
            'email'=>'required|string|max:255|unique:users',
-           'mobile'=>'required|string|max:10',
+           'mobile'=>'required|string|max:20',
            'father_name'=>'required|string|max:191',
            'mother_name'=>'required|string|max:191',
            'address'=>'required|string|max:191',
            'city'=>'required|string|max:191',
            'state'=>'required|string|max:191',
            'occupation'=>'required|string|max:191',
-           'department'=>'string|max:191',
-           'post_graduate_degree'=>'string|max:191',
-           'post_graduate_university'=>'string|max:191',
-           'post_graduate_university_city'=>'string|max:191',
-           'post_graduate_university_state'=>'string|max:191',
-           'post_graduate_percentage'=>'string|max:191',
-           'post_graduate_year_of_passing'=>'string|max:191',
-           'graduate_degree'=>'string|max:191',
-           'graduate_university'=>'string|max:191',
-           'graduate_university_city'=>'string|max:191',
-           'graduate_university_state'=>'string|max:191',
-           'graduate_percentage'=>'string|max:191',
-           'graduate_year_of_passing'=>'string|max:191',
-           'class_12_board'=>'string|max:191',
-           'class_12_school_name'=>'string|max:191',
-           'class_12_percentage'=>'string|max:191',
-           'class_12_year_of_passing'=>'string|max:191',
-           'class_12_city'=>'string|max:191',
-           'class_10_board'=>'string|max:191',
-           'class_10_school_name'=>'string|max:191',
-           'class_10_percentage'=>'string|max:191',
-           'class_10_year_of_passing'=>'string|max:191',
-           'class_10_city'=>'string|max:191',
            'password'=>'required|string|min:8',
            'username'=>'required|string|unique:users|max:191',
 
@@ -157,7 +134,48 @@ class UserDetailsController extends Controller
         return UserDetail::where($matchthis)->get();
     //return UserDetail::latest()->paginate(10);
     }
-
+    public function bride(){
+      
+        // $matchthis = ['gender'=>'female','matrimonial'=>1];
+        // $result = UserDetail::where($matchthis)->get();
+        // return $result;
+        $query = app(UserDetail::class)->newQuery(); 
+        $query= $query->where('gender','LIKE','female');
+        $query= $query->where('matrimonial','LIKE','1');
+        $request = request();
+          if(request()->exists('sort')){
+            $sorts = explode(',',request()->sort);
+            foreach ($sorts as $sort){
+                list($sortCol, $sortDir) = explode('|',$sort);
+                $query = $query->orderBy($sortCol,$sortDir);
+             } 
+        } 
+         else { 
+                $query = $query->orderBy('id','asc');
+            }
+      if($request->exists('filter')) {
+          $query->where(function($q) use($request){
+            $value = "%{$request->filter}%";
+            $q->where('name','like',$value)
+                  ->orWhere('father_name','like',$value)
+                  ->orWhere('city','like',$value)
+                  ->orWhere('mother_name','like',$value); 
+          });
+      }
+      $per_page = request()->has('per_page')?(int) request()->per_page : null;
+      $pagination = $query->paginate($per_page);
+      $pagination->appends([
+          'sort'=>request()->sort,
+          'filter'=>request()->filter,
+          'per_page'=>request()->per_page
+      ]);
+       
+        return response()->json(
+            $pagination
+        )
+        ->header('Access-Control-Allow-Origin','*')
+        ->header('Access-Control-Allow-Methods','GET');
+    }
     /**
      * Update the specified resource in storage.
      *

@@ -2056,6 +2056,8 @@ __webpack_require__.r(__webpack_exports__);
       }],
       moreParams: {},
       css: {
+        ascendingIcon: "fas fa-angle-up",
+        descendingIcon: "fas fa-angle-down",
         table: {
           tableWrapper: '',
           tableHeaderClass: 'mb-0',
@@ -2610,6 +2612,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _datatable_Filterbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./datatable/Filterbar */ "./resources/js/components/datatable/Filterbar.vue");
 //
 //
 //
@@ -2630,144 +2633,103 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      form: new Form({
-        name: '',
-        email: '',
-        username: '',
-        password: '',
-        gotra: '',
-        usertype: 'member'
-      })
+      fields: ['name', {
+        name: 'father_name',
+        title: 'Father Name'
+      }, {
+        name: 'mother_name',
+        title: 'Mother Name'
+      }, 'city', 'mobile'],
+      sortOrder: [{
+        field: 'city',
+        sortField: 'city',
+        direction: 'asc'
+      }],
+      moreParams: {},
+      css: {
+        ascendingIcon: "fas fa-angle-up",
+        descendingIcon: "fas fa-angle-down",
+        table: {
+          tableWrapper: '',
+          tableHeaderClass: 'mb-0',
+          tableBodyClass: 'mb-0',
+          tableClass: 'table table-bordered table-hover',
+          loadingClass: 'loading',
+          ascendingIcon: 'fa fa-chevron-up',
+          descendingIcon: 'fa fa-chevron-down',
+          ascendingClass: 'sorted-asc',
+          descendingClass: 'sorted-desc',
+          sortableIcon: 'fa fa-sort',
+          detailRowClass: 'vuetable-detail-row',
+          handleIcon: 'fa fa-bars text-secondary',
+          renderIcon: function renderIcon(classes, options) {
+            return "<i class=\"".concat(classes.join(' '), "\"></span>");
+          }
+        },
+        pagination: {
+          wrapperClass: 'pagination float-right',
+          activeClass: 'active',
+          disabledClass: 'disabled',
+          pageClass: 'page-link',
+          linkClass: 'page-link',
+          paginationClass: 'pagination',
+          paginationInfoClass: 'float-left',
+          dropdownClass: 'form-control',
+          icons: {
+            first: 'fas fa-chevron-circle-left ',
+            prev: 'fa fa-chevron-left',
+            next: 'fa fa-chevron-right',
+            last: 'fas fa-chevron-circle-right'
+          }
+        }
+      }
     };
   },
+  components: {
+    Vuetable: Vuetable,
+    VuetablePagination: VuetablePagination,
+    Filterbar: _datatable_Filterbar__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   methods: {
-    createUser: function createUser() {
-      this.form.post('api/user');
+    onPaginationData: function onPaginationData(paginationData) {
+      this.$refs.pagination.setPaginationData(paginationData);
+    },
+    onChangePage: function onChangePage(page) {
+      this.$refs.vuetable.changePage(page);
+    },
+    onFilterSet: function onFilterSet(filterText) {
+      var _this = this;
+
+      this.moreParams = {
+        'filter': filterText
+      };
+      Vue.nextTick(function () {
+        return _this.$refs.vuetable.refresh();
+      });
+      console.log('filter-set', filterText);
+    },
+    onFilterReset: function onFilterReset() {
+      var _this2 = this;
+
+      this.moreParams = {};
+      Vue.nextTick(function () {
+        return _this2.$refs.vuetable.refresh();
+      });
     }
   },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    var _this3 = this;
+
+    this.$events.$on('filter-set', function (eventData) {
+      return _this3.onFilterSet(eventData);
+    });
+    this.$events.$on('filter-reset', function (e) {
+      return _this3.onFilterReset();
+    });
   }
 });
 
@@ -45032,7 +44994,7 @@ var render = function() {
       "div",
       { attrs: { id: "people" } },
       [
-        _c("Filterbar"),
+        _c("Filterbar", { staticStyle: {} }),
         _vm._v(" "),
         _c("vuetable", {
           ref: "vuetable",
@@ -46082,335 +46044,37 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container " }, [
-      _c("div", { staticClass: "col-12 mt-5" }, [
-        _c("h1", [_vm._v("Search Bride")]),
+  return _c("div", { staticClass: "container " }, [
+    _c(
+      "div",
+      { attrs: { id: "people" } },
+      [
+        _c("Filterbar", { staticStyle: {} }),
         _vm._v(" "),
-        _c("div", { staticClass: "card teal" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("h3", { staticClass: "card-title" }, [_vm._v("Bride Search")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-tools" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "input-group input-group-sm",
-                  staticStyle: { width: "150px" }
-                },
-                [
-                  _c("input", {
-                    staticClass: "form-control float-right",
-                    attrs: {
-                      type: "text",
-                      name: "table_search",
-                      placeholder: "Search"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group-append" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-default",
-                        attrs: { type: "submit" }
-                      },
-                      [_c("i", { staticClass: "fas fa-search" })]
-                    )
-                  ])
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body table-responsive p-0" }, [
-            _c("table", { staticClass: "table table-hover" }, [
-              _c("thead", [
-                _c("tr", [
-                  _c("th", [_vm._v("ID")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Name")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Father's Name")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Mother's Name")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("City")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Contact Details")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("View")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tbody", [
-                _c("tr", [
-                  _c("td", [_vm._v("SHA-183")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Varsha ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("RK Sharma")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Madhu Sharma")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Bikaner")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("9414264747")]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-info",
-                        attrs: {
-                          type: "button",
-                          "data-toggle": "modal",
-                          "data-target": "#addNew"
-                        }
-                      },
-                      [_vm._v("View Profile")]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("SHA-183")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Varsha ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("RK Sharma")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Madhu Sharma")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Bikaner")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("9414264747")]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-info",
-                        attrs: {
-                          type: "button",
-                          "data-toggle": "modal",
-                          "data-target": "#addNew"
-                        }
-                      },
-                      [_vm._v("View Profile")]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("SHA-183")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Varsha ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("RK Sharma")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Madhu Sharma")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Bikaner")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("9414264747")]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-info",
-                        attrs: {
-                          type: "button",
-                          "data-toggle": "modal",
-                          "data-target": "#addNew"
-                        }
-                      },
-                      [_vm._v("View Profile")]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("SHA-183")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Varsha ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("RK Sharma")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Madhu Sharma")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Bikaner")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("9414264747")]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-info",
-                        attrs: {
-                          type: "button",
-                          "data-toggle": "modal",
-                          "data-target": "#addNew"
-                        }
-                      },
-                      [_vm._v("View Profile")]
-                    )
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "modal fade",
+        _c("vuetable", {
+          ref: "vuetable",
           attrs: {
-            id: "addNew",
-            tabindex: "-1",
-            role: "dialog",
-            "aria-labelledby": "addNewLabel",
-            "aria-hidden": "true"
-          }
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "modal-dialog modal-dialog-centered",
-              attrs: { role: "document" }
-            },
-            [
-              _c("div", { staticClass: "modal-content" }, [
-                _c("div", { staticClass: "modal-header" }, [
-                  _c(
-                    "h5",
-                    {
-                      staticClass: "modal-title",
-                      attrs: { id: "addNewLabel" }
-                    },
-                    [_vm._v("Profile of the user")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "close",
-                      attrs: {
-                        type: "button",
-                        "data-dismiss": "modal",
-                        "aria-label": "Close"
-                      }
-                    },
-                    [
-                      _c("span", { attrs: { "aria-hidden": "true" } }, [
-                        _vm._v("×")
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "modal-body" }, [
-                  _c("div", { staticClass: "card card-primary card-outline" }, [
-                    _c("div", { staticClass: "card-body box-profile" }, [
-                      _c("div", { staticClass: "text-center" }, [
-                        _c("img", {
-                          staticClass: "profile-user-img img-fluid img-circle",
-                          attrs: {
-                            src: "/images/profile.png",
-                            alt: "User profile picture"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "h3",
-                        { staticClass: "profile-username text-center" },
-                        [_vm._v("Suryansh Sharma")]
-                      ),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "text-muted text-center" }, [
-                        _vm._v("Software Engineer")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "ul",
-                        {
-                          staticClass: "list-group list-group-unbordered mb-3"
-                        },
-                        [
-                          _c("li", { staticClass: "list-group-item" }, [
-                            _c("b", [_vm._v("Membership No.")]),
-                            _vm._v(" "),
-                            _c("a", { staticClass: "float-right" }, [
-                              _vm._v("SHA-123")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("li", { staticClass: "list-group-item" }, [
-                            _c("b", [_vm._v("Age")]),
-                            _vm._v(" "),
-                            _c("a", { staticClass: "float-right" }, [
-                              _vm._v("22 years")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("li", { staticClass: "list-group-item" }, [
-                            _c("b", [_vm._v("Status")]),
-                            _vm._v(" "),
-                            _c("a", { staticClass: "float-right" }, [
-                              _vm._v("Engaged")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("li", { staticClass: "list-group-item" }, [
-                            _c("b", [_vm._v("Gotra")]),
-                            _vm._v(" "),
-                            _c("a", { staticClass: "float-right" }, [
-                              _vm._v("Mundhara")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("li", { staticClass: "list-group-item" }, [
-                            _c("b", [_vm._v("Gender")]),
-                            _vm._v(" "),
-                            _c("a", { staticClass: "float-right" }, [
-                              _vm._v("Male")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("li", { staticClass: "list-group-item" }, [
-                            _c("b", [_vm._v("Contact")]),
-                            _vm._v(" "),
-                            _c("a", { staticClass: "float-right" }, [
-                              _vm._v("8949163900")
-                            ])
-                          ])
-                        ]
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "modal-footer" })
-              ])
-            ]
-          )
-        ]
-      )
-    ])
-  }
-]
+            "api-url": "api/getbride",
+            fields: _vm.fields,
+            css: _vm.css.table,
+            "sort-order": _vm.sortOrder,
+            "append-params": _vm.moreParams,
+            "pagination-path": ""
+          },
+          on: { "vuetable:pagination-data": _vm.onPaginationData }
+        }),
+        _vm._v(" "),
+        _c("vuetable-pagination", {
+          ref: "pagination",
+          attrs: { css: _vm.css.pagination },
+          on: { "vuetable-pagination:change-page": _vm.onChangePage }
+        })
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -46433,8 +46097,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "filter-bar ui basic segment grid" }, [
-    _c("div", { staticClass: "ui form" }, [
-      _c("div", { staticClass: "inline field" }, [
+    _c("div", { staticClass: "ui form mb-3" }, [
+      _c("div", { staticClass: "inline field " }, [
         _c("label", [_vm._v("Search for:")]),
         _vm._v(" "),
         _c("input", {
@@ -46470,13 +46134,16 @@ var render = function() {
         _vm._v(" "),
         _c(
           "button",
-          { staticClass: "ui primary button", on: { click: _vm.doFilter } },
+          {
+            staticClass: "btn btn-success ml-2 mr-2",
+            on: { click: _vm.doFilter }
+          },
           [_vm._v("Go")]
         ),
         _vm._v(" "),
         _c(
           "button",
-          { staticClass: "ui button", on: { click: _vm.resetFilter } },
+          { staticClass: "btn btn-info", on: { click: _vm.resetFilter } },
           [_vm._v("Reset")]
         )
       ])
