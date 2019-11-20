@@ -46,14 +46,6 @@ const Toast = Swal.mixin({
 import VueEvents from 'vue-events'
 Vue.use(VueEvents)
 
-
-
-
-
-
-
-
-
 const routes = [
     { path: '/dashboard', component: require('./components/Dashboard.vue').default },
     { path: '/profile', component: require('./components/Profile.vue').default },
@@ -65,6 +57,7 @@ const routes = [
     { path: '/addFamily', component: require('./components/family/AddNewMember.vue').default },
     { path:'/family',component:require ('./components/family/familymemberlist.vue').default },
     { path:'/addjob',component:require ('./components/addjob.vue').default },
+    {path:'/applyjob',component:require('./components/applyjob.vue').default}
   //  {path:'/datatable', component:require('./components/job.vue').default}
 ]
 
