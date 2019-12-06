@@ -46,7 +46,7 @@ class UserController extends Controller
             //'code'=>'string|max:191|exists:users,code'
         ]);
         //return ['message'=>'I have your data'];
-        return User::create([
+         User::create([
             'name'=> $request['name'],
             'email'=>$request['email'],
             'username'=>$request['username'],
@@ -57,6 +57,7 @@ class UserController extends Controller
             'usertype'=>$request['usertype'],
             'code'=>rand(pow(10, 5-1), pow(10, 5)-1),
         ]);
+        return 1;
     }
 
     /**
@@ -91,6 +92,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $user->delete();
+        return ['message'=>"user deleted"];
+
+
+
     }
 }

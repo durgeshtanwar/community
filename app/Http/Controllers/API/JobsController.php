@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\UserDetail;
 use Auth;
 use App\Job;
 use App\Fake_jobs;
+
+
 class JobsController extends Controller
 {
     /**
@@ -18,7 +21,7 @@ class JobsController extends Controller
      */
     public function __construct()
     {
-  $this->middleware('auth:api');
+      $this->middleware('auth:api');
         
     }
 
@@ -89,13 +92,44 @@ class JobsController extends Controller
         ]);
 
     }
+       
+    public function getjobcategory(){
+        
+        $job_category = DB::table('job_category')->paginate(10);
+        return $job_category;
+    }
 
-    /**
+    public function createjobcategory(Request $request){
+       
+        $userid = Auth::User()->id;
+        $this->validate($request,[
+            'job_category'=> 'required|string|max:255',
+            'description'=>'required|string'
+            ]);
+
+            $data = [
+                'job_category'=>$request['job_category'],
+                'description'=>$request['description'],
+                'user_id'=> $userid
+            ];
+
+            DB::table('job_category')->insert($data);
+
+    //   return DB::table('job_category')->insert([
+    //         'job_category' => $request['job_category'],
+    //         'description' => $request['description'],
+    //         'user_id'=> $userid
+    //     ]); 
+
+    }
+
+     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function show($id)
     {
         
@@ -124,4 +158,17 @@ class JobsController extends Controller
     {
         //
     }
+
+    /*
+    function to delete job categories
+    */
+
+    public function deletejobcategory($id){
+
+        DB::table('job_category')->where('id', 'LIKE', $id)->delete();
+        return ['message'=>' job category deleted'];
+
+    }
+
+
 }

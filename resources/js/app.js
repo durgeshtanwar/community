@@ -20,7 +20,7 @@ import VueProgressBar from 'vue-progressbar';
 Vue.use(VueProgressBar,{
     color: 'rgb(143, 255, 199)',
     failedColor: 'red',
-    height: '5px'
+    height: '10px'
 });
 
 import Vuetable from 'vuetable-2'
@@ -55,9 +55,11 @@ const routes = [
     { path: '/groom', component: require('./components/groom.vue').default },
     { path: '/users', component: require('./components/Users.vue').default },
     { path: '/addFamily', component: require('./components/family/AddNewMember.vue').default },
-    { path:'/family',component:require ('./components/family/familymemberlist.vue').default },
-    { path:'/addjob',component:require ('./components/addjob.vue').default },
-    {path:'/applyjob',component:require('./components/applyjob.vue').default}
+    { path: '/family',component:require ('./components/family/familymemberlist.vue').default },
+    { path: '/addjob',component:require ('./components/addjob.vue').default },
+    { path: '/applyjob',component:require('./components/applyjob.vue').default},
+    { path: '/addjobcategory',component:require('./components/jobcategory.vue').default},
+    { path: '/jobdashboard',component:require('./components/jobs/jobdashboard.vue').default}
   //  {path:'/datatable', component:require('./components/job.vue').default}
 ]
 

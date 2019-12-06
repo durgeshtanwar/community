@@ -29,8 +29,8 @@
                       <td>{{user.email}}</td>
                       <td><span class="tag tag-success">{{user.gotra}}</span></td>
                       <td> 
-                          <a href="#" class="mr-2"> <i class="fa fa-edit"></i></a>
-                          <a href="#" class= "ml-2"><i class="fa fa-trash red"></i></a>
+                          <a href="#"  class="mr-2"> <i class="fa fa-edit"></i></a>
+                          <a href="#" @click="deleteuser(user.id)" class= "ml-2"><i class="fa fa-trash red"></i></a>
                       </td>
                     </tr>
                   
@@ -57,6 +57,18 @@
         <input v-model="form.name" type="text" name="name" placeholder=" Full Name"
         class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
       <has-error :form="form" field="name"></has-error>
+    </div>
+
+    <div class="form-group">
+        <input v-model="form.family_cast" type="text" name="family_cast" placeholder=" Your Cast"
+        class="form-control" :class="{ 'is-invalid': form.errors.has('family_cast') }">
+      <has-error :form="form" field="family_cast"></has-error>
+    </div>
+
+    <div class="form-group">
+        <input v-model="form.family_head" type="text" name="family_head" placeholder=" Your Family Head Name"
+        class="form-control" :class="{ 'is-invalid': form.errors.has('family_head') }">
+      <has-error :form="form" field="family_head"></has-error>
     </div>
     
     <div class="form-group">
@@ -106,25 +118,68 @@
           form: new Form({
             name : '',
             email:'',
+            family_cast:'',
+            family_head:'',
             username:'',
             password:'',
-            gotra:'',
+            gotra:'', 
             usertype:'member'
           })
         }
       },
       methods: {
+        deleteuser(id){
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+
+            // send   request to the server
+            this.form.delete('api/user/'+id).then(()=>{
+               if (result.value) {
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+            }
+            }).catch(()=>{
+              Swal.fire("failed:","There was something wrong.","warning")
+            });
+           
+          })
+        }, 
         loadUsers(){
          axios.get('api/user').then(({data})=>(this.users = data.data));
           
         },
         createUser() {
           this.$Progress.start();
-          this.form.post('api/user');
-          Toast.fire({
-             type: 'success',
+          this.form.post('api/user').then(()=>{
+            if(result.value){
+            Toast.fire({
+            type: 'success',
             title: 'User created successfully'
               })
+            }
+          }).catch(()=>{
+             Toast.fire({
+            type: 'error',
+            title: 'User created successfully'
+              })
+            
+          })
+
+          $('#addNew').modal('hide')
+          // Toast.fire({
+          //    type: 'success',
+          //   title: 'User created successfully'
+          //     })
 
           this.$Progress.finish();
         }
