@@ -92,13 +92,33 @@ class JobsController extends Controller
         ]);
 
     }
-       
+    //    Get job category for the 
     public function getjobcategory(){
         
         $job_category = DB::table('job_category')->paginate(10);
         return $job_category;
     }
 
+    public function applyjob(Request $request){
+        $userid = Auth::User()->id;
+        $this->validate($request,[
+            'name' => 'required|string|max:191',
+            'skill'=>'required|string|max:191',
+            'city'=>'required|string|max:191',
+            'contact_number'=>'required|string|max:191'
+
+        ]);
+        $data = [
+            'name'=>$request['name'],
+            'apply_for'=>$request['skill'],
+            'contact number'=>$request['contact_number'],
+            'city'=>$request['city'],
+            'status'=>'available',
+            'user_id'=>$userid
+        ];
+
+        DB::table('apply_jobs')->insert($data);
+    }
     public function createjobcategory(Request $request){
        
         $userid = Auth::User()->id;
@@ -169,6 +189,13 @@ class JobsController extends Controller
         return ['message'=>' job category deleted'];
 
     }
+
+    public function getjob_category(){
+        
+        $job_category = DB::table('job_category')->get('job_category');
+        return $job_category;
+    }
+    
 
 
 }

@@ -43,6 +43,9 @@ const Toast = Swal.mixin({
 
 //Vue.use(DatatableFactory);
 
+import vSelect from 'vue-select';
+Vue.use(vSelect);
+
 import VueEvents from 'vue-events'
 Vue.use(VueEvents)
 
@@ -59,8 +62,10 @@ const routes = [
     { path: '/addjob',component:require ('./components/addjob.vue').default },
     { path: '/applyjob',component:require('./components/applyjob.vue').default},
     { path: '/addjobcategory',component:require('./components/jobcategory.vue').default},
-    { path: '/jobdashboard',component:require('./components/jobs/jobdashboard.vue').default}
-  //  {path:'/datatable', component:require('./components/job.vue').default}
+    { path: '/jobdashboard',component:require('./components/jobs/jobdashboard.vue').default},
+    //{ path:'/insertnews',component:require('./components/admin/insertnews.vue').dafault}
+    { path: '/insertnews',component:require('./components/insertnews.vue').default},
+
 ]
 
 const router = new VueRouter({

@@ -26,4 +26,7 @@ Route::get('getbride','API\UserDetailsController@bride');
 Route::post('createJobCategory','API\JobsController@createjobcategory');
 Route::get('getjobcategory','API\JobsController@getjobcategory');
 Route::delete('removejobcategory/{id}','API\JobsController@deletejobcategory');
-//Route::apiResources([''])
+Route::post('applyjob','API\JobsController@applyjob');
+Route::get('jobcategory','API\JobsController@getjob_category');
+Route::post('insertnews','API\SettingsController@insertnews');
+// Route::get('jobcategory') 

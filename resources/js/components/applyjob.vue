@@ -19,13 +19,12 @@
                    <div class="form-group row">
                    <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">Applying For</label>
                     <div class="col-sm-10">
-                   <select class="form-control" id="exampleFormControlSelect1">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
+                   <select  class="form-control" name="skill"  :class="{ 'is-invalid': form.errors.has('skill') }" id="exampleFormControlSelect1" v-model="form.skill">
+                      <!-- <option v-for="category in categories" :key="category.id">{{category.job_category}}</option> -->
+                     <option v-for="option in options" :value="option">{{option}}</option>
                     </select>
+                     <has-error
+                      :form="form" field="skill"></has-error>
                     </div>
                   </div>
 
@@ -38,14 +37,7 @@
                          <has-error :form="form" field="city"></has-error>
                     </div>
                   </div>
-                   <div class="form-group row">
-                    <label  class="col-sm-2 col-form-label">Contact Person</label>
-                    <div class="col-sm-10">
-                     <input v-model="form.contact_person" type="text" name="contact_person"
-                          class="form-control" :class="{ 'is-invalid': form.errors.has('contact_person') }">
-                         <has-error :form="form" field="contact_person"></has-error>
-                    </div>
-                  </div>
+                  
                   <div class="form-group row">
                     <label  class="col-sm-2 col-form-label">Contact Number</label>
                     <div class="col-sm-10">
@@ -71,11 +63,42 @@ export default {
 
   data(){
     return {
+      categories:{},
       form: new Form ({
-        
+        name: '',
+        skill:'',
+        city:'',
+        contact_number:''
       })
     }
+  },
+   methods: {
+     applyjobs() {
+       this.form.post('api/applyjob').then(()=>{
+            Toast.fire({
+            type: 'success',
+            title: 'Job Application Sent successfully'
+              })
+            }
+          ).catch(()=>{
+             Toast.fire({
+            type: 'error',
+            title: 'some problem in the application'
+              })
+            
+          });
+     },
+     getjobs(){
+       axios.get('api/jobcategory').then(({data})=>(this.category = data))
+     },
+      
+   },
+   created(){
+     this.getjobs();
+   },
+   computed:{
+     options :()=>categories
   }
-    
-}
+   } 
+
 </script>
