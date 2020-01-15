@@ -28,3 +28,30 @@ $fa-font-path:"../webfonts";
 .main-footer{
     margin-top:60px;
 }
+
+.marquee {
+    top: 2em;
+    position: relative;
+    box-sizing: border-box;
+    animation: marquee 15s linear infinite;
+}
+
+.marquee:hover {
+    animation-play-state: paused;
+}
+
+/* Make it move! */
+@keyframes marquee {
+    0%   { top:   5em }
+    100% { top: -1em }
+}
+
+.marquee-container {
+    width: 18em;
+    height: 8em;
+    margin: 1em auto;
+    overflow: hidden;
+    background: white;
+    position: relative;
+    box-sizing: border-box;
+}

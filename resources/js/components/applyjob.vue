@@ -21,7 +21,7 @@
                     <div class="col-sm-10">
                    <select  class="form-control" name="skill"  :class="{ 'is-invalid': form.errors.has('skill') }" id="exampleFormControlSelect1" v-model="form.skill">
                       <!-- <option v-for="category in categories" :key="category.id">{{category.job_category}}</option> -->
-                     <option v-for="option in options" :value="option">{{option}}</option>
+                     <!-- <option v-for="option in options" :value="option">{{option}}</option> -->
                     </select>
                      <has-error
                       :form="form" field="skill"></has-error>

@@ -30048,3 +30048,48 @@ readers do not read off random characters that represent icons */
   margin-top: 60px;
 }
 
+.marquee {
+  top: 2em;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-animation: marquee 15s linear infinite;
+          animation: marquee 15s linear infinite;
+}
+
+.marquee:hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
+/* Make it move! */
+
+@-webkit-keyframes marquee {
+  0% {
+    top: 5em;
+  }
+
+  100% {
+    top: -1em;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    top: 5em;
+  }
+
+  100% {
+    top: -1em;
+  }
+}
+
+.marquee-container {
+  width: 18em;
+  height: 8em;
+  margin: 1em auto;
+  overflow: hidden;
+  background: white;
+  position: relative;
+  box-sizing: border-box;
+}
+

@@ -4,7 +4,7 @@
         <div class="col-12 mt-5">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Users</h3>
+                <h3 class="card-title">Add to Directory</h3>
                 <div class="card-tools">
                     <button class="btn btn-success" data-toggle="modal" data-target="#addNew">Add New News
                         <i class="fas fa-user-plus"></i>
@@ -49,46 +49,89 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addNewLabel">Add New Member</h5>
+        <h5 class="modal-title" id="addNewLabel">Add New Directory Member</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form class="form-horizontal" @submit.prevent="insertnews">
+      <form class="form-horizontal" @submit.prevent="addtodirectory">
              <div class="model-body">   
                 <div class="card-body">
                   <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">News Title</label>
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
-                     <input v-model="form.news_title" type="text" name="news_title"
-                          class="form-control" :class="{ 'is-invalid': form.errors.has('news_title') }">
-                         <has-error :form="form" field="news_title"></has-error>
+                     <input v-model="form.name" type="text" name="name"
+                          class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
+                         <has-error :form="form" field="name"></has-error>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">News Description</label>
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Address</label>
                     <div class="col-sm-10">
-                     <textarea v-model="form.news_description" type="text" name="news_description"
-                          class="form-control" :class="{ 'is-invalid': form.errors.has('news_description') }"></textarea>
-                         <has-error :form="form" field="news_description"></has-error>
+                     <textarea v-model="form.address" type="text" name="address"
+                          class="form-control" :class="{ 'is-invalid': form.errors.has('address') }"></textarea>
+                         <has-error :form="form" field="address"></has-error>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">url</label>
+                    <label class="col-sm-2 col-form-label">Profession</label>
                     <div class="col-sm-10">
-                     <input v-model="form.url" type="text" name="url"
-                          class="form-control" :class="{ 'is-invalid': form.errors.has('url') }">
-                         <has-error :form="form" field="url"></has-error>
+                     <input v-model="form.profession" type="text" name="profession"
+                          class="form-control" :class="{ 'is-invalid': form.errors.has('profession') }">
+                         <has-error :form="form" field="profession"></has-error>
                     </div>
                   </div>
                    <div class="form-group row">
-                    <label  class="col-sm-2 col-form-label">Status</label>
+                    <label class="col-sm-2 col-form-label">Contact Number</label>
                     <div class="col-sm-10">
-                     <select v-model="form.status" type="text" name="status"
-                          class="form-control" :class="{ 'is-invalid': form.errors.has('status') }">
-                         <has-error :form="form" field="status"></has-error>
-                     <option value="enable">Enable</option>
-                     <option value="disable">Disable</option>
+                     <input v-model="form.contact_number" type="text" name="contact_number"
+                          class="form-control" :class="{ 'is-invalid': form.errors.has('contact_number') }">
+                         <has-error :form="form" field="contact_number"></has-error>
+                    </div>
+                  </div>
+                   <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">City</label>
+                    <div class="col-sm-10">
+                     <input v-model="form.city" type="text" name="city"
+                          class="form-control" :class="{ 'is-invalid': form.errors.has('city') }">
+                         <has-error :form="form" field="city"></has-error>
+                    </div>
+                  </div>
+                   <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label">State</label>
+                    <div class="col-sm-10">
+                     <select v-model="form.state" type="text" name="state"
+                          class="form-control" :class="{ 'is-invalid': form.errors.has('state') }">
+                         <has-error :form="form" field="state"></has-error>
+                     <option value="Rajasthan">Rajasthan</option>
+                     <option value="Gujrat">Gujrat</option>
+                     <option value="Punjab">Punjab</option>
+                     <option value="Uttar Pradesh">Uttar Pradesh</option>
+                     <option value="Maharashtra">Maharashtra</option>
+                     <option value="Madhya Pradesh">Madhya Pradesh</option>
+                     <option value="Bihar">Bihar</option>
+                     <option value="Chattisgarh">Chattisgarh</option>
+                     <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                     <option value="Himachal Pradesh">Himachal Pradesh</option>
+                     <option value="Goa">Goa</option>
+                     <option value="Haryana">Haryana</option>
+                     <option value="Karnataka">Karnataka</option>
+                     <option value="Jharkhand">Jharkhand</option>
+                     <option value="Kerela">Kerela</option>
+                     <option value="Manipur">Manipur</option>
+                     <option value="Meghalaya">Meghalaya</option>
+                     <option value="Telangana">Telangana</option>
+                     <option value="Uttrakhand">Uttrakhand</option>
+                     <option value="Tamilnadu">Tamilnadu</option>
+                     <option value="Andhra Pradesh">Andhra Pradesh</option>
+                     <option value="Odissa">Odissa</option>
+                     <option value="Aasaam">Aasaam</option>
+                     <option value="Manipur">Manipur</option>
+                     <option value="Tripura">Tripura</option>
+                     <option value="West Bengal">West Bengal</option>
+                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                     <option value="Nagaland">Nagaland</option>
+                     <option value="Mizoram">Mizoram</option>
                      </select>
                     </div>
                   </div>
@@ -118,12 +161,12 @@
         return {
            news:{},
             form: new Form({
-            news_title : '',
-            news_description:'',
-            url:'',
-            status:''
-           
-          })
+            name : '',
+            address:'',
+            profession:'',
+            city:'',
+            state:''
+           })
         }
       },
       methods: {
@@ -153,9 +196,9 @@
            
           })
         },
-        insertnews() {
+        addtodirectory() {
           this.$Progress.start();
-          this.form.post('api/insertnews');
+          this.form.post('api/addtodirectory');
           Toast.fire({
              type: 'success',
             title: 'News Inserted successfully'

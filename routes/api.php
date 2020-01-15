@@ -29,4 +29,7 @@ Route::delete('removejobcategory/{id}','API\JobsController@deletejobcategory');
 Route::post('applyjob','API\JobsController@applyjob');
 Route::get('jobcategory','API\JobsController@getjob_category');
 Route::post('insertnews','API\SettingsController@insertnews');
+Route::get('getnews','API\SettingsController@getnews');
+Route::delete('deletenews/{id}','API\SettingsController@deletenews');
+Route::post('addtodirectory','API\SettingsController@addtodirectory');
 // Route::get('jobcategory') 

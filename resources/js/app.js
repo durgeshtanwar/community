@@ -64,7 +64,10 @@ const routes = [
     { path: '/addjobcategory',component:require('./components/jobcategory.vue').default},
     { path: '/jobdashboard',component:require('./components/jobs/jobdashboard.vue').default},
     //{ path:'/insertnews',component:require('./components/admin/insertnews.vue').dafault}
+    { path: '/directory',component:require('./components/showdirectory.vue').default},
     { path: '/insertnews',component:require('./components/insertnews.vue').default},
+    { path: '/addtodirectory',component:require('./components/admin/directory.vue').default},
+
 
 ]
 
