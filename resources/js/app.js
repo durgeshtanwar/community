@@ -67,6 +67,7 @@ const routes = [
     { path: '/directory',component:require('./components/showdirectory.vue').default},
     { path: '/insertnews',component:require('./components/insertnews.vue').default},
     { path: '/addtodirectory',component:require('./components/admin/directory.vue').default},
+    { path: '/directory',component:require('./components/showdirectory.vue').default},
 
 
 ]
