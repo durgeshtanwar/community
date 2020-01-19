@@ -76,6 +76,7 @@ class RegisterController extends Controller
             'family_cast'=>$data['family_cast'],
             'family_head'=>$data['family_head'],
             'gotra'=>$data['gotra'],
+            'active'=>'active',
             'usertype'=>'family',
             'code'=>rand(pow(10, 5-1), pow(10, 5)-1),
         ]);

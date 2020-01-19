@@ -6,7 +6,7 @@
               <div class="card-header">
                 <h3 class="card-title">Add to Directory</h3>
                 <div class="card-tools">
-                    <button class="btn btn-success" data-toggle="modal" data-target="#addNew">Add New News
+                    <button class="btn btn-success" @click="newModel">Add New Directory
                         <i class="fas fa-user-plus"></i>
                     </button>
                 </div>
@@ -16,21 +16,26 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th>News</th>
-                      <th>Description</th>
-                      <th>Url</th>
-                      <th>Status</th>
+                      <th>Name</th>
+                      <th>Address</th>
+                      <th>Profession</th>
+                      <th>Contact</th>
+                      <th>City</th>
+                      <th>State</th>
                       <th>Modify</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="user in news" :key="user.id">
-                      <td>{{user.news_title}}</td>
-                      <td>{{user.news_description}}</td>
-                      <td>{{user.url}}</td>
-                      <td><span class="tag tag-success">{{user.status}}</span></td>
+                    <tr v-for="user in news.data" :key="user.id">
+                      <td>{{user.name}}</td>
+                      <td>{{user.address}}</td>
+                      <td>{{user.profession}}</td>
+                      <td>{{user.contact_number}} </td>
+                    
+                      <td>{{user.city}}</td>
+                      <td>{{user.state}}</td>
                       <td> 
-                          <a href="#"  class="mr-2"> <i class="fa fa-edit"></i></a>
+                          <a href="#"  class="mr-2" @click="editModel(user)"> <i class="fa fa-edit"></i></a>
                           <a href="#" @click="deletenews(user.id)" class= "ml-2"><i class="fa fa-trash red"></i></a>
                       </td>
                     </tr>
@@ -40,21 +45,25 @@
               </div>
               <!-- /.card-body -->
             </div>
+            <div class="card-footer">
+            <pagination :data="news" @pagination-change-page="getResults"></pagination>
+            </div>
             <!-- /.card -->
                   </div>
     <!-- Modal -->
        
 
-       <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel" aria-hidden="true">
+  <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addNewLabel">Add New Directory Member</h5>
+        <h5 class="modal-title" v-show="!editmode" id="addNewLabel">Add New Directory Member</h5>
+        <h5 class="modal-title" v-show="editmode" id="addNewLabel">Update Member</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form class="form-horizontal" @submit.prevent="addtodirectory">
+      <form class="form-horizontal" @submit.prevent="editmode ? updateUser(): addtodirectory()" id="form-directory">
              <div class="model-body">   
                 <div class="card-body">
                   <div class="form-group row">
@@ -139,9 +148,10 @@
 
                 </div>
                 <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-success">Submit</button>
-                  <button type="submit" class="btn btn-default float-right">Cancel</button>
+                <div class ="card-footer">
+                  <button type="submit" v-show="!editmode" class="btn btn-success">Create</button>
+                  <button v-show="editmode" type="submit" class="btn btn-success">Update</button>
+                 <button type="button" class="btn btn-danger float-right" data-dismiss="modal">Close</button>
                 </div>
                 <!-- /.card-footer -->
              </div>
@@ -149,9 +159,6 @@
     </div>
   </div> 
 </div> 
-
-
-
     </div>
 </template>
 
@@ -159,17 +166,59 @@
     export default {
       data() {
         return {
+          editmode:false,
            news:{},
             form: new Form({
+            id:'',
             name : '',
             address:'',
+            contact_number:'',
             profession:'',
             city:'',
             state:''
-           })
+          })
         }
       },
       methods: {
+        newModel(){
+          this.editmode=false;
+          this.form.reset();
+        $('#addNew').modal('show');
+        },
+        
+        // Edit mode for the user 
+         editModel(user){
+           this.editmode = true;
+          this.form.reset();
+        $('#addNew').modal('show');
+        this.form.fill(user);
+        },
+
+        updateUser(){
+       this.form.put('api/updatedirectory/'+this.form.id)
+       .then(()=>{
+         // success
+         $('#addNew').modal('hide');
+                     Swal.fire(
+                        'Updated!',
+                        'Information has been updated.',
+                        'success'
+                        )
+                        this.$Progress.finish();
+                         Fire.$emit('AfterCreate');
+               
+         
+       })
+       .catch(()=>{
+          this.$Progress.fail();
+       })
+
+       this.$Progress.finish();
+
+
+        },
+        
+
         deletenews(id){
           Swal.fire({
             title: 'Are you sure?',
@@ -182,7 +231,7 @@
           }).then((result) => {
 
             // send   request to the server
-            this.form.delete('api/deletenews/'+id).then(()=>{
+            this.form.delete('api/deletedirectory/'+id).then(()=>{
                if (result.value) {
               Swal.fire(
                 'Deleted!',
@@ -196,18 +245,42 @@
            
           })
         },
-        addtodirectory() {
+        getResults(page = 1) {
+          axios.get('api/getdirectory?page=' + page)
+            .then(response => {
+              this.news = response.data;
+            });
+		},
+        addtodirectory(event) {
           this.$Progress.start();
-          this.form.post('api/addtodirectory');
-          Toast.fire({
+          this.form.post('api/addtodirectory').then(()=>{
+              Toast.fire({
              type: 'success',
-            title: 'News Inserted successfully'
+            title: 'Directory Updated successfully'
               })
 
+          });
+        //  document.getElementById("form-directory").reset();
+         console.log('durgesh');
+          // document.getElementsByName('name').value = '';
+        
+        this.form.reset();
+            // this.form.name = "";
+            // this.form.profession ="";
+            // this.form.address="";
+            // this.for
+            // this.form.city = "";
+            // this.form.state = "";
+
+         
+         
           this.$Progress.finish();
+         
+        //  this.name = '';
+          // $('#addNew').modal('hide');
         },
         loadnews(){
-           axios.get('api/getnews').then(({data})=>(this.news = data.data));
+           axios.get('api/getdirectory').then(({data})=>(this.news = data));
         }
       },
         created() {

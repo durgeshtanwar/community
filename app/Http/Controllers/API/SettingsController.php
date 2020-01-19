@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Directory;
 
+
 class SettingsController extends Controller
 {
     /**
@@ -52,6 +53,10 @@ class SettingsController extends Controller
     }
 
 //  Settings for directory
+//  Directory Section     
+// 
+// 
+// 
 
     public function addtodirectory(Request $request){
 
@@ -118,5 +123,33 @@ class SettingsController extends Controller
         )
         ->header('Access-Control-Allow-Origin','*')
         ->header('Access-Control-Allow-Methods','GET');
+    }
+
+    public function getDirectory() {
+        $directory = DB::table('directory')->paginate(10);
+        return $directory;
+    }
+
+    public function deleteDirectory($id){
+
+        DB::table('directory')->where('id', 'LIKE', $id)->delete();
+        return ['message'=>'directory member Deleted'];
+
+    }
+    public function updateDirectory(Request $request, $id){
+
+        $directory = Directory::findOrFail($id);     
+        $this->validate($request,[
+            'name' =>'required|string|max:255',
+            'address'=>'string|max:255|nullable',
+            'profession'=>'string|max:255|nullable',
+            'contact_number'=>'string|max:20',
+            'city'=>'string|max:255',
+            'state'=>'string|max:255'
+        ]);
+        
+        $directory->update($request->all());  
+    
+
     }
 }

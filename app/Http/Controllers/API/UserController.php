@@ -43,6 +43,7 @@ class UserController extends Controller
             'family_cast'=>'required|string|min:4',
             'family_head'=>'required|string|max:191',
             'gotra'=>'string|max:191',
+            'active'=>'string'
             //'code'=>'string|max:191|exists:users,code'
         ]);
         //return ['message'=>'I have your data'];
@@ -53,6 +54,7 @@ class UserController extends Controller
             'family_cast'=>$request['family_cast'],
             'family_head'=>$request['family_head'],
             'gotra'=>$request['gotra'],
+            'active'=>$request['active'],
             'password'=>Hash::make($request['password']),
             'usertype'=>$request['usertype'],
             'code'=>rand(pow(10, 5-1), pow(10, 5)-1),

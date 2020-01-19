@@ -12,8 +12,9 @@ import { Form, HasError, AlertError } from 'vform';
 import VueRouter from 'vue-router';
 
 window.Form = Form;
-Vue.component(HasError.name, HasError)
-Vue.component(AlertError.name, AlertError)
+Vue.component(HasError.name, HasError);
+Vue.component(AlertError.name, AlertError);
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 Vue.use(VueRouter);
 import VueProgressBar from 'vue-progressbar';
@@ -63,11 +64,11 @@ const routes = [
     { path: '/applyjob',component:require('./components/applyjob.vue').default},
     { path: '/addjobcategory',component:require('./components/jobcategory.vue').default},
     { path: '/jobdashboard',component:require('./components/jobs/jobdashboard.vue').default},
-    //{ path:'/insertnews',component:require('./components/admin/insertnews.vue').dafault}
     { path: '/directory',component:require('./components/showdirectory.vue').default},
     { path: '/insertnews',component:require('./components/insertnews.vue').default},
     { path: '/addtodirectory',component:require('./components/admin/directory.vue').default},
     { path: '/directory',component:require('./components/showdirectory.vue').default},
+    { path: '/applicants',component:require('./components//applicants.vue').default},
 
 
 ]

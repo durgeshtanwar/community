@@ -33,4 +33,9 @@ Route::get('getnews','API\SettingsController@getnews');
 Route::delete('deletenews/{id}','API\SettingsController@deletenews');
 Route::post('addtodirectory','API\SettingsController@addtodirectory');
 Route::get('showdirectory','API\SettingsController@showdirectory');
+Route::get('getdirectory','API\SettingsController@getDirectory');
+Route::delete('deletedirectory/{id}','API\SettingsController@deleteDirectory');
+Route::put('updatedirectory/{id}','API\SettingsController@updateDirectory');
+Route::get('get_applicants','API\JobsController@get_applicants');
+//Route::get('my_applications','API')
 // Route::get('jobcategory') 

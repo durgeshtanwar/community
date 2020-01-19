@@ -20,8 +20,16 @@
                    <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">Applying For</label>
                     <div class="col-sm-10">
                    <select  class="form-control" name="skill"  :class="{ 'is-invalid': form.errors.has('skill') }" id="exampleFormControlSelect1" v-model="form.skill">
-                      <!-- <option v-for="category in categories" :key="category.id">{{category.job_category}}</option> -->
-                     <!-- <option v-for="option in options" :value="option">{{option}}</option> -->
+                     <option value="Data Entry Operator">Data Entry Operator</option>
+                     <option value="Accountant">Accountant</option>
+                     <option value="Electrician">Electrician</option>
+                     <option value="Plumber">Plumber</option>
+                     <option value="Gym Instructor">Gym Instructor</option>
+                     <option value="Software Engineer">Software Engineer</option>
+                     <option value="Nurse">Nurse</option>
+                     <option value="Carpenter">carpanter</option>
+                     <option value="Pandit">Pandit</option>
+                     <option value="Pujari">Pujari</option>
                     </select>
                      <has-error
                       :form="form" field="skill"></has-error>
@@ -63,7 +71,7 @@ export default {
 
   data(){
     return {
-      categories:{},
+      categories:[],
       form: new Form ({
         name: '',
         skill:'',
@@ -89,7 +97,7 @@ export default {
           });
      },
      getjobs(){
-       axios.get('api/jobcategory').then(({data})=>(this.category = data))
+       axios.get('api/jobcategory').then(([data])=>(this.category = data))
      },
       
    },

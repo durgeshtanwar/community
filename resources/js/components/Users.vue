@@ -19,6 +19,7 @@
                       <th>Name</th>
                       <th>Email</th>
                       <th>Gotra</th>
+                      <th>Active</th>
                       <th>Modify</th>
                     </tr>
                   </thead>
@@ -28,6 +29,7 @@
                       <td>{{user.name}}</td>
                       <td>{{user.email}}</td>
                       <td><span class="tag tag-success">{{user.gotra}}</span></td>
+                      <td><span class="tag tag-success">{{user.active}}</span></td>
                       <td> 
                           <a href="#"  class="mr-2"> <i class="fa fa-edit"></i></a>
                           <a href="#" @click="deleteuser(user.id)" class= "ml-2"><i class="fa fa-trash red"></i></a>
@@ -90,6 +92,15 @@
        </div>
 
        <div class="form-group">
+       <select v-model="form.active" name='active' placeholder="Active"
+            class="form-control" :class="{ 'is-invalid': form.errors.has('gotra') }">
+          <has-error :form="form" field="gotra"></has-error>
+          <option>Active</option>
+          <option>Inactive</option>
+       </select>
+       </div>
+
+       <div class="form-group">
        <input v-model="form.password" type="password" name="password" placeholder="password"
             class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
           <has-error :form="form" field="password"></has-error>
@@ -120,6 +131,7 @@
             email:'',
             family_cast:'',
             family_head:'',
+            active:'',
             username:'',
             password:'',
             gotra:'', 
@@ -161,21 +173,14 @@
         createUser() {
           this.$Progress.start();
           this.form.post('api/user').then(()=>{
-            if(result.value){
-            Toast.fire({
+           Toast.fire({
             type: 'success',
-            title: 'User created successfully'
-              })
-            }
-          }).catch(()=>{
-             Toast.fire({
-            type: 'error',
-            title: 'User created successfully'
-              })
+            title: 'User created successfully' })
+            $('#addNew').modal('hide');
             
           })
 
-          $('#addNew').modal('hide')
+      
           // Toast.fire({
           //    type: 'success',
           //   title: 'User created successfully'

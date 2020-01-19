@@ -198,6 +198,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="nav-item">
+            <router-link to="/directory" class="nav-link">
+              <i class="fas fa-address-book yellow"></i>
+              <p>
+                 Directory
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
             <router-link to="/job" class="nav-link">
               <i class="nav-icon indigo fas fa-code"></i>
               <p>
@@ -205,6 +214,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </router-link>
+            <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <router-link to="/applyjob" class="nav-link">
+              <i class="nav-icon indigo fas fa-code"></i>
+              <p>
+                Apply Job
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/applyjob" class="nav-link">
+              <i class="nav-icon indigo fas fa-code"></i>
+              <p>
+                Job Application
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </router-link>
+          </li>
+            </ul>
           </li>
           <li class="nav-item">
             <router-link to="/users" class="nav-link">
