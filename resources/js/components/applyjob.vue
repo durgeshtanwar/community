@@ -87,6 +87,7 @@ export default {
             type: 'success',
             title: 'Job Application Sent successfully'
               })
+              this.form.reset();
             }
           ).catch(()=>{
              Toast.fire({

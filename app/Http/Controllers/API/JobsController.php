@@ -112,7 +112,7 @@ class JobsController extends Controller
         $data = [
             'name'=>$request['name'],
             'apply_for'=>$request['skill'],
-            'contact number'=>$request['contact_number'],
+            'contact_number'=>$request['contact_number'],
             'city'=>$request['city'],
             'status'=>'available',
             'user_id'=>$userid
@@ -144,41 +144,7 @@ class JobsController extends Controller
 
     }
 
-     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    
-    public function show($id)
-    {
-        
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+     
 
     /*
     function to delete job categories
@@ -240,5 +206,31 @@ class JobsController extends Controller
         ->header('Access-Control-Allow-Methods','GET');
     }
 
+    // Retrieve applications
+
+    public function my_application(){
+        $matchthis = ['user_id'=>Auth::User()->id];
+        return Application::where($matchthis)->paginate(10);
+
+    }
+    public function delete_myapplication($id){
+        DB::table('apply_jobs')->where('id', 'LIKE', $id)->delete();
+        return ['message'=>' applied job deleted'];
+    }
+
+    public function updateApplication(Request $request, $id){
+
+        $application = Application::findOrFail($id);     
+        $this->validate($request,[
+            'name' =>'required|string|max:255',
+            'apply_for'=>'string|max:255|nullable',
+            'city'=>'string|max:255',
+            'contact_number'=>'string|max:20',
+        ]);
+        
+        $application->update($request->all());  
+    
+
+    }
 
 }

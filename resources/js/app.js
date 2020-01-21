@@ -69,8 +69,11 @@ const routes = [
     { path: '/addtodirectory',component:require('./components/admin/directory.vue').default},
     { path: '/directory',component:require('./components/showdirectory.vue').default},
     { path: '/applicants',component:require('./components//applicants.vue').default},
-
-
+    { path: '/myapplications',component:require('./components/myapplication.vue').default},
+    { path: '/events',component:require('./components/event/getEvents.vue').default},
+    { path: '/editEvents',component:require('./components/admin/editEvents.vue').default},
+    { path: '/addEvents',component:require('./components/admin/addEvents.vue').default},
+    { path: '*',component:require('./components/admin/404.vue').default},
 ]
 
 const router = new VueRouter({

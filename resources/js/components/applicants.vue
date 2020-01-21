@@ -30,8 +30,12 @@ import Filterbar from "./datatable/Filterbar";
             {
               name:'apply_for',
               title:'Applied for'
-            },            
-            'contact number',
+            },  
+            {
+              name: 'contact_number',
+              title: 'Contact Number'
+            },         
+            
             'city',
             'status'
             

@@ -216,7 +216,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </router-link>
             <ul class="nav nav-treeview">
           <li class="nav-item">
-            <router-link to="/applyjob" class="nav-link">
+            <router-link to="/myapplications" class="nav-link">
               <i class="nav-icon indigo fas fa-code"></i>
               <p>
                 Apply Job
@@ -225,10 +225,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/applyjob" class="nav-link">
+            <router-link to="/applicants" class="nav-link">
               <i class="nav-icon indigo fas fa-code"></i>
               <p>
-                Job Application
+                Job Applicants
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </router-link>
