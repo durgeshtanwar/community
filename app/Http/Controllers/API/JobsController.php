@@ -165,9 +165,6 @@ class JobsController extends Controller
     
     public function get_applicants(){
       
-        // $matchthis = ['gender'=>'female','matrimonial'=>1];
-        // $result = UserDetail::where($matchthis)->get();
-        // return $result;
         $query = app(Application::class)->newQuery(); 
       
         $request = request();

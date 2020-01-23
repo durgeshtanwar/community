@@ -23,8 +23,40 @@ class EventController extends Controller
     public function index()
     {
         //
-        $events = DB::table('events')->paginate(10);
-        return $job_category;
+        $query = app(Event::class)->newQuery(); 
+      
+        $request = request();
+          if(request()->exists('sort')){
+            $sorts = explode(',',request()->sort);
+            foreach ($sorts as $sort){
+                list($sortCol, $sortDir) = explode('|',$sort);
+                $query = $query->orderBy($sortCol,$sortDir);
+             } 
+        } 
+         else { 
+                $query = $query->orderBy('id','asc');
+            }
+      if($request->exists('filter')) {
+          $query->where(function($q) use($request){
+            $value = "%{$request->filter}%";
+            $q->Where('event_name','like',$value)
+                  ->orWhere('event_venue','like',$value)
+                  ->orWhere('remarks','like',$value); 
+          });
+      }
+      $per_page = request()->has('per_page')?(int) request()->per_page : null;
+      $pagination = $query->paginate($per_page);
+      $pagination->appends([
+          'sort'=>request()->sort,
+          'filter'=>request()->filter,
+          'per_page'=>request()->per_page
+      ]);
+       
+        return response()->json(
+            $pagination
+        )
+        ->header('Access-Control-Allow-Origin','*')
+        ->header('Access-Control-Allow-Methods','GET');
     }
 
     /**
