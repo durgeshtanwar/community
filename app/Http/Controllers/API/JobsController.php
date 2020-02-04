@@ -104,14 +104,14 @@ class JobsController extends Controller
         $userid = Auth::User()->id;
         $this->validate($request,[
             'name' => 'required|string|max:191',
-            'skill'=>'required|string|max:191',
+            'apply_for'=>'required|string|max:191',
             'city'=>'required|string|max:191',
             'contact_number'=>'required|string|max:191'
 
         ]);
         $data = [
             'name'=>$request['name'],
-            'apply_for'=>$request['skill'],
+            'apply_for'=>$request['apply_for'],
             'contact_number'=>$request['contact_number'],
             'city'=>$request['city'],
             'status'=>'available',
