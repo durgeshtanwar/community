@@ -10,13 +10,13 @@
           <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="input-group mb-3">
-              <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder = "Email" autofocus>
+              <input id="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}" required autocomplete="mobile" placeholder = "Mobile" autofocus>
 
               
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-envelope"></span>
-                  @error('email')
+                  @error('mobile')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
                   </span>
