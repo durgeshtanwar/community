@@ -41,6 +41,7 @@ Route::get('myApplications','API\JobsController@my_application');
 Route::delete('deleteMyApplication/{id}','API\JobsController@delete_myapplication');
 Route::put('updateApplication/{id}','API\JobsController@updateApplication');
 Route::apiResources(['event'=>'API\EventController']);
+Route::get('familyuserlist','API\FamilyController@familyusers'); 
 
 //Route::get('my_applications','API')
 // Route::get('jobcategory') 

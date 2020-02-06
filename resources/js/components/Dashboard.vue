@@ -21,7 +21,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>{{users.length}}<sup style="font-size: 20px"></sup></h3>
+                <h3>{{family.length}}<sup style="font-size: 20px"></sup></h3>
 
                 <p>Family Members</p>
               </div>
@@ -118,6 +118,7 @@
           familydata:{},
           allusers:{},
           news:{},
+          family:{},
           form: new Form({
             name : '',
             email:'',
@@ -134,6 +135,7 @@
              axios.get('api/userDetails').then(({data})=>(this.familydata=data));
              axios.get('api/user').then(({data})=>(this.allusers = data.data));
             axios.get('api/getnews').then(({data})=>(this.news = data.data));
+            axios.get('api/familyuserlist').then(({data})=>(this.family=data));
          }
         },
         createUser() {

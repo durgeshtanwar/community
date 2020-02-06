@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email','mobile','family_cast','family_head','gotra','active', 'password','usertype','code',
+        'name', 'email','mobile','family_cast','family_head','gotra','active', 'password','usertype','code','family_id'
     ];
 
     /**
@@ -37,4 +37,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function family(){
+        return $this->belongsTo('App/Family');
+    }
 }

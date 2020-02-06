@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Family;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -67,6 +68,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $family = New Family();
+        $family->family_cast = $data['family_cast'];
+        $family->gotra = $data['gotra'];
+        $family->family_head = $data['family_head'];
+        $family->save();
+        $familyId = $family->id;
         
         return User::create([
             'name' => $data['name'],
@@ -78,6 +85,7 @@ class RegisterController extends Controller
             'gotra'=>$data['gotra'],
             'active'=>'active',
             'usertype'=>'family',
+            'family_id'=>$familyId,
             'code'=>rand(pow(10, 5-1), pow(10, 5)-1),
         ]);
     }

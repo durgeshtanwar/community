@@ -2068,6 +2068,7 @@ __webpack_require__.r(__webpack_exports__);
       familydata: {},
       allusers: {},
       news: {},
+      family: {},
       form: new Form({
         name: '',
         email: '',
@@ -2097,6 +2098,10 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('api/getnews').then(function (_ref4) {
         var data = _ref4.data;
         return _this.news = data.data;
+      });
+      axios.get('api/familyuserlist').then(function (_ref5) {
+        var data = _ref5.data;
+        return _this.family = data;
       });
     }
   },
@@ -47410,7 +47415,7 @@ var render = function() {
         _c("div", { staticClass: "small-box bg-success" }, [
           _c("div", { staticClass: "inner" }, [
             _c("h3", [
-              _vm._v(_vm._s(_vm.users.length)),
+              _vm._v(_vm._s(_vm.family.length)),
               _c("sup", { staticStyle: { "font-size": "20px" } })
             ]),
             _vm._v(" "),
@@ -73469,8 +73474,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! H:\sewag\community\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! H:\sewag\community\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\project\community\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\project\community\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
