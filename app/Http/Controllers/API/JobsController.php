@@ -28,7 +28,7 @@ class JobsController extends Controller
 
     public function index()
     {
-      $query = app(Fake_jobs::class)->newQuery(); 
+      $query = app(Job::class)->newQuery(); 
       $request = request();
         
       if(request()->exists('sort')){
@@ -213,6 +213,33 @@ class JobsController extends Controller
     public function delete_myapplication($id){
         DB::table('apply_jobs')->where('id', 'LIKE', $id)->delete();
         return ['message'=>' applied job deleted'];
+    }
+
+    public function my_jobs(){
+        $matchthis = ['user_id'=>Auth::User()->id];
+        return Job::where($matchthis)->paginate(10);
+
+    }
+
+    public function delete_myjobs($id){
+        DB::table('jobs')->where('id', 'LIKE', $id)->delete();
+        return ['message'=>' Job Deleted Successfully'];
+    }
+
+    public function updateMyJob(Request $request, $id){
+
+        $application = Job::findOrFail($id);     
+        $this->validate($request,[
+            'title'  => 'required|string|max:255',
+            'description' =>'required|string',
+            'city' =>'required|string|max:191',
+            'contact_person' =>'required|string|max:191',
+            'contact_number' =>'required|string|max:20',
+        ]);
+        
+        $application->update($request->all());  
+    
+
     }
 
     public function updateApplication(Request $request, $id){

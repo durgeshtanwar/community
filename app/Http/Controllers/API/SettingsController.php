@@ -63,15 +63,20 @@ class SettingsController extends Controller
         $this->validate($request,[
             'name' =>'required|string|max:255',
             'address'=>'string|max:255|nullable',
+            'gotra'=>'string|max:255',
             'profession'=>'string|max:255|nullable',
             'contact_number'=>'string|max:20',
             'city'=>'string|max:255',
             'state'=>'string|max:255'
         ]);
+        
+        $kuldevi = explode('|',$request['gotra'],2);
         $data = [
             'name'=>$request['name'],
             'address'=>$request['address'],
             'profession'=>$request['profession'],
+            'gotra'=>$kuldevi[0],
+            'kuldevi'=>$kuldevi[1],
             'contact_number'=>$request['contact_number'],
             'city'=>$request['city'],
             'state'=>$request['state']
@@ -106,6 +111,8 @@ class SettingsController extends Controller
             $q->where('name','like',$value)
                   ->orWhere('profession','like',$value)
                   ->orWhere('contact_number','like',$value)
+                  ->orWhere('gotra','like',$value)
+                  ->orWhere('kuldevi','like',$value)
                   ->orWhere('state','like',$value)
                   ->orWhere('city','like',$value); 
           });

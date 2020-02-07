@@ -73,6 +73,7 @@ const routes = [
     { path: '/events',component:require('./components/event/getEvents.vue').default},
     { path: '/editEvents',component:require('./components/admin/editEvents.vue').default},
     { path: '/addEvents',component:require('./components/admin/addEvents.vue').default},
+    { path: '/myJobs',component:require('./components/addjob1.vue').default},
     { path: '*',component:require('./components/admin/404.vue').default},
 ]
 

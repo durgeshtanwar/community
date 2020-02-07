@@ -18,6 +18,7 @@
                     <tr>
                       <th>Name</th>
                       <th>Address</th>
+                      <th>Gotra</th>
                       <th>Profession</th>
                       <th>Contact</th>
                       <th>City</th>
@@ -29,6 +30,7 @@
                     <tr v-for="user in news.data" :key="user.id">
                       <td>{{user.name}}</td>
                       <td>{{user.address}}</td>
+                      <td>{{user.gotra}} </td>
                       <td>{{user.profession}}</td>
                       <td>{{user.contact_number}} </td>
                     
@@ -80,6 +82,31 @@
                      <textarea v-model="form.address" type="text" name="address"
                           class="form-control" :class="{ 'is-invalid': form.errors.has('address') }"></textarea>
                          <has-error :form="form" field="address"></has-error>
+                    </div>
+                  </div>
+                   <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Gotra</label>
+                    <div class="col-sm-10">
+                      <select class="form-control" :class="{ 'is-invalid': form.errors.has('gotra') }" name="gotra" aria-placeholder="Gotra" v-model='form.gotra'>
+                                    <option value="Kuvera|Chamunda"> Kuvera</option>
+                                    <option value="Mathuria|Sacchiay">Mathuria</option>
+                                    <option value="Kataria|Chamunda">Kataria</option>
+                                    <option value="Chaparwal|Chamunda">Chaparwal</option>
+                                    <option value="Jangla|Sacchiay">Jangla</option>
+                                    <option value="Mundhara|Mundhiyad">Mundhara</option>
+                                    <option value="Baladh|Peeplaad">Baladh</option>
+                                    <option value="Aasiwal|Chamunda">Aasiwal</option>
+                                    <option value="Devera|Khinwaj">Devera</option>
+                                    <option value="Lllad|Sacchiay">Lllad</option>
+                                    <option value="Hatila|Chamunda">Hatila</option>
+                                    <option value="Bhartani|Sacchiay">Bhartani</option>
+                                    <option value="Sanvlera|Sacchiay">Sanvlera</option>
+                                    <option value="Heergota|Chandi">Heergota</option>
+                                    <option value="Bheenmaal|Madhyandini">Bheenmaal</option>
+                                    <option value="Medatwal Aboti| Sacchiyay">Medatwal Aboti</option>
+
+                                </select>
+                     <has-error :form="form" field="gotra"></has-error>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -174,6 +201,7 @@
             address:'',
             contact_number:'',
             profession:'',
+            gotra:'',
             city:'',
             state:''
           })

@@ -29,7 +29,10 @@ import Filterbar from "./datatable/Filterbar";
             'name',
             'address',            
             'profession',
+            'gotra',
+            'kuldevi',
             'city',
+            
              {
               name:'contact_number',
               title:'Contact Number'

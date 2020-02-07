@@ -17,7 +17,7 @@ class CreateApplyJobsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('skill');
-            $table->string('contact number');
+            $table->string('contact_number');
             $table->string('city');
             $table->string('status');
             $table->unsignedBigInteger('user_id');
