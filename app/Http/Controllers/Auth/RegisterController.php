@@ -74,6 +74,8 @@ class RegisterController extends Controller
         $family->family_head = $data['family_head'];
         $family->save();
         $familyId = $family->id;
+
+        $kuldevi = explode('|',$data['gotra'],2);
         
         return User::create([
             'name' => $data['name'],
@@ -82,11 +84,13 @@ class RegisterController extends Controller
             'mobile'=>$data['mobile'],
             'family_cast'=>$data['family_cast'],
             'family_head'=>$data['family_head'],
-            'gotra'=>$data['gotra'],
+            'gotra'=>$kuldevi[0],
+            'kuldevi'=>$kuldevi[1],
             'active'=>'active',
             'usertype'=>'family',
             'family_id'=>$familyId,
             'code'=>rand(pow(10, 5-1), pow(10, 5)-1),
+            'madeFor'=>'self'
         ]);
     }
 }

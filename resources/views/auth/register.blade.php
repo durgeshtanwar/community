@@ -83,17 +83,39 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            {{-- <label for="gotra" class="col-md-4 col-form-label text-md-right">{{ __('Gotra') }}</label> --}}
+                            <label for="gotra" class="col-md-4 col-form-label text-md-right">{{ __('Gotra') }}</label>
 
                             <div class="col-md-12">
-                                <input id="gotra" type="text" class="form-control @error("gotra") is-invalid @enderror" name="gotra" value="{{ old("gotra") }}" required autocomplete="gotra" placeholder="Gotra">
+                                <select class="form-control" name="gotra" aria-placeholder="Gotra">
+                                    <option value="Kuvera|Chamunda"> Kuvera</option>
+                                    <option value="Mathuria|Sacchiay">Mathuria</option>
+                                    <option value="Kataria|Chamunda">Kataria</option>
+                                    <option value="Chaparwal|Chamunda">Chaparwal</option>
+                                    <option value="Jangla|Sacchiay">Jangla</option>
+                                    <option value="Mundhara|Mundhiyad">Mundhara</option>
+                                    <option value="Baladh|Peeplaad">Baladh</option>
+                                    <option value="Aasiwal|Chamunda">Aasiwal</option>
+                                    <option value="Devera|Khinwaj">Devera</option>
+                                    <option value="Lllad|Sacchiay">Lllad</option>
+                                    <option value="Hatila|Chamunda">Hatila</option>
+                                    <option value="Bhartani|Sacchiay">Bhartani</option>
+                                    <option value="Sanvlera|Sacchiay">Sanvlera</option>
+                                    <option value="Heergota|Chandi">Heergota</option>
+                                    <option value="Bheenmaal|Madhyandini">Bheenmaal</option>
+                                    <option value="Medatwal Aboti| Sacchiyay">Medatwal Aboti</option>
+
+                                </select>
+                            </div>
+
+
+                                {{-- <input id="gotra" type="text" class="form-control @error("gotra") is-invalid @enderror" name="gotra" value="{{ old("gotra") }}" required autocomplete="gotra" placeholder="Gotra">
 
                                 @error("gotra")
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                            </div> --}}
                         </div>
 
    

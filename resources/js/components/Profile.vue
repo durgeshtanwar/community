@@ -26,6 +26,9 @@
                     <b>Gotra</b> <a class="float-right">Mundhara</a>
                   </li>
                   <li class="list-group-item">
+                    <b>Kuldevi</b> <a class="float-right">{{users.kuldevi}}</a>
+                  </li>
+                  <li class="list-group-item">
                     <b>Gender</b> <a class="float-right">Male</a>
                   </li>
                   <li class="list-group-item">
