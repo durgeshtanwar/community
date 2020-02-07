@@ -2209,7 +2209,7 @@ __webpack_require__.r(__webpack_exports__);
           tableWrapper: '',
           tableHeaderClass: 'mb-0',
           tableBodyClass: 'mb-0',
-          tableClass: 'table table-bordered table-hover',
+          tableClass: 'table table-bordered table-hover bg-dark',
           loadingClass: 'loading',
           ascendingIcon: 'fa fa-chevron-up',
           descendingIcon: 'fa fa-chevron-down',
