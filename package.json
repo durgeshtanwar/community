@@ -30,6 +30,7 @@
         "laravel-vue-pagination": "^2.3.1",
         "sweetalert2": "^8.18.6",
         "vform": "^1.0.1",
+        "vue-country-region-select": "^2.0.12",
         "vue-events": "^3.1.0",
         "vue-progressbar": "^0.7.5",
         "vue-router": "^3.1.3",

@@ -31,6 +31,10 @@ import Filterbar from "./datatable/Filterbar";
             {
               name:'contact_person',
               title:'Contact Person'
+            },
+            {
+              name:'contact_number',
+              title:'Contact Number'
             }
             
           ],
@@ -38,7 +42,7 @@ import Filterbar from "./datatable/Filterbar";
           {
             field: 'title',
             sortField: 'title',
-            direction: 'asc'
+            direction: 'desc'
           },
         ],
         moreParams: {}, 

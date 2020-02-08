@@ -23,6 +23,7 @@ Route::apiResources(['userDetails'=>'API\UserDetailsController']);
 Route::get('familylist','API\UserDetailsController@userlist');
 Route::apiResources(['job'=>'API\JobsController']);
 Route::get('getbride','API\UserDetailsController@bride');
+Route::get('getgroom','API\UserDetailsController@groom');
 Route::post('createJobCategory','API\JobsController@createjobcategory');
 Route::get('getjobcategory','API\JobsController@getjobcategory');
 Route::delete('removejobcategory/{id}','API\JobsController@deletejobcategory');

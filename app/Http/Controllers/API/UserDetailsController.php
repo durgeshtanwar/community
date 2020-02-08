@@ -37,7 +37,7 @@ public function __construct()
      */
     public function store(Request $request)
     {
-        $gotra = Auth::user()->gotra;
+       $gotra = Auth::user()->gotra;
         
        $this->validate($request,[
            'name'=>'required|string|max:191',
@@ -45,8 +45,9 @@ public function __construct()
            'gender'=>'required|string|max:191',
            'dob'=>'required|string|max:191',
            'marriage_status'=>'required|string|max:191',
-           'email'=>'required|string|max:255|unique:users',
-           'mobile'=>'required|string|max:20',
+           'email'=>'string|max:255|nullable',
+           'mobile'=>'required|string|max:20|unique:users',
+           'blood_group'=>'nullable|string',
            'father_name'=>'required|string|max:191',
            'mother_name'=>'required|string|max:191',
            'address'=>'required|string|max:191',
@@ -54,23 +55,25 @@ public function __construct()
            'state'=>'required|string|max:191',
            'occupation'=>'required|string|max:191',
            'password'=>'required|string|min:8',
-           'username'=>'required|string|unique:users|max:191',
-
-
-       ]);
-       $userid = Auth::user();
+        ]);
+    $user_id = Auth::user();
 
     $user = new User();
     $user->email = $request->email;
     $user->name = $request->name;
-    $user->username = $request->username;
+    $user->mobile = $request->mobile;
     $user->family_cast = Auth::user()->family_cast; 
     $user->family_head = Auth::user()->family_head;
+    $user->kuldevi = Auth::user()->kuldevi;
     $user->password =Hash::make($request['password']);
     $user->code=rand(pow(10, 5-1), pow(10, 5)-1);
     $user->gotra= $gotra;
     $user->usertype = "Member";
+    $user->active = 'non-active';
+    $user->family_id = Auth::user()->family_id;
+    $user->madeFor = 'other';
     $user->save();
+    $userid = $user->id;
     
     $userdetail = new UserDetail();
     $userdetail->name = $request->name;
@@ -88,29 +91,9 @@ public function __construct()
     $userdetail->state = $request->state;
     $userdetail->occupation = $request->occupation;  
     $userdetail->department = $request->department;
-    $userdetail->post_graduate_degree = $request->post_graduate_degree;
-    $userdetail->post_graduate_university = $request->post_graduate_university;
-    $userdetail->post_graduate_university_city = $request->post_graduate_university_city; 
-    $userdetail->post_graduate_university_state = $request->post_graduate_university_state;   
-    $userdetail->post_graduate_university_percentage = $request->post_graduate_university_percentage;
-    $userdetail->post_graduate_year_of_passing = $request->post_graduate_year_of_passing;
-    $userdetail->graduate_degree = $request->graduate_degree;
-    $userdetail->graduate_university = $request->graduate_university;
-    $userdetail->graduate_university_city = $request->graduate_university_city; 
-    $userdetail->graduate_university_state = $request->graduate_university_state;   
-    $userdetail->graduate_university_percentage = $request->graduate_university_percentage;
-    $userdetail->graduate_year_of_passing = $request->graduate_year_of_passing;
-    $userdetail->class_12_board = $request->class_12_board;
-    $userdetail->class_12_school_name = $request->class_12_school_name;
-    $userdetail->class_12_percentage = $request->class_12_percentage;
-    $userdetail->class_12_year_of_passing = $request->class_12_year_of_passing;
-    $userdetail->class_12_city = $request->class_12_city;
-    $userdetail->class_10_board = $request->class_10_board;
-    $userdetail->class_10_school_name = $request->class_10_school_name;
-    $userdetail->class_10_percentage = $request->class_10_percentage;
-    $userdetail->class_10_year_of_passing = $request->class_10_year_of_passing;
-    $userdetail->class_10_city = $request->class_10_city;
-    $userdetail->user_id = Auth::User()->id;
+    $userdetail->inserted_by = Auth::User()->id ;
+    $userdetail->blood_group = $request->blood_group;
+    $userdetail->user_id = $userid;
 
     $userdetail->save();
 }
@@ -152,6 +135,49 @@ public function __construct()
         } 
          else { 
                 $query = $query->orderBy('id','asc');
+            }
+      if($request->exists('filter')) {
+          $query->where(function($q) use($request){
+            $value = "%{$request->filter}%";
+            $q->where('name','like',$value)
+                  ->orWhere('father_name','like',$value)
+                  ->orWhere('city','like',$value)
+                  ->orWhere('mother_name','like',$value); 
+          });
+      }
+      $per_page = request()->has('per_page')?(int) request()->per_page : null;
+      $pagination = $query->paginate($per_page);
+      $pagination->appends([
+          'sort'=>request()->sort,
+          'filter'=>request()->filter,
+          'per_page'=>request()->per_page
+      ]);
+       
+        return response()->json(
+            $pagination
+        )
+        ->header('Access-Control-Allow-Origin','*')
+        ->header('Access-Control-Allow-Methods','GET');
+    }
+
+    public function groom(){
+      
+        // $matchthis = ['gender'=>'female','matrimonial'=>1];
+        // $result = UserDetail::where($matchthis)->get();
+        // return $result;
+        $query = app(UserDetail::class)->newQuery(); 
+        $query= $query->where('gender','LIKE','male');
+        $query= $query->where('matrimonial','LIKE','1');
+        $request = request();
+          if(request()->exists('sort')){
+            $sorts = explode(',',request()->sort);
+            foreach ($sorts as $sort){
+                list($sortCol, $sortDir) = explode('|',$sort);
+                $query = $query->orderBy($sortCol,$sortDir);
+             } 
+        } 
+         else { 
+                $query = $query->orderBy('id','desc');
             }
       if($request->exists('filter')) {
           $query->where(function($q) use($request){

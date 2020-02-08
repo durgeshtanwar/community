@@ -40,7 +40,7 @@ class JobsController extends Controller
             } 
         } 
          else { 
-                $query = $query->orderBy('id','asc');
+                $query = $query->orderBy('id','DESC');
             }
       if($request->exists('filter')) {
           $query->where(function($q) use($request){

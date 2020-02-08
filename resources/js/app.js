@@ -50,6 +50,13 @@ Vue.use(vSelect);
 import VueEvents from 'vue-events'
 Vue.use(VueEvents)
 
+import vueCountryRegionSelect from 'vue-country-region-select';
+Vue.use(vueCountryRegionSelect);
+
+
+
+
+
 const routes = [
     { path: '/dashboard', component: require('./components/Dashboard.vue').default },
     { path: '/profile', component: require('./components/Profile.vue').default },

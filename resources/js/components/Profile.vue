@@ -23,6 +23,9 @@
                     <b>Status</b> <a class="float-right">{{familydata.marriage_status}}</a>
                   </li>
                   <li class="list-group-item">
+                    <b>Blood Group</b> <a class="float-right">{{familydata.blood_group}}</a>
+                  </li>
+                  <li class="list-group-item">
                     <b>Gotra</b> <a class="float-right">Mundhara</a>
                   </li>
                   <li class="list-group-item">
