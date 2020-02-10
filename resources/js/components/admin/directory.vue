@@ -272,6 +272,7 @@
             });
            
           })
+          
         },
         getResults(page = 1) {
           axios.get('api/getdirectory?page=' + page)

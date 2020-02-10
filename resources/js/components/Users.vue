@@ -40,6 +40,9 @@
                 </table>
               </div>
               <!-- /.card-body -->
+              <div class="card-footer">
+            <pagination :data="news" @pagination-change-page="getResults"></pagination>
+            </div>
             </div>
             <!-- /.card -->
                   </div>
@@ -78,29 +81,37 @@
         class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
       <has-error :form="form" field="email"></has-error>
     </div>
-
-      <div class="form-group">
-       <input v-model="form.username" type="text" name="username" placeholder="username"
-            class="form-control" :class="{ 'is-invalid': form.errors.has('username') }">
-          <has-error :form="form" field="username"></has-error>
-       </div>
-
-        <div class="form-group">
-       <input v-model="form.gotra" type="text" name="gotra" placeholder="gotra"
-            class="form-control" :class="{ 'is-invalid': form.errors.has('gotra') }">
-          <has-error :form="form" field="gotra"></has-error>
-       </div>
+    <div class="form-group">
+        <input v-model="form.mobile" type="text" name="mobile" placeholder="Mobile Number"
+        class="form-control" :class="{ 'is-invalid': form.errors.has('mobile') }">
+      <has-error :form="form" field="mobile"></has-error>
+    </div>
 
        <div class="form-group">
-       <select v-model="form.active" name='active' placeholder="Active"
-            class="form-control" :class="{ 'is-invalid': form.errors.has('gotra') }">
-          <has-error :form="form" field="gotra"></has-error>
-          <option>Active</option>
-          <option>Inactive</option>
-       </select>
-       </div>
+       <select class="form-control" name="gotra" aria-placeholder="Gotra" v-model='form.gotra'>
+         <option value="Select your Gotra" disabled selected>Select Your Gotra</option>
+          <option value="Kuvera|Chamunda"> Kuvera</option>
+          <option value="Mathuria|Sacchiay">Mathuria</option>
+          <option value="Kataria|Chamunda">Kataria</option>
+          <option value="Chaparwal|Chamunda">Chaparwal</option>
+          <option value="Jangla|Sacchiay">Jangla</option>
+          <option value="Mundhara|Mundhiyad">Mundhara</option>
+          <option value="Baladh|Peeplaad">Baladh</option>
+          <option value="Aasiwal|Chamunda">Aasiwal</option>
+          <option value="Devera|Khinwaj">Devera</option>
+          <option value="Lllad|Sacchiay">Lllad</option>
+          <option value="Hatila|Chamunda">Hatila</option>
+          <option value="Bhartani|Sacchiay">Bhartani</option>
+          <option value="Sanvlera|Sacchiay">Sanvlera</option>
+          <option value="Heergota|Chandi">Heergota</option>
+          <option value="Bheenmaal|Madhyandini">Bheenmaal</option>
+          <option value="Medatwal Aboti| Sacchiyay">Medatwal Aboti</option>
 
-       <div class="form-group">
+           </select>
+       </div>
+       
+
+           <div class="form-group">
        <input v-model="form.password" type="password" name="password" placeholder="password"
             class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
           <has-error :form="form" field="password"></has-error>
@@ -126,13 +137,14 @@
       data() {
         return {
           users:{},
+          news:{},
           form: new Form({
             name : '',
             email:'',
             family_cast:'',
+            mobile:'',
             family_head:'',
             active:'',
-            username:'',
             password:'',
             gotra:'', 
             usertype:'member'
@@ -165,7 +177,12 @@
             });
            
           })
-        }, 
+        },  getResults(page = 1) {
+          axios.get('api/user?page=' + page)
+            .then(response => {
+              this.news = response.data;
+            });
+		},
         loadUsers(){
          axios.get('api/user').then(({data})=>(this.users = data.data));
           

@@ -26,7 +26,7 @@
                     <b>Blood Group</b> <a class="float-right">{{familydata.blood_group}}</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Gotra</b> <a class="float-right">Mundhara</a>
+                    <b>Gotra</b> <a class="float-right">{{users.gotra}}</a>
                   </li>
                   <li class="list-group-item">
                     <b>Kuldevi</b> <a class="float-right">{{users.kuldevi}}</a>

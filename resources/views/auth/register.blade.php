@@ -83,6 +83,26 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="gender" class="col-md-3 col-form-label">{{ __('Gender') }}</label>
+
+                            <div class="col-md-9">
+                                <select class="form-control" name="gender" aria-placeholder="gender">
+                                    <option value="Male"> Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+
+
+                                {{-- <input id="gotra" type="text" class="form-control @error("gotra") is-invalid @enderror" name="gotra" value="{{ old("gotra") }}" required autocomplete="gotra" placeholder="Gotra">
+
+                                @error("gotra")
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div> --}}
+                        </div>
+                        <div class="form-group row">
                             <label for="gotra" class="col-md-3 col-form-label">{{ __('Gotra') }}</label>
 
                             <div class="col-md-9">

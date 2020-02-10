@@ -214,6 +214,13 @@
                       <has-error :form="form" field="password"></has-error>
                    </div>
                    </div>
+                   <div class="col-sm-6">
+                     <div class="form-group">
+                       <label>Upload Image</label>
+                     <input type="file" name="image" class="form-control" :class="{'is-invalid' :form.errors.has('password') }">
+                      <has-error :form="form" field="password"></has-error>
+                   </div>
+                   </div>
                  </div>
                  <div class="row">
                    <div class="col-sm-6">

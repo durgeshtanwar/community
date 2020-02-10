@@ -25,5 +25,8 @@ public function familyusers()
     //return UserDetail::latest()->paginate(10);
 }
 
+public function getFamilyMembers(){
+  
+}
     
 }

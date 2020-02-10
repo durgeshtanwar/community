@@ -46,6 +46,7 @@ Route::get('familyuserlist','API\FamilyController@familyusers');
 Route::get('myjobs','API\JobsController@my_jobs'); 
 Route::put('updatejob/{id}','API\JobsController@updateMyJob');
 Route::delete('deletejob/{id}','API\JobsController@delete_myjobs');
+//Route::get('getFamilyMembers','API\FamilyController@getFamilyMembers');
 
 //Route::get('my_applications','API')
 // Route::get('jobcategory') 
