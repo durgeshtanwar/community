@@ -4442,7 +4442,7 @@ __webpack_require__.r(__webpack_exports__);
       this.form.post('api/userDetails').then(function () {
         Toast.fire({
           type: 'success',
-          title: 'User created successfully'
+          title: 'Member Info Saved'
         });
 
         _this2.form.reset();
@@ -52641,7 +52641,7 @@ var render = function() {
                         _c("label", [_vm._v("Upload Image")]),
                         _vm._v(" "),
                         _c("input", {
-                          staticClass: "form-control",
+                          staticClass: "input-control",
                           class: {
                             "is-invalid": _vm.form.errors.has("password")
                           },

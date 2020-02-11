@@ -112,7 +112,7 @@ public function __construct()
     public function userlist()
     {
        // $users = DB::table('users')->where('votes', '=', 100)->get();
-  $matchthis = ['user_id'=>Auth::User()->id];
+        $matchthis = ['user_id'=>Auth::User()->id];
         return UserDetail::where($matchthis)->get();
     //return UserDetail::latest()->paginate(10);
     }

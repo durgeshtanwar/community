@@ -217,7 +217,7 @@
                    <div class="col-sm-6">
                      <div class="form-group">
                        <label>Upload Image</label>
-                     <input type="file" name="photo" @change="updateProfilePic" class="form-control" :class="{'is-invalid' :form.errors.has('password') }">
+                     <input type="file" name="photo" @change="updateProfilePic" class="input-control" :class="{'is-invalid' :form.errors.has('password') }">
                       <has-error :form="form" field="password"></has-error>
                    </div>
                    </div>
@@ -225,7 +225,7 @@
                  <div class="row">
                    <div class="col-sm-6">
                    <div class="form-group">
-                     <button class="btn btn-success">Submit Form</button>
+                     <button class="btn btn-success" >Submit Form</button>
                    </div>
                    </div>
                  </div>
@@ -284,7 +284,7 @@
           .then(()=>{
             Toast.fire({
              type: 'success',
-            title: 'User created successfully'
+            title: 'Member Info Saved'
               })
             this.form.reset();
           })
@@ -299,6 +299,7 @@
           this.$Progress.finish();
           
        },
+       
         updateProfilePic(e){
           let file = e.target.files[0];
           console.log(file);
