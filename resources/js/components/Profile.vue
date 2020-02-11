@@ -32,14 +32,14 @@
                     <b>Kuldevi</b> <a class="float-right">{{users.kuldevi}}</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Gender</b> <a class="float-right">Male</a>
+                    <b>Gender</b> <a class="float-right">{{users.gender}}</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Contact</b> <a class="float-right">8949163900</a>
+                    <b>Contact</b> <a class="float-right">{{users.mobile}}</a>
                   </li>
                 </ul>
 
-                <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                
               </div>
               <!-- /.card-body -->
             </div>

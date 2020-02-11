@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUniqueFieldInUsers extends Migration
+class AddSelfDataInUsersDetails extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddUniqueFieldInUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('users_details', function (Blueprint $table) {
             //
-         //   $table->unique('mobile');
+            $table->string('self_data');
         });
     }
 
@@ -26,8 +26,9 @@ class AddUniqueFieldInUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('users_details', function (Blueprint $table) {
             //
+            $table->dropColumn('self_Data');
         });
     }
 }

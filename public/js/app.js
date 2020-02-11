@@ -4401,6 +4401,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      selfdata: false,
       users: {},
       form: new Form({
         name: '',
@@ -48100,17 +48101,27 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(2),
+              _c("li", { staticClass: "list-group-item" }, [
+                _c("b", [_vm._v("Gender")]),
+                _vm._v(" "),
+                _c("a", { staticClass: "float-right" }, [
+                  _vm._v(_vm._s(_vm.users.gender))
+                ])
+              ]),
               _vm._v(" "),
-              _vm._m(3)
-            ]),
-            _vm._v(" "),
-            _vm._m(4)
+              _c("li", { staticClass: "list-group-item" }, [
+                _c("b", [_vm._v("Contact")]),
+                _vm._v(" "),
+                _c("a", { staticClass: "float-right" }, [
+                  _vm._v(_vm._s(_vm.users.mobile))
+                ])
+              ])
+            ])
           ])
         ])
       ]),
       _vm._v(" "),
-      _vm._m(5)
+      _vm._m(2)
     ])
   ])
 }
@@ -48135,36 +48146,6 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("a", { staticClass: "float-right" }, [_vm._v("22 years")])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "list-group-item" }, [
-      _c("b", [_vm._v("Gender")]),
-      _vm._v(" "),
-      _c("a", { staticClass: "float-right" }, [_vm._v("Male")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "list-group-item" }, [
-      _c("b", [_vm._v("Contact")]),
-      _vm._v(" "),
-      _c("a", { staticClass: "float-right" }, [_vm._v("8949163900")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "btn btn-primary btn-block", attrs: { href: "#" } },
-      [_c("b", [_vm._v("Follow")])]
-    )
   },
   function() {
     var _vm = this
@@ -73406,8 +73387,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\project\community\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\project\community\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! H:\sewag\community\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! H:\sewag\community\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -245,7 +245,9 @@
     export default {
      data() {
         return {
+          selfdata:false,
           users:{},
+       
            form: new Form({
               name:'',
               relation:'',
