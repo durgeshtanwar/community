@@ -217,7 +217,7 @@
                    <div class="col-sm-6">
                      <div class="form-group">
                        <label>Upload Image</label>
-                     <input type="file" name="image" class="form-control" :class="{'is-invalid' :form.errors.has('password') }">
+                     <input type="file" name="photo" @change="updateProfilePic" class="form-control" :class="{'is-invalid' :form.errors.has('password') }">
                       <has-error :form="form" field="password"></has-error>
                    </div>
                    </div>
@@ -268,7 +268,7 @@
               
               password:'',
               gotra:'',
-
+              photo:'',
             }),
             
            
@@ -299,7 +299,17 @@
           this.$Progress.finish();
           
        },
-      
+        updateProfilePic(e){
+          let file = e.target.files[0];
+          console.log(file);
+          let reader = new FileReader();
+          reader.onloadend = (file) => {
+           // console.log('RESULT', reader.result)
+           this.form.photo = reader.result;
+          }
+          
+         console.log (reader.readAsDataURL(file));
+        },
       },
       created() {
       this.loadusers();

@@ -44,8 +44,8 @@ const Toast = Swal.mixin({
 
 //Vue.use(DatatableFactory);
 
-import vSelect from 'vue-select';
-Vue.use(vSelect);
+// import vSelect from 'vue-select';
+// Vue.use(vSelect);
 
 import VueEvents from 'vue-events'
 Vue.use(VueEvents)
