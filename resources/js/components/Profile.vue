@@ -5,7 +5,7 @@
              <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
-                  <img class="profile-user-img img-fluid img-circle" src="/images/profile.png" alt="User profile picture">
+                  <img class="profile-user-img img-fluid img-circle" :src="'images/profile/'+users.image" alt="User profile picture">
                 </div>
 
                 <h3 class="profile-username text-center">{{users.name}}</h3>
@@ -148,6 +148,9 @@
               })
 
           this.$Progress.finish();
+        },
+        getProfilePhoto(){
+          return "images/profile"+this.users.image;
         },
       
         created() {

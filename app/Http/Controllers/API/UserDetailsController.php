@@ -28,6 +28,8 @@ public function __construct()
   //return $user = Auth::user();
     }
 
+
+    // this function stores the new member details into the database in two tables. one is users and other is userdetails
     /**
      * Store a newly created resource in storage.
      *
@@ -44,7 +46,7 @@ public function __construct()
            'gender'=>'required|string|max:191',
            'dob'=>'required|string|max:191',
            'marriage_status'=>'required|string|max:191',
-           'email'=>'string|max:255|nullable',
+           'email'=>'string|max:255|nullable|unique:users',
            'mobile'=>'required|string|max:20|unique:users',
            'blood_group'=>'nullable|string',
            'father_name'=>'required|string|max:191',
@@ -55,11 +57,28 @@ public function __construct()
            'occupation'=>'required|string|max:191',
            'password'=>'required|string|min:8',
         ]);
-    $user_id = Auth::user();
-
-    $user = new User();
+            $user_id = Auth::user();
+            $user = new User();
+            if($request->photo){
+      // $name = time().'.'.explode('/'.explode(':',substr($request->photo,0,strpos($request->photo,':')))[1][1]);
+        $imageName = preg_match_all('/data\:image\/([a-zA-Z]+)\;base64/',$request->photo,$matched);
+        $ext = isset($matched[1][0]) ? $matched[1][0] : false;
+        $imageName = sha1(time()) . '.' .$ext; 
+        $img = \Image::make($request->photo);
+        $img->resize(300, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $img->save(public_path('images/profile/').$imageName);
+      $user->image = $imageName;
+    
+    }    
+    else{
+        $user->image = "profile.png";
+    }
+    
     $user->email = $request->email;
     $user->name = $request->name;
+    $user->gender = $request->gender;
     $user->mobile = $request->mobile;
     $user->family_cast = Auth::user()->family_cast; 
     $user->family_head = Auth::user()->family_head;
@@ -75,6 +94,8 @@ public function __construct()
     $userid = $user->id;
     
     $userdetail = new UserDetail();
+
+    $userdetail->self_data = $request->self_data;
     $userdetail->name = $request->name;
     $userdetail->relation = $request->relation;
     $userdetail->gender = $request->gender;

@@ -17,6 +17,17 @@
               <div class="card-body">
                 <form role="form" @submit.prevent="createUserDetails">
                   <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-check">
+                          <input class="form-check-input" @change="mydata"  v-model="selfdata" type="checkbox" name="selfdata" value="true" :class="{'is-invalid': form.errors.has('matrimonial')}">
+                          <label class="form-check-label"><h4>Are You Inserting your own data?</h4> </label>
+                          <has-error :form="form" field="selfdata"></has-error>
+                        </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row">
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
@@ -265,7 +276,7 @@
               state:'',
               occupation:'',
               department:'',
-              
+              self_data:'no',
               password:'',
               gotra:'',
               photo:'',
@@ -278,38 +289,74 @@
        loadusers(){
          axios.get('api/userDetails').then(({data})=>(this.users=data));
        },
-       createUserDetails(){
-         this.$Progress.start();
+          createUserDetails(){
+          this.$Progress.start();
           this.form.post('api/userDetails')
           .then(()=>{
-            Toast.fire({
-             type: 'success',
-            title: 'Member Info Saved'
+                    Toast.fire({
+                    type: 'success',
+                    title: 'Member Info Saved'
               })
             this.form.reset();
           })
           .catch(()=>{
-
+            Toast.fire({
+              type: 'error',
+              title: 'There is some problem'
+            })
           })
-          Toast.fire({
-             type: 'success',
-            title: 'User created successfully'
-              })
-
-          this.$Progress.finish();
+         this.$Progress.finish();
           
+       },
+       createMyUserDetail(){
+         this.$Progress.start();
+          this.form.post('api/myuserDetails')
+          .then(()=>{
+                    Toast.fire({
+                    type: 'success',
+                    title: 'Member Info Saved'
+              })
+            this.form.reset();
+          })
+          .catch(()=>{
+            Toast.fire({
+              type: 'error',
+              title: 'There is some problem'
+            })
+          })
+         this.$Progress.finish();
+
+       },
+       mydata(){
+         if(this.selfdata=== true){
+           this.form.fill(this.users);
+         }
+         else{
+           this.form.reset();
+         }
        },
        
         updateProfilePic(e){
           let file = e.target.files[0];
-          console.log(file);
+         console.log(file);
           let reader = new FileReader();
-          reader.onloadend = (file) => {
+           
+           if(file['size']<2111775){
+              reader.onloadend = (file) => {
            // console.log('RESULT', reader.result)
            this.form.photo = reader.result;
-          }
+          }          
+           reader.readAsDataURL(file);
+           }
+           else{
+             Swal.fire(
+                'Oops',
+                'File size is bigger than 2 mb.',
+                'error'
+              )
+
+           }
           
-         console.log (reader.readAsDataURL(file));
         },
       },
       created() {

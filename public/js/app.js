@@ -2489,6 +2489,9 @@ __webpack_require__.r(__webpack_exports__);
     });
     this.$Progress.finish();
   },
+  getProfilePhoto: function getProfilePhoto() {
+    return "images/profile" + this.users.image;
+  },
   created: function created() {
     this.loadUsers();
   },
@@ -4398,6 +4401,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4420,6 +4434,7 @@ __webpack_require__.r(__webpack_exports__);
         state: '',
         occupation: '',
         department: '',
+        self_data: 'no',
         password: '',
         gotra: '',
         photo: ''
@@ -4446,26 +4461,57 @@ __webpack_require__.r(__webpack_exports__);
         });
 
         _this2.form.reset();
-      })["catch"](function () {});
-      Toast.fire({
-        type: 'success',
-        title: 'User created successfully'
+      })["catch"](function () {
+        Toast.fire({
+          type: 'error',
+          title: 'There is some problem'
+        });
       });
       this.$Progress.finish();
     },
-    updateProfilePic: function updateProfilePic(e) {
+    createMyUserDetail: function createMyUserDetail() {
       var _this3 = this;
+
+      this.$Progress.start();
+      this.form.post('api/myuserDetails').then(function () {
+        Toast.fire({
+          type: 'success',
+          title: 'Member Info Saved'
+        });
+
+        _this3.form.reset();
+      })["catch"](function () {
+        Toast.fire({
+          type: 'error',
+          title: 'There is some problem'
+        });
+      });
+      this.$Progress.finish();
+    },
+    mydata: function mydata() {
+      if (this.selfdata === true) {
+        this.form.fill(this.users);
+      } else {
+        this.form.reset();
+      }
+    },
+    updateProfilePic: function updateProfilePic(e) {
+      var _this4 = this;
 
       var file = e.target.files[0];
       console.log(file);
       var reader = new FileReader();
 
-      reader.onloadend = function (file) {
-        // console.log('RESULT', reader.result)
-        _this3.form.photo = reader.result;
-      };
+      if (file['size'] < 2111775) {
+        reader.onloadend = function (file) {
+          // console.log('RESULT', reader.result)
+          _this4.form.photo = reader.result;
+        };
 
-      console.log(reader.readAsDataURL(file));
+        reader.readAsDataURL(file);
+      } else {
+        Swal.fire('Oops', 'File size is bigger than 2 mb.', 'error');
+      }
     }
   },
   created: function created() {
@@ -48063,7 +48109,15 @@ var render = function() {
       _c("div", { staticClass: "col-md-4" }, [
         _c("div", { staticClass: "card card-primary card-outline" }, [
           _c("div", { staticClass: "card-body box-profile" }, [
-            _vm._m(0),
+            _c("div", { staticClass: "text-center" }, [
+              _c("img", {
+                staticClass: "profile-user-img img-fluid img-circle",
+                attrs: {
+                  src: "images/profile/" + _vm.users.image,
+                  alt: "User profile picture"
+                }
+              })
+            ]),
             _vm._v(" "),
             _c("h3", { staticClass: "profile-username text-center" }, [
               _vm._v(_vm._s(_vm.users.name))
@@ -48082,7 +48136,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(1),
+              _vm._m(0),
               _vm._v(" "),
               _c("li", { staticClass: "list-group-item" }, [
                 _c("b", [_vm._v("Status")]),
@@ -48136,22 +48190,11 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(2)
+      _vm._m(1)
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
-      _c("img", {
-        staticClass: "profile-user-img img-fluid img-circle",
-        attrs: { src: "/images/profile.png", alt: "User profile picture" }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -51497,6 +51540,73 @@ var render = function() {
               },
               [
                 _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-sm-12" }, [
+                    _c(
+                      "div",
+                      { staticClass: "form-check" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.selfdata,
+                              expression: "selfdata"
+                            }
+                          ],
+                          staticClass: "form-check-input",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("matrimonial")
+                          },
+                          attrs: {
+                            type: "checkbox",
+                            name: "selfdata",
+                            value: "true"
+                          },
+                          domProps: {
+                            checked: Array.isArray(_vm.selfdata)
+                              ? _vm._i(_vm.selfdata, "true") > -1
+                              : _vm.selfdata
+                          },
+                          on: {
+                            change: [
+                              function($event) {
+                                var $$a = _vm.selfdata,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = "true",
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      (_vm.selfdata = $$a.concat([$$v]))
+                                  } else {
+                                    $$i > -1 &&
+                                      (_vm.selfdata = $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1)))
+                                  }
+                                } else {
+                                  _vm.selfdata = $$c
+                                }
+                              },
+                              _vm.mydata
+                            ]
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm._m(0),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.form, field: "selfdata" }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-sm-6" }, [
                     _c(
                       "div",
@@ -52456,7 +52566,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("hr"),
                 _vm._v(" "),
-                _vm._m(0),
+                _vm._m(1),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-sm-6" }, [
@@ -52658,7 +52768,7 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(1)
+                _vm._m(2)
               ]
             )
           ])
@@ -52668,6 +52778,14 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "form-check-label" }, [
+      _c("h4", [_vm._v("Are You Inserting your own data?")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
