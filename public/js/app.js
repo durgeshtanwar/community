@@ -2447,10 +2447,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2497,6 +2493,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log("this. is mounted");
+    console.log(this.familydata);
   }
 });
 
@@ -4412,6 +4409,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4470,23 +4469,34 @@ __webpack_require__.r(__webpack_exports__);
       this.$Progress.finish();
     },
     createMyUserDetail: function createMyUserDetail() {
-      var _this3 = this;
-
+      //  this.$Progress.start();
+      //   this.form.post('api/myuserDetails')
+      //   .then(()=>{
+      //             Toast.fire({
+      //             type: 'success',
+      //             title: 'Member Info Saved'
+      //       })
+      //     this.form.reset();
+      //   })
+      //   .catch(()=>{
+      //     Toast.fire({
+      //       type: 'error',
+      //       title: 'There is some problem'
+      //     })
+      //   })
+      //  this.$Progress.finish();
       this.$Progress.start();
-      this.form.post('api/myuserDetails').then(function () {
+      this.form.put('api/updatePhoto').then(function () {
         Toast.fire({
           type: 'success',
-          title: 'Member Info Saved'
-        });
-
-        _this3.form.reset();
-      })["catch"](function () {
-        Toast.fire({
-          type: 'error',
-          title: 'There is some problem'
+          title: 'image Uploaded succssfully'
+        })["catch"](function () {
+          Toast.fire({
+            type: 'error',
+            title: 'error in image upload'
+          });
         });
       });
-      this.$Progress.finish();
     },
     mydata: function mydata() {
       if (this.selfdata === true) {
@@ -4496,7 +4506,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     updateProfilePic: function updateProfilePic(e) {
-      var _this4 = this;
+      var _this3 = this;
 
       var file = e.target.files[0];
       console.log(file);
@@ -4505,7 +4515,7 @@ __webpack_require__.r(__webpack_exports__);
       if (file['size'] < 2111775) {
         reader.onloadend = function (file) {
           // console.log('RESULT', reader.result)
-          _this4.form.photo = reader.result;
+          _this3.form.photo = reader.result;
         };
 
         reader.readAsDataURL(file);
@@ -48142,7 +48152,7 @@ var render = function() {
                 _c("b", [_vm._v("Status")]),
                 _vm._v(" "),
                 _c("a", { staticClass: "float-right" }, [
-                  _vm._v(_vm._s(_vm.familydata.marriage_status))
+                  _vm._v(_vm._s(_vm.familydata[0].marriage_status))
                 ])
               ]),
               _vm._v(" "),
@@ -48150,7 +48160,7 @@ var render = function() {
                 _c("b", [_vm._v("Blood Group")]),
                 _vm._v(" "),
                 _c("a", { staticClass: "float-right" }, [
-                  _vm._v(_vm._s(_vm.familydata.blood_group))
+                  _vm._v(_vm._s(_vm.familydata[0].blood_group))
                 ])
               ]),
               _vm._v(" "),
@@ -48190,7 +48200,95 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(1)
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("div", { staticClass: "card card-primary card-outline" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-muted" }, [
+              _vm._v(
+                "\n             " +
+                  _vm._s(_vm.familydata[0].occupation) +
+                  "\n            "
+              )
+            ]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-muted" }, [
+              _vm._v(_vm._s(_vm.familydata[0].address))
+            ]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _vm._m(3),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-muted" }, [
+              _vm._v(
+                "\n             " +
+                  _vm._s(_vm.familydata[0].city) +
+                  "\n            "
+              )
+            ]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _vm._m(4),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-muted" }, [
+              _vm._v(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque."
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card card-primary card-outline" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _vm._m(5),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-muted" }, [
+              _vm._v(
+                "\n             Father Name :" +
+                  _vm._s(_vm.familydata[0].father_name) +
+                  " "
+              ),
+              _c("br"),
+              _vm._v(
+                "\n             Mother Name : " +
+                  _vm._s(_vm.familydata[0].mother_name) +
+                  "\n            \n            "
+              )
+            ]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _vm._m(6),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-muted" }, [
+              _vm._v("Murlidhar Vyas Nagar Bikaner")
+            ]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _vm._m(7),
+            _vm._v(" "),
+            _vm._m(8),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _vm._m(9),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-muted" }, [
+              _vm._v(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque."
+              )
+            ])
+          ])
+        ])
+      ])
     ])
   ])
 }
@@ -48209,128 +48307,88 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c("div", { staticClass: "card card-primary card-outline" }, [
-        _c("div", { staticClass: "card-body" }, [
-          _c("strong", [
-            _c("i", { staticClass: "fas fa-book mr-1" }),
-            _vm._v(" Education")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-muted" }, [
-            _vm._v(
-              "\n              B.S. in Computer Science from the University of Tennessee at Knoxville\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("strong", [
-            _c("i", { staticClass: "fas fa-map-marker-alt mr-1" }),
-            _vm._v(" Location")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-muted" }, [
-            _vm._v("Malibu, California")
-          ]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("strong", [
-            _c("i", { staticClass: "fas fa-pencil-alt mr-1" }),
-            _vm._v(" Skills")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-muted" }, [
-            _c("span", { staticClass: "tag tag-danger" }, [
-              _vm._v("UI Design")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "tag tag-success" }, [_vm._v("Coding")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "tag tag-info" }, [_vm._v("Javascript")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "tag tag-warning" }, [_vm._v("PHP")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "tag tag-primary" }, [_vm._v("Node.js")])
-          ]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("strong", [
-            _c("i", { staticClass: "far fa-file-alt mr-1" }),
-            _vm._v(" Notes")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-muted" }, [
-            _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque."
-            )
-          ])
-        ])
-      ]),
+    return _c("strong", [
+      _c("i", { staticClass: "fas fa-book mr-1" }),
+      _vm._v(" Occupation")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _c("i", { staticClass: "fas fa-map-marker-alt mr-1" }),
+      _vm._v(" Address")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _c("i", { staticClass: "fas fa-pencil-alt mr-1" }),
+      _vm._v(" City")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _c("i", { staticClass: "far fa-file-alt mr-1" }),
+      _vm._v(" Notes")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _c("i", { staticClass: "fas fa-book mr-1" }),
+      _vm._v(" Family Details")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _c("i", { staticClass: "fas fa-map-marker-alt mr-1" }),
+      _vm._v(" Location")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _c("i", { staticClass: "fas fa-pencil-alt mr-1" }),
+      _vm._v(" Skills")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-muted" }, [
+      _c("span", { staticClass: "tag tag-danger" }, [_vm._v("UI Design")]),
       _vm._v(" "),
-      _c("div", { staticClass: "card card-primary card-outline" }, [
-        _c("div", { staticClass: "card-body" }, [
-          _c("strong", [
-            _c("i", { staticClass: "fas fa-book mr-1" }),
-            _vm._v(" Family Details")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-muted" }, [
-            _vm._v("\n             Father Name : Keshav Kumar Sewag "),
-            _c("br"),
-            _vm._v(
-              "\n             Mother Name : Sunita Sewag\n            \n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("strong", [
-            _c("i", { staticClass: "fas fa-map-marker-alt mr-1" }),
-            _vm._v(" Location")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-muted" }, [
-            _vm._v("Murlidhar Vyas Nagar Bikaner")
-          ]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("strong", [
-            _c("i", { staticClass: "fas fa-pencil-alt mr-1" }),
-            _vm._v(" Skills")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-muted" }, [
-            _c("span", { staticClass: "tag tag-danger" }, [
-              _vm._v("UI Design")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "tag tag-success" }, [_vm._v("Coding")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "tag tag-info" }, [_vm._v("Javascript")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "tag tag-warning" }, [_vm._v("PHP")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "tag tag-primary" }, [_vm._v("Node.js")])
-          ]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("strong", [
-            _c("i", { staticClass: "far fa-file-alt mr-1" }),
-            _vm._v(" Notes")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-muted" }, [
-            _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque."
-            )
-          ])
-        ])
-      ])
+      _c("span", { staticClass: "tag tag-success" }, [_vm._v("Coding")]),
+      _vm._v(" "),
+      _c("span", { staticClass: "tag tag-info" }, [_vm._v("Javascript")]),
+      _vm._v(" "),
+      _c("span", { staticClass: "tag tag-warning" }, [_vm._v("PHP")]),
+      _vm._v(" "),
+      _c("span", { staticClass: "tag tag-primary" }, [_vm._v("Node.js")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _c("i", { staticClass: "far fa-file-alt mr-1" }),
+      _vm._v(" Notes")
     ])
   }
 ]
@@ -51530,11 +51588,13 @@ var render = function() {
             _c(
               "form",
               {
-                attrs: { role: "form" },
+                attrs: { role: "form", enctype: "multipart/form-data" },
                 on: {
                   submit: function($event) {
                     $event.preventDefault()
-                    return _vm.createUserDetails($event)
+                    _vm.selfdata
+                      ? _vm.createMyUserDetail()
+                      : _vm.createUserDetails()
                   }
                 }
               },
@@ -52255,6 +52315,12 @@ var render = function() {
                         _c("input", {
                           directives: [
                             {
+                              name: "show",
+                              rawName: "v-show",
+                              value: !_vm.selfdata,
+                              expression: "!selfdata"
+                            },
+                            {
                               name: "model",
                               rawName: "v-model",
                               value: _vm.form.email,
@@ -52267,6 +52333,40 @@ var render = function() {
                             type: "email",
                             placeholder: "Enter your email Address",
                             name: "email"
+                          },
+                          domProps: { value: _vm.form.email },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "email", $event.target.value)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.selfdata,
+                              expression: "selfdata"
+                            },
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.email,
+                              expression: "form.email"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          class: { "is-invalid": _vm.form.errors.has("email") },
+                          attrs: {
+                            type: "email",
+                            placeholder: "Enter your email Address",
+                            name: "email",
+                            disabled: ""
                           },
                           domProps: { value: _vm.form.email },
                           on: {
@@ -52297,6 +52397,12 @@ var render = function() {
                         _c("input", {
                           directives: [
                             {
+                              name: "show",
+                              rawName: "v-show",
+                              value: !_vm.selfdata,
+                              expression: "!selfdata"
+                            },
+                            {
                               name: "model",
                               rawName: "v-model",
                               value: _vm.form.mobile,
@@ -52309,6 +52415,42 @@ var render = function() {
                           },
                           attrs: {
                             type: "text",
+                            placeholder: "Enter your Mobile Number",
+                            name: "mobile"
+                          },
+                          domProps: { value: _vm.form.mobile },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "mobile", $event.target.value)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.selfdata,
+                              expression: "selfdata"
+                            },
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.mobile,
+                              expression: "form.mobile"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("mobile")
+                          },
+                          attrs: {
+                            type: "text",
+                            disabled: "",
                             placeholder: "Enter your Mobile Number",
                             name: "mobile"
                           },
@@ -73507,8 +73649,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! H:\sewag\community\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! H:\sewag\community\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\project\community\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\project\community\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

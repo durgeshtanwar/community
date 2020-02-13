@@ -20,10 +20,10 @@
                     <b>Age</b> <a class="float-right">22 years</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Status</b> <a class="float-right">{{familydata.marriage_status}}</a>
+                    <b>Status</b> <a class="float-right">{{familydata[0].marriage_status}}</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Blood Group</b> <a class="float-right">{{familydata.blood_group}}</a>
+                    <b>Blood Group</b> <a class="float-right">{{familydata[0].blood_group}}</a>
                   </li>
                   <li class="list-group-item">
                     <b>Gotra</b> <a class="float-right">{{users.gotra}}</a>
@@ -47,27 +47,23 @@
             <div class="col-md-6">
               <div class="card card-primary card-outline">
                 <div class="card-body">
-                 <strong><i class="fas fa-book mr-1"></i> Education</strong>
+                 <strong><i class="fas fa-book mr-1"></i> Occupation</strong>
                 <p class="text-muted">
-                  B.S. in Computer Science from the University of Tennessee at Knoxville
+                 {{familydata[0].occupation}}
                 </p>
 
                 <hr>
 
-                <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+                <strong><i class="fas fa-map-marker-alt mr-1"></i> Address</strong>
 
-                <p class="text-muted">Malibu, California</p>
+                <p class="text-muted">{{familydata[0].address}}</p>
 
                 <hr>
 
-                <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
+                <strong><i class="fas fa-pencil-alt mr-1"></i> City</strong>
 
                 <p class="text-muted">
-                  <span class="tag tag-danger">UI Design</span>
-                  <span class="tag tag-success">Coding</span>
-                  <span class="tag tag-info">Javascript</span>
-                  <span class="tag tag-warning">PHP</span>
-                  <span class="tag tag-primary">Node.js</span>
+                 {{familydata[0].city}}
                 </p>
 
                 <hr>
@@ -82,8 +78,8 @@
                 <div class="card-body">
                  <strong><i class="fas fa-book mr-1"></i> Family Details</strong>
                 <p class="text-muted">
-                 Father Name : Keshav Kumar Sewag <br>
-                 Mother Name : Sunita Sewag
+                 Father Name :{{familydata[0].father_name}} <br>
+                 Mother Name : {{familydata[0].mother_name}}
                 
                 </p>
 
@@ -160,6 +156,7 @@
           console.log(
             "this. is mounted"
           )
+          console.log(this.familydata);
         }
     }
 </script>

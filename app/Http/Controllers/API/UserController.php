@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Family;
 use App\UserDetail;
+use Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -15,7 +17,6 @@ class UserController extends Controller
     public function __construct()
     {
      $this->middleware('auth:api');
-        
     }
     /**
      * Display a  listing of the resource.
@@ -111,8 +112,29 @@ class UserController extends Controller
 
         $user->delete();
         return ['message'=>"user deleted"];
+  }
 
+    public function updatePhoto(Request $request){
 
+        $userid = Auth::User()->id;
+        $this->validate($request,[
+            'image'=>'required|sometimes',
+        ]);
+        if($request->photo){
+              $imageName = preg_match_all('/data\:image\/([a-zA-Z]+)\;base64/',$request->photo,$matched);
+              $ext = isset($matched[1][0]) ? $matched[1][0] : false;
+              $imageName = sha1(time()) . '.' .$ext; 
+              $img = \Image::make($request->photo);
+              $img->resize(300, null, function ($constraint) {
+                  $constraint->aspectRatio();
+              });
+              $img->save(public_path('images/profile/').$imageName);
+            //   $user = new User;
+            //   $user->image = $imageName;
+        DB::table('users')
+            ->where('id', $userid)
+            ->update(['image' => $imageName]);
+       }
 
-    }
+}
 }

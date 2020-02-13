@@ -47,6 +47,7 @@ Route::put('updatedirectory/{id}','API\SettingsController@updateDirectory');
 Route::apiResources(['event'=>'API\EventController']);
 Route::get('familyuserlist','API\FamilyController@familyusers');
 Route::get('myjobs','API\JobsController@my_jobs'); 
+Route::put('updatePhoto','API\UserController@updatePhoto');
 
 //Route::get('getFamilyMembers','API\FamilyController@getFamilyMembers');
 

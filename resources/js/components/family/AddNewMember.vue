@@ -15,7 +15,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form role="form" @submit.prevent="createUserDetails">
+                <form role="form" @submit.prevent="selfdata ? createMyUserDetail(): createUserDetails()" enctype="multipart/form-data">
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="form-check">
@@ -136,8 +136,9 @@
                       <div class="form-group">
                         <label>Email</label>
                       
-                         <input type="email" v-model="form.email" class="form-control" :class="{'is-invalid':form.errors.has('email')}" placeholder="Enter your email Address" name="email">
-                       <has-error :form="form" field="email"></has-error>
+                         <input type="email" v-show="!selfdata" v-model="form.email" class="form-control" :class="{'is-invalid':form.errors.has('email')}" placeholder="Enter your email Address" name="email">
+                         <input type="email" v-show="selfdata" v-model="form.email" class="form-control" :class="{'is-invalid':form.errors.has('email')}" placeholder="Enter your email Address" name="email" disabled>                                
+                         <has-error :form="form" field="email"></has-error>
                      
                         
                       </div>
@@ -145,7 +146,8 @@
                       <div class="col-sm-6">
                        <div class="form-group">
                         <label>Mobile Number</label>
-                          <input type="text" v-model="form.mobile" class="form-control" :class="{'is-invalid':form.errors.has('mobile')}" placeholder="Enter your Mobile Number" name="mobile">
+                          <input type="text" v-show="!selfdata" v-model="form.mobile" class="form-control" :class="{'is-invalid':form.errors.has('mobile')}" placeholder="Enter your Mobile Number" name="mobile">
+                          <input type="text"  v-show="selfdata" disabled v-model="form.mobile" class="form-control" :class="{'is-invalid':form.errors.has('mobile')}" placeholder="Enter your Mobile Number" name="mobile">
                           <has-error :form="form" field="mobile"></has-error>
                                   
                       </div>
@@ -309,23 +311,36 @@
           
        },
        createMyUserDetail(){
-         this.$Progress.start();
-          this.form.post('api/myuserDetails')
-          .then(()=>{
-                    Toast.fire({
-                    type: 'success',
-                    title: 'Member Info Saved'
-              })
-            this.form.reset();
-          })
-          .catch(()=>{
+        //  this.$Progress.start();
+        //   this.form.post('api/myuserDetails')
+        //   .then(()=>{
+        //             Toast.fire({
+        //             type: 'success',
+        //             title: 'Member Info Saved'
+        //       })
+        //     this.form.reset();
+        //   })
+        //   .catch(()=>{
+        //     Toast.fire({
+        //       type: 'error',
+        //       title: 'There is some problem'
+        //     })
+        //   })
+        //  this.$Progress.finish();
+        this.$Progress.start();
+        this.form.put('api/updatePhoto')
+        .then(()=>{
             Toast.fire({
-              type: 'error',
-              title: 'There is some problem'
+              type: 'success',
+              title:'image Uploaded succssfully'
             })
-          })
-         this.$Progress.finish();
-
+            .catch(()=>{
+              Toast.fire({
+                type:'error',
+                title: 'error in image upload'
+              })
+            })
+        })
        },
        mydata(){
          if(this.selfdata=== true){

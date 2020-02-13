@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\UserDetail;
 use App\User;
@@ -24,7 +25,7 @@ public function __construct()
      */
     public function index()
     {
-  return auth('api')->user();
+   return auth('api')->user();
   //return $user = Auth::user();
     }
 
@@ -133,8 +134,9 @@ public function __construct()
     public function userlist()
     {
        // $users = DB::table('users')->where('votes', '=', 100)->get();
-        $matchthis = ['user_id'=>Auth::User()->id];
-        return UserDetail::where($matchthis)->get();
+       // $matchthis = ['user_id'=>Auth::User()->id];
+        $users = DB::table('users_details')->where('user_id', '=', Auth::User()->id)->get();
+        return $users;
     //return UserDetail::latest()->paginate(10);
     }
     public function bride(){
@@ -222,26 +224,66 @@ public function __construct()
         ->header('Access-Control-Allow-Origin','*')
         ->header('Access-Control-Allow-Methods','GET');
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    
+ public function myUserDetails(Request $request){
+//         $user = new User();
+//         if($request->photo){
+//   // $name = time().'.'.explode('/'.explode(':',substr($request->photo,0,strpos($request->photo,':')))[1][1]);
+//             $imageName = preg_match_all('/data\:image\/([a-zA-Z]+)\;base64/',$request->photo,$matched);
+//             $ext = isset($matched[1][0]) ? $matched[1][0] : false;
+//             $imageName = sha1(time()) . '.' .$ext; 
+//             $img = \Image::make($request->photo);
+//             $img->resize(300, null, function ($constraint) {
+//             $constraint->aspectRatio();
+//          });
+//              $img->save(public_path('images/profile/').$imageName);
+//              $user->image = $imageName;
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+//         }    
+//         else {
+//             $user->image = "profile.png";
+//         }
+
+$this->validate($request,[
+    'name'=>'required|string|max:191',
+    'relation'=>'required|string|max:191',
+    'gender'=>'required|string|max:191',
+    'dob'=>'required|string|max:191',
+    'marriage_status'=>'required|string|max:191',
+    'blood_group'=>'nullable|string',
+    'father_name'=>'required|string|max:191',
+    'mother_name'=>'required|string|max:191',
+    'address'=>'required|string|max:191',
+    'city'=>'required|string|max:191',
+    'state'=>'required|string|max:191',
+    'occupation'=>'required|string|max:191',
+    'password'=>'required|sometimes|string|min:8',
+    'photo'=>'required|sometimes|'
+ ]);
+
+            $userdetail = new UserDetail();
+
+            $userdetail->self_data = 'yes';
+            $userdetail->name = $request->name;
+            $userdetail->relation = $request->relation;
+            $userdetail->gender = $request->gender;
+            $userdetail->dob = $request->dob;
+            $userdetail->marriage_status = $request->marriage_status;
+            $userdetail->matrimonial = $request->matrimonial; 
+            $userdetail->email = $request->email;
+            $userdetail->mobile = $request->mobile;
+            $userdetail->father_name = $request->father_name;
+            $userdetail->mother_name = $request->mother_name;   
+            $userdetail->address = $request->address;
+            $userdetail->city = $request->city;    
+            $userdetail->state = $request->state;
+            $userdetail->occupation = $request->occupation;  
+            $userdetail->department = $request->department;
+            $userdetail->inserted_by = Auth::User()->id ;
+            $userdetail->blood_group = $request->blood_group;
+            $userdetail->user_id = Auth::User()->id ;
+
+            $userdetail->save();
+        
     }
 }
