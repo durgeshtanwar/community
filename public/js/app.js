@@ -3864,6 +3864,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4469,22 +4473,23 @@ __webpack_require__.r(__webpack_exports__);
       this.$Progress.finish();
     },
     createMyUserDetail: function createMyUserDetail() {
-      //  this.$Progress.start();
-      //   this.form.post('api/myuserDetails')
-      //   .then(()=>{
-      //             Toast.fire({
-      //             type: 'success',
-      //             title: 'Member Info Saved'
-      //       })
-      //     this.form.reset();
-      //   })
-      //   .catch(()=>{
-      //     Toast.fire({
-      //       type: 'error',
-      //       title: 'There is some problem'
-      //     })
-      //   })
-      //  this.$Progress.finish();
+      var _this3 = this;
+
+      this.$Progress.start();
+      this.form.post('api/myuserDetails').then(function () {
+        Toast.fire({
+          type: 'success',
+          title: 'Member Info Saved'
+        });
+
+        _this3.form.reset();
+      })["catch"](function () {
+        Toast.fire({
+          type: 'error',
+          title: 'There is some problem'
+        });
+      });
+      this.$Progress.finish();
       this.$Progress.start();
       this.form.put('api/updatePhoto').then(function () {
         Toast.fire({
@@ -4497,6 +4502,7 @@ __webpack_require__.r(__webpack_exports__);
           });
         });
       });
+      this.$Progress.finish();
     },
     mydata: function mydata() {
       if (this.selfdata === true) {
@@ -4506,7 +4512,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     updateProfilePic: function updateProfilePic(e) {
-      var _this3 = this;
+      var _this4 = this;
 
       var file = e.target.files[0];
       console.log(file);
@@ -4515,7 +4521,7 @@ __webpack_require__.r(__webpack_exports__);
       if (file['size'] < 2111775) {
         reader.onloadend = function (file) {
           // console.log('RESULT', reader.result)
-          _this3.form.photo = reader.result;
+          _this4.form.photo = reader.result;
         };
 
         reader.readAsDataURL(file);
@@ -4686,6 +4692,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       users: {},
+      authuser: '',
       form: new Form({
         name: '',
         email: '',
@@ -4713,13 +4720,17 @@ __webpack_require__.r(__webpack_exports__);
         confirmButtonText: 'Yes, delete it!'
       }).then(function (result) {
         // send   request to the server
-        _this.form["delete"]('api/user/' + id).then(function () {
-          if (result.value) {
-            Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
-          }
-        })["catch"](function () {
-          Swal.fire("failed:", "There was something wrong.", "warning");
-        });
+        if (_this.authuser === id) {
+          Swal.fire("failed:", "you can not delete yourself", "warning");
+        } else {
+          _this.form["delete"]('api/user/' + id).then(function () {
+            if (result.value) {
+              Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+            }
+          })["catch"](function () {
+            Swal.fire("failed:", "There was something wrong.", "warning");
+          });
+        }
       });
     },
     loadUsers: function loadUsers() {
@@ -4728,6 +4739,10 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('api/familyuserlist').then(function (_ref) {
         var data = _ref.data;
         return _this2.users = data;
+      });
+      axios.get('api/getAuthenticatedUser').then(function (_ref2) {
+        var data = _ref2.data;
+        return _this2.authuser = data;
       });
     },
     createUser: function createUser() {
@@ -4792,6 +4807,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4802,7 +4828,7 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         name: 'mother_name',
         title: 'Mother Name'
-      }, 'city', 'mobile'],
+      }, 'city', 'mobile', '__slot:actions'],
       sortOrder: [{
         field: 'city',
         sortField: 'city',
@@ -48121,7 +48147,7 @@ var render = function() {
           _c("div", { staticClass: "card-body box-profile" }, [
             _c("div", { staticClass: "text-center" }, [
               _c("img", {
-                staticClass: "profile-user-img img-fluid img-circle",
+                staticClass: "profile-user-img img-fluid ",
                 attrs: {
                   src: "images/profile/" + _vm.users.image,
                   alt: "User profile picture"
@@ -48133,25 +48159,29 @@ var render = function() {
               _vm._v(_vm._s(_vm.users.name))
             ]),
             _vm._v(" "),
-            _c("p", { staticClass: "text-muted text-center" }, [
-              _vm._v("Software Engineer")
-            ]),
-            _vm._v(" "),
             _c("ul", { staticClass: "list-group list-group-unbordered mb-3" }, [
               _c("li", { staticClass: "list-group-item" }, [
                 _c("b", [_vm._v("Membership No.")]),
                 _vm._v(" "),
-                _c("a", { staticClass: "float-right" }, [
+                _c("b", { staticClass: "float-right" }, [
                   _vm._v("SHA-" + _vm._s(_vm.users.id))
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(0),
+              _c("li", { staticClass: "list-group-item" }, [
+                _c("b", [_vm._v("Age")]),
+                _vm._v(" "),
+                _c("b", { staticClass: "float-right" }, [
+                  _vm._v(
+                    _vm._s(_vm._f("getAge")(_vm.familydata[0].dob)) + " years"
+                  )
+                ])
+              ]),
               _vm._v(" "),
               _c("li", { staticClass: "list-group-item" }, [
                 _c("b", [_vm._v("Status")]),
                 _vm._v(" "),
-                _c("a", { staticClass: "float-right" }, [
+                _c("b", { staticClass: "float-right" }, [
                   _vm._v(_vm._s(_vm.familydata[0].marriage_status))
                 ])
               ]),
@@ -48159,7 +48189,7 @@ var render = function() {
               _c("li", { staticClass: "list-group-item" }, [
                 _c("b", [_vm._v("Blood Group")]),
                 _vm._v(" "),
-                _c("a", { staticClass: "float-right" }, [
+                _c("b", { staticClass: "float-right" }, [
                   _vm._v(_vm._s(_vm.familydata[0].blood_group))
                 ])
               ]),
@@ -48167,7 +48197,7 @@ var render = function() {
               _c("li", { staticClass: "list-group-item" }, [
                 _c("b", [_vm._v("Gotra")]),
                 _vm._v(" "),
-                _c("a", { staticClass: "float-right" }, [
+                _c("b", { staticClass: "float-right" }, [
                   _vm._v(_vm._s(_vm.users.gotra))
                 ])
               ]),
@@ -48175,7 +48205,7 @@ var render = function() {
               _c("li", { staticClass: "list-group-item" }, [
                 _c("b", [_vm._v("Kuldevi")]),
                 _vm._v(" "),
-                _c("a", { staticClass: "float-right" }, [
+                _c("b", { staticClass: "float-right" }, [
                   _vm._v(_vm._s(_vm.users.kuldevi))
                 ])
               ]),
@@ -48183,7 +48213,7 @@ var render = function() {
               _c("li", { staticClass: "list-group-item" }, [
                 _c("b", [_vm._v("Gender")]),
                 _vm._v(" "),
-                _c("a", { staticClass: "float-right" }, [
+                _c("b", { staticClass: "float-right" }, [
                   _vm._v(_vm._s(_vm.users.gender))
                 ])
               ]),
@@ -48203,7 +48233,7 @@ var render = function() {
       _c("div", { staticClass: "col-md-6" }, [
         _c("div", { staticClass: "card card-primary card-outline" }, [
           _c("div", { staticClass: "card-body" }, [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _c("p", { staticClass: "text-muted" }, [
               _vm._v(
@@ -48215,7 +48245,7 @@ var render = function() {
             _vm._v(" "),
             _c("hr"),
             _vm._v(" "),
-            _vm._m(2),
+            _vm._m(1),
             _vm._v(" "),
             _c("p", { staticClass: "text-muted" }, [
               _vm._v(_vm._s(_vm.familydata[0].address))
@@ -48223,7 +48253,7 @@ var render = function() {
             _vm._v(" "),
             _c("hr"),
             _vm._v(" "),
-            _vm._m(3),
+            _vm._m(2),
             _vm._v(" "),
             _c("p", { staticClass: "text-muted" }, [
               _vm._v(
@@ -48235,7 +48265,7 @@ var render = function() {
             _vm._v(" "),
             _c("hr"),
             _vm._v(" "),
-            _vm._m(4),
+            _vm._m(3),
             _vm._v(" "),
             _c("p", { staticClass: "text-muted" }, [
               _vm._v(
@@ -48247,7 +48277,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "card card-primary card-outline" }, [
           _c("div", { staticClass: "card-body" }, [
-            _vm._m(5),
+            _vm._m(4),
             _vm._v(" "),
             _c("p", { staticClass: "text-muted" }, [
               _vm._v(
@@ -48265,7 +48295,7 @@ var render = function() {
             _vm._v(" "),
             _c("hr"),
             _vm._v(" "),
-            _vm._m(6),
+            _vm._m(5),
             _vm._v(" "),
             _c("p", { staticClass: "text-muted" }, [
               _vm._v("Murlidhar Vyas Nagar Bikaner")
@@ -48273,13 +48303,13 @@ var render = function() {
             _vm._v(" "),
             _c("hr"),
             _vm._v(" "),
-            _vm._m(7),
+            _vm._m(6),
             _vm._v(" "),
-            _vm._m(8),
+            _vm._m(7),
             _vm._v(" "),
             _c("hr"),
             _vm._v(" "),
-            _vm._m(9),
+            _vm._m(8),
             _vm._v(" "),
             _c("p", { staticClass: "text-muted" }, [
               _vm._v(
@@ -48293,16 +48323,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "list-group-item" }, [
-      _c("b", [_vm._v("Age")]),
-      _vm._v(" "),
-      _c("a", { staticClass: "float-right" }, [_vm._v("22 years")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -53004,19 +53024,21 @@ var render = function() {
                   _c("td", [
                     _vm._m(2, true),
                     _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "ml-2",
-                        attrs: { href: "#" },
-                        on: {
-                          click: function($event) {
-                            return _vm.deleteuser(user.id)
-                          }
-                        }
-                      },
-                      [_c("i", { staticClass: "fa fa-trash red" })]
-                    )
+                    user.id != _vm.authuser
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "ml-2",
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                return _vm.deleteuser(user.id)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fa fa-trash red" })]
+                        )
+                      : _vm._e()
                   ])
                 ])
               }),
@@ -53585,18 +53607,63 @@ var render = function() {
       [
         _c("Filterbar", { staticStyle: {} }),
         _vm._v(" "),
-        _c("vuetable", {
-          ref: "vuetable",
-          attrs: {
-            "api-url": "api/getgroom",
-            fields: _vm.fields,
-            css: _vm.css.table,
-            "sort-order": _vm.sortOrder,
-            "append-params": _vm.moreParams,
-            "pagination-path": ""
+        _c(
+          "vuetable",
+          {
+            ref: "vuetable",
+            attrs: {
+              "api-url": "api/getgroom",
+              fields: _vm.fields,
+              css: _vm.css.table,
+              "sort-order": _vm.sortOrder,
+              "append-params": _vm.moreParams,
+              "pagination-path": ""
+            },
+            on: { "vuetable:pagination-data": _vm.onPaginationData }
           },
-          on: { "vuetable:pagination-data": _vm.onPaginationData }
-        }),
+          [
+            _c(
+              "div",
+              { attrs: { slot: "actions", scope: "props" }, slot: "actions" },
+              [
+                _c("div", { staticClass: "table-button-container" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-warning btn-sm",
+                      on: {
+                        click: function($event) {
+                          return _vm.editRow(_vm.props.rowData)
+                        }
+                      }
+                    },
+                    [
+                      _c("span", { staticClass: "glyphicon glyphicon-pencil" }),
+                      _vm._v(" Edit")
+                    ]
+                  ),
+                  _vm._v("  \n          "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger btn-sm",
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteRow(_vm.props.rowData)
+                        }
+                      }
+                    },
+                    [
+                      _c("span", { staticClass: "glyphicon glyphicon-trash" }),
+                      _vm._v(" Delete")
+                    ]
+                  ),
+                  _vm._v("  \n      ")
+                ])
+              ]
+            )
+          ]
+        ),
         _vm._v(" "),
         _c("vuetable-pagination", {
           ref: "pagination",
@@ -71531,6 +71598,13 @@ window.Toast = Toast; //Vue.use(DatatableFactory);
 Vue.use(vue_events__WEBPACK_IMPORTED_MODULE_6___default.a);
 
 Vue.use(vue_country_region_select__WEBPACK_IMPORTED_MODULE_7___default.a);
+Vue.filter('getAge', function (dob) {
+  var currentYear = new Date();
+  var n = currentYear.getFullYear();
+  var yearBirth = new Date(dob);
+  var y = yearBirth.getFullYear();
+  return n - y;
+});
 var routes = [{
   path: '/dashboard',
   component: __webpack_require__(/*! ./components/Dashboard.vue */ "./resources/js/components/Dashboard.vue")["default"]
@@ -73649,8 +73723,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\project\community\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\project\community\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! H:\sewag\community\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! H:\sewag\community\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

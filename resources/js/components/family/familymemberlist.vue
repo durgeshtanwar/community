@@ -32,7 +32,7 @@
                       <td><span class="tag tag-success">{{user.active}}</span></td>
                       <td> 
                           <a href="#"  class="mr-2"> <i class="fa fa-edit"></i></a>
-                          <a href="#" @click="deleteuser(user.id)" class= "ml-2"><i class="fa fa-trash red"></i></a>
+                          <a href="#" v-if="user.id!=authuser" @click="deleteuser(user.id)" class= "ml-2"><i class="fa fa-trash red"></i></a>
                       </td>
                     </tr>
                   
@@ -144,6 +144,7 @@
       data() {
         return {
           users:{},
+          authuser :'',
           form: new Form({
             name : '',
             email:'',
@@ -170,7 +171,10 @@
           }).then((result) => {
 
             // send   request to the server
-            this.form.delete('api/user/'+id).then(()=>{
+            if(this.authuser === id){
+               Swal.fire("failed:","you can not delete yourself","warning");
+            }else{
+               this.form.delete('api/user/'+id).then(()=>{
                if (result.value) {
               Swal.fire(
                 'Deleted!',
@@ -181,11 +185,14 @@
             }).catch(()=>{
               Swal.fire("failed:","There was something wrong.","warning")
             });
+            }
+           
            
           })
         }, 
         loadUsers(){
          axios.get('api/familyuserlist').then(({data})=>(this.users = data));
+         axios.get('api/getAuthenticatedUser').then(({data})=>(this.authuser = data));
           
         },
         createUser() {

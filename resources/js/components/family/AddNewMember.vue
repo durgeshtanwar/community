@@ -311,22 +311,22 @@
           
        },
        createMyUserDetail(){
-        //  this.$Progress.start();
-        //   this.form.post('api/myuserDetails')
-        //   .then(()=>{
-        //             Toast.fire({
-        //             type: 'success',
-        //             title: 'Member Info Saved'
-        //       })
-        //     this.form.reset();
-        //   })
-        //   .catch(()=>{
-        //     Toast.fire({
-        //       type: 'error',
-        //       title: 'There is some problem'
-        //     })
-        //   })
-        //  this.$Progress.finish();
+         this.$Progress.start();
+          this.form.post('api/myuserDetails')
+          .then(()=>{
+                    Toast.fire({
+                    type: 'success',
+                    title: 'Member Info Saved'
+              })
+            this.form.reset();
+          })
+          .catch(()=>{
+            Toast.fire({
+              type: 'error',
+              title: 'There is some problem'
+            })
+          })
+         this.$Progress.finish();
         this.$Progress.start();
         this.form.put('api/updatePhoto')
         .then(()=>{
@@ -341,6 +341,7 @@
               })
             })
         })
+        this.$Progress.finish();
        },
        mydata(){
          if(this.selfdata=== true){

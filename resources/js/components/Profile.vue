@@ -5,34 +5,34 @@
              <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
-                  <img class="profile-user-img img-fluid img-circle" :src="'images/profile/'+users.image" alt="User profile picture">
+                  <img class="profile-user-img img-fluid " :src="'images/profile/'+users.image" alt="User profile picture">
                 </div>
 
                 <h3 class="profile-username text-center">{{users.name}}</h3>
 
-                <p class="text-muted text-center">Software Engineer</p>
+              
 
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
-                    <b>Membership No.</b> <a class="float-right">SHA-{{users.id}}</a>
+                    <b>Membership No.</b> <b class="float-right">SHA-{{users.id}}</b>
                   </li>
                   <li class="list-group-item">
-                    <b>Age</b> <a class="float-right">22 years</a>
+                    <b>Age</b> <b class="float-right">{{familydata[0].dob | getAge}} years</b>
                   </li>
                   <li class="list-group-item">
-                    <b>Status</b> <a class="float-right">{{familydata[0].marriage_status}}</a>
+                    <b>Status</b> <b class="float-right">{{familydata[0].marriage_status}}</b>
                   </li>
                   <li class="list-group-item">
-                    <b>Blood Group</b> <a class="float-right">{{familydata[0].blood_group}}</a>
+                    <b>Blood Group</b> <b class="float-right">{{familydata[0].blood_group}}</b>
                   </li>
                   <li class="list-group-item">
-                    <b>Gotra</b> <a class="float-right">{{users.gotra}}</a>
+                    <b>Gotra</b> <b class="float-right">{{users.gotra}}</b>
                   </li>
                   <li class="list-group-item">
-                    <b>Kuldevi</b> <a class="float-right">{{users.kuldevi}}</a>
+                    <b>Kuldevi</b> <b class="float-right">{{users.kuldevi}}</b>
                   </li>
                   <li class="list-group-item">
-                    <b>Gender</b> <a class="float-right">{{users.gender}}</a>
+                    <b>Gender</b> <b class="float-right">{{users.gender}}</b>
                   </li>
                   <li class="list-group-item">
                     <b>Contact</b> <a class="float-right">{{users.mobile}}</a>

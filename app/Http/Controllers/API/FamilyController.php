@@ -25,8 +25,8 @@ public function familyusers()
     //return UserDetail::latest()->paginate(10);
 }
 
-public function getFamilyMembers(){
-  
+public function getAuthenticatedUser(){
+  return Auth::User()->id;
 }
     
 }

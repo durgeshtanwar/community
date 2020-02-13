@@ -178,23 +178,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <router-link to="/addFamily" class="nav-link active">
+                <router-link to="/addFamily" class="nav-link">
                   <i class="fas pink fa-user nav-icon"></i>
                   <p>Add New Family Member</p>
                 </router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/family" class="nav-link active">
+                <router-link to="/family" class="nav-link">
                   <i class="fas pink fa-user nav-icon"></i>
                   <p>Members in Family</p>
                 </router-link>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fas fa-circle nav-icon"></i>
-                  <p>Edit Family Members</p>
-                </a>
-              </li>
+             
             </ul>
           </li>
           <li class="nav-item">

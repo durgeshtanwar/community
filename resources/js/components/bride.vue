@@ -10,7 +10,11 @@
   :append-params="moreParams"
    pagination-path=""
     @vuetable:pagination-data="onPaginationData"
-  ></vuetable>
+    
+  >
+  
+  
+  </vuetable>
   <vuetable-pagination ref="pagination" @vuetable-pagination:change-page="onChangePage"
   :css = "css.pagination">
   </vuetable-pagination>

@@ -10,7 +10,18 @@
   :append-params="moreParams"
    pagination-path=""
     @vuetable:pagination-data="onPaginationData"
-  ></vuetable>
+  >
+  <div slot="actions" scope="props">
+      <div class="table-button-container">
+          <button class="btn btn-warning btn-sm" @click="editRow(props.rowData)">
+            <span class="glyphicon glyphicon-pencil"></span> Edit</button>&nbsp;&nbsp;
+          <button class="btn btn-danger btn-sm" @click="deleteRow(props.rowData)">
+            <span class="glyphicon glyphicon-trash"></span> Delete</button>&nbsp;&nbsp;
+      </div>
+      </div>
+      </vuetable>
+  
+  
   
   <vuetable-pagination ref="pagination" @vuetable-pagination:change-page="onChangePage"
   :css = "css.pagination">
@@ -36,7 +47,8 @@ import Filterbar from "./datatable/Filterbar";
               name:'mother_name',
               title:'Mother Name'
             },
-            'city','mobile'
+            'city','mobile',
+             '__slot:actions'
             
           ],
           sortOrder: [

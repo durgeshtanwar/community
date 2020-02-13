@@ -46,6 +46,7 @@ Route::delete('deletedirectory/{id}','API\SettingsController@deleteDirectory');
 Route::put('updatedirectory/{id}','API\SettingsController@updateDirectory');
 Route::apiResources(['event'=>'API\EventController']);
 Route::get('familyuserlist','API\FamilyController@familyusers');
+Route::get('getAuthenticatedUser','API\FamilyController@getAuthenticatedUser');
 Route::get('myjobs','API\JobsController@my_jobs'); 
 Route::put('updatePhoto','API\UserController@updatePhoto');
 

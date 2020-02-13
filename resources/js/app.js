@@ -53,7 +53,13 @@ Vue.use(VueEvents)
 import vueCountryRegionSelect from 'vue-country-region-select';
 Vue.use(vueCountryRegionSelect);
 
-
+Vue.filter('getAge',function(dob){
+    var currentYear = new Date();
+    var n = currentYear.getFullYear();
+    var yearBirth = new Date(dob);
+    var y = yearBirth.getFullYear();
+    return n-y;
+})
 
 
 

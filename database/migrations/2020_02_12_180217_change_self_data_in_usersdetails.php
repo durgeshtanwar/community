@@ -15,7 +15,7 @@ class ChangeSelfDataInUsersdetails extends Migration
     {
         Schema::table('users_details', function (Blueprint $table) {
             //
-            $table->string('selfdata')->nullable()->change();
+            $table->string('self_data')->nullable()->change();
         });
     }
 
@@ -28,7 +28,7 @@ class ChangeSelfDataInUsersdetails extends Migration
     {
         Schema::table('users_details', function (Blueprint $table) {
             //
-            $table->string('selfdata');
+            $table->string('self_data');
         });
     }
 }
