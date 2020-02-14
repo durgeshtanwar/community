@@ -9,10 +9,10 @@
   :sort-order="sortOrder"
   :append-params="moreParams"
    pagination-path=""
-    @vuetable:pagination-data="onPaginationData"
-    
-  >
-  
+    @vuetable:pagination-data="onPaginationData">
+  <template slot="image" scope="props">
+   <img v-bind:src="'images/profile/'+ props.rowData.image" alt="" width="100" height="100">
+ </template>
   
   </vuetable>
   <vuetable-pagination ref="pagination" @vuetable-pagination:change-page="onChangePage"
@@ -39,7 +39,9 @@ import Filterbar from "./datatable/Filterbar";
               name:'mother_name',
               title:'Mother Name'
             },
-            'city','mobile'
+            'city','mobile',
+            '__slot:image'
+
             
           ],
           sortOrder: [

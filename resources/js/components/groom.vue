@@ -11,14 +11,9 @@
    pagination-path=""
     @vuetable:pagination-data="onPaginationData"
   >
-  <div slot="actions" scope="props">
-      <div class="table-button-container">
-          <button class="btn btn-warning btn-sm" @click="editRow(props.rowData)">
-            <span class="glyphicon glyphicon-pencil"></span> Edit</button>&nbsp;&nbsp;
-          <button class="btn btn-danger btn-sm" @click="deleteRow(props.rowData)">
-            <span class="glyphicon glyphicon-trash"></span> Delete</button>&nbsp;&nbsp;
-      </div>
-      </div>
+  <template slot="image" slot-scope="props">
+   <img v-bind:src="'images/profile/'+ props.rowData.image" alt="" width="100" height="100">
+ </template>
       </vuetable>
   
   
@@ -48,7 +43,7 @@ import Filterbar from "./datatable/Filterbar";
               title:'Mother Name'
             },
             'city','mobile',
-             '__slot:actions'
+              '__slot:image'
             
           ],
           sortOrder: [

@@ -177,12 +177,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
             <ul class="nav nav-treeview">
+              @if(Gate::check('isAdmin') || Gate::check('isFamily'))
               <li class="nav-item">
                 <router-link to="/addFamily" class="nav-link">
                   <i class="fas pink fa-user nav-icon"></i>
                   <p>Add New Family Member</p>
                 </router-link>
               </li>
+              @endif
               <li class="nav-item">
                 <router-link to="/family" class="nav-link">
                   <i class="fas pink fa-user nav-icon"></i>
@@ -245,9 +247,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </router-link>
-          </li>
+          </li> 
             </ul>
           </li>
+          @can('isAdmin')
           <li class="nav-item">
             <router-link to="/users" class="nav-link">
               <i class="nav-icon yellow fas fa-users-cog"></i>
@@ -256,6 +259,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <span class="right badge badge-danger">New</span>
               </p>
             </router-link>
+          </li>
+          @endcan 
             <ul>
             </ul>
             

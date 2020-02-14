@@ -145,8 +145,10 @@ public function __construct()
         // $result = UserDetail::where($matchthis)->get();
         // return $result;
         $query = app(UserDetail::class)->newQuery(); 
-        $query= $query->where('gender','LIKE','female');
+        $query = $query->join('users','users_details.user_id','=','users.id');
+        $query= $query->where('users_details.gender','LIKE','female');
         $query= $query->where('matrimonial','LIKE','1');
+        
         $request = request();
           if(request()->exists('sort')){
             $sorts = explode(',',request()->sort);
@@ -188,7 +190,8 @@ public function __construct()
         // $result = UserDetail::where($matchthis)->get();
         // return $result;
         $query = app(UserDetail::class)->newQuery(); 
-        $query= $query->where('gender','LIKE','male');
+        $query = $query->join('users','users_details.user_id','=','users.id');
+        $query= $query->where('users_details.gender','LIKE','male');
         $query= $query->where('matrimonial','LIKE','1');
         $request = request();
           if(request()->exists('sort')){
@@ -285,5 +288,8 @@ $this->validate($request,[
 
             $userdetail->save();
         
+    }
+    public function get_count(){
+       
     }
 }

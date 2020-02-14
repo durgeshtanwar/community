@@ -50,6 +50,10 @@ const Toast = Swal.mixin({
 import VueEvents from 'vue-events'
 Vue.use(VueEvents)
 
+import carousel from 'vue-owl-carousel';
+Vue.use(carousel);
+window.carousel = carousel;
+
 import vueCountryRegionSelect from 'vue-country-region-select';
 Vue.use(vueCountryRegionSelect);
 
@@ -67,7 +71,6 @@ const routes = [
     { path: '/dashboard', component: require('./components/Dashboard.vue').default },
     { path: '/profile', component: require('./components/Profile.vue').default },
     { path: '/job', component: require('./components/Jobs.vue').default },
-    { path: '/matrimonial', component: require('./components/Matrimonial.vue').default },
     { path: '/bride', component: require('./components/bride.vue').default },
     { path: '/groom', component: require('./components/groom.vue').default },
     { path: '/users', component: require('./components/Users.vue').default },
