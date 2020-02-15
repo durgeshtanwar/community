@@ -49,6 +49,7 @@ Route::get('familyuserlist','API\FamilyController@familyusers');
 Route::get('getAuthenticatedUser','API\FamilyController@getAuthenticatedUser');
 Route::get('myjobs','API\JobsController@my_jobs'); 
 Route::put('updatePhoto','API\UserController@updatePhoto');
+Route::put('updateUserType/{id}','API\UserDetailsController@updateUserType');
 
 //Route::get('getFamilyMembers','API\FamilyController@getFamilyMembers');
 

@@ -5,9 +5,9 @@
               <div class="card-header">
                 <h3 class="card-title">My Family Members</h3>
                 <div class="card-tools">
-                    <button class="btn btn-success" data-toggle="modal" data-target="#addNew">Add New User
+                    <router-link class="btn btn-success" to='/addFamily'>Add New User
                         <i class="fas fa-user-plus"></i>
-                    </button>
+                    </router-link>
                 </div>
                    </div>
               <!-- /.card-header -->
@@ -19,7 +19,7 @@
                       <th>Name</th>
                       <th>Email</th>
                       <th>Gotra</th>
-                      <th>Active</th>
+                      <th>usertype</th>
                       <th>Modify</th>
                     </tr>
                   </thead>
@@ -29,9 +29,9 @@
                       <td>{{user.name}}</td>
                       <td>{{user.email}}</td>
                       <td><span class="tag tag-success">{{user.gotra}}</span></td>
-                      <td><span class="tag tag-success">{{user.active}}</span></td>
+                      <td><span class="tag tag-success">{{user.usertype}}</span></td>
                       <td> 
-                          <a href="#"  class="mr-2"> <i class="fa fa-edit"></i></a>
+                          <a href="#"  class="mr-2" @click="editModel(user)"> <i class="fa fa-edit"></i></a>
                           <a href="#" v-if="user.id!=authuser" @click="deleteuser(user.id)" class= "ml-2"><i class="fa fa-trash red"></i></a>
                       </td>
                     </tr>
@@ -48,83 +48,30 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addNewLabel">Add New Member</h5>
+        <h5 class="modal-title" id="addNewLabel">Update Memer Type</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form @submit.prevent="createUser">
+      <form @submit.prevent="updateUser()">
       <div class="modal-body">
         <div class="form-group">
         <input v-model="form.name" type="text" name="name" placeholder=" Full Name"
         class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
       <has-error :form="form" field="name"></has-error>
     </div>
-
-    <div class="form-group">
-        <input v-model="form.family_cast" type="text" name="family_cast" placeholder=" Your Cast"
-        class="form-control" :class="{ 'is-invalid': form.errors.has('family_cast') }">
-      <has-error :form="form" field="family_cast"></has-error>
-    </div>
-
-    <div class="form-group">
-        <input v-model="form.family_head" type="text" name="family_head" placeholder=" Your Family Head Name"
-        class="form-control" :class="{ 'is-invalid': form.errors.has('family_head') }">
-      <has-error :form="form" field="family_head"></has-error>
-    </div>
-    
-    <div class="form-group">
-        <input v-model="form.email" type="email" name="email" placeholder="email address"
-        class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
-      <has-error :form="form" field="email"></has-error>
-    </div>
-
-      <div class="form-group">
-       <input v-model="form.username" type="text" name="username" placeholder="username"
-            class="form-control" :class="{ 'is-invalid': form.errors.has('username') }">
-          <has-error :form="form" field="username"></has-error>
-       </div>
-
         <div class="form-group">
-        <select class="form-control" name="gotra" aria-placeholder="Gotra">
-          <option value="Kuvera|Chamunda"> Kuvera</option>
-          <option value="Mathuria|Sacchiay">Mathuria</option>
-          <option value="Kataria|Chamunda">Kataria</option>
-          <option value="Chaparwal|Chamunda">Chaparwal</option>
-          <option value="Jangla|Sacchiay">Jangla</option>
-          <option value="Mundhara|Mundhiyad">Mundhara</option>
-          <option value="Baladh|Peeplaad">Baladh</option>
-          <option value="Aasiwal|Chamunda">Aasiwal</option>
-          <option value="Devera|Khinwaj">Devera</option>
-          <option value="Lllad|Sacchiay">Lllad</option>
-          <option value="Hatila|Chamunda">Hatila</option>
-          <option value="Bhartani|Sacchiay">Bhartani</option>
-          <option value="Sanvlera|Sacchiay">Sanvlera</option>
-          <option value="Heergota|Chandi">Heergota</option>
-          <option value="Bheenmaal|Madhyandini">Bheenmaal</option>
-          <option value="Medatwal Aboti| Sacchiyay">Medatwal Aboti</option>
-
-           </select>
-          <has-error :form="form" field="gotra"></has-error>
+        <select v-model="form.usertype" class="form-control" name="usertype" aria-placeholder="Gotra">
+          <option value="family">Family</option>
+          <option value="member">Member</option>
+          <option value="admin">Admin</option>
+          </select>
+          <has-error :form="form" field="usertype"></has-error>
 
        </div>
 
-       <div class="form-group">
-       <select v-model="form.active" name='active' placeholder="Active"
-            class="form-control" :class="{ 'is-invalid': form.errors.has('gotra') }">
-          <has-error :form="form" field="gotra"></has-error>
-          <option>Active</option>
-          <option>Inactive</option>
-       </select>
-       </div>
-
-       <div class="form-group">
-       <input v-model="form.password" type="password" name="password" placeholder="password"
-            class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
-          <has-error :form="form" field="password"></has-error>
-       </div>
-
-       
+    
+          
 
       </div>
       <div class="modal-footer">
@@ -145,20 +92,21 @@
         return {
           users:{},
           authuser :'',
+          editmode:false,
           form: new Form({
+            id:'',
             name : '',
-            email:'',
-            family_cast:'',
-            family_head:'',
-            active:'',
-            username:'',
-            password:'',
-            gotra:'', 
-            usertype:'member'
+            usertype:''
           })
         }
       },
       methods: {
+         editModel(user){
+           this.editmode = true;
+          this.form.reset();
+        $('#addNew').modal('show');
+        this.form.fill(user);
+        },
         deleteuser(id){
           Swal.fire({
             title: 'Are you sure?',
@@ -211,6 +159,25 @@
           //     })
 
           this.$Progress.finish();
+        },
+        updateUser(){
+          this.$Progress.start();
+         this.form.put('api/updateUserType/'+this.form.id)
+         then(()=>{
+         // success
+         $('#addNew').modal('hide');
+                     Swal.fire(
+                        'Updated!',
+                        'Information has been updated.',
+                        'success'
+                        )
+                        this.$Progress.finish();
+                         Fire.$emit('AfterCreate');
+       })
+       .catch(()=>{
+          this.$Progress.fail();
+       })
+       this.$Progress.finish();
         }
       },
         created() {

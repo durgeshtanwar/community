@@ -95,9 +95,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update()
     {
         //
+         
     }
 
     /**
@@ -110,6 +111,8 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
+        $this->authorize('isAdmin');
+        $this->authorize('isFamily');
         $user->delete();
         return ['message'=>"user deleted"];
   }
@@ -137,4 +140,12 @@ class UserController extends Controller
        }
 
 }
+    public function updateUserType(Request $request, $id){
+        $event = User::findOrFail($id);
+        $this->validate($request,[
+           'usertype'=>'required' 
+        ]);
+        $event->update($request->all()); 
+        return ['message'=> 'user updated successfully'];  
+    }
 }

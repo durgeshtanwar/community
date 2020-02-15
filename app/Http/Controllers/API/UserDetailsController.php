@@ -292,4 +292,15 @@ $this->validate($request,[
     public function get_count(){
        
     }
+    public function updateUserType(Request $request, $id){
+       $event = User::findOrFail($id);
+        $this->validate($request,[
+           'usertype'=>'required' 
+        ]);
+        $r = $request['usertype'];
+        DB::table('users')
+        ->where('id', $id)
+        ->update(['usertype' => $r]);
+        return ['message'=> 'user updated successfully'];  
+    }
 }
