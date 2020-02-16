@@ -76,7 +76,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Create New User</button>
+        <button type="submit" class="btn btn-primary">Change User Type
+        </button>
       </div>
       </form>
     </div>
@@ -163,7 +164,7 @@
         updateUser(){
           this.$Progress.start();
          this.form.put('api/updateUserType/'+this.form.id)
-         then(()=>{
+         .then(()=>{
          // success
          $('#addNew').modal('hide');
                      Swal.fire(

@@ -139,6 +139,12 @@ public function __construct()
         return $users;
     //return UserDetail::latest()->paginate(10);
     }
+
+    public function usercounts(){
+        return $users = DB::table('users')->count();
+    }
+
+
     public function bride(){
       
         // $matchthis = ['gender'=>'female','matrimonial'=>1];

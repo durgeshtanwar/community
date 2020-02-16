@@ -10,12 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use App\User;
+use App\Notifications\AdminSpeaks;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
 Route::get('/', function () {
+    $user= Auth::user();
+    User::find($user->id)->notify(new AdminSpeaks);
     return view('home');
 })->middleware('auth');
 

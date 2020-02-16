@@ -26,6 +26,10 @@ class SettingsController extends Controller
     $news = DB::table('news')->paginate(10);
     return $news;
    }
+   public function getEvents(){
+    $events = DB::table('events')->paginate(10);
+    return $events;
+   }
 
     public function insertnews(Request $request){
         $this->validate($request,[

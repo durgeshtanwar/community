@@ -36,7 +36,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>{{allusers.length}}</h3>
+                <h3>{{count}}</h3>
 
                 <p>Total Users</p>
               </div>
@@ -95,14 +95,25 @@
                         <span class="sr-only">Next</span>
                       </a>
                     </div>
+                  <p class="mt-2">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex dui, lobortis quis interdum non, condimentum vitae magna. Donec id quam eu mi molestie lobortis. Nunc mattis turpis ac ultricies luctus. In fringilla pretium nisl ac luctus. Maecenas condimentum gravida risus, at vestibulum ante iaculis in. Suspendisse et mattis nibh. In vestibulum auctor nunc, at euismod velit vestibulum a. Maecenas at felis id ex pretium accumsan pharetra non nisi. Phasellus faucibus malesuada urna vel vulputate. Aliquam dapibus neque ex, eget maximus ante viverra et. Vivamus id leo sagittis, porttitor lorem eget, hendrerit felis. Morbi ut efficitur leo. Nulla pellentesque, orci eu pulvinar gravida, diam urna dignissim ex, efficitur scelerisque nunc velit sed ligula. Sed interdum, turpis eget posuere bibendum, nunc libero volutpat tellus, quis elementum turpis sapien ut purus.
+
+Praesent vestibulum erat a tristique luctus. Suspendisse potenti. Etiam tempus ultrices auctor. Proin venenatis, diam sit amet fermentum lacinia, lacus justo dignissim nisl, id ultrices velit libero sed leo. Donec fermentum sapien quis sapien porttitor condimentum. Integer aliquam nibh pharetra nunc fermentum, eget interdum orci faucibus. Donec malesuada tincidunt porttitor. Integer efficitur metus quis elementum consectetur. Aenean ultrices felis id sem fermentum, quis aliquam ex placerat. Ut sagittis turpis ac nisl lobortis tincidunt. Vestibulum eget condimentum sapien, a pulvinar leo. In varius lacus vitae magna venenatis vulputate. Integer at gravida sem. Sed tincidunt risus eros, malesuada hendrerit metus aliquam eget.
+                  </p>
+                    
                   </div>
                   <!-- /.col -->
                   <div class="col-md-4">
+                   <div id="news">
                     <h2 class="text-center display-4">News</h2>
                 <ul class="list-group"  v-for="ns in news" :key="ns.id">
                 <li class="list-group-item marquee">  {{ns.news_title}}</li>
-                
-               </ul>    
+               
+               </ul> 
+                </div>
+                <div id="events">
+                  
+                </div>   
                               
                   </div>
                   <!-- /.col -->
@@ -157,28 +168,6 @@
 
 
         </div>
-   
-
-        <div class="row">
-        <div class="col-4">
-        <div class="card-body p-0">
-                <table class="table table-striped table-valign-middle" style="height:10em">
-                  <thead>
-                  <tr>
-                    <th>News</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                   <tr v-for="ns in news" :key="ns.id">
-                    <td>
-                      {{ns.news_title}}
-                    </td>
-                   </tr>
-                  </tbody>
-                </table>
-              </div>
-              </div>
-        </div>
             </div>
         
 </template>
@@ -189,6 +178,7 @@
       data() {
         return {
           users:{},
+          count:'',
           familydata:{},
           allusers:{},
           news:{},
@@ -210,6 +200,7 @@
              axios.get('api/user').then(({data})=>(this.allusers = data.data));
             axios.get('api/getnews').then(({data})=>(this.news = data.data));
             axios.get('api/familyuserlist').then(({data})=>(this.family=data));
+            axios.get('api/usercounts').then(({data})=>(this.count=data));
          }
         },
         createUser() {

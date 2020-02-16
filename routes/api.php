@@ -38,6 +38,7 @@ Route::put('updatejob/{id}','API\JobsController@updateMyJob');
 Route::delete('deletejob/{id}','API\JobsController@delete_myjobs');
 Route::post('insertnews','API\SettingsController@insertnews');
 Route::get('getnews','API\SettingsController@getnews');
+Route::get('getEvents','API\SettingsController@getEvents');
 Route::delete('deletenews/{id}','API\SettingsController@deletenews');
 Route::post('addtodirectory','API\SettingsController@addtodirectory');
 Route::get('showdirectory','API\SettingsController@showdirectory');
@@ -50,6 +51,7 @@ Route::get('getAuthenticatedUser','API\FamilyController@getAuthenticatedUser');
 Route::get('myjobs','API\JobsController@my_jobs'); 
 Route::put('updatePhoto','API\UserController@updatePhoto');
 Route::put('updateUserType/{id}','API\UserDetailsController@updateUserType');
+Route::get('usercounts','API\UserDetailsController@usercounts');
 
 //Route::get('getFamilyMembers','API\FamilyController@getFamilyMembers');
 
