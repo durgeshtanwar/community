@@ -105,16 +105,21 @@ Praesent vestibulum erat a tristique luctus. Suspendisse potenti. Etiam tempus u
                   <!-- /.col -->
                   <div class="col-md-4">
                    <div id="news">
-                    <h2 class="text-center display-4">News</h2>
+                    <h2 class="text-center">News</h2>
                 <ul class="list-group"  v-for="ns in news" :key="ns.id">
-                <li class="list-group-item marquee">  {{ns.news_title}}</li>
+                <li class="list-group-item ">  {{ns.news_title}}</li>
                
                </ul> 
+               <hr>
                 </div>
                 <div id="events">
-                  
-                </div>   
-                              
+                  <h2 class="text-center">Events</h2>
+                  <ul class="list-group"  v-for="event in events" :key="event.id">
+                <li class="list-group-item ">  {{event.event_name}}</li>
+                </ul>
+                      </div>   
+                  <img src="images/Training.png" class="img-fluid">
+
                   </div>
                   <!-- /.col -->
                 </div>
@@ -122,43 +127,7 @@ Praesent vestibulum erat a tristique luctus. Suspendisse potenti. Etiam tempus u
               </div>
               <!-- ./card-body -->
               <div class="card-footer">
-                <div class="row">
-                  <div class="col-sm-3 col-6">
-                    <div class="description-block border-right">
-                      <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 17%</span>
-                      <h5 class="description-header">$35,210.43</h5>
-                      <span class="description-text">TOTAL REVENUE</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-3 col-6">
-                    <div class="description-block border-right">
-                      <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i> 0%</span>
-                      <h5 class="description-header">$10,390.90</h5>
-                      <span class="description-text">TOTAL COST</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-3 col-6">
-                    <div class="description-block border-right">
-                      <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 20%</span>
-                      <h5 class="description-header">$24,813.53</h5>
-                      <span class="description-text">TOTAL PROFIT</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-3 col-6">
-                    <div class="description-block">
-                      <span class="description-percentage text-danger"><i class="fas fa-caret-down"></i> 18%</span>
-                      <h5 class="description-header">1200</h5>
-                      <span class="description-text">GOAL COMPLETIONS</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                </div>
+               
                 <!-- /.row -->
               </div>
               <!-- /.card-footer -->
@@ -183,6 +152,7 @@ Praesent vestibulum erat a tristique luctus. Suspendisse potenti. Etiam tempus u
           allusers:{},
           news:{},
           family:{},
+          events:{},
           form: new Form({
             name : '',
             email:'',
@@ -201,6 +171,7 @@ Praesent vestibulum erat a tristique luctus. Suspendisse potenti. Etiam tempus u
             axios.get('api/getnews').then(({data})=>(this.news = data.data));
             axios.get('api/familyuserlist').then(({data})=>(this.family=data));
             axios.get('api/usercounts').then(({data})=>(this.count=data));
+            axios.get('api/getEvents').then(({data})=>(this.events=data.data));
          }
         },
         createUser() {

@@ -2092,37 +2092,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     carousel: carousel
@@ -2135,6 +2104,7 @@ __webpack_require__.r(__webpack_exports__);
       allusers: {},
       news: {},
       family: {},
+      events: {},
       form: new Form({
         name: '',
         email: '',
@@ -2172,6 +2142,10 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('api/usercounts').then(function (_ref6) {
         var data = _ref6.data;
         return _this.count = data;
+      });
+      axios.get('api/getEvents').then(function (_ref7) {
+        var data = _ref7.data;
+        return _this.events = data.data;
       });
     }
   },
@@ -48042,17 +48016,40 @@ var render = function() {
                   "div",
                   { attrs: { id: "news" } },
                   [
-                    _c("h2", { staticClass: "text-center display-4" }, [
-                      _vm._v("News")
-                    ]),
+                    _c("h2", { staticClass: "text-center" }, [_vm._v("News")]),
                     _vm._v(" "),
                     _vm._l(_vm.news, function(ns) {
                       return _c(
                         "ul",
                         { key: ns.id, staticClass: "list-group" },
                         [
-                          _c("li", { staticClass: "list-group-item marquee" }, [
+                          _c("li", { staticClass: "list-group-item " }, [
                             _vm._v("  " + _vm._s(ns.news_title))
+                          ])
+                        ]
+                      )
+                    }),
+                    _vm._v(" "),
+                    _c("hr")
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { attrs: { id: "events" } },
+                  [
+                    _c("h2", { staticClass: "text-center" }, [
+                      _vm._v("Events")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.events, function(event) {
+                      return _c(
+                        "ul",
+                        { key: event.id, staticClass: "list-group" },
+                        [
+                          _c("li", { staticClass: "list-group-item " }, [
+                            _vm._v("  " + _vm._s(event.event_name))
                           ])
                         ]
                       )
@@ -48061,12 +48058,15 @@ var render = function() {
                   2
                 ),
                 _vm._v(" "),
-                _c("div", { attrs: { id: "events" } })
+                _c("img", {
+                  staticClass: "img-fluid",
+                  attrs: { src: "images/Training.png" }
+                })
               ])
             ])
           ]),
           _vm._v(" "),
-          _vm._m(10)
+          _c("div", { staticClass: "card-footer" })
         ])
       ])
     ])
@@ -48244,80 +48244,6 @@ var staticRenderFns = [
         _vm._v(
           "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex dui, lobortis quis interdum non, condimentum vitae magna. Donec id quam eu mi molestie lobortis. Nunc mattis turpis ac ultricies luctus. In fringilla pretium nisl ac luctus. Maecenas condimentum gravida risus, at vestibulum ante iaculis in. Suspendisse et mattis nibh. In vestibulum auctor nunc, at euismod velit vestibulum a. Maecenas at felis id ex pretium accumsan pharetra non nisi. Phasellus faucibus malesuada urna vel vulputate. Aliquam dapibus neque ex, eget maximus ante viverra et. Vivamus id leo sagittis, porttitor lorem eget, hendrerit felis. Morbi ut efficitur leo. Nulla pellentesque, orci eu pulvinar gravida, diam urna dignissim ex, efficitur scelerisque nunc velit sed ligula. Sed interdum, turpis eget posuere bibendum, nunc libero volutpat tellus, quis elementum turpis sapien ut purus.\n\nPraesent vestibulum erat a tristique luctus. Suspendisse potenti. Etiam tempus ultrices auctor. Proin venenatis, diam sit amet fermentum lacinia, lacus justo dignissim nisl, id ultrices velit libero sed leo. Donec fermentum sapien quis sapien porttitor condimentum. Integer aliquam nibh pharetra nunc fermentum, eget interdum orci faucibus. Donec malesuada tincidunt porttitor. Integer efficitur metus quis elementum consectetur. Aenean ultrices felis id sem fermentum, quis aliquam ex placerat. Ut sagittis turpis ac nisl lobortis tincidunt. Vestibulum eget condimentum sapien, a pulvinar leo. In varius lacus vitae magna venenatis vulputate. Integer at gravida sem. Sed tincidunt risus eros, malesuada hendrerit metus aliquam eget.\n                  "
         )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-footer" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-sm-3 col-6" }, [
-          _c("div", { staticClass: "description-block border-right" }, [
-            _c("span", { staticClass: "description-percentage text-success" }, [
-              _c("i", { staticClass: "fas fa-caret-up" }),
-              _vm._v(" 17%")
-            ]),
-            _vm._v(" "),
-            _c("h5", { staticClass: "description-header" }, [
-              _vm._v("$35,210.43")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "description-text" }, [
-              _vm._v("TOTAL REVENUE")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-sm-3 col-6" }, [
-          _c("div", { staticClass: "description-block border-right" }, [
-            _c("span", { staticClass: "description-percentage text-warning" }, [
-              _c("i", { staticClass: "fas fa-caret-left" }),
-              _vm._v(" 0%")
-            ]),
-            _vm._v(" "),
-            _c("h5", { staticClass: "description-header" }, [
-              _vm._v("$10,390.90")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "description-text" }, [
-              _vm._v("TOTAL COST")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-sm-3 col-6" }, [
-          _c("div", { staticClass: "description-block border-right" }, [
-            _c("span", { staticClass: "description-percentage text-success" }, [
-              _c("i", { staticClass: "fas fa-caret-up" }),
-              _vm._v(" 20%")
-            ]),
-            _vm._v(" "),
-            _c("h5", { staticClass: "description-header" }, [
-              _vm._v("$24,813.53")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "description-text" }, [
-              _vm._v("TOTAL PROFIT")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-sm-3 col-6" }, [
-          _c("div", { staticClass: "description-block" }, [
-            _c("span", { staticClass: "description-percentage text-danger" }, [
-              _c("i", { staticClass: "fas fa-caret-down" }),
-              _vm._v(" 18%")
-            ]),
-            _vm._v(" "),
-            _c("h5", { staticClass: "description-header" }, [_vm._v("1200")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "description-text" }, [
-              _vm._v("GOAL COMPLETIONS")
-            ])
-          ])
-        ])
       ])
     ])
   }
@@ -51785,9 +51711,72 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Settings")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-3 col-sm-6 col-12" }, [
+        _c("div", { staticClass: "info-box" }, [
+          _c("span", { staticClass: "info-box-icon bg-info" }, [
+            _c("i", { staticClass: "far fa-envelope" })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info-box-content" }, [
+            _c("span", { staticClass: "info-box-text" }, [_vm._v("Messages")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "info-box-number" }, [_vm._v("1,410")])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3 col-sm-6 col-12" }, [
+        _c("div", { staticClass: "info-box" }, [
+          _c("span", { staticClass: "info-box-icon bg-success" }, [
+            _c("i", { staticClass: "far fa-flag" })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info-box-content" }, [
+            _c("span", { staticClass: "info-box-text" }, [_vm._v("Bookmarks")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "info-box-number" }, [_vm._v("410")])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3 col-sm-6 col-12" }, [
+        _c("div", { staticClass: "info-box" }, [
+          _c("span", { staticClass: "info-box-icon bg-warning" }, [
+            _c("i", { staticClass: "far fa-copy" })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info-box-content" }, [
+            _c("span", { staticClass: "info-box-text" }, [_vm._v("Uploads")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "info-box-number" }, [_vm._v("13,648")])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3 col-sm-6 col-12" }, [
+        _c("div", { staticClass: "info-box" }, [
+          _c("span", { staticClass: "info-box-icon bg-danger" }, [
+            _c("i", { staticClass: "far fa-star" })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info-box-content" }, [
+            _c("span", { staticClass: "info-box-text" }, [_vm._v("Likes")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "info-box-number" }, [_vm._v("93,139")])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
