@@ -160,7 +160,35 @@ class SettingsController extends Controller
         ]);
         
         $directory->update($request->all());  
-    
-
+     }
+     public function directorycounts(){
+        return $directory = DB::table('directory')->count();
     }
+    public function eventcounts(){
+        return $event = DB::table('events')->count();
+    }
+    public function groomcount(){
+        return $groom  = DB::table('users_details')->where([
+            ['gender','=','male'],
+            ['matrimonial','=','1']
+        ])->count();
+    }
+    public function bridecount(){
+        return $bride  = DB::table('users_details')->where([
+            ['gender','=','female'],
+            ['matrimonial','=','1']
+        ])->count();
+    }
+
+    public function familyCount(){
+       return $event = DB::table('family')->count();
+    }
+
+    public function jobsCount(){
+        return $jobs = DB::table('jobs')->count();
+    }
+    public function jobApplicantsCount(){
+        return $jobs = DB::table('apply_jobs')->count();
+    }
+
 }

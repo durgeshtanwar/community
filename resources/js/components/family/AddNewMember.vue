@@ -5,7 +5,8 @@
            <div class="col-12">
                <div class="card card-warning">
               <div class="card-header">
-                <h3 class="card-title">Add New Family Member</h3>
+                <h3 class="card-title" v-if="!updatedata">Add New Family Member</h3>
+                <h3 class="card-title" v-if="updatedata">Update My Information</h3>
                  <div class="card-tools">
                  <p> Gotra : {{users.gotra}} 
                    <br> Family Head : {{users.family_head}}
@@ -15,14 +16,19 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form role="form" @submit.prevent="selfdata ? createMyUserDetail(): createUserDetails()" enctype="multipart/form-data">
+                <form role="form" @submit.prevent="(updatedata==true) ? updateMyDetails() : selfdata ? createMyUserDetail(): createUserDetails()" enctype="multipart/form-data">
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="form-check">
-                          <input class="form-check-input" @change="mydata"  v-model="selfdata" type="checkbox" name="selfdata" value="true" :class="{'is-invalid': form.errors.has('matrimonial')}">
-                          <label class="form-check-label"><h4>Are You Inserting your own data?</h4> </label>
+                          <input class="form-check-input" v-if="userstatus===0"  @change="mydata"  v-model="selfdata" type="checkbox" name="selfdata" value="true" :class="{'is-invalid': form.errors.has('matrimonial')}">
+                          <label class="form-check-label"  v-if="userstatus===0"><h4>Are You Inserting your own data?</h4> </label>
                           <has-error :form="form" field="selfdata"></has-error>
                         </div>
+                       <div class="form-check">
+                          <input class="form-check-input" v-if="userstatus===1"  @change="myuserdata" v-model="updatedata" type="checkbox" name="updatedata" value="true" :class="{'is-invalid': form.errors.has('matrimonial')}">
+                          <label class="form-check-label"  v-if="userstatus===1"><h4>Update your data</h4> </label>
+                          <has-error :form="form" field="selfdata"></has-error>
+                        </div> 
                     </div>
 
                   </div>
@@ -32,7 +38,7 @@
                       <!-- text input -->
                       <div class="form-group">
                         <label>Name</label>
-                        <input type="text" v-model="form.name" class="form-control" :class="{ 'is-invalid': form.errors.has('name')}" 
+                        <input type="text" v-bind:disabled="updatedata===true" v-model="form.name" class="form-control" :class="{ 'is-invalid': form.errors.has('name')}" 
                           placeholder="Enter Name ..." name="name" >
                           <has-error :form="form" field="name"></has-error>
                       </div>
@@ -134,9 +140,9 @@
                      <div class="col-sm-6">
                       <!-- textarea -->
                       <div class="form-group">
-                        <label>Email</label>
+                        <label >Email</label>
                       
-                         <input type="email" v-show="!selfdata" v-model="form.email" class="form-control" :class="{'is-invalid':form.errors.has('email')}" placeholder="Enter your email Address" name="email">
+                         <input type="email" v-bind:disabled="updatedata===true" v-show="!selfdata" v-model="form.email" class="form-control" :class="{'is-invalid':form.errors.has('email')}" placeholder="Enter your email Address" name="email">
                          <input type="email" v-show="selfdata" v-model="form.email" class="form-control" :class="{'is-invalid':form.errors.has('email')}" placeholder="Enter your email Address" name="email" disabled>                                
                          <has-error :form="form" field="email"></has-error>
                      
@@ -146,8 +152,8 @@
                       <div class="col-sm-6">
                        <div class="form-group">
                         <label>Mobile Number</label>
-                          <input type="text" v-show="!selfdata" v-model="form.mobile" class="form-control" :class="{'is-invalid':form.errors.has('mobile')}" placeholder="Enter your Mobile Number" name="mobile">
-                          <input type="text"  v-show="selfdata" disabled v-model="form.mobile" class="form-control" :class="{'is-invalid':form.errors.has('mobile')}" placeholder="Enter your Mobile Number" name="mobile">
+                          <input type="text" v-bind:disabled="updatedata===true" v-show="!selfdata" v-model="form.mobile" class="form-control" :class="{'is-invalid':form.errors.has('mobile')}" placeholder="Enter your Mobile Number" name="mobile">
+                          <input type="text"  v-show="selfdata" :disabled="updatedata===1" v-model="form.mobile" class="form-control" :class="{'is-invalid':form.errors.has('mobile')}" placeholder="Enter your Mobile Number" name="mobile">
                           <has-error :form="form" field="mobile"></has-error>
                                   
                       </div>
@@ -259,9 +265,12 @@
      data() {
         return {
           selfdata:false,
+          updatedata : false,
           users:{},
-       
-           form: new Form({
+          mydetails:{},
+          userstatus:'',
+              form: new Form({
+              id:'',
               name:'',
               relation:'',
               gender:'',
@@ -290,7 +299,21 @@
      methods:{
        loadusers(){
          axios.get('api/userDetails').then(({data})=>(this.users=data));
+         axios.get('api/checkUserStatus').then(({data})=>(this.userstatus=data));
+         axios.get('api/mydetails').then(({data})=>(this.mydetails=data));
        },
+        checkuserstatus(){
+          if(this.userstatus === 0){
+            if(this.selfdata=== true){
+              this.createMyUserDetail
+            }
+            return "selfdata ? createMyUserDetail(): createUserDetails()";
+          }
+          else{
+            return "updateSelfData()";
+          }
+        },
+
           createUserDetails(){
           this.$Progress.start();
           this.form.post('api/userDetails')
@@ -351,7 +374,15 @@
            this.form.reset();
          }
        },
-       
+       myuserdata(){
+         if(this.updatedata===true){
+            this.form.fill(this.mydetails[0]);
+         }
+         else{
+           this.form.reset();
+         }
+        
+       },
         updateProfilePic(e){
           let file = e.target.files[0];
          console.log(file);
@@ -373,6 +404,30 @@
 
            }
           
+        },
+        updateMyDetails(){
+          this.$Progress.start();
+       this.form.put('api/updateMydetails/'+this.form.id)
+       .then(()=>{
+         // success
+        
+                     Swal.fire(
+                        'Updated!',
+                        'Information has been updated.',
+                        'success'
+                        )
+                        this.$Progress.finish();
+                         Fire.$emit('AfterCreate');
+               
+         
+       })
+       .catch(()=>{
+          this.$Progress.fail();
+       })
+
+       this.$Progress.finish();
+
+
         },
       },
       created() {

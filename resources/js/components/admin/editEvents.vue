@@ -4,7 +4,7 @@
         <div class="col-12 mt-5">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Add to Directory</h3>
+                <h3 class="card-title">Add Events</h3>
                 <div class="card-tools">
                     <button class="btn btn-success" @click="newModel">Add New Event
                     </button>

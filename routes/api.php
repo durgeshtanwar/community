@@ -53,6 +53,21 @@ Route::put('updatePhoto','API\UserController@updatePhoto');
 Route::put('updateUserType/{id}','API\UserDetailsController@updateUserType');
 Route::get('usercounts','API\UserDetailsController@usercounts');
 
+
+Route::get('directorycounts','API\SettingsController@directorycounts');
+Route::get('eventcounts','API\SettingsController@eventcounts');
+Route::get('groomcount','API\SettingsController@groomcount');
+Route::get('bridecount','API\SettingsController@bridecount');
+Route::get('familycount','API\SettingsController@familycount');
+Route::get('jobsCount','API\SettingsController@jobsCount');
+Route::get('jobApplicantsCount','API\SettingsController@jobApplicantsCount');
+Route::get('checkUserStatus','API\UserDetailsController@checkUserStatus');
+Route::get('mydetails','API\UserDetailsController@mydetails');
+Route::put('updateMydetails/{id}','API\UserDetailsController@updateMydetails');
+
+
+
+
 //Route::get('getFamilyMembers','API\FamilyController@getFamilyMembers');
 
 //Route::get('my_applications','API')

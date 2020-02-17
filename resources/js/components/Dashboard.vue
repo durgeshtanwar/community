@@ -118,6 +118,8 @@ Praesent vestibulum erat a tristique luctus. Suspendisse potenti. Etiam tempus u
                 <li class="list-group-item ">  {{event.event_name}}</li>
                 </ul>
                       </div>   
+
+                      <p class="text-center"><strong>Advertisement</strong></p>
                   <img src="images/Training.png" class="img-fluid">
 
                   </div>

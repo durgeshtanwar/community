@@ -295,9 +295,7 @@ $this->validate($request,[
             $userdetail->save();
         
     }
-    public function get_count(){
-       
-    }
+   
     public function updateUserType(Request $request, $id){
        $event = User::findOrFail($id);
         $this->validate($request,[
@@ -309,4 +307,58 @@ $this->validate($request,[
         ->update(['usertype' => $r]);
         return ['message'=> 'user updated successfully'];  
     }
+
+    public function checkUserStatus() {
+        $user = Auth::user();
+        $id = $user->id;
+        $result = DB::table('users_details')
+        ->where([
+            ['inserted_by','=',$id],
+            ['user_id','=',$id]
+        ])->count();
+           
+        return $result;
+        // if($result>0){
+        //     return true;
+        // }
+        // else {
+        //     return false;
+        // }
+
+        
+    }
+public function mydetails(){
+    $user = Auth::user();
+    $r = DB::table('users_details')
+        ->where('user_id','=',$user->id)
+        ->get();
+        return  $r;
+}
+
+public function updateMydetails(Request $request, $id){
+
+   $user = UserDetail::findorfail($id);
+    $this->validate($request,[
+        'name'=>'required|string|max:191',
+        'relation'=>'required|string|max:191',
+        'gender'=>'required|string|max:191',
+        'dob'=>'required|string|max:191',
+        'marriage_status'=>'required|string|max:191',
+        'blood_group'=>'required|sometimes|string',
+        'father_name'=>'required|string|max:191',
+        'mother_name'=>'required|string|max:191',
+        'address'=>'required|string|max:191',
+        'city'=>'required|string|max:191',
+        'state'=>'required|string|max:191',
+        'occupation'=>'required|string|max:191',
+        'password'=>'required|sometimes|string|min:8',
+        'photo'=>'required|sometimes|'
+     ]);
+
+     $user->update($request->all());
+    
+
+}
+
+
 }
