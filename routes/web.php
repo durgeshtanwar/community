@@ -27,5 +27,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get("markasread",function(){
+    auth()->user()->unreadNotifications->markAsRead();
+    return redirect()->back();
+})->name('markRead');
+
 //Route::get('{path}','HomeController@index')->where('path','([A-z\d-\/_.]+)?');
 Route::get('{path}',"HomeController@index")->where( 'path', '([A-z\d\-\/_.]+)' );
