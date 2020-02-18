@@ -107,8 +107,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="dropdown-divider"></div>
-        <a href="{{route('markRead')}}" class="dropdown-item text-success text-center"><strong>Mark As Read</strong></a>
+          @if(auth()->user()->unreadnotifications->count())
+          <a href="{{route('markRead')}}" class="dropdown-item text-success text-center"><strong>Mark As Read</strong></a>
+          @else
+          <a href="#" class="dropdown-item text-success text-center"><strong>No New Notification</strong></a>
+          @endif
           @foreach(auth()->user()->unReadNotifications as $notification)
+         
           <div class="dropdown-divider"></div>
           <a href="/events" class="dropdown-item btn btn-primary bg-light">
             <i class="fas fa-envelope mr-2"></i> {{$notification->data['data'] }}
