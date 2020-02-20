@@ -2094,6 +2094,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     carousel: carousel
@@ -48511,6 +48512,11 @@ var staticRenderFns = [
           )
         ]
       ),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "img-fluid mt-2",
+        attrs: { src: "/images/ad.png" }
+      }),
       _vm._v(" "),
       _c("p", { staticClass: "mt-2" }, [
         _vm._v(

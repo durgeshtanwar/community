@@ -11,7 +11,8 @@ use Auth;
 use App\Job;
 use App\Application;
 use App\Fake_jobs;
-
+use App\Notifications\jobsnotification;
+use Notification;
 
 class JobsController extends Controller
 {
@@ -83,6 +84,9 @@ class JobsController extends Controller
         ]);
         //
         $userid = Auth::User()->id;
+        $users = User::all();
+        $details = $request['title'];
+        Notification::send($users, new jobsnotification($details));
         return Job::create([
             'title'=>$request['title'],
             'description'=>$request['description'],
