@@ -64,7 +64,7 @@
         <select v-model="form.usertype" class="form-control" name="usertype" aria-placeholder="Gotra">
           <option value="family">Family</option>
           <option value="member">Member</option>
-          <option value="admin">Admin</option>
+         
           </select>
           <has-error :form="form" field="usertype"></has-error>
 
