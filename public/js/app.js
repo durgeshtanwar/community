@@ -2095,6 +2095,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     carousel: carousel
@@ -48333,7 +48339,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("img", {
                   staticClass: "img-fluid",
-                  attrs: { src: "images/Training.png" }
+                  attrs: { src: "images/ad.jpeg" }
                 })
               ])
             ])
@@ -48440,33 +48446,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "carousel-item active" }, [
               _c("img", {
                 staticClass: "d-block w-100",
-                attrs: {
-                  src:
-                    "https://pmdvod.nationalgeographic.com/NG_Video/926/90/lgpost_1518055506936.jpg",
-                  alt: "First slide"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "carousel-item" }, [
-              _c("img", {
-                staticClass: "d-block w-100",
-                attrs: {
-                  src:
-                    "https://pmdvod.nationalgeographic.com/NG_Video/926/90/lgpost_1518055506936.jpg",
-                  alt: "Second slide"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "carousel-item" }, [
-              _c("img", {
-                staticClass: "d-block w-100",
-                attrs: {
-                  src:
-                    "https://pmdvod.nationalgeographic.com/NG_Video/926/90/lgpost_1518055506936.jpg",
-                  alt: "Third slide"
-                }
+                attrs: { src: "/images/suryabhagwan.jpeg", alt: "First slide" }
               })
             ])
           ]),
@@ -48520,7 +48500,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("p", { staticClass: "mt-2" }, [
         _vm._v(
-          "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex dui, lobortis quis interdum non, condimentum vitae magna. Donec id quam eu mi molestie lobortis. Nunc mattis turpis ac ultricies luctus. In fringilla pretium nisl ac luctus. Maecenas condimentum gravida risus, at vestibulum ante iaculis in. Suspendisse et mattis nibh. In vestibulum auctor nunc, at euismod velit vestibulum a. Maecenas at felis id ex pretium accumsan pharetra non nisi. Phasellus faucibus malesuada urna vel vulputate. Aliquam dapibus neque ex, eget maximus ante viverra et. Vivamus id leo sagittis, porttitor lorem eget, hendrerit felis. Morbi ut efficitur leo. Nulla pellentesque, orci eu pulvinar gravida, diam urna dignissim ex, efficitur scelerisque nunc velit sed ligula. Sed interdum, turpis eget posuere bibendum, nunc libero volutpat tellus, quis elementum turpis sapien ut purus.\n\nPraesent vestibulum erat a tristique luctus. Suspendisse potenti. Etiam tempus ultrices auctor. Proin venenatis, diam sit amet fermentum lacinia, lacus justo dignissim nisl, id ultrices velit libero sed leo. Donec fermentum sapien quis sapien porttitor condimentum. Integer aliquam nibh pharetra nunc fermentum, eget interdum orci faucibus. Donec malesuada tincidunt porttitor. Integer efficitur metus quis elementum consectetur. Aenean ultrices felis id sem fermentum, quis aliquam ex placerat. Ut sagittis turpis ac nisl lobortis tincidunt. Vestibulum eget condimentum sapien, a pulvinar leo. In varius lacus vitae magna venenatis vulputate. Integer at gravida sem. Sed tincidunt risus eros, malesuada hendrerit metus aliquam eget.\n                  "
+          "\n                \n                    * ॐ सूर्याय नम: ।\n                    * ॐ भास्कराय नम:।\n                    * ऊं रवये नम: ।\n                    * ऊं मित्राय नम: ।\n                    * ॐ भानवे नम:\n                    * ॐ खगय नम: ।\n                    * ॐ पुष्णे नम: ।\n                    * ॐ मारिचाये नम: ।\n                    * ॐ आदित्याय नम: ।\n                    * ॐ सावित्रे नम: ।\n                    * ॐ आर्काय नम: ।\n                    * ॐ हिरण्यगर्भाय नम: ।\n\n              "
         )
       ])
     ])

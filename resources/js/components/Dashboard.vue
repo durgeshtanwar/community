@@ -77,14 +77,9 @@
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                       <div class="carousel-inner">
                         <div class="carousel-item active">
-                          <img class="d-block w-100" src="https://pmdvod.nationalgeographic.com/NG_Video/926/90/lgpost_1518055506936.jpg" alt="First slide">
+                          <img class="d-block w-100" src="/images/suryabhagwan.jpeg" alt="First slide">
                         </div>
-                        <div class="carousel-item">
-                          <img class="d-block w-100" src="https://pmdvod.nationalgeographic.com/NG_Video/926/90/lgpost_1518055506936.jpg" alt="Second slide">
-                        </div>
-                        <div class="carousel-item">
-                          <img class="d-block w-100" src="https://pmdvod.nationalgeographic.com/NG_Video/926/90/lgpost_1518055506936.jpg" alt="Third slide">
-                        </div>
+                        
                       </div>
                       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -97,9 +92,20 @@
                     </div>
                       <img class="img-fluid mt-2" src="/images/ad.png">
                   <p class="mt-2">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex dui, lobortis quis interdum non, condimentum vitae magna. Donec id quam eu mi molestie lobortis. Nunc mattis turpis ac ultricies luctus. In fringilla pretium nisl ac luctus. Maecenas condimentum gravida risus, at vestibulum ante iaculis in. Suspendisse et mattis nibh. In vestibulum auctor nunc, at euismod velit vestibulum a. Maecenas at felis id ex pretium accumsan pharetra non nisi. Phasellus faucibus malesuada urna vel vulputate. Aliquam dapibus neque ex, eget maximus ante viverra et. Vivamus id leo sagittis, porttitor lorem eget, hendrerit felis. Morbi ut efficitur leo. Nulla pellentesque, orci eu pulvinar gravida, diam urna dignissim ex, efficitur scelerisque nunc velit sed ligula. Sed interdum, turpis eget posuere bibendum, nunc libero volutpat tellus, quis elementum turpis sapien ut purus.
+                    
+                        * ॐ सूर्याय नम: ।
+                        * ॐ भास्कराय नम:।
+                        * ऊं रवये नम: ।
+                        * ऊं मित्राय नम: ।
+                        * ॐ भानवे नम:
+                        * ॐ खगय नम: ।
+                        * ॐ पुष्णे नम: ।
+                        * ॐ मारिचाये नम: ।
+                        * ॐ आदित्याय नम: ।
+                        * ॐ सावित्रे नम: ।
+                        * ॐ आर्काय नम: ।
+                        * ॐ हिरण्यगर्भाय नम: ।
 
-Praesent vestibulum erat a tristique luctus. Suspendisse potenti. Etiam tempus ultrices auctor. Proin venenatis, diam sit amet fermentum lacinia, lacus justo dignissim nisl, id ultrices velit libero sed leo. Donec fermentum sapien quis sapien porttitor condimentum. Integer aliquam nibh pharetra nunc fermentum, eget interdum orci faucibus. Donec malesuada tincidunt porttitor. Integer efficitur metus quis elementum consectetur. Aenean ultrices felis id sem fermentum, quis aliquam ex placerat. Ut sagittis turpis ac nisl lobortis tincidunt. Vestibulum eget condimentum sapien, a pulvinar leo. In varius lacus vitae magna venenatis vulputate. Integer at gravida sem. Sed tincidunt risus eros, malesuada hendrerit metus aliquam eget.
                   </p>
                   
                   </div>
@@ -121,7 +127,7 @@ Praesent vestibulum erat a tristique luctus. Suspendisse potenti. Etiam tempus u
                       </div>   
 
                       <p class="text-center"><strong>Advertisement</strong></p>
-                  <img src="images/Training.png" class="img-fluid">
+                  <img src="images/ad.jpeg" class="img-fluid">
 
                   </div>
                   <!-- /.col -->
