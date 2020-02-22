@@ -54,8 +54,7 @@ import carousel from 'vue-owl-carousel';
 Vue.use(carousel);
 window.carousel = carousel;
 
-import vueCountryRegionSelect from 'vue-country-region-select';
-Vue.use(vueCountryRegionSelect);
+
 
 Vue.filter('getAge',function(dob){
     var currentYear = new Date();
