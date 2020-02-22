@@ -2101,6 +2101,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     carousel: carousel
@@ -48427,6 +48430,12 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header" }, [
       _c("h5", { staticClass: "card-title" }, [
         _vm._v(" Welcome to Shakdwipiya Samaj")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-tools" }, [
+        _vm._v(
+          "\n              Contact 9784902072 for more information\n            "
+        )
       ])
     ])
   },

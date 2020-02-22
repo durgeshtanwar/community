@@ -68,8 +68,11 @@
           <div class="card">
               <div class="card-header">
                 <h5 class="card-title"> Welcome to Shakdwipiya Samaj</h5>
-
+                 <div class="card-tools">
+                  Contact 9784902072 for more information
                 </div>
+                </div>
+               
               <!-- /.card-header -->
               <div class="card-body">
                 <div class="row">
