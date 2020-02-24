@@ -15,7 +15,7 @@ class AddLoginIdInUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('loginId')->after('id');
+            $table->string('username')->after('id');
         });
     }
 
@@ -28,7 +28,7 @@ class AddLoginIdInUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->dropColumn('loginId');
+            $table->dropColumn('username');
         });
     }
 }
