@@ -21,9 +21,9 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>{{family.length}}<sup style="font-size: 20px"></sup></h3>
+                <h3>{{familydata.username}}<sup style="font-size: 20px"></sup></h3>
 
-                <p>Family Members</p>
+                <p>Your ID</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -36,9 +36,10 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>{{count}}</h3>
+                 Total Users <h3>{{count}}</h3>
+               Family Members <h3>{{family.length}}</h3>
 
-                <p>Total Users</p>
+                <p></p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>

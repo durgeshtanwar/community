@@ -143,7 +143,7 @@
                         <label >Email</label>
                       
                          <input type="email" v-bind:disabled="updatedata===true" v-show="!selfdata" v-model="form.email" class="form-control" :class="{'is-invalid':form.errors.has('email')}" placeholder="Enter your email Address" name="email">
-                         <input type="email" v-show="selfdata" v-model="form.email" class="form-control" :class="{'is-invalid':form.errors.has('email')}" placeholder="Enter your email Address" name="email" disabled>                                
+                         <input type="email"  v-show="selfdata" v-model="form.email" class="form-control" :class="{'is-invalid':form.errors.has('email')}" placeholder="Enter your email Address" name="email" disabled>                                
                          <has-error :form="form" field="email"></has-error>
                      
                         
@@ -298,10 +298,13 @@
       },
      methods:{
        loadusers(){
-         axios.get('api/userDetails').then(({data})=>(this.users=data));
+         axios.get('api/userDetails').then(({data})=>(this.users=data,
+         this.form.email = data.email));
+       //  axios.get('api/userDetails').then(function(data){});
          axios.get('api/checkUserStatus').then(({data})=>(this.userstatus=data));
          axios.get('api/mydetails').then(({data})=>(this.mydetails=data));
-       },
+         
+          },
         checkuserstatus(){
           if(this.userstatus === 0){
             if(this.selfdata=== true){

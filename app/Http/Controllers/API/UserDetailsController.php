@@ -47,8 +47,8 @@ public function __construct()
            'gender'=>'required|string|max:191',
            'dob'=>'required|string|max:191',
            'marriage_status'=>'required|string|max:191',
-           'email'=>'string|max:255|nullable|unique:users',
-           'mobile'=>'required|string|max:20|unique:users',
+           'email'=>'string|max:255|nullable|',
+           'mobile'=>'sometimes|string|max:20|nullable',
            'blood_group'=>'nullable|string',
            'father_name'=>'required|string|max:191',
            'mother_name'=>'required|string|max:191',
@@ -77,6 +77,7 @@ public function __construct()
         $user->image = "profile.png";
     }
     
+    $user->username='SHA'.rand(pow(10, 6-1), pow(10, 6)-1);
     $user->email = $request->email;
     $user->name = $request->name;
     $user->gender = $request->gender;

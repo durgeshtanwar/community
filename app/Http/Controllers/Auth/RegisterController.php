@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'gender'=>['required','string'],
             'email' => ['string', 'email', 'max:255', 'nullable'],
-            'mobile'=>['required','string','max:255','unique:users'],
+            'mobile'=>['required','string','max:255'],
             'family_cast'=>['required','string','max:255'],
             'family_head'=>['required','string','max:255'],
             'gotra' => ['required','string','max:255'],
@@ -79,6 +79,7 @@ class RegisterController extends Controller
         $kuldevi = explode('|',$data['gotra'],2);
         
         return User::create([
+            'username'=>'SHA'.rand(pow(10, 6-1), pow(10, 6)-1),
             'name' => $data['name'],
             'email' => $data['email'],
             'gender'=>$data['gender'],

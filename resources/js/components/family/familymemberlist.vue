@@ -25,7 +25,7 @@
                   </thead>
                   <tbody>
                     <tr v-for="user in users" :key="user.id">
-                      <td>SHA-{{user.id}}</td>
+                      <td>{{user.username}}</td>
                       <td>{{user.name}}</td>
                       <td>{{user.email}}</td>
                       <td><span class="tag tag-success">{{user.gotra}}</span></td>

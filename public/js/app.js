@@ -2104,6 +2104,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     carousel: carousel
@@ -4952,8 +4953,9 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('api/userDetails').then(function (_ref) {
         var data = _ref.data;
-        return _this.users = data;
-      });
+        return _this.users = data, _this.form.email = data.email;
+      }); //  axios.get('api/userDetails').then(function(data){});
+
       axios.get('api/checkUserStatus').then(function (_ref2) {
         var data = _ref2.data;
         return _this.userstatus = data;
@@ -48228,11 +48230,11 @@ var render = function() {
         _c("div", { staticClass: "small-box bg-success" }, [
           _c("div", { staticClass: "inner" }, [
             _c("h3", [
-              _vm._v(_vm._s(_vm.family.length)),
+              _vm._v(_vm._s(_vm.familydata.username)),
               _c("sup", { staticStyle: { "font-size": "20px" } })
             ]),
             _vm._v(" "),
-            _c("p", [_vm._v("Family Members")])
+            _c("p", [_vm._v("Your ID")])
           ]),
           _vm._v(" "),
           _vm._m(2),
@@ -48244,9 +48246,12 @@ var render = function() {
       _c("div", { staticClass: "col-lg-3 col-6" }, [
         _c("div", { staticClass: "small-box bg-warning" }, [
           _c("div", { staticClass: "inner" }, [
+            _vm._v("\n             Total Users "),
             _c("h3", [_vm._v(_vm._s(_vm.count))]),
+            _vm._v("\n           Family Members "),
+            _c("h3", [_vm._v(_vm._s(_vm.family.length))]),
             _vm._v(" "),
-            _c("p", [_vm._v("Total Users")])
+            _c("p")
           ]),
           _vm._v(" "),
           _vm._m(4),
@@ -54376,7 +54381,7 @@ var render = function() {
               "tbody",
               _vm._l(_vm.users, function(user) {
                 return _c("tr", { key: user.id }, [
-                  _c("td", [_vm._v("SHA-" + _vm._s(user.id))]),
+                  _c("td", [_vm._v(_vm._s(user.username))]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(user.name))]),
                   _vm._v(" "),
