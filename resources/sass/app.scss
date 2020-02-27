@@ -9,7 +9,7 @@ $fa-font-path:"../webfonts";
 @import '~bootstrap/scss/bootstrap';
 
 //import admin lte
-@import '~admin-lte/dist/css/adminlte.css'; 
+@import '~admin-lte/dist/css/adminlte.min.css'; 
 @import "vue-select/src/scss/vue-select.scss";
 
 //@import '~admin-lte/plugins/fontawesome-free/css/all.css'
@@ -58,4 +58,10 @@ $fa-font-path:"../webfonts";
 .login-box{
     width: 360px;
     margin: 0 auto;
+}
+
+@media only screen and (max-width:480px){
+.inner h3{
+    font-size:16px;
+}
 }

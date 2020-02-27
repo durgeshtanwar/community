@@ -111,7 +111,8 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        $this->authorize('isAdmin');
+        //$this->authorize('isAdmin');
+        
         $this->authorize('isFamily');
         $user->delete();
         return ['message'=>"user deleted"];

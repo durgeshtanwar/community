@@ -64,6 +64,7 @@ Route::get('jobApplicantsCount','API\SettingsController@jobApplicantsCount');
 Route::get('checkUserStatus','API\UserDetailsController@checkUserStatus');
 Route::get('mydetails','API\UserDetailsController@mydetails');
 Route::put('updateMydetails/{id}','API\UserDetailsController@updateMydetails');
+Route::get('getcities/{state}','API\UserDetailsController@getcities');
 
 
 

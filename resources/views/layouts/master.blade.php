@@ -13,7 +13,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <link rel="stylesheet" href="/css/app.css">
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini control-sidebar-push">
 <div class="wrapper" id="app">
 
   <!-- Navbar -->
@@ -135,7 +135,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary  elevation-4">
     <!-- Brand Logo -->
     <router-link to="/dashboard" class="brand-link">
       <img src="./images/logo.png" alt="" class="brand-image img-circle elevation-3"

@@ -360,6 +360,10 @@ public function updateMydetails(Request $request, $id){
     
 
 }
+public function getcities($state){
+ $result = DB::table('cities')->where('city_state',$state)->pluck('city_name');
+ return $result;
+}
 
 
 }

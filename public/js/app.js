@@ -4914,6 +4914,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4921,6 +4957,7 @@ __webpack_require__.r(__webpack_exports__);
       updatedata: false,
       users: {},
       mydetails: {},
+      cities: {},
       userstatus: '',
       form: new Form({
         id: '',
@@ -4976,8 +5013,16 @@ __webpack_require__.r(__webpack_exports__);
         return "updateSelfData()";
       }
     },
-    createUserDetails: function createUserDetails() {
+    getcity: function getcity() {
       var _this2 = this;
+
+      axios.get('api/getcities/' + this.form.state).then(function (_ref4) {
+        var data = _ref4.data;
+        return _this2.cities = data;
+      }); //console.log(this.cities.target.value);
+    },
+    createUserDetails: function createUserDetails() {
+      var _this3 = this;
 
       this.$Progress.start();
       this.form.post('api/userDetails').then(function () {
@@ -4986,7 +5031,7 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Member Info Saved'
         });
 
-        _this2.form.reset();
+        _this3.form.reset();
       })["catch"](function () {
         Toast.fire({
           type: 'error',
@@ -4996,7 +5041,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$Progress.finish();
     },
     createMyUserDetail: function createMyUserDetail() {
-      var _this3 = this;
+      var _this4 = this;
 
       this.$Progress.start();
       this.form.post('api/myuserDetails').then(function () {
@@ -5005,7 +5050,7 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Member Info Saved'
         });
 
-        _this3.form.reset();
+        _this4.form.reset();
       })["catch"](function () {
         Toast.fire({
           type: 'error',
@@ -5042,7 +5087,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     updateProfilePic: function updateProfilePic(e) {
-      var _this4 = this;
+      var _this5 = this;
 
       var file = e.target.files[0];
       console.log(file);
@@ -5051,7 +5096,7 @@ __webpack_require__.r(__webpack_exports__);
       if (file['size'] < 2111775) {
         reader.onloadend = function (file) {
           // console.log('RESULT', reader.result)
-          _this4.form.photo = reader.result;
+          _this5.form.photo = reader.result;
         };
 
         reader.readAsDataURL(file);
@@ -5060,18 +5105,18 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     updateMyDetails: function updateMyDetails() {
-      var _this5 = this;
+      var _this6 = this;
 
       this.$Progress.start();
       this.form.put('api/updateMydetails/' + this.form.id).then(function () {
         // success
         Swal.fire('Updated!', 'Information has been updated.', 'success');
 
-        _this5.$Progress.finish();
+        _this6.$Progress.finish();
 
         Fire.$emit('AfterCreate');
       })["catch"](function () {
-        _this5.$Progress.fail();
+        _this6.$Progress.fail();
       });
       this.$Progress.finish();
     }
@@ -48220,9 +48265,7 @@ var render = function() {
             _c("h6", [_vm._v(_vm._s(_vm.familydata.name))])
           ]),
           _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._m(1)
+          _vm._m(0)
         ])
       ]),
       _vm._v(" "),
@@ -48237,9 +48280,7 @@ var render = function() {
             _c("p", [_vm._v("Your ID")])
           ]),
           _vm._v(" "),
-          _vm._m(2),
-          _vm._v(" "),
-          _vm._m(3)
+          _vm._m(1)
         ])
       ]),
       _vm._v(" "),
@@ -48247,16 +48288,14 @@ var render = function() {
         _c("div", { staticClass: "small-box bg-warning" }, [
           _c("div", { staticClass: "inner" }, [
             _vm._v("\n             Total Users "),
-            _c("h3", [_vm._v(_vm._s(_vm.count))]),
+            _c("strong", [_vm._v(_vm._s(_vm.count) + " ")]),
             _vm._v("\n           Family Members "),
-            _c("h3", [_vm._v(_vm._s(_vm.family.length))]),
+            _c("strong", [_vm._v(_vm._s(_vm.family.length))]),
             _vm._v(" "),
             _c("p")
           ]),
           _vm._v(" "),
-          _vm._m(4),
-          _vm._v(" "),
-          _vm._m(5)
+          _vm._m(2)
         ])
       ]),
       _vm._v(" "),
@@ -48268,9 +48307,7 @@ var render = function() {
             _c("p", [_vm._v("Unique Invitation Code")])
           ]),
           _vm._v(" "),
-          _vm._m(6),
-          _vm._v(" "),
-          _vm._m(7)
+          _vm._m(3)
         ])
       ])
     ]),
@@ -48278,11 +48315,11 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "card" }, [
-          _vm._m(8),
+          _vm._m(4),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "row" }, [
-              _vm._m(9),
+              _vm._m(5),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-4" }, [
                 _c(
@@ -48331,7 +48368,7 @@ var render = function() {
                   2
                 ),
                 _vm._v(" "),
-                _vm._m(10),
+                _vm._m(6),
                 _vm._v(" "),
                 _c("img", {
                   staticClass: "img-fluid",
@@ -48360,26 +48397,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-      _vm._v("More info "),
-      _c("i", { staticClass: "fas fa-arrow-circle-right" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "icon" }, [
       _c("i", { staticClass: "ion ion-stats-bars" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-      _vm._v("More info "),
-      _c("i", { staticClass: "fas fa-arrow-circle-right" })
     ])
   },
   function() {
@@ -48394,26 +48413,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-      _vm._v("More info "),
-      _c("i", { staticClass: "fas fa-arrow-circle-right" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "icon" }, [
       _c("i", { staticClass: "ion ion-pie-graph" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-      _vm._v("More info "),
-      _c("i", { staticClass: "fas fa-arrow-circle-right" })
     ])
   },
   function() {
@@ -53647,6 +53648,10 @@ var render = function() {
                             }
                           },
                           [
+                            _c("option", { attrs: { value: "NA" } }, [
+                              _vm._v("I do not know")
+                            ]),
+                            _vm._v(" "),
                             _c("option", { attrs: { value: "A+ve" } }, [
                               _vm._v("A+ve")
                             ]),
@@ -54012,9 +54017,210 @@ var render = function() {
                       "div",
                       { staticClass: "form-group" },
                       [
-                        _c("label", [_vm._v("City")]),
+                        _c("label", [_vm._v("State")]),
                         _vm._v(" "),
-                        _c("input", {
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.state,
+                                expression: "form.state"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("state")
+                            },
+                            attrs: { name: "state" },
+                            on: {
+                              change: [
+                                function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.form,
+                                    "state",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                },
+                                function($event) {
+                                  return _vm.getcity()
+                                }
+                              ]
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "Rajasthan" } }, [
+                              _vm._v("Rajasthan")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "Andhra Pradesh" } },
+                              [_vm._v("Andhra Pradesh")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "Arunachal Pradesh" } },
+                              [_vm._v("Arunachal Pradesh")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Assam" } }, [
+                              _vm._v("Assam")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Bihar" } }, [
+                              _vm._v("Bihar")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Chattisgarh" } }, [
+                              _vm._v("Chattisgarh")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "Dadra & Nagar Haveli" } },
+                              [_vm._v("Dadra & Nagar Haveli")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Daman & Diu" } }, [
+                              _vm._v("Daman & Diu")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Delhi" } }, [
+                              _vm._v("Delhi")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Goa" } }, [
+                              _vm._v("Goa")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Gujarat" } }, [
+                              _vm._v("Gujarat")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Haryana" } }, [
+                              _vm._v("Haryana")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "Himachal Pradesh" } },
+                              [_vm._v(" Himachal Pradesh")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "Jammu and Kashmir" } },
+                              [_vm._v("Jammu and Kashmir")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Jharkhand" } }, [
+                              _vm._v("Jharkhand")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Karnataka" } }, [
+                              _vm._v("Karnataka")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Kerela" } }, [
+                              _vm._v("Kerela")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Lakshadweep" } }, [
+                              _vm._v("Lakshadweep")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "Madhya Pradesh" } },
+                              [_vm._v("Madhya Pradesh")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Manipur" } }, [
+                              _vm._v("Manipur")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Meghalaya" } }, [
+                              _vm._v("Meghalaya")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Mizoram" } }, [
+                              _vm._v("Mizoram")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Nagaland" } }, [
+                              _vm._v("Nagaland")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Orissa" } }, [
+                              _vm._v("Orissa")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Pondicherry" } }, [
+                              _vm._v("Pondicherry")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Punjab" } }, [
+                              _vm._v("Punjab")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Sikkim" } }, [
+                              _vm._v("Sikkim")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Tripura" } }, [
+                              _vm._v("Tripura")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Tamil Nadu" } }, [
+                              _vm._v("Tamil Nadu")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Uttrakhand" } }, [
+                              _vm._v("Uttrakhand")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "Uttar Pradesh" } },
+                              [_vm._v("Uttar Pradesh")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "West Bengal" } }, [
+                              _vm._v("West Bengal")
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.form, field: "state" }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-6" }, [
+                    _c("label", [_vm._v("City")]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "select",
+                        {
                           directives: [
                             {
                               name: "model",
@@ -54024,71 +54230,33 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
-                          class: { "is-invalid": _vm.form.errors.has("city") },
-                          attrs: {
-                            type: "text",
-                            placeholder: "Enter Name ...",
-                            name: "city"
-                          },
-                          domProps: { value: _vm.form.city },
                           on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.form, "city", $event.target.value)
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "city",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
                             }
                           }
-                        }),
-                        _vm._v(" "),
-                        _c("has-error", {
-                          attrs: { form: _vm.form, field: "city" }
-                        })
-                      ],
-                      1
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-6" }, [
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("label", [_vm._v("State")]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.state,
-                              expression: "form.state"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          class: { "is-invalid": _vm.form.errors.has("state") },
-                          attrs: {
-                            type: "text",
-                            placeholder: "Enter State Name ...",
-                            name: "state"
-                          },
-                          domProps: { value: _vm.form.state },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.form, "state", $event.target.value)
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("has-error", {
-                          attrs: { form: _vm.form, field: "state" }
-                        })
-                      ],
-                      1
-                    )
+                        },
+                        [
+                          _c("option", { attrs: { value: "0" } }, [
+                            _vm._v("Select City")
+                          ])
+                        ]
+                      )
+                    ])
                   ])
                 ]),
                 _vm._v(" "),

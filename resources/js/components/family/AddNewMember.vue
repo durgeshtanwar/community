@@ -1,7 +1,6 @@
 <template>
     <div class="container ">
-     
-        <div class="row ">
+         <div class="row ">
            <div class="col-12">
                <div class="card card-warning">
               <div class="card-header">
@@ -11,7 +10,6 @@
                  <p> Gotra : {{users.gotra}} 
                    <br> Family Head : {{users.family_head}}
                  </p>
-
                 </div>
               </div>
               <!-- /.card-header -->
@@ -124,6 +122,7 @@
                       <div class="form-group">
                         <label>Blood Group</label>
                      <select class="form-control" name="blood_group" v-model="form.blood_group" :class="{'is-invalid':form.errors.has('blood_group')}">
+                           <option value="NA">I do not know</option>
                            <option value="A+ve">A+ve</option>
                            <option value="A-ve">A-ve</option>
                            <option value="B+ve">B+ve</option>
@@ -183,19 +182,56 @@
                   <has-error :form="form" field="address"></has-error>
                   </div>
                   <div class="row">
-                      <div class="col-sm-6">
-                          <div class="form-group">
-                        <label>City</label>
-                        <input type="text" v-model="form.city" class="form-control" placeholder="Enter Name ..." name="city" :class="{'is-invalid':form.errors.has('city')}" >
-                        <has-error :form="form" field="city"></has-error>
-                      </div>
-                      </div>
+                      
                       <div class="col-sm-6">
                           <div class="form-group">
                         <label>State</label>
-                        <input type="text" v-model="form.state" class="form-control" :class="{'is-invalid':form.errors.has('state')}" placeholder="Enter State Name ..." name="state" >
+                        <select @change="getcity()" v-model="form.state" class="form-control" name="state" :class="{'is-invalid':form.errors.has('state')}">
+                          <option value="Rajasthan">Rajasthan</option>
+                          <option value="Andhra Pradesh">Andhra Pradesh</option>
+                          <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                          <option value="Assam">Assam</option>
+                          <option value="Bihar">Bihar</option>
+                          <option value="Chattisgarh">Chattisgarh</option>
+                          <option value="Dadra & Nagar Haveli">Dadra & Nagar Haveli</option>
+                          <option value="Daman & Diu">Daman & Diu</option>
+                          <option value="Delhi">Delhi</option>
+                          <option value="Goa">Goa</option>
+                          <option value="Gujarat">Gujarat</option>
+                          <option value="Haryana">Haryana</option>
+                          <option value="Himachal Pradesh"> Himachal Pradesh</option>
+                          <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                          <option value="Jharkhand">Jharkhand</option>
+                          <option value="Karnataka">Karnataka</option>
+                          <option value="Kerela">Kerela</option>
+                          <option value="Lakshadweep">Lakshadweep</option>
+                          <option value="Madhya Pradesh">Madhya Pradesh</option>
+                          <option value="Manipur">Manipur</option>
+                          <option value="Meghalaya">Meghalaya</option>
+                          <option value="Mizoram">Mizoram</option>
+                          <option value="Nagaland">Nagaland</option>
+                          <option value="Orissa">Orissa</option>
+                          <option value="Pondicherry">Pondicherry</option>
+                          <option value="Punjab">Punjab</option>
+                          <option value="Sikkim">Sikkim</option>
+                          <option value="Tripura">Tripura</option>
+                          <option value="Tamil Nadu">Tamil Nadu</option>
+                          <option value="Uttrakhand">Uttrakhand</option>
+                          <option value="Uttar Pradesh">Uttar Pradesh</option>
+                          <option value="West Bengal">West Bengal</option>
+                          
+                        </select>
+                        <!-- <input type="text" v-model="form.state" class="form-control" :class="{'is-invalid':form.errors.has('state')}" placeholder="Enter State Name ..." name="state" > -->
                         <has-error :form="form" field="state"></has-error>
                       </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <label>City</label>
+                          <div class="form-group">
+                            <select v-model='form.city' class="form-control" >
+                                      <option value='0' >Select City</option>
+                            </select>
+                          </div>
                       </div>
                   </div>
                   <hr>
@@ -268,6 +304,7 @@
           updatedata : false,
           users:{},
           mydetails:{},
+          cities:{},
           userstatus:'',
               form: new Form({
               id:'',
@@ -316,7 +353,11 @@
             return "updateSelfData()";
           }
         },
-
+          getcity(){
+            
+            axios.get('api/getcities/'+this.form.state).then(({data})=>(this.cities = data));
+           //console.log(this.cities.target.value);
+          },
           createUserDetails(){
           this.$Progress.start();
           this.form.post('api/userDetails')
