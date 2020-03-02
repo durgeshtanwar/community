@@ -31,6 +31,7 @@
                       <td><span class="tag tag-success">{{user.gotra}}</span></td>
                       <td><span class="tag tag-success">{{user.usertype}}</span></td>
                       <td> 
+                         <router-link :to="{ name: 'editmember', params: { id: user.id } }">Navigate to Page2</router-link>
                           <a href="#"  class="mr-2" @click="editModel(user)"> <i class="fa fa-edit"></i></a>
                           <a href="#" v-if="user.id!=authuser" @click="deleteuser(user.id)" class= "ml-2"><i class="fa fa-trash red"></i></a>
                       </td>

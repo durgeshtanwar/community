@@ -1,27 +1,25 @@
 <template>
     <div class="container ">
-     
-        <div class="row ">
+         <div class="row ">
            <div class="col-12">
                <div class="card card-warning">
               <div class="card-header">
-                <h3 class="card-title">Add New Family Member</h3>
+               <h3 class="card-title">Update User Information</h3>
                  <div class="card-tools">
                  <p> Gotra : {{users.gotra}} 
                    <br> Family Head : {{users.family_head}}
                  </p>
-
                 </div>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form role="form" @submit.prevent="createUserDetails">
+                <form role="form" @submit.prevent="updateUserDetails()" enctype="multipart/form-data">
                   <div class="row">
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
                         <label>Name</label>
-                        <input type="text" v-model="form.name" class="form-control" :class="{ 'is-invalid': form.errors.has('name')}" 
+                        <input type="text" v-bind:disabled="updatedata===true" v-model="form.name" class="form-control" :class="{ 'is-invalid': form.errors.has('name')}" 
                           placeholder="Enter Name ..." name="name" >
                           <has-error :form="form" field="name"></has-error>
                       </div>
@@ -29,7 +27,7 @@
                     <div class="col-sm-6">
                        <div class="form-group" >
                         <label>Relation With Family Head</label>
-                        <select v-model="form.relation" class="form-control" name="relation" :class="{ 'is-invalid': form.errors.has('relation')}">
+                        <select v-model="form.relation" @change="relation()" class="form-control" name="relation" :class="{ 'is-invalid': form.errors.has('relation')}">
                           <option value="self">Self</option>
                           <option value="wife">Wife</option>
                           <option value="son">Son</option>
@@ -96,8 +94,8 @@
                           </div>
                            <div class="form-group">
                            <div class="form-check">
-                          <input class="form-check-input" v-model="form.matrimonial" type="checkbox" name="matrimonial" value="true" :class="{'is-invalid': form.errors.has('matrimonial')}">
-                          <label class="form-check-label">Do you want to be featured in our Matrimonial Section?</label>
+                          <input class="form-check-input" v-show="form.marriage_status ==='single'" v-model="form.matrimonial" type="checkbox" name="matrimonial" value="true" :class="{'is-invalid': form.errors.has('matrimonial')}">
+                          <label class="form-check-label" v-show="form.marriage_status ==='single'">Do you want to be featured in our Matrimonial Section?</label>
                           <has-error :form="form" field="matrimonial"></has-error>
                         </div>
                       </div>
@@ -105,20 +103,41 @@
                      <div class="col-sm-6">
                       <!-- textarea -->
                       <div class="form-group">
-                        <label>Email ID</label>
-                        <div class="form-check">
-                         <input type="email" v-model="form.email" class="form-control" :class="{'is-invalid':form.errors.has('email')}" placeholder="Enter your email Address" name="email">
-                       <has-error :form="form" field="email"></has-error>
-                        </div>
+                        <label>Blood Group</label>
+                     <select class="form-control" name="blood_group" v-model="form.blood_group" :class="{'is-invalid':form.errors.has('blood_group')}">
+                           <option value="NA">I do not know</option>
+                           <option value="A+ve">A+ve</option>
+                           <option value="A-ve">A-ve</option>
+                           <option value="B+ve">B+ve</option>
+                           <option value="B-ve">B-ve</option>
+                           <option value="O+ve">O+ve</option>
+                           <option value="O-ve">O-ve</option>
+                           <option value="AB+ve">AB+ve</option>
+                           <option value="AB-ve">AB-ve</option>
+                           </select> 
+                         <has-error :form="form" field="blood_group"></has-error>
                         
                       </div>
+                         </div>
+                     <div class="col-sm-6">
+                      <!-- textarea -->
                       <div class="form-group">
+                        <label >Email</label>
+                      
+                         <input type="email" v-bind:disabled="updatedata===true" v-show="!selfdata" v-model="form.email" class="form-control" :class="{'is-invalid':form.errors.has('email')}" placeholder="Enter your email Address" name="email">
+                         <input type="email"  v-show="selfdata" v-model="form.email" class="form-control" :class="{'is-invalid':form.errors.has('email')}" placeholder="Enter your email Address" name="email" disabled>                                
+                         <has-error :form="form" field="email"></has-error>
+                     
+                        
+                      </div>
+                      </div>
+                      <div class="col-sm-6">
+                       <div class="form-group">
                         <label>Mobile Number</label>
-                        <div class="form-check">
-                         <input type="text" v-model="form.mobile" class="form-control" :class="{'is-invalid':form.errors.has('mobile')}" placeholder="Enter your Mobile Number" name="mobile">
+                          <input type="text" v-bind:disabled="updatedata===true" v-show="!selfdata" v-model="form.mobile" class="form-control" :class="{'is-invalid':form.errors.has('mobile')}" placeholder="Enter your Mobile Number" name="mobile">
+                          <input type="text"  v-show="selfdata" :disabled="updatedata===1" v-model="form.mobile" class="form-control" :class="{'is-invalid':form.errors.has('mobile')}" placeholder="Enter your Mobile Number" name="mobile">
                           <has-error :form="form" field="mobile"></has-error>
-                        </div>
-                       
+                                  
                       </div>
                     </div>
                 </div>
@@ -146,19 +165,57 @@
                   <has-error :form="form" field="address"></has-error>
                   </div>
                   <div class="row">
-                      <div class="col-sm-6">
-                          <div class="form-group">
-                        <label>City</label>
-                        <input type="text" v-model="form.city" class="form-control" placeholder="Enter Name ..." name="city" :class="{'is-invalid':form.errors.has('city')}" >
-                        <has-error :form="form" field="city"></has-error>
-                      </div>
-                      </div>
+                      
                       <div class="col-sm-6">
                           <div class="form-group">
                         <label>State</label>
-                        <input type="text" v-model="form.state" class="form-control" :class="{'is-invalid':form.errors.has('state')}" placeholder="Enter State Name ..." name="state" >
+                        <select @change="getcity()" v-model="form.state" class="form-control" name="state" :class="{'is-invalid':form.errors.has('state')}">
+                          <option value="Rajasthan">Rajasthan</option>
+                          <option value="Andhra Pradesh">Andhra Pradesh</option>
+                          <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                          <option value="Assam">Assam</option>
+                          <option value="Bihar">Bihar</option>
+                          <option value="Chhattisgarh">Chhattisgarh</option>
+                          <option value="Dadra & Nagar Haveli">Dadra & Nagar Haveli</option>
+                          <option value="Daman & Diu">Daman & Diu</option>
+                          <option value="Delhi">Delhi</option>
+                          <option value="Goa">Goa</option>
+                          <option value="Gujarat">Gujarat</option>
+                          <option value="Haryana">Haryana</option>
+                          <option value="Himachal Pradesh"> Himachal Pradesh</option>
+                          <option value="Jammu & Kashmir">Jammu & Kashmir</option>
+                          <option value="Jharkhand">Jharkhand</option>
+                          <option value="Karnataka">Karnataka</option>
+                          <option value="Kerela">Kerela</option>
+                          <option value="Lakshadweep">Lakshadweep</option>
+                          <option value="Madhya Pradesh">Madhya Pradesh</option>
+                          <option value="Manipur">Manipur</option>
+                          <option value="Meghalaya">Meghalaya</option>
+                          <option value="Mizoram">Mizoram</option>
+                          <option value="Nagaland">Nagaland</option>
+                          <option value="Orissa">Orissa</option>
+                          <option value="Pondicherry">Pondicherry</option>
+                          <option value="Punjab">Punjab</option>
+                          <option value="Sikkim">Sikkim</option>
+                          <option value="Tripura">Tripura</option>
+                          <option value="Tamil Nadu">Tamil Nadu</option>
+                          <option value="Uttrakhand">Uttrakhand</option>
+                          <option value="Uttar Pradesh">Uttar Pradesh</option>
+                          <option value="West Bengal">West Bengal</option>
+                          
+                        </select>
+                        <!-- <input type="text" v-model="form.state" class="form-control" :class="{'is-invalid':form.errors.has('state')}" placeholder="Enter State Name ..." name="state" > -->
                         <has-error :form="form" field="state"></has-error>
                       </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <label>City</label>
+                          <div class="form-group">
+                            <select v-model='form.city' class="form-control" >
+                                     
+                                      <option v-for="city in cities">{{city}}</option>
+                            </select>
+                          </div>
                       </div>
                   </div>
                   <hr>
@@ -173,6 +230,7 @@
                           <option value="self employed">Self Employed</option>
                           <option value="student">Student</option>
                           <option value="unemployed">Unemployed</option>
+                          <option value="house wife">House wife</option>
                         </select>
                         <has-error :form="form" field="occupation" ></has-error>
                           </div>
@@ -188,166 +246,68 @@
                       </div>
                   </div>
                   <hr>
-                 <div><h3>Educational Details</h3></div>
-                 <div class="font-weight-bold text-primary">Post Graduation</div>
-                
-                 <div class="row">
+                    <h3  v-show="form.occupation === 'student'">Educational Details</h3>
+                  <div class="row" v-show="form.occupation === 'student'">
                     <div class="col-sm-6">
-                   <div class="form-group">
-                     <label>Degree</label>
-                       <input type="text" v-model="form.post_graduate_degree" :class="{'is-invalid':form.errors.has('post_graduate_degree')}" class="form-control" name="post_graduate_degree" placeholder="Degree">
-                       <has-error :form="form" field="post_graduate_degree"></has-error>
-                   </div>
-                   <div class="form-group">
-                     <label>City</label>
-                       <input type="text" class="form-control" name="post_graduate_university_city" v-model='form.post_graduate_university_city' placeholder="city" :class="{'is-invalid':form.errors.has('post_graduate_university_city')}">
-                       <has-error :form="form" field="post_graduate_university_city"></has-error>
-                   </div>
-                   <div class="form-group">
-                     <label>Year of Passing</label>
-                     <input type="text" class="form-control" v-model="form.post_graduate_year_of_passing" name="post_graduate_year_of_passing" placeholder="year of Passing" :class="{'is-invalid':form.errors.has('post_graduate_year_of_passing')}" >
-                     <has-error :form="form" field="post_graduate_year_of_passing"></has-error>
-                   </div>
-                    
-                   </div>
+                  
+                    <div class="form-group">
+                      <label for ="">Education Level</label>
+                      <select name="education" id="" v-model="form.education" class="form-control">
+                        <option value="post graduate">Post Graduate</option>
+                        <option value="graduate">Graduate</option>
+                        <option value="12th">12th</option>
+                        <option value="11th">11th</option>
+                        <option value="10th">10th</option>
+                        <option value="9th">9th</option>
+                        <option value="8th">8th</option>
+                        <option value="7th">7th</option>
+                        <option value="6th">6th</option>
+                        <option value="5th">5th</option>
+                        <option value="4th">4th</option>
+                        <option value="3rd">3rd</option>
+                        <option value="2nd">2nd</option>
+                        <option value="1st">1st</option>
+                        <option value="LKG/UKG">LKG/UKG</option>
+                      </select>
+                    </div>
+                    </div>
                     <div class="col-sm-6">
-                   <div class="form-group">
-                     <label>University</label>
-                       <input type="text" v-model="form.post_graduate_university" class="form-control" name="post_graduate_university" :class="{'is-invalid':form.errors.has('post_graduate_university')}">
-                       <has-error :form="form" field="post_graduate_university"></has-error>
-                   </div>
-                   <div class="form-group">
-                     <label>State</label>
-                       <input type="text" class="form-control" v-model="form.post_graduate_university_state"  name="post_graduate_university_state" :class="{'is-invalid':form.errors.has('post_graduate_university_state')}">
-                        <has-error :form="form" field="post_graduate_university_state"></has-error>
-                   </div>
-                   <div class="form-group">
-                     <label>Percentage</label>
-                     <input type="text" v-model ="form.post_graduate_university_percentage" class="form-control" :class="{'is-invalid':form.errors.has('post_graduate_university_percentage')}" name="post_graduate_university_percentage">
-                     <has-error :form="form" field="post_graduate_university_percentage"></has-error>
-                   </div>
-                   </div>
-                 </div>
-                 <div class="font-weight-bold text-primary">Graduation Degree</div>
-                 <div class="row">
-                    
-                    <div class="col-sm-6">
-                   <div class="form-group">
-                     <label>Degree</label>
-                       <input type="text" class="form-control" v-model="form.graduate_degree" name="graduate_degree" placeholder="Graduation Degree" :class="{'is-invalid':form.errors.has('graduate_degree')}">
-                        <has-error :form="form" field="graduate_degree"></has-error>
-                   </div>
-                   <div class="form-group">
-                     <label>City</label>
-                       <input type="text" class="form-control" :class="{'is-invalid':form.errors.has('graduate_university_city')}" v-model="form.graduate_university_city" name="graduate_university_city" placeholder = "City" >
-                        <has-error :form="form" field="graduate_university_city"></has-error>
-                   </div>
-                   <div class="form-group">
-                     <label>Year of Passing</label>
-                     <input type="text" class="form-control" v-model="form.graduate_year_of_passing" :class="{'is-invalid':form.errors.has('graduate_year_of_passing')}" name="graduate_year_of_passing" placeholder="Year of Passing">
-                     <has-error :form="form" field="graduate_year_of_passing"></has-error>
-                   </div>
-                    
-                   </div>
-                    <div class="col-sm-6">
-                   <div class="form-group">
-                     <label>University</label>
-                       <input type="text" class="form-control" v-model="form.graduate_university" :class="{'is-invalid':form.errors.has('graduate_university')}" name="graduate_university" placeholder="university" >
-                       <has-error :form="form" field="graduate_university"></has-error>
-                   </div>
-                   <div class="form-group">
-                     <label>State</label>
-                       <input type="text" v-model="form.graduate_university_state" class="form-control" placeholder="State" name="graduate_university_state" :class="{'is-invalid':form.errors.has('graduate_university_state')}">
-                        <has-error :form="form" field="graduate_university_state"></has-error>
-                   </div>
-                   <div class="form-group">
-                     <label>Percentage</label>
-                     <input type="text" class="form-control" v-model="form.graduate_university_percentage" name="graduate_university_percentage" placeholder="Percentage" :class="{'is-invalid':form.errors.has('graduate_university_percentage')}">
-                      <has-error :form="form" field="graduate_university_percentage"></has-error>
-                   </div>
-                   </div>
-                 </div>
-                 <!-- 
-                   School education section
-
-                  -->
-                 <div class="font-weight-bold text-primary">10+2 (Senior Secondary Education)</div>
-                 <div class="row">
-                   <div class="col-sm-6">
-                   <div class="form-group">
-                     <label>Board</label>
-                       <input type="text" class="form-control" v-model="form.class_12_board" :class="{'is-invalid' :form.errors.has('class_12_board') }" name="class_12_board" placeholder="Board Name" >
-                       <has-error :form="form" field="class_12_board"></has-error>
-                   </div>
                       <div class="form-group">
-                     <label>Percentage</label>
-                     <input type="text" class="form-control" v-model="form.class_12_percentage" name="class_12_percentage" placeholder="Percentage" :class="{'is-invalid' :form.errors.has('class_12_percentage') }">
-                     <has-error :form="form" field="class_12_percentage"></has-error>
-                   </div>
-                   <div class="form-group">
-                     <label>Year of Passing</label>
-                     <input type="text" class="form-control" v-model="form.class_12_year_of_passing" :class="{'is-invalid' :form.errors.has('class_12_year_of_passing') }" name="class_12_year_of_passing" placeholder="Year of Passing">
-                      <has-error :form="form" field="class_12_year_of_passing"></has-error>
-                   </div>
-                   </div>
-                   <div class="col-sm-6">
-                   <div class="form-group">
-                     <label>School Name</label>
-                       <input type="text" class="form-control" v-model="form.class_12_school_name" placeholder="School Name" name="class_12_school_name" :class="{'is-invalid' :form.errors.has('class_12_school_name') }">
-                        <has-error :form="form" field="class_12_school_name"></has-error>
-                   </div>
-                   <div class="form-group">
-                     <label>City</label>
-                       <input type="text" class="form-control" v-model="form.class_12_city" name="class_12_city" placeholder = "City" :class="{'is-invalid' :form.errors.has('class_12_city') }">
-                       <has-error :form="form" field="class_12_city"></has-error>
-                   </div>
+                      <input class="form-check-input" v-show="form.education ==='10th'" v-model="form.current_year" type="checkbox" name="current_year" value="true" :class="{'is-invalid': form.errors.has('current_year')}">
+                     <label v-show="form.education ==='10th'" > are you appearing in class 10 in {{ 2020 | getYear}}</label>
+                     <input class="form-check-input" v-show="form.education ==='12th'" v-model="form.current_year" type="checkbox" name="current_year" value="true" :class="{'is-invalid': form.errors.has('current_year')}">
+                     <label v-show="form.education ==='12th'" > are you appearing in class 12 in {{ 2020 | getYear}}</label>
+                      <input class="form-check-input" v-show="form.education ==='8th'" v-model="form.current_year" type="checkbox" name="current_year" value="true" :class="{'is-invalid': form.errors.has('current_year')}">
+                     <label v-show="form.education ==='8th'" > are you appearing in class 8 in {{ 2020 | getYear}}</label>
                    
-                    
-                   </div>
-                 </div>
-                  <div class="font-weight-bold text-primary">Class 10 (Secondary Education)</div>
+                    <label v-show="form.education ==='graduate'" > Graduation Subject</label>
+                    <input type="text" list="graduation" v-model="form.graduation" v-show ="form.education=='graduate'" class="form-control" />
+                        <datalist id="graduation">
+                          <option value="BA">BA</option>
+                          <option value="BCom">BCom</option>
+                          <option value="BFA">BFA</option>
+                          <option value="BSc">BSc</option>
+                          <option value="Btech">Btech</option>
+                          <option value="BCA">BCA</option>
+                          <option value="BBA">BBA</option>
+                          <option value="MBBS">MBBS</option>
+                        </datalist>
+                        <label v-show="form.education ==='post graduate'" > Post Graduation Subject</label>
+                    <input type="text" list="postgraduation" v-model="form.postGraduation" v-show ="form.education=='post graduate'" class="form-control" />
+                        <datalist id="postgraduation">
+                         <option value="MA">MA</option>
+                         <option value="MCom">MCom</option>
+                         <option value="MSc">MSc</option>
+                         <option value="MS">MS</option>
+                         <option value="MD">MD</option>
+                         <option value="MCA">MCA</option>
+                         <option value="Mtech">Mtech</option>
+                        </datalist>
+                      </div>
+                    </div>
+                     
+                  </div>
                  <div class="row">
-                   <div class="col-sm-6">
-                   <div class="form-group">
-                     <label>Board</label>
-                       <input type="text" class="form-control" v-model="form.class_10_board" :class="{'is-invalid' :form.errors.has('class_10_board') }" name="class_10_board" placeholder="Board Name" >
-                       <has-error :form="form" field="class_10_board"></has-error>
-                   </div>
-                   
-                   <div class="form-group">
-                     <label>Percentage</label>
-                     <input type="text" class="form-control" v-model="form.class_10_percentage" name="class_10_percentage" placeholder="Percentage" :class="{'is-invalid' :form.errors.has('class_10_percentage') }">
-                     <has-error :form="form" field="class_10_percentage"></has-error>
-                   </div>
-                   <div class="form-group">
-                     <label>Year of Passing</label>
-                     <input type="text" class="form-control" v-model="form.class_10_year_of_passing" :class="{'is-invalid' :form.errors.has('class_10_year_of_passing') }" name="class_10_year_of_passing" placeholder="Year of Passing">
-                      <has-error :form="form" field="class_10_year_of_passing"></has-error>
-                   </div>
-                   </div>
-                   <div class="col-sm-6">
-                   <div class="form-group">
-                     <label>School Name</label>
-                       <input type="text" class="form-control" v-model="form.class_10_school_name" placeholder="School Name" name="class_10_school_name" :class="{'is-invalid' :form.errors.has('class_10_school_name') }">
-                        <has-error :form="form" field="class_10_school_name"></has-error>
-                   </div>
-                   <div class="form-group">
-                     <label>City</label>
-                       <input type="text" class="form-control" v-model="form.class_10_city" name="class_10_city" placeholder = "City" :class="{'is-invalid' :form.errors.has('class_10_city') }">
-                       <has-error :form="form" field="class_10_city"></has-error>
-                   </div>
-                   
-                   
-                   </div>
-                 </div>
-                 <div class="row">
-                   <div class="col-sm-6">
-                     <div class="form-group">
-                       <label>Username</label>
-                     <input type="text" name="username" class="form-control" v-model="form.username" :class="{'is-invalid' :form.errors.has('username') }">
-                      <has-error :form="form" field="username"></has-error>
-                   </div>
-                   </div>
                    <div class="col-sm-6">
                      <div class="form-group">
                        <label>Password</label>
@@ -355,11 +315,18 @@
                       <has-error :form="form" field="password"></has-error>
                    </div>
                    </div>
+                   <div class="col-sm-6">
+                     <div class="form-group">
+                       <label>Upload Image</label>
+                     <input type="file" name="photo" @change="updateProfilePic" class="input-control" :class="{'is-invalid' :form.errors.has('password') }">
+                      <has-error :form="form" field="password"></has-error>
+                   </div>
+                   </div>
                  </div>
                  <div class="row">
                    <div class="col-sm-6">
                    <div class="form-group">
-                     <button class="btn btn-success">Submit Form</button>
+                     <button class="btn btn-success" >Submit Form</button>
                    </div>
                    </div>
                  </div>
@@ -376,11 +343,18 @@
 </template>
 
 <script>
+
     export default {
      data() {
         return {
+          selfdata:false,
+          updatedata : false,
           users:{},
-           form: new Form({
+          mydetails:{},
+          cities:{},
+          userstatus:'',
+              form: new Form({
+              id:'',
               name:'',
               relation:'',
               gender:'',
@@ -389,6 +363,7 @@
               matrimonial:'',
               email:'',
               mobile:'',
+              blood_group:'',
               father_name:'',
               mother_name:'',
               address:'',
@@ -396,32 +371,14 @@
               state:'',
               occupation:'',
               department:'',
-              post_graduate_degree:'',
-              post_graduate_university:'',
-              post_graduate_university_city:'',
-              post_graduate_university_state:'',
-              post_graduate_university_percentage:'',
-              post_graduate_year_of_passing:'',
-              graduate_degree:'',
-              graduate_university:'',
-              graduate_university_city:'',
-              graduate_university_state:'',
-              graduate_university_percentage:'',
-              graduate_year_of_passing:'',
-              class_12_board : '',
-              class_12_school_name:'',
-              class_12_percentage:'',
-              class_12_year_of_passing:'',
-              class_12_city:'',
-              class_10_board:'',
-              class_10_school_name:'',
-              class_10_percentage:'',
-              class_10_year_of_passing:'',
-              class_10_city:'',
-              username:'',
+              education:'',
+              graduation:'',
+              postGraduation:'',
+              current_year:'',
+              self_data:'no',
               password:'',
               gotra:'',
-
+              photo:'',
             }),
             
            
@@ -429,21 +386,164 @@
       },
      methods:{
        loadusers(){
-         axios.get('api/userDetails').then(({data})=>(this.users=data));
-       },
-       createUserDetails(){
-         this.$Progress.start();
-          this.form.post('api/userDetails');
-          Toast.fire({
-             type: 'success',
-            title: 'User created successfully'
+        alert (this.$route.query.id);
+         axios.get('api/userDetails').then(({data})=>(this.users=data,
+         this.form.email = data.email,
+         this.form.mobile= data.mobile));
+       //  axios.get('api/userDetails').then(function(data){});
+         axios.get('api/checkUserStatus').then(({data})=>(this.userstatus=data));
+         axios.get('api/mydetails').then(({data})=>(this.mydetails=data));
+        // console.log(this.$route.query.user);
+          },
+        checkuserstatus(){
+          if(this.userstatus === 0){
+            if(this.selfdata=== true){
+              this.createMyUserDetail
+            }
+            return "selfdata ? createMyUserDetail(): createUserDetails()";
+          }
+          else{
+            return "updateSelfData()";
+          }
+        },
+          getcity(){
+            
+            axios.get('api/getcities/'+this.form.state).then(({data})=>(this.cities = data));
+           //console.log(this.cities.target.value);
+          },
+          createUserDetails(){
+          this.$Progress.start();
+          this.form.post('api/userDetails')
+          .then(()=>{
+                    Toast.fire({
+                    type: 'success',
+                    title: 'Member Info Saved'
               })
-
-          this.$Progress.finish();
+            this.form.reset();
+          })
+          .catch(()=>{
+            Toast.fire({
+              type: 'error',
+              title: 'There is some problem'
+            })
+          })
+         this.$Progress.finish();
+          
        },
-      
+       relation(){
+         if(this.form.relation === 'son'){
+           this.form.mother_name = '';
+           this.form.father_name = this.users.family_head;
+         }
+         else if (this.form.relation === 'daughter'){
+           this.form.father_name = '';
+           this.form.mother_name = this.users.family_head;
+         }
+         else {
+           this.form.father_name = '';
+           this.form.mother_name = '';
+         }
+       },
+       createMyUserDetail(){
+         this.$Progress.start();
+          this.form.post('api/myuserDetails')
+          .then(()=>{
+                    Toast.fire({
+                    type: 'success',
+                    title: 'Member Info Saved'
+              })
+            this.form.reset();
+          })
+          .catch(()=>{
+            Toast.fire({
+              type: 'error',
+              title: 'There is some problem'
+            })
+          })
+         this.$Progress.finish();
+        this.$Progress.start();
+        this.form.put('api/updatePhoto')
+        .then(()=>{
+            Toast.fire({
+              type: 'success',
+              title:'image Uploaded succssfully'
+            })
+            .catch(()=>{
+              Toast.fire({
+                type:'error',
+                title: 'error in image upload'
+              })
+            })
+        })
+        this.$Progress.finish();
+       },
+       mydata(){
+         if(this.selfdata=== true){
+           this.form.fill(this.users);
+         }
+         else{
+           this.form.reset();
+         }
+       },
+       myuserdata(){
+         if(this.updatedata===true){
+            this.form.fill(this.mydetails[0]);
+         }
+         else{
+           this.form.reset();
+         }
+        
+       },
+        updateProfilePic(e){
+          let file = e.target.files[0];
+         console.log(file);
+          let reader = new FileReader();
+           
+           if(file['size']<2111775){
+              reader.onloadend = (file) => {
+           // console.log('RESULT', reader.result)
+           this.form.photo = reader.result;
+          }          
+           reader.readAsDataURL(file);
+           }
+           else{
+             Swal.fire(
+                'Oops',
+                'File size is bigger than 2 mb.',
+                'error'
+              )
+
+           }
+          
+        },
+        updateMyDetails(){
+          this.$Progress.start();
+       this.form.put('api/updateMydetails/'+this.form.id)
+       .then(()=>{
+         // success
+        
+                     Swal.fire(
+                        'Updated!',
+                        'Information has been updated.',
+                        'success'
+                        )
+                        this.$Progress.finish();
+                         Fire.$emit('AfterCreate');
+               
+         
+       })
+       .catch(()=>{
+          this.$Progress.fail();
+       })
+
+       this.$Progress.finish();
+
+
+        },
       },
       created() {
+        console.log(this.$route.params.id);
+        console.log("created");
       this.loadusers();
    //   console.log(this.users.data);
       //console.log(this.users);

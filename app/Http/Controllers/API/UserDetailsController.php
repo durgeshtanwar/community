@@ -116,6 +116,12 @@ public function __construct()
     $userdetail->inserted_by = Auth::User()->id ;
     $userdetail->blood_group = $request->blood_group;
     $userdetail->user_id = $userid;
+    $userdetail->current_year = $request->current_year;
+    $userdetail->education = $request->education;
+    $userdetail->graduation = $request->graduation;
+    $userdetail->post_graduation = $request->postGraduation;
+    $userdetail->present_year = date("Y");
+
 
     $userdetail->save();
 }

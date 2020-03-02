@@ -64,6 +64,11 @@ Vue.filter('getAge',function(dob){
     return n-y;
 })
 
+Vue.filter('getYear',function(){
+    var year = new Date();
+    return year.getFullYear();
+})
+
 
 
 const routes = [
@@ -74,6 +79,7 @@ const routes = [
     { path: '/groom', component: require('./components/groom.vue').default },
     { path: '/users', component: require('./components/Users.vue').default },
     { path: '/addFamily', component: require('./components/family/AddNewMember.vue').default },
+    { path: '/editmember:id',name:'editmember' , component: require('./components/family/AddNewMember.vue').default },
     { path: '/family',component:require ('./components/family/familymemberlist.vue').default },
     { path: '/addjob',component:require ('./components/addjob.vue').default },
     { path: '/applyjob',component:require('./components/applyjob.vue').default},

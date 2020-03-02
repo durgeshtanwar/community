@@ -44,7 +44,7 @@
                     <div class="col-sm-6">
                        <div class="form-group" >
                         <label>Relation With Family Head</label>
-                        <select v-model="form.relation" class="form-control" name="relation" :class="{ 'is-invalid': form.errors.has('relation')}">
+                        <select v-model="form.relation" @change="relation()" class="form-control" name="relation" :class="{ 'is-invalid': form.errors.has('relation')}">
                           <option value="self">Self</option>
                           <option value="wife">Wife</option>
                           <option value="son">Son</option>
@@ -192,7 +192,7 @@
                           <option value="Arunachal Pradesh">Arunachal Pradesh</option>
                           <option value="Assam">Assam</option>
                           <option value="Bihar">Bihar</option>
-                          <option value="Chattisgarh">Chattisgarh</option>
+                          <option value="Chhattisgarh">Chhattisgarh</option>
                           <option value="Dadra & Nagar Haveli">Dadra & Nagar Haveli</option>
                           <option value="Daman & Diu">Daman & Diu</option>
                           <option value="Delhi">Delhi</option>
@@ -200,7 +200,7 @@
                           <option value="Gujarat">Gujarat</option>
                           <option value="Haryana">Haryana</option>
                           <option value="Himachal Pradesh"> Himachal Pradesh</option>
-                          <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                          <option value="Jammu & Kashmir">Jammu & Kashmir</option>
                           <option value="Jharkhand">Jharkhand</option>
                           <option value="Karnataka">Karnataka</option>
                           <option value="Kerela">Kerela</option>
@@ -229,7 +229,8 @@
                         <label>City</label>
                           <div class="form-group">
                             <select v-model='form.city' class="form-control" >
-                                      <option value='0' >Select City</option>
+                                     
+                                      <option v-for="city in cities">{{city}}</option>
                             </select>
                           </div>
                       </div>
@@ -246,6 +247,7 @@
                           <option value="self employed">Self Employed</option>
                           <option value="student">Student</option>
                           <option value="unemployed">Unemployed</option>
+                          <option value="house wife">House wife</option>
                         </select>
                         <has-error :form="form" field="occupation" ></has-error>
                           </div>
@@ -261,6 +263,67 @@
                       </div>
                   </div>
                   <hr>
+                    <h3  v-show="form.occupation === 'student'">Educational Details</h3>
+                  <div class="row" v-show="form.occupation === 'student'">
+                    <div class="col-sm-6">
+                  
+                    <div class="form-group">
+                      <label for ="">Education Level</label>
+                      <select name="education" id="" v-model="form.education" class="form-control">
+                        <option value="post graduate">Post Graduate</option>
+                        <option value="graduate">Graduate</option>
+                        <option value="12th">12th</option>
+                        <option value="11th">11th</option>
+                        <option value="10th">10th</option>
+                        <option value="9th">9th</option>
+                        <option value="8th">8th</option>
+                        <option value="7th">7th</option>
+                        <option value="6th">6th</option>
+                        <option value="5th">5th</option>
+                        <option value="4th">4th</option>
+                        <option value="3rd">3rd</option>
+                        <option value="2nd">2nd</option>
+                        <option value="1st">1st</option>
+                        <option value="LKG/UKG">LKG/UKG</option>
+                      </select>
+                    </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                      <input class="form-check-input" v-show="form.education ==='10th'" v-model="form.current_year" type="checkbox" name="current_year" value="true" :class="{'is-invalid': form.errors.has('current_year')}">
+                     <label v-show="form.education ==='10th'" > are you appearing in class 10 in {{ 2020 | getYear}}</label>
+                     <input class="form-check-input" v-show="form.education ==='12th'" v-model="form.current_year" type="checkbox" name="current_year" value="true" :class="{'is-invalid': form.errors.has('current_year')}">
+                     <label v-show="form.education ==='12th'" > are you appearing in class 12 in {{ 2020 | getYear}}</label>
+                      <input class="form-check-input" v-show="form.education ==='8th'" v-model="form.current_year" type="checkbox" name="current_year" value="true" :class="{'is-invalid': form.errors.has('current_year')}">
+                     <label v-show="form.education ==='8th'" > are you appearing in class 8 in {{ 2020 | getYear}}</label>
+                   
+                    <label v-show="form.education ==='graduate'" > Graduation Subject</label>
+                    <input type="text" list="graduation" v-model="form.graduation" v-show ="form.education=='graduate'" class="form-control" />
+                        <datalist id="graduation">
+                          <option value="BA">BA</option>
+                          <option value="BCom">BCom</option>
+                          <option value="BFA">BFA</option>
+                          <option value="BSc">BSc</option>
+                          <option value="Btech">Btech</option>
+                          <option value="BCA">BCA</option>
+                          <option value="BBA">BBA</option>
+                          <option value="MBBS">MBBS</option>
+                        </datalist>
+                        <label v-show="form.education ==='post graduate'" > Post Graduation Subject</label>
+                    <input type="text" list="postgraduation" v-model="form.postGraduation" v-show ="form.education=='post graduate'" class="form-control" />
+                        <datalist id="postgraduation">
+                         <option value="MA">MA</option>
+                         <option value="MCom">MCom</option>
+                         <option value="MSc">MSc</option>
+                         <option value="MS">MS</option>
+                         <option value="MD">MD</option>
+                         <option value="MCA">MCA</option>
+                         <option value="Mtech">Mtech</option>
+                        </datalist>
+                      </div>
+                    </div>
+                     
+                  </div>
                  <div class="row">
                    <div class="col-sm-6">
                      <div class="form-group">
@@ -297,6 +360,7 @@
 </template>
 
 <script>
+
     export default {
      data() {
         return {
@@ -324,6 +388,10 @@
               state:'',
               occupation:'',
               department:'',
+              education:'',
+              graduation:'',
+              postGraduation:'',
+              current_year:'',
               self_data:'no',
               password:'',
               gotra:'',
@@ -336,11 +404,12 @@
      methods:{
        loadusers(){
          axios.get('api/userDetails').then(({data})=>(this.users=data,
-         this.form.email = data.email));
+         this.form.email = data.email,
+         this.form.mobile= data.mobile));
        //  axios.get('api/userDetails').then(function(data){});
          axios.get('api/checkUserStatus').then(({data})=>(this.userstatus=data));
          axios.get('api/mydetails').then(({data})=>(this.mydetails=data));
-         
+        // console.log(this.$route.query.user);
           },
         checkuserstatus(){
           if(this.userstatus === 0){
@@ -376,6 +445,20 @@
           })
          this.$Progress.finish();
           
+       },
+       relation(){
+         if(this.form.relation === 'son'){
+           this.form.mother_name = '';
+           this.form.father_name = this.users.family_head;
+         }
+         else if (this.form.relation === 'daughter'){
+           this.form.father_name = '';
+           this.form.mother_name = this.users.family_head;
+         }
+         else {
+           this.form.father_name = '';
+           this.form.mother_name = '';
+         }
        },
        createMyUserDetail(){
          this.$Progress.start();

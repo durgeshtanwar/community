@@ -68,10 +68,7 @@
 
                 <hr>
 
-                <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-              </div>
+                 </div>
             </div>
             <!-- Family details -->
              <div class="card card-primary card-outline">
@@ -87,25 +84,11 @@
 
                 <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
 
-                <p class="text-muted">Murlidhar Vyas Nagar Bikaner</p>
+                <p class="text-muted">{{familydata[0].address}}</p>
 
                 <hr>
 
-                <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
-
-                <p class="text-muted">
-                  <span class="tag tag-danger">UI Design</span>
-                  <span class="tag tag-success">Coding</span>
-                  <span class="tag tag-info">Javascript</span>
-                  <span class="tag tag-warning">PHP</span>
-                  <span class="tag tag-primary">Node.js</span>
-                </p>
-
-                <hr>
-
-                <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+               
               </div>
             </div>
         </div>
@@ -133,6 +116,7 @@
         loadUsers(){
             axios.get('api/familylist').then(({data})=>(this.familydata = data));
              axios.get('api/userDetails').then(({data})=>(this.users=data));
+             console.log(this.$route.query.user);
          }
         },
         createUser() {
