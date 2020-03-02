@@ -261,4 +261,9 @@ class JobsController extends Controller
 
     }
 
+    public function getjoblist($type){
+        $result = DB::table('jobslist')->where('job',$type)->pluck('jobType');
+ return $result;
+    }
+
 }

@@ -5002,6 +5002,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       selfdata: false,
       updatedata: false,
+      jobs: {},
       users: {},
       mydetails: {},
       cities: {},

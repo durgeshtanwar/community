@@ -366,6 +366,7 @@
         return {
           selfdata:false,
           updatedata : false,
+          jobs:{},
           users:{},
           mydetails:{},
           cities:{},

@@ -66,7 +66,7 @@ Route::get('mydetails','API\UserDetailsController@mydetails');
 Route::put('updateMydetails/{id}','API\UserDetailsController@updateMydetails');
 Route::get('getcities/{state}','API\UserDetailsController@getcities');
 
-
+Route::get('getjoblist/{type}','API\JobsController@getjoblist');
 
 
 //Route::get('getFamilyMembers','API\FamilyController@getFamilyMembers');
