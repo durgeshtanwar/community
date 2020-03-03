@@ -42,7 +42,7 @@ import Filterbar from "./datatable/Filterbar";
           {
             field: 'city',
             sortField: 'city',
-            direction: 'asc'
+            direction: 'desc'
           },
         ],
         moreParams: {}, 

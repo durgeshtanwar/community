@@ -71,7 +71,7 @@ export default {
 
   data(){
     return {
-      categories:[],
+      jobs:{},
       form: new Form ({
         name: '',
         skill:'',
@@ -98,7 +98,7 @@ export default {
           });
      },
      getjobs(){
-       axios.get('api/jobcategory').then(([data])=>(this.category = data))
+      axios.get('api/getjoblist/'+this.form.occupation).then(({data})=>(this.jobs = data));
      },
       
    },

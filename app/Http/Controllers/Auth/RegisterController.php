@@ -89,6 +89,7 @@ class RegisterController extends Controller
             'family_head'=>$data['family_head'],
             'gotra'=>$kuldevi[0],
             'kuldevi'=>$kuldevi[1],
+            'pur'=>$data['pur'],
             'active'=>'active',
             'usertype'=>'family',
             'family_id'=>$familyId,

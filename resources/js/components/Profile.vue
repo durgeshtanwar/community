@@ -14,7 +14,7 @@
 
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
-                    <b>Membership No.</b> <b class="float-right">SHA-{{users.id}}</b>
+                    <b>Membership No.</b> <b class="float-right">{{users.username}}</b>
                   </li>
                   <li class="list-group-item">
                     <b>Age</b> <b class="float-right">{{familydata[0].dob | getAge}} years</b>
@@ -27,6 +27,9 @@
                   </li>
                   <li class="list-group-item">
                     <b>Gotra</b> <b class="float-right">{{users.gotra}}</b>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Pur</b> <b class="float-right">{{users.pur}}</b>
                   </li>
                   <li class="list-group-item">
                     <b>Kuldevi</b> <b class="float-right">{{users.kuldevi}}</b>
