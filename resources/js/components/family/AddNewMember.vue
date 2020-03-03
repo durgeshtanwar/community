@@ -207,6 +207,7 @@
                           <option value="Lakshadweep">Lakshadweep</option>
                           <option value="Madhya Pradesh">Madhya Pradesh</option>
                           <option value="Manipur">Manipur</option>
+                          <option value="Maharashtra">Maharashtra</option>
                           <option value="Meghalaya">Meghalaya</option>
                           <option value="Mizoram">Mizoram</option>
                           <option value="Nagaland">Nagaland</option>
@@ -235,15 +236,16 @@
                           </div>
                       </div>
                   </div>
+                  
                   <hr>
                   <div><h3>Professional Details</h3></div>
                   <div class="row">
                       <div class="col-sm-6">
                           <div class="form-group">
                               <label for="">Occupation</label>
-                         <select v-model="form.occupation" class="form-control" name="occupation" :class="{'is-invalid':form.errors.has('occupation')}">
-                          <option value="Government Job">Government Job</option>
-                          <option value="Private job">Private Job</option>
+                         <select v-model="form.occupation" @change="getjobs()" class="form-control" name="occupation" :class="{'is-invalid':form.errors.has('occupation')}">
+                          <option value="Govt">Government Job</option>
+                          <option value="private">Private Job</option>
                           <option value="self employed">Self Employed</option>
                           <option value="student">Student</option>
                           <option value="unemployed">Unemployed</option>
@@ -254,14 +256,17 @@
                           
                       </div>
                       <div class="col-sm-6">
-                          <div class="form-group">
+                          <div class="form-group" v-if ="form.occupation == 'Govt' || form.occupation == 'private'">
                               <label for="">Department</label>
-                            <input v-model="form.department" type="text" class="form-control" name="department" :class="{'is-invalid':form.errors.has('department')}">
-                          <has-error :form="form" field="department"></has-error>
+                          <input type="text" list="department" v-model="form.department"  class="form-control" />
+                        <datalist id="department">
+                        <option v-for="job in jobs">{{job}}</option>
+                        </datalist>
+                      </div>
                           </div>
                           
                       </div>
-                  </div>
+                  
                   <hr>
                     <h3  v-show="form.occupation === 'student'">Educational Details</h3>
                   <div class="row" v-show="form.occupation === 'student'">
@@ -406,10 +411,12 @@
        loadusers(){
          axios.get('api/userDetails').then(({data})=>(this.users=data,
          this.form.email = data.email,
-         this.form.mobile= data.mobile));
+         this.form.mobile= data.mobile,
+         this.form.address = data.address));
        //  axios.get('api/userDetails').then(function(data){});
          axios.get('api/checkUserStatus').then(({data})=>(this.userstatus=data));
          axios.get('api/mydetails').then(({data})=>(this.mydetails=data));
+        // this.form.fill(this.mydetails[0]);
         // console.log(this.$route.query.user);
           },
         checkuserstatus(){
@@ -427,6 +434,10 @@
             
             axios.get('api/getcities/'+this.form.state).then(({data})=>(this.cities = data));
            //console.log(this.cities.target.value);
+          },
+          getjobs(){
+             axios.get('api/getjoblist/'+this.form.occupation).then(({data})=>(this.jobs = data));
+
           },
           createUserDetails(){
           this.$Progress.start();

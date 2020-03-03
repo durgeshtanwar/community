@@ -28,5 +28,6 @@ public function familyusers()
 public function getAuthenticatedUser(){
   return Auth::User()->id;
 }
+
     
 }

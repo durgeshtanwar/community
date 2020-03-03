@@ -15,7 +15,7 @@ class UserDetailsController extends Controller
 
 public function __construct()
     {
-  $this->middleware('auth:api');
+ $this->middleware('auth:api');
     }
 
     /**
@@ -121,6 +121,7 @@ public function __construct()
     $userdetail->graduation = $request->graduation;
     $userdetail->post_graduation = $request->postGraduation;
     $userdetail->present_year = date("Y");
+    $userdetail->family_id = Auth::User()->family_id;
 
 
     $userdetail->save();
@@ -242,23 +243,7 @@ public function __construct()
     }
     
  public function myUserDetails(Request $request){
-//         $user = new User();
-//         if($request->photo){
-//   // $name = time().'.'.explode('/'.explode(':',substr($request->photo,0,strpos($request->photo,':')))[1][1]);
-//             $imageName = preg_match_all('/data\:image\/([a-zA-Z]+)\;base64/',$request->photo,$matched);
-//             $ext = isset($matched[1][0]) ? $matched[1][0] : false;
-//             $imageName = sha1(time()) . '.' .$ext; 
-//             $img = \Image::make($request->photo);
-//             $img->resize(300, null, function ($constraint) {
-//             $constraint->aspectRatio();
-//          });
-//              $img->save(public_path('images/profile/').$imageName);
-//              $user->image = $imageName;
-
-//         }    
-//         else {
-//             $user->image = "profile.png";
-//         }
+       
 
 $this->validate($request,[
     'name'=>'required|string|max:191',
@@ -276,6 +261,31 @@ $this->validate($request,[
     'password'=>'required|sometimes|string|min:8',
     'photo'=>'required|sometimes|'
  ]);
+ $user = new User();
+ if($request->photo){
+// $name = time().'.'.explode('/'.explode(':',substr($request->photo,0,strpos($request->photo,':')))[1][1]);
+     $imageName = preg_match_all('/data\:image\/([a-zA-Z]+)\;base64/',$request->photo,$matched);
+     $ext = isset($matched[1][0]) ? $matched[1][0] : false;
+     $imageName = sha1(time()) . '.' .$ext; 
+     $img = \Image::make($request->photo);
+     $img->resize(300, null, function ($constraint) {
+     $constraint->aspectRatio();
+  });
+      $img->save(public_path('images/profile/').$imageName);
+      $user->image = $imageName;
+     // $user->save();
+     
+     DB::table('users')
+     ->where('id', Auth::User()->id)
+     ->update(['image' => $imageName]);
+ 
+ }    
+ else {
+    DB::table('users')
+    ->where('id', $userid)
+    ->update(['image' => 'profile.png']);
+
+ }
 
             $userdetail = new UserDetail();
 
@@ -298,6 +308,7 @@ $this->validate($request,[
             $userdetail->inserted_by = Auth::User()->id ;
             $userdetail->blood_group = $request->blood_group;
             $userdetail->user_id = Auth::User()->id ;
+            $userdetail->family_id = Auth::User()->family_id ;
 
             $userdetail->save();
         
@@ -355,12 +366,34 @@ public function updateMydetails(Request $request, $id){
         'father_name'=>'required|string|max:191',
         'mother_name'=>'required|string|max:191',
         'address'=>'required|string|max:191',
-        'city'=>'required|string|max:191',
+        'city'=>'required|sometimes|string|max:191',
         'state'=>'required|string|max:191',
         'occupation'=>'required|string|max:191',
         'password'=>'required|sometimes|string|min:8',
         'photo'=>'required|sometimes|'
      ]);
+     $userid = Auth::user()->id;
+     if($request->photo){
+        // $name = time().'.'.explode('/'.explode(':',substr($request->photo,0,strpos($request->photo,':')))[1][1]);
+            $imgname = DB::table('users')
+                        ->where('id',$userid)
+                        ->value('image');
+            unlink(public_path('images/profile/').$imgname);
+            
+            $imageName = preg_match_all('/data\:image\/([a-zA-Z]+)\;base64/',$request->photo,$matched);
+             $ext = isset($matched[1][0]) ? $matched[1][0] : false;
+             $imageName = sha1(time()) . '.' .$ext; 
+             $img = \Image::make($request->photo);
+             $img->resize(300, null, function ($constraint) {
+             $constraint->aspectRatio();
+          });
+              $img->save(public_path('images/profile/').$imageName);
+             // $user->image = $imageName;
+              DB::table('users')
+              ->where('id', $userid)
+              ->update(['image' => $imageName]);
+        
+         }       
 
      $user->update($request->all());
     
@@ -370,6 +403,74 @@ public function getcities($state){
  $result = DB::table('cities')->where('city_state',$state)->pluck('city_name');
  return $result;
 }
+public function getuserdetail($id){
+   // $result = DB::table('users_details')->where('user_id', $id)->first();
+    $r = DB::table('users_details')
+        ->where('user_id','=',$id)
+        ->get();
+        return  $r;
+  // return $result;   
+  }
+
+  public function checkAuth($id){
+      $familyid = DB::table('users')->where('id', auth()->user()->id )->pluck('family_id');
+      $userfamily = DB::table('users_details')->where('user_id',$id)->pluck('family_id');
+      if($familyid == $userfamily){
+          return 1;
+      }
+      else{
+          return 0;
+      }
+  }
+  public function updateuserdetails(Request $request, $id){
+
+    $user = UserDetail::findorfail($id);
+     $this->validate($request,[
+         'name'=>'required|string|max:191',
+         'relation'=>'required|string|max:191',
+         'gender'=>'required|string|max:191',
+         'dob'=>'required|string|max:191',
+         'marriage_status'=>'required|string|max:191',
+         'blood_group'=>'required|sometimes|string',
+         'father_name'=>'required|string|max:191',
+         'mother_name'=>'required|string|max:191',
+         'address'=>'required|string|max:191',
+         'city'=>'required|sometimes|string|max:191',
+         'state'=>'required|string|max:191',
+         'occupation'=>'required|string|max:191',
+         'password'=>'required|sometimes|string|min:8',
+         'photo'=>'required|sometimes|'
+      ]);
+      $userid = $user->user_id;
+      if($request->photo){
+         // $name = time().'.'.explode('/'.explode(':',substr($request->photo,0,strpos($request->photo,':')))[1][1]);
+             $imgname = DB::table('users')
+                         ->where('id',$userid)
+                         ->value('image');
+             unlink(public_path('images/profile/').$imgname);
+             
+             $imageName = preg_match_all('/data\:image\/([a-zA-Z]+)\;base64/',$request->photo,$matched);
+              $ext = isset($matched[1][0]) ? $matched[1][0] : false;
+              $imageName = sha1(time()) . '.' .$ext; 
+              $img = \Image::make($request->photo);
+              $img->resize(300, null, function ($constraint) {
+              $constraint->aspectRatio();
+           });
+               $img->save(public_path('images/profile/').$imageName);
+              // $user->image = $imageName;
+               DB::table('users')
+               ->where('id', $userid)
+               ->update(['image' => $imageName,
+                          'name' => $request['name']  ]);
+         
+          }       
+          DB::table('users')
+          ->where('id', $userid)
+          ->update(['name' => $request['name']  ]);
+      $user->update($request->all());
+     
+ 
+ }
 
 
 }

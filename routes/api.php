@@ -67,6 +67,10 @@ Route::put('updateMydetails/{id}','API\UserDetailsController@updateMydetails');
 Route::get('getcities/{state}','API\UserDetailsController@getcities');
 
 Route::get('getjoblist/{type}','API\JobsController@getjoblist');
+Route::get('checkAuth/{id}','API\UserDetailsController@checkAuth');
+
+Route::get('getuserdetail/{id}','API\UserDetailsController@getuserdetail');
+Route::put('updateuserdetails/{id}','API\UserDetailsController@updateuserdetails');
 
 
 //Route::get('getFamilyMembers','API\FamilyController@getFamilyMembers');

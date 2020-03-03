@@ -1,9 +1,10 @@
 <template>
     <div class="container ">
          <div class="row ">
-           <div class="col-12">
+           <h2 v-show="authorized==0">You are unauthorized to perform this action</h2>
+           <div class="col-12" v-show ="authorized==1">
                <div class="card card-warning">
-              <div class="card-header">
+               <div class="card-header" >
                <h3 class="card-title">Update User Information</h3>
                  <div class="card-tools">
                  <p> Gotra : {{users.gotra}} 
@@ -13,13 +14,13 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form role="form" @submit.prevent="updateUserDetails()" enctype="multipart/form-data">
-                  <div class="row">
+                <form role="form" @submit.prevent='updateuserdata()' enctype="multipart/form-data">
+                   <div class="row">
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
                         <label>Name</label>
-                        <input type="text" v-bind:disabled="updatedata===true" v-model="form.name" class="form-control" :class="{ 'is-invalid': form.errors.has('name')}" 
+                        <input type="text" v-model="form.name" class="form-control" :class="{ 'is-invalid': form.errors.has('name')}" 
                           placeholder="Enter Name ..." name="name" >
                           <has-error :form="form" field="name"></has-error>
                       </div>
@@ -121,21 +122,17 @@
                          </div>
                      <div class="col-sm-6">
                       <!-- textarea -->
-                      <div class="form-group">
+                        <div class="form-group">
                         <label >Email</label>
                       
-                         <input type="email" v-bind:disabled="updatedata===true" v-show="!selfdata" v-model="form.email" class="form-control" :class="{'is-invalid':form.errors.has('email')}" placeholder="Enter your email Address" name="email">
-                         <input type="email"  v-show="selfdata" v-model="form.email" class="form-control" :class="{'is-invalid':form.errors.has('email')}" placeholder="Enter your email Address" name="email" disabled>                                
+                         <input type="email" v-model="form.email" class="form-control" :class="{'is-invalid':form.errors.has('email')}" placeholder="Enter your email Address" name="email">
                          <has-error :form="form" field="email"></has-error>
-                     
-                        
-                      </div>
+                          </div>
                       </div>
                       <div class="col-sm-6">
                        <div class="form-group">
                         <label>Mobile Number</label>
-                          <input type="text" v-bind:disabled="updatedata===true" v-show="!selfdata" v-model="form.mobile" class="form-control" :class="{'is-invalid':form.errors.has('mobile')}" placeholder="Enter your Mobile Number" name="mobile">
-                          <input type="text"  v-show="selfdata" :disabled="updatedata===1" v-model="form.mobile" class="form-control" :class="{'is-invalid':form.errors.has('mobile')}" placeholder="Enter your Mobile Number" name="mobile">
+                          <input type="text"  v-model="form.mobile" class="form-control" :class="{'is-invalid':form.errors.has('mobile')}" placeholder="Enter your Mobile Number" name="mobile">
                           <has-error :form="form" field="mobile"></has-error>
                                   
                       </div>
@@ -190,6 +187,7 @@
                           <option value="Lakshadweep">Lakshadweep</option>
                           <option value="Madhya Pradesh">Madhya Pradesh</option>
                           <option value="Manipur">Manipur</option>
+                          <option value="Maharashtra">Maharashtra</option>
                           <option value="Meghalaya">Meghalaya</option>
                           <option value="Mizoram">Mizoram</option>
                           <option value="Nagaland">Nagaland</option>
@@ -211,22 +209,23 @@
                       <div class="col-sm-6">
                         <label>City</label>
                           <div class="form-group">
-                            <select v-model='form.city' class="form-control" >
-                                     
-                                      <option v-for="city in cities">{{city}}</option>
-                            </select>
+                           <input type="text" list="city" v-model="form.city"  class="form-control" />
+                        <datalist id="city">
+                        <option v-for="city in cities">{{city}}</option>
+                        </datalist>
                           </div>
                       </div>
                   </div>
+                  
                   <hr>
                   <div><h3>Professional Details</h3></div>
                   <div class="row">
                       <div class="col-sm-6">
                           <div class="form-group">
                               <label for="">Occupation</label>
-                         <select v-model="form.occupation" class="form-control" name="occupation" :class="{'is-invalid':form.errors.has('occupation')}">
-                          <option value="Government Job">Government Job</option>
-                          <option value="Private job">Private Job</option>
+                         <select v-model="form.occupation" @change="getjobs()" class="form-control" name="occupation" :class="{'is-invalid':form.errors.has('occupation')}">
+                          <option value="Govt">Government Job</option>
+                          <option value="private">Private Job</option>
                           <option value="self employed">Self Employed</option>
                           <option value="student">Student</option>
                           <option value="unemployed">Unemployed</option>
@@ -237,14 +236,17 @@
                           
                       </div>
                       <div class="col-sm-6">
-                          <div class="form-group">
+                          <div class="form-group" v-if ="form.occupation == 'Govt' || form.occupation == 'private'">
                               <label for="">Department</label>
-                            <input v-model="form.department" type="text" class="form-control" name="department" :class="{'is-invalid':form.errors.has('department')}">
-                          <has-error :form="form" field="department"></has-error>
+                          <input type="text" list="department" v-model="form.department"  class="form-control" />
+                        <datalist id="department">
+                        <option v-for="job in jobs">{{job}}</option>
+                        </datalist>
+                      </div>
                           </div>
                           
                       </div>
-                  </div>
+                  
                   <hr>
                     <h3  v-show="form.occupation === 'student'">Educational Details</h3>
                   <div class="row" v-show="form.occupation === 'student'">
@@ -347,8 +349,9 @@
     export default {
      data() {
         return {
-          selfdata:false,
-          updatedata : false,
+          authorized:'',
+          jobs:{},
+          userdetail:{},
           users:{},
           mydetails:{},
           cities:{},
@@ -386,114 +389,25 @@
       },
      methods:{
        loadusers(){
-        alert (this.$route.query.id);
-         axios.get('api/userDetails').then(({data})=>(this.users=data,
-         this.form.email = data.email,
-         this.form.mobile= data.mobile));
-       //  axios.get('api/userDetails').then(function(data){});
-         axios.get('api/checkUserStatus').then(({data})=>(this.userstatus=data));
-         axios.get('api/mydetails').then(({data})=>(this.mydetails=data));
-        // console.log(this.$route.query.user);
+         var userid = this.$route.query.userid;
+         axios.get('api/checkAuth/'+ userid).then(({data})=>(this.authorized = data)); 
+        // console.log(this.authorized);
+       axios.get('api/getuserdetail/'+ userid).then(({data})=>(this.form.fill(data[0])));
+        
+        
+       
+      //  axios.get('api/checkUserStatus').then(({data})=>(this.userstatus=data));
+        // axios.get('api/mydetails').then(({data})=>(this.mydetails=data));
           },
-        checkuserstatus(){
-          if(this.userstatus === 0){
-            if(this.selfdata=== true){
-              this.createMyUserDetail
-            }
-            return "selfdata ? createMyUserDetail(): createUserDetails()";
-          }
-          else{
-            return "updateSelfData()";
-          }
-        },
-          getcity(){
-            
+       
+          getcity(){            
             axios.get('api/getcities/'+this.form.state).then(({data})=>(this.cities = data));
            //console.log(this.cities.target.value);
           },
-          createUserDetails(){
-          this.$Progress.start();
-          this.form.post('api/userDetails')
-          .then(()=>{
-                    Toast.fire({
-                    type: 'success',
-                    title: 'Member Info Saved'
-              })
-            this.form.reset();
-          })
-          .catch(()=>{
-            Toast.fire({
-              type: 'error',
-              title: 'There is some problem'
-            })
-          })
-         this.$Progress.finish();
-          
-       },
-       relation(){
-         if(this.form.relation === 'son'){
-           this.form.mother_name = '';
-           this.form.father_name = this.users.family_head;
-         }
-         else if (this.form.relation === 'daughter'){
-           this.form.father_name = '';
-           this.form.mother_name = this.users.family_head;
-         }
-         else {
-           this.form.father_name = '';
-           this.form.mother_name = '';
-         }
-       },
-       createMyUserDetail(){
-         this.$Progress.start();
-          this.form.post('api/myuserDetails')
-          .then(()=>{
-                    Toast.fire({
-                    type: 'success',
-                    title: 'Member Info Saved'
-              })
-            this.form.reset();
-          })
-          .catch(()=>{
-            Toast.fire({
-              type: 'error',
-              title: 'There is some problem'
-            })
-          })
-         this.$Progress.finish();
-        this.$Progress.start();
-        this.form.put('api/updatePhoto')
-        .then(()=>{
-            Toast.fire({
-              type: 'success',
-              title:'image Uploaded succssfully'
-            })
-            .catch(()=>{
-              Toast.fire({
-                type:'error',
-                title: 'error in image upload'
-              })
-            })
-        })
-        this.$Progress.finish();
-       },
-       mydata(){
-         if(this.selfdata=== true){
-           this.form.fill(this.users);
-         }
-         else{
-           this.form.reset();
-         }
-       },
-       myuserdata(){
-         if(this.updatedata===true){
-            this.form.fill(this.mydetails[0]);
-         }
-         else{
-           this.form.reset();
-         }
-        
-       },
+          getjobs(){
+             axios.get('api/getjoblist/'+this.form.occupation).then(({data})=>(this.jobs = data));
+          },
+         
         updateProfilePic(e){
           let file = e.target.files[0];
          console.log(file);
@@ -516,9 +430,9 @@
            }
           
         },
-        updateMyDetails(){
+        updateuserdata(){
           this.$Progress.start();
-       this.form.put('api/updateMydetails/'+this.form.id)
+       this.form.put('api/updateuserdetails/'+this.form.id)
        .then(()=>{
          // success
         
@@ -542,11 +456,13 @@
         },
       },
       created() {
-        console.log(this.$route.params.id);
-        console.log("created");
       this.loadusers();
+     
    //   console.log(this.users.data);
       //console.log(this.users);
-              }
+              },
+      mounted(){
+       
+        }
     }
 </script>
