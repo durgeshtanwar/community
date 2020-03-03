@@ -31,8 +31,8 @@
                       <td><span class="tag tag-success">{{user.gotra}}</span></td>
                       <td><span class="tag tag-success">{{user.usertype}}</span></td>
                       <td> 
-                        <router-link :to="{ name: 'editmember', query: {userid:user.id}}">Edit</router-link>
-                             <a href="#"  class="mr-2" @click="editModel(user)"> <i class="fa fa-edit"></i></a>
+                        <router-link :to="{ name: 'editmember', query: {userid:user.id}}">Edit</router-link> |
+                             <a href="#"  class="mr-2" @click="editModel(user)"> <i class="fa fa-edit"></i>  </a>
                           <a href="#" v-if="user.id!=authuser" @click="deleteuser(user.id)" class= "ml-2"><i class="fa fa-trash red"></i></a>
                       </td>
                     </tr>
@@ -65,6 +65,7 @@
         <select v-model="form.usertype" class="form-control" name="usertype" aria-placeholder="Gotra">
           <option value="family">Family</option>
           <option value="member">Member</option>
+          <option value="admin">Admin</option>
          
           </select>
           <has-error :form="form" field="usertype"></has-error>

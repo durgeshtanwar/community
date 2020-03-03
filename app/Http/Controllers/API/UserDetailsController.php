@@ -471,6 +471,51 @@ public function getuserdetail($id){
      
  
  }
+ public function getuserdirectory(){
+      
+    
+    $query = app(UserDetail::class)->newQuery();
+   // $query = $query->select('users_details.*','users.username');
+   // $query = $query->join('users','users_details.user_id','=','users.id'); 
+  
+    $request = request();
+      if(request()->exists('sort')){
+        $sorts = explode(',',request()->sort);
+        foreach ($sorts as $sort){
+            list($sortCol, $sortDir) = explode('|',$sort);
+            $query = $query->orderBy($sortCol,$sortDir);
+         } 
+    } 
+     else { 
+            $query = $query->orderBy('id','asc');
+        }
+  if($request->exists('filter')) {
+      $query->where(function($q) use($request){
+        $value = "%{$request->filter}%";
+        $q->where('name','like',$value)
+              ->orWhere('name','like',$value)
+            //  ->orWhere('username','like',$value)
+              ->orWhere('occupation','like',$value)
+              ->orWhere('department','like',$value)
+              ->orWhere('state','like',$value)
+              ->orWhere('city','like',$value); 
+      });
+  }
+  $per_page = request()->has('per_page')?(int) request()->per_page : null;
+  $pagination = $query->paginate($per_page);
+  $pagination->appends([
+      'sort'=>request()->sort,
+      'filter'=>request()->filter,
+      'per_page'=>request()->per_page
+  ]);
+   
+    return response()->json(
+        $pagination
+    )
+    ->header('Access-Control-Allow-Origin','*')
+    ->header('Access-Control-Allow-Methods','GET');
+}
+
 
 
 }

@@ -52,7 +52,7 @@ Route::get('myjobs','API\JobsController@my_jobs');
 Route::put('updatePhoto','API\UserController@updatePhoto');
 Route::put('updateUserType/{id}','API\UserDetailsController@updateUserType');
 Route::get('usercounts','API\UserDetailsController@usercounts');
-
+Route::get('getuserdirectory','API\UserDetailsController@getuserdirectory');
 
 Route::get('directorycounts','API\SettingsController@directorycounts');
 Route::get('eventcounts','API\SettingsController@eventcounts');

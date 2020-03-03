@@ -79,7 +79,6 @@ const routes = [
     { path: '/groom', component: require('./components/groom.vue').default },
     { path: '/users', component: require('./components/Users.vue').default },
     { path: '/addFamily', component: require('./components/family/AddNewMember.vue').default },
-  //  { path: '/editmember/:userid',name:'editmember' , component: require('./components/family/EditMember.vue').default },
     { path: '/editmember',name:'editmember',component: require('./components/family/EditMember.vue').default },
     { path: '/family',component:require ('./components/family/familymemberlist.vue').default },
     { path: '/addjob',component:require ('./components/addjob.vue').default },
@@ -97,6 +96,7 @@ const routes = [
     { path: '/addEvents',component:require('./components/admin/addEvents.vue').default},
     { path: '/myJobs',component:require('./components/addjob1.vue').default},
     { path: '/settings',component:require('./components/admin/settings.vue').default},
+    { path: '/userdirectory',component:require('./components/userdirectory.vue').default},
     { path: '*',component:require('./components/admin/404.vue').default},
 ]
 
