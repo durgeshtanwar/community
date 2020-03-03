@@ -57917,10 +57917,6 @@ var render = function() {
                             _vm._v(" "),
                             _c("option", { attrs: { value: "member" } }, [
                               _vm._v("Member")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "admin" } }, [
-                              _vm._v("Admin")
                             ])
                           ]
                         ),
