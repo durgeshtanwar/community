@@ -282,7 +282,7 @@ $this->validate($request,[
  }    
  else {
     DB::table('users')
-    ->where('id', $userid)
+    ->where('id', Auth::User()->id)
     ->update(['image' => 'profile.png']);
 
  }
