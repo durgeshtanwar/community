@@ -96,12 +96,13 @@ public function __construct()
     $userid = $user->id;
     
     $userdetail = new UserDetail();
-
+    $dob = $request->dob;
+    $newDate = date("m-d-Y", strtotime($dob));  
     $userdetail->self_data = $request->self_data;
     $userdetail->name = $request->name;
     $userdetail->relation = $request->relation;
     $userdetail->gender = $request->gender;
-    $userdetail->dob = $request->dob;
+    $userdetail->dob = $newDate;
     $userdetail->marriage_status = $request->marriage_status;
     $userdetail->matrimonial = $request->matrimonial; 
     $userdetail->email = $request->email;
@@ -122,7 +123,8 @@ public function __construct()
     $userdetail->post_graduation = $request->postGraduation;
     $userdetail->present_year = date("Y");
     $userdetail->family_id = Auth::User()->family_id;
-
+    $userdetail->allowsearch = $request->allowsearch;
+    $userdetail->grad_year = $request->grad_year;
 
     $userdetail->save();
 }
@@ -186,6 +188,9 @@ public function __construct()
       $per_page = request()->has('per_page')?(int) request()->per_page : null;
       $pagination = $query->paginate($per_page);
       $pagination->appends([
+
+
+
           'sort'=>request()->sort,
           'filter'=>request()->filter,
           'per_page'=>request()->per_page
@@ -353,6 +358,8 @@ public function mydetails(){
         return  $r;
 }
 
+// This function is used to update users own details 
+
 public function updateMydetails(Request $request, $id){
 
    $user = UserDetail::findorfail($id);
@@ -399,10 +406,12 @@ public function updateMydetails(Request $request, $id){
     
 
 }
+// Function to get cities
 public function getcities($state){
  $result = DB::table('cities')->where('city_state',$state)->pluck('city_name');
  return $result;
 }
+
 public function getuserdetail($id){
    // $result = DB::table('users_details')->where('user_id', $id)->first();
     $r = DB::table('users_details')
@@ -422,6 +431,7 @@ public function getuserdetail($id){
           return 0;
       }
   }
+
   public function updateuserdetails(Request $request, $id){
 
     $user = UserDetail::findorfail($id);
@@ -439,7 +449,8 @@ public function getuserdetail($id){
          'state'=>'required|string|max:191',
          'occupation'=>'required|string|max:191',
          'password'=>'required|sometimes|string|min:8',
-         'photo'=>'required|sometimes|'
+         'photo'=>'required|sometimes|',
+         
       ]);
       $userid = $user->user_id;
       if($request->photo){
@@ -467,6 +478,10 @@ public function getuserdetail($id){
           DB::table('users')
           ->where('id', $userid)
           ->update(['name' => $request['name']  ]);
+
+        //   DB::table('users_details')
+        //   ->where('user_id', $userid)
+        //   ->update(['allowsearch' => $request['allowsearch']  ]);
       $user->update($request->all());
      
  
@@ -475,6 +490,7 @@ public function getuserdetail($id){
       
     
     $query = app(UserDetail::class)->newQuery();
+  $query = $query->where('allowsearch','LIKE', 0); 
    // $query = $query->select('users_details.*','users.username');
    // $query = $query->join('users','users_details.user_id','=','users.id'); 
   

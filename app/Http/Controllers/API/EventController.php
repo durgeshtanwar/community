@@ -81,10 +81,11 @@ class EventController extends Controller
         $users = User::all();
         $details = $request['event_name'];
         Notification::send($users, new Events($details));
-
+        $dob = $request->$request['date'];
+        $newDate = date("m-d-Y", strtotime($dob));  
         return Event::create([
             'event_name'=>$request['event_name'],
-            'date'=>$request['date'],
+            'date'=>$newDate,
             'event_venue'=>$request['event_venue'],
             'remarks'=>$request['remarks']
         ]);
@@ -115,11 +116,22 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
         $this->validate($request ,[
             'event_name'=>'string|required|max:255',
-            'event_date'=>'string|required',
+            'date'=>'string|required',
             'event_venue'=>'string|nullable',
             'remarks'=>'string|nullable|max:255'
         ]);
-        $event->update($request->all());  
+        $dob = $request->$request['date'];
+        $newDate = date("m-d-Y", strtotime($dob));  
+        $data = [
+            'event_name'=>$request['event_name'],
+            'date'=>$newDate,
+            'event_venue'=>$request['event_venue'],
+            'remarks'=>$request['remarks']
+        ];
+       DB::table('events')
+            ->where('id',$id)
+            ->update($data);
+
         return ['message'=> 'event updated successfully'];
     }
 

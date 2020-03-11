@@ -107,6 +107,7 @@
 
                             <div class="col-md-9">
                                 <select class="form-control" name="gotra" aria-placeholder="Gotra">
+                                    <option value="NA|NA"> Not Applicable</option>
                                     <option value="Kuvera|Chamunda"> Kuvera</option>
                                     <option value="Mathuria|Sacchiay">Mathuria</option>
                                     <option value="Kataria|Chamunda">Kataria</option>

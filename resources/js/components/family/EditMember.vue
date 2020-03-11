@@ -15,6 +15,14 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <form role="form" @submit.prevent='updateuserdata()' enctype="multipart/form-data">
+                  <div class="row">
+                     <div class="form-check">
+                        <input type="radio" name="allowsearch" class="form-check-in" v-model="form.allowsearch" value=1  :class="{'is-invalid': form.errors.has('allowsearch')}">
+                          <label for="allowserch" class="form-check-label">I do not want my data in user search</label>
+                           <input type="radio" name="allowsearch" class="form-check-in" v-model="form.allowsearch" value=0  :class="{'is-invalid': form.errors.has('allowsearch')}">
+                          <label for="allowserch" class="form-check-label">I want my data in user search</label>
+                        </div>
+                    </div>
                    <div class="row">
                     <div class="col-sm-6">
                       <!-- text input -->
@@ -236,12 +244,132 @@
                           
                       </div>
                       <div class="col-sm-6">
-                          <div class="form-group" v-if ="form.occupation == 'Govt' || form.occupation == 'private'">
+                          <div class="form-group" v-if ="form.occupation == 'Govt' || form.occupation == 'private' || form.occupation == 'self employed'">
                               <label for="">Department</label>
-                          <input type="text" list="department" v-model="form.department"  class="form-control" />
-                        <datalist id="department">
-                        <option v-for="job in jobs">{{job}}</option>
-                        </datalist>
+                          <select v-if ="form.occupation == 'private' || form.occupation=='self employed'" v-model="form.department"   class="form-control">
+
+                        <option>Accounts/ Banking / Finance / Tax</option>
+                        <option>Accountant</option>
+                        <option>Debt Recovery Agent</option>
+                        <option>Equity Dealer</option>
+                        <option>Financial Planner</option>
+                        <option>Insurance Agent</option>
+                        <option>Mutual Fund Agent</option>
+                        <option>Analytics</option>
+                        <option>Analytics / Business Intelligence / Data Science</option>
+                        <option>Back Office Operations</option>
+                        <option>Admin Executive</option>
+                        <option>Back Office</option>
+                        <option>Claims Processing Executive</option>
+                        <option>Data Entry</option>
+                        <option>Helper</option>
+                        <option>Human Resource (HR)</option>
+                        <option>MIS Executive</option>
+                        <option>Office Assistant</option>
+                        <option>Office Boy</option>
+                        <option>Personal Assistant</option>
+                        <option>Stenographer</option>
+                        <option>Business Operations</option>
+                        <option>BPO</option>
+                        <option>Data Collection Executive</option>
+                        <option>Operations Executive</option>
+                        <option>Design</option>
+                        <option>Architecture</option>
+                        <option>Draftsman</option>
+                        <option>DTP Operator</option>
+                        <option>Fashion Designer</option>
+                        <option>Web / Graphic Design</option>
+                        <option>Front Desk Operations</option>
+                        <option>Cashier</option>
+                        <option>Customer Care</option>
+                        <option>Public Relations (PR) Executive</option>
+                        <option>Receptionist/Front Desk</option>
+                        <option>Store Keeper</option>
+                        <option>Hospitality</option>
+                        <option>Air Hostess</option>
+                        <option>Bartender</option>
+                        <option>Cabin Crew</option>
+                        <option>Cook / Chef</option>
+                        <option>Waiter / Steward</option>
+                        <option>IT - Hardware &amp; Software</option>
+                        <option>Android Developer</option>
+                        <option>Application Programming / Maintenance / Architecture</option>
+                        <option>Database Administrator</option><option>IT Software - ERP / CRM</option>
+                        <option>IT Software - Frontend / Backend</option>
+                        <option>IT Software - Mobile Development</option>
+                        <option>IT Support - Hardware</option>
+                        <option>Network / Security / System Administration</option>
+                        <option>Product / Project Management</option>
+                        <option>Software Developer</option>
+                        <option>Software Testing / QA</option>
+                        <option>Logistics / Supply Chain</option>
+                        <option>Delivery Boy</option>
+                        <option>Labourer</option>
+                        <option>Loader</option>
+                        <option>Merchandiser</option>
+                        <option>Manufacturing</option>
+                        <option>Machine Operator</option>
+                        <option>Packer</option>
+                        <option>Production/ Quality Control/ Maintenance</option>
+                        <option>Purchase / Procurement Executive</option>
+                        <option>Marketing</option><option>Content Writer</option>
+                        <option>Digital Marketing Expert</option>
+                        <option>Marketing Executive</option>
+                        <option>Non-IT Engineering</option>
+                        <option>Aeronautical Engineer</option>
+                        <option>Chemical Engineer</option>
+                        <option>Civil Engineer</option>
+                        <option>Electrical Engineer</option>
+                        <option>Electronics Engineer</option>
+                        <option>Embedded / VLSI / ASIC / Chip Design</option>
+                        <option>Engineering</option>
+                        <option>Environmental Engineer</option>
+                        <option>Industrial Engineer</option>
+                        <option>Instrumentation Engineer</option>
+                        <option>Mechanical Engineer</option>
+                        <option>Telecommunications Engineer</option>
+                        <option>Pharmacy / Medical</option>
+                        <option>Doctor</option>
+                        <option>Laboratory Assistant</option>
+                        <option>Medical Representative</option>
+                        <option>Nurse</option>
+                        <option>Nursing Attendant/Wardboy</option>
+                        <option>Physiotherapist</option>
+                        <option>Radiology Technician</option>
+                        <option>Sales</option>
+                        <option>Counter Sales</option>
+                        <option>Promoter</option>
+                        <option>Sales / Business Development</option>
+                        <option>Telesales / Telemarketing</option>
+                        <option>Services</option>
+                        <option>Aayah</option>
+                        <option>Beautician</option>
+                        <option>Caretaker</option>
+                        <option>Carpenter</option>
+                        <option>Counselors</option>
+                        <option>Driver</option>
+                        <option>Fitness Trainer</option>
+                        <option>Gardener</option>
+                        <option>Hair Stylist</option>
+                        <option>Housekeeping</option>
+                        <option>Maid</option>
+                        <option>Massuese</option>
+                        <option>Photographer</option>
+                        <option>Plumber</option>
+                        <option>Security Guard</option>
+                        <option>Spot Boy</option>
+                        <option>Tailor</option>
+                        <option>Tutor / Teacher</option>
+                        <option>Technicians</option>
+                        <option>Electrician</option>
+                        <option>Fitter</option>
+                        <option>Mechanic</option>
+                        <option>Technician</option>
+                        <option>Tower Technician</option>
+                        </select>
+                        <select v-show ="form.occupation == 'Govt'" v-model="form.department"  class="form-control">
+                          <option>Agriculture &amp; Cooperation </option><option>Animal Husbandry &amp; Fishing </option><option>Art &amp; Culture </option><option>Chemicals &amp; Fertilizers </option><option>Coal &amp; Mine </option><option>Commerce &amp; Industry </option><option>Communications &amp; Information Technology (</option><option>Defence </option><option>Education &amp; Training </option><option>Employment &amp; Labour </option><option>Energy &amp; Power </option><option>Environment &amp; Natural Resources </option><option>Finance, Banking &amp; Insurance </option><option>Food &amp; Public Distribution </option><option>Forestry &amp; Wildlife </option><option>Governance &amp; Administration</option><option>Health &amp; Family welfare </option><option>Home affairs &amp; National Security </option><option>Housing &amp; Urban Development </option><option>Information &amp; Broadcasting </option><option>International Affairs</option><option>Law &amp; Justice</option><option>People &amp; Organisations </option><option>Petroleum, Oil &amp; Natural Gas</option><option>Rural Development &amp; Panchayati Raj </option><option>Science, Technology &amp; Research</option><option>Social Justice &amp; Empowerment </option><option>Tourism </option><option>Transport &amp; Infrastructure</option><option>Youth Affairs &amp; Sports</option>
+                        </select>
                       </div>
                           </div>
                           
@@ -250,7 +378,7 @@
                   <hr>
                     <h3  v-show="form.occupation === 'student'">Educational Details</h3>
                   <div class="row" v-show="form.occupation === 'student'">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                   
                     <div class="form-group">
                       <label for ="">Education Level</label>
@@ -273,7 +401,7 @@
                       </select>
                     </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                       <div class="form-group">
                       <input class="form-check-input" v-show="form.education ==='10th'" v-model="form.current_year" type="checkbox" name="current_year" value="true" :class="{'is-invalid': form.errors.has('current_year')}">
                      <label v-show="form.education ==='10th'" > are you appearing in class 10 in {{ 2020 | getYear}}</label>
@@ -281,10 +409,16 @@
                      <label v-show="form.education ==='12th'" > are you appearing in class 12 in {{ 2020 | getYear}}</label>
                       <input class="form-check-input" v-show="form.education ==='8th'" v-model="form.current_year" type="checkbox" name="current_year" value="true" :class="{'is-invalid': form.errors.has('current_year')}">
                      <label v-show="form.education ==='8th'" > are you appearing in class 8 in {{ 2020 | getYear}}</label>
+                    <input class="form-check-input" v-show="form.education ==='9th'" v-model="form.current_year" type="checkbox" name="current_year" value="true" :class="{'is-invalid': form.errors.has('current_year')}">
+                     <label v-show="form.education ==='9th'" > are you appearing in class 9 in {{ 2020 | getYear}}</label>
+                    <input class="form-check-input" v-show="form.education ==='11th'" v-model="form.current_year" type="checkbox" name="current_year" value="true" :class="{'is-invalid': form.errors.has('current_year')}">
+                     <label v-show="form.education ==='11th'" > are you appearing in class 11 in {{ 2020 | getYear}}</label>
                    
-                    <label v-show="form.education ==='graduate'" > Graduation Subject</label>
-                    <input type="text" list="graduation" v-model="form.graduation" v-show ="form.education=='graduate'" class="form-control" />
-                        <datalist id="graduation">
+                   
+                   
+                    <label v-show="form.education ==='graduate'" >Graduation Subject</label>
+                    <select v-model="form.graduation" v-show ="form.education=='graduate'" class="form-control" >
+                       
                           <option value="BA">BA</option>
                           <option value="BCom">BCom</option>
                           <option value="BFA">BFA</option>
@@ -293,10 +427,10 @@
                           <option value="BCA">BCA</option>
                           <option value="BBA">BBA</option>
                           <option value="MBBS">MBBS</option>
-                        </datalist>
+                       </select>
                         <label v-show="form.education ==='post graduate'" > Post Graduation Subject</label>
-                    <input type="text" list="postgraduation" v-model="form.postGraduation" v-show ="form.education=='post graduate'" class="form-control" />
-                        <datalist id="postgraduation">
+                    <select v-model="form.postGraduation" v-show ="form.education=='post graduate'" class="form-control">
+                        
                          <option value="MA">MA</option>
                          <option value="MCom">MCom</option>
                          <option value="MSc">MSc</option>
@@ -304,11 +438,20 @@
                          <option value="MD">MD</option>
                          <option value="MCA">MCA</option>
                          <option value="Mtech">Mtech</option>
-                        </datalist>
+                       </select>
                       </div>
                     </div>
-                     
-                  </div>
+                    <div class="col-sm-4" v-if="form.education === 'graduate' || form.education === 'post graduate'">
+                      <label v-if="form.education === 'graduate' || form.education==='post graduate'"> Year</label>
+                        <select class="form-control" v-model="form.grad_year">
+                        <option value="1st">1st</option>
+                        <option value="2nd">2nd</option>
+                        <option value="3rd">3rd</option>
+                        <option value="4th" v-if="form.graduation === 'Btech' || form.graduation==='MBBS'">4th</option>
+                        <option value="5th" v-show ="form.graduation==='MBBS'">5th</option>
+                        </select>
+                      </div>
+                    </div>
                  <div class="row">
                    <div class="col-sm-6">
                      <div class="form-group">
@@ -382,6 +525,8 @@
               password:'',
               gotra:'',
               photo:'',
+              allowsearch:0,
+               grad_year:''
             }),
             
            

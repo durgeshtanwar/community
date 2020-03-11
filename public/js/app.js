@@ -4995,6 +4995,155 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5030,7 +5179,9 @@ __webpack_require__.r(__webpack_exports__);
         self_data: 'no',
         password: '',
         gotra: '',
-        photo: ''
+        photo: '',
+        allowsearch: 0,
+        grad_year: ''
       })
     };
   },
@@ -5040,7 +5191,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('api/userDetails').then(function (_ref) {
         var data = _ref.data;
-        return _this.users = data, _this.form.email = data.email, _this.form.mobile = data.mobile, _this.form.address = data.address;
+        return _this.users = data, _this.form.email = data.email, _this.form.mobile = data.mobile;
       }); //  axios.get('api/userDetails').then(function(data){});
 
       axios.get('api/checkUserStatus').then(function (_ref2) {
@@ -5049,7 +5200,7 @@ __webpack_require__.r(__webpack_exports__);
       });
       axios.get('api/mydetails').then(function (_ref3) {
         var data = _ref3.data;
-        return _this.mydetails = data;
+        return _this.mydetails = data, _this.form.address = data[0].address;
       }); // this.form.fill(this.mydetails[0]);
       // console.log(this.$route.query.user);
     },
@@ -5555,6 +5706,149 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5590,7 +5884,9 @@ __webpack_require__.r(__webpack_exports__);
         self_data: 'no',
         password: '',
         gotra: '',
-        photo: ''
+        photo: '',
+        allowsearch: 0,
+        grad_year: ''
       })
     };
   },
@@ -5923,7 +6219,7 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         name: 'mother_name',
         title: 'Mother Name'
-      }, 'city', 'mobile', 'gotra', '__slot:image'],
+      }, 'city', 'mobile', 'dob', 'gotra', '__slot:image'],
       sortOrder: [{
         field: 'city',
         sortField: 'city',
@@ -53665,7 +53961,83 @@ var render = function() {
                         })
                       ],
                       1
-                    )
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.allowsearch,
+                            expression: "form.allowsearch"
+                          }
+                        ],
+                        staticClass: "form-check-in",
+                        class: {
+                          "is-invalid": _vm.form.errors.has("allowsearch")
+                        },
+                        attrs: {
+                          type: "radio",
+                          name: "allowsearch",
+                          value: "1"
+                        },
+                        domProps: {
+                          checked: _vm._q(_vm.form.allowsearch, "1")
+                        },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.form, "allowsearch", "1")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "allowsearch" }
+                        },
+                        [_vm._v("I do not want my data in user search")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.allowsearch,
+                            expression: "form.allowsearch"
+                          }
+                        ],
+                        staticClass: "form-check-in",
+                        class: {
+                          "is-invalid": _vm.form.errors.has("allowsearch")
+                        },
+                        attrs: {
+                          type: "radio",
+                          name: "allowsearch",
+                          value: "0"
+                        },
+                        domProps: {
+                          checked: _vm._q(_vm.form.allowsearch, "0")
+                        },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.form, "allowsearch", "0")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "allowsearch" }
+                        },
+                        [_vm._v("I want my data in user search")]
+                      )
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
@@ -53767,6 +54139,14 @@ var render = function() {
                               _vm._v("Self")
                             ]),
                             _vm._v(" "),
+                            _c("option", { attrs: { value: "father" } }, [
+                              _vm._v("Father")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "mother" } }, [
+                              _vm._v("Mother")
+                            ]),
+                            _vm._v(" "),
                             _c("option", { attrs: { value: "wife" } }, [
                               _vm._v("Wife")
                             ]),
@@ -53803,6 +54183,10 @@ var render = function() {
                             _vm._v(" "),
                             _c("option", { attrs: { value: "neice" } }, [
                               _vm._v("Neice")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "guardian" } }, [
+                              _vm._v("Guardian")
                             ])
                           ]
                         ),
@@ -54983,45 +55367,481 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "col-sm-6" }, [
                     _vm.form.occupation == "Govt" ||
-                    _vm.form.occupation == "private"
+                    _vm.form.occupation == "private" ||
+                    _vm.form.occupation == "self employed"
                       ? _c("div", { staticClass: "form-group" }, [
                           _c("label", { attrs: { for: "" } }, [
                             _vm._v("Department")
                           ]),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.department,
-                                expression: "form.department"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { type: "text", list: "department" },
-                            domProps: { value: _vm.form.department },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.form,
-                                  "department",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
+                          _vm.form.occupation == "private" ||
+                          _vm.form.occupation == "self employed"
+                            ? _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.department,
+                                      expression: "form.department"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  on: {
+                                    change: function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.$set(
+                                        _vm.form,
+                                        "department",
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("option", [
+                                    _vm._v("Accounts/ Banking / Finance / Tax")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Accountant")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Debt Recovery Agent")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Equity Dealer")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Financial Planner")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Insurance Agent")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Mutual Fund Agent")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Analytics")]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v(
+                                      "Analytics / Business Intelligence / Data Science"
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Back Office Operations")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Admin Executive")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Back Office")]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Claims Processing Executive")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Data Entry")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Helper")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Human Resource (HR)")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("MIS Executive")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Office Assistant")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Office Boy")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Personal Assistant")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Stenographer")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Business Operations")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("BPO")]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Data Collection Executive")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Operations Executive")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Design")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Architecture")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Draftsman")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("DTP Operator")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Fashion Designer")]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Web / Graphic Design")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Front Desk Operations")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Cashier")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Customer Care")]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Public Relations (PR) Executive")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Receptionist/Front Desk")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Store Keeper")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Hospitality")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Air Hostess")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Bartender")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Cabin Crew")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Cook / Chef")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Waiter / Steward")]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("IT - Hardware & Software")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Android Developer")]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v(
+                                      "Application Programming / Maintenance / Architecture"
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Database Administrator")
+                                  ]),
+                                  _c("option", [
+                                    _vm._v("IT Software - ERP / CRM")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("IT Software - Frontend / Backend")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("IT Software - Mobile Development")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("IT Support - Hardware")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v(
+                                      "Network / Security / System Administration"
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Product / Project Management")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Software Developer")]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Software Testing / QA")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Logistics / Supply Chain")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Delivery Boy")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Labourer")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Loader")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Merchandiser")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Manufacturing")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Machine Operator")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Packer")]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v(
+                                      "Production/ Quality Control/ Maintenance"
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Purchase / Procurement Executive")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Marketing")]),
+                                  _c("option", [_vm._v("Content Writer")]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Digital Marketing Expert")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Marketing Executive")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Non-IT Engineering")]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Aeronautical Engineer")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Chemical Engineer")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Civil Engineer")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Electrical Engineer")]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Electronics Engineer")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v(
+                                      "Embedded / VLSI / ASIC / Chip Design"
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Engineering")]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Environmental Engineer")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Industrial Engineer")]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Instrumentation Engineer")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Mechanical Engineer")]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Telecommunications Engineer")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Pharmacy / Medical")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Doctor")]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Laboratory Assistant")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Medical Representative")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Nurse")]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Nursing Attendant/Wardboy")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Physiotherapist")]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Radiology Technician")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Sales")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Counter Sales")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Promoter")]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Sales / Business Development")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [
+                                    _vm._v("Telesales / Telemarketing")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Services")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Aayah")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Beautician")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Caretaker")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Carpenter")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Counselors")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Driver")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Fitness Trainer")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Gardener")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Hair Stylist")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Housekeeping")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Maid")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Massuese")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Photographer")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Plumber")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Security Guard")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Spot Boy")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Tailor")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Tutor / Teacher")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Technicians")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Electrician")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Fitter")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Mechanic")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Technician")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("Tower Technician")])
+                                ]
+                              )
+                            : _vm._e(),
                           _vm._v(" "),
                           _c(
-                            "datalist",
-                            { attrs: { id: "department" } },
-                            _vm._l(_vm.jobs, function(job) {
-                              return _c("option", [_vm._v(_vm._s(job))])
-                            }),
-                            0
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.form.occupation == "Govt",
+                                  expression: "form.occupation == 'Govt'"
+                                },
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.department,
+                                  expression: "form.department"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.form,
+                                    "department",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c("option", [
+                                _vm._v("Agriculture & Cooperation ")
+                              ]),
+                              _c("option", [
+                                _vm._v("Animal Husbandry & Fishing ")
+                              ]),
+                              _c("option", [_vm._v("Art & Culture ")]),
+                              _c("option", [
+                                _vm._v("Chemicals & Fertilizers ")
+                              ]),
+                              _c("option", [_vm._v("Coal & Mine ")]),
+                              _c("option", [_vm._v("Commerce & Industry ")]),
+                              _c("option", [
+                                _vm._v(
+                                  "Communications & Information Technology ("
+                                )
+                              ]),
+                              _c("option", [_vm._v("Defence ")]),
+                              _c("option", [_vm._v("Education & Training ")]),
+                              _c("option", [_vm._v("Employment & Labour ")]),
+                              _c("option", [_vm._v("Energy & Power ")]),
+                              _c("option", [
+                                _vm._v("Environment & Natural Resources ")
+                              ]),
+                              _c("option", [
+                                _vm._v("Finance, Banking & Insurance ")
+                              ]),
+                              _c("option", [
+                                _vm._v("Food & Public Distribution ")
+                              ]),
+                              _c("option", [_vm._v("Forestry & Wildlife ")]),
+                              _c("option", [
+                                _vm._v("Governance & Administration")
+                              ]),
+                              _c("option", [
+                                _vm._v("Health & Family welfare ")
+                              ]),
+                              _c("option", [
+                                _vm._v("Home affairs & National Security ")
+                              ]),
+                              _c("option", [
+                                _vm._v("Housing & Urban Development ")
+                              ]),
+                              _c("option", [
+                                _vm._v("Information & Broadcasting ")
+                              ]),
+                              _c("option", [_vm._v("International Affairs")]),
+                              _c("option", [_vm._v("Law & Justice")]),
+                              _c("option", [_vm._v("People & Organisations ")]),
+                              _c("option", [
+                                _vm._v("Petroleum, Oil & Natural Gas")
+                              ]),
+                              _c("option", [
+                                _vm._v("Rural Development & Panchayati Raj ")
+                              ]),
+                              _c("option", [
+                                _vm._v("Science, Technology & Research")
+                              ]),
+                              _c("option", [
+                                _vm._v("Social Justice & Empowerment ")
+                              ]),
+                              _c("option", [_vm._v("Tourism ")]),
+                              _c("option", [
+                                _vm._v("Transport & Infrastructure")
+                              ]),
+                              _c("option", [_vm._v("Youth Affairs & Sports")])
+                            ]
                           )
                         ])
                       : _vm._e()
@@ -55059,7 +55879,7 @@ var render = function() {
                     staticClass: "row"
                   },
                   [
-                    _c("div", { staticClass: "col-sm-6" }, [
+                    _c("div", { staticClass: "col-sm-4" }, [
                       _c("div", { staticClass: "form-group" }, [
                         _c("label", { attrs: { for: "" } }, [
                           _vm._v("Education Level")
@@ -55165,7 +55985,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-6" }, [
+                    _c("div", { staticClass: "col-sm-4" }, [
                       _c("div", { staticClass: "form-group" }, [
                         _c("input", {
                           directives: [
@@ -55410,6 +56230,168 @@ var render = function() {
                           ]
                         ),
                         _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.form.education === "9th",
+                              expression: "form.education ==='9th'"
+                            },
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.current_year,
+                              expression: "form.current_year"
+                            }
+                          ],
+                          staticClass: "form-check-input",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("current_year")
+                          },
+                          attrs: {
+                            type: "checkbox",
+                            name: "current_year",
+                            value: "true"
+                          },
+                          domProps: {
+                            checked: Array.isArray(_vm.form.current_year)
+                              ? _vm._i(_vm.form.current_year, "true") > -1
+                              : _vm.form.current_year
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$a = _vm.form.current_year,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = "true",
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 &&
+                                    _vm.$set(
+                                      _vm.form,
+                                      "current_year",
+                                      $$a.concat([$$v])
+                                    )
+                                } else {
+                                  $$i > -1 &&
+                                    _vm.$set(
+                                      _vm.form,
+                                      "current_year",
+                                      $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1))
+                                    )
+                                }
+                              } else {
+                                _vm.$set(_vm.form, "current_year", $$c)
+                              }
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education === "9th",
+                                expression: "form.education ==='9th'"
+                              }
+                            ]
+                          },
+                          [
+                            _vm._v(
+                              " are you appearing in class 9 in " +
+                                _vm._s(_vm._f("getYear")(2020))
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.form.education === "11th",
+                              expression: "form.education ==='11th'"
+                            },
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.current_year,
+                              expression: "form.current_year"
+                            }
+                          ],
+                          staticClass: "form-check-input",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("current_year")
+                          },
+                          attrs: {
+                            type: "checkbox",
+                            name: "current_year",
+                            value: "true"
+                          },
+                          domProps: {
+                            checked: Array.isArray(_vm.form.current_year)
+                              ? _vm._i(_vm.form.current_year, "true") > -1
+                              : _vm.form.current_year
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$a = _vm.form.current_year,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = "true",
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 &&
+                                    _vm.$set(
+                                      _vm.form,
+                                      "current_year",
+                                      $$a.concat([$$v])
+                                    )
+                                } else {
+                                  $$i > -1 &&
+                                    _vm.$set(
+                                      _vm.form,
+                                      "current_year",
+                                      $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1))
+                                    )
+                                }
+                              } else {
+                                _vm.$set(_vm.form, "current_year", $$c)
+                              }
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education === "11th",
+                                expression: "form.education ==='11th'"
+                              }
+                            ]
+                          },
+                          [
+                            _vm._v(
+                              " are you appearing in class 11 in " +
+                                _vm._s(_vm._f("getYear")(2020))
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
                         _c(
                           "label",
                           {
@@ -55422,42 +56404,81 @@ var render = function() {
                               }
                             ]
                           },
-                          [_vm._v(" Graduation Subject")]
+                          [_vm._v("Graduation Subject")]
                         ),
                         _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.graduation,
-                              expression: "form.graduation"
-                            },
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.form.education == "graduate",
-                              expression: "form.education=='graduate'"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { type: "text", list: "graduation" },
-                          domProps: { value: _vm.form.graduation },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.graduation,
+                                expression: "form.graduation"
+                              },
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education == "graduate",
+                                expression: "form.education=='graduate'"
                               }
-                              _vm.$set(
-                                _vm.form,
-                                "graduation",
-                                $event.target.value
-                              )
+                            ],
+                            staticClass: "form-control",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.form,
+                                  "graduation",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
                             }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _vm._m(1),
+                          },
+                          [
+                            _c("option", { attrs: { value: "BA" } }, [
+                              _vm._v("BA")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "BCom" } }, [
+                              _vm._v("BCom")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "BFA" } }, [
+                              _vm._v("BFA")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "BSc" } }, [
+                              _vm._v("BSc")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Btech" } }, [
+                              _vm._v("Btech")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "BCA" } }, [
+                              _vm._v("BCA")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "BBA" } }, [
+                              _vm._v("BBA")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "MBBS" } }, [
+                              _vm._v("MBBS")
+                            ])
+                          ]
+                        ),
                         _vm._v(" "),
                         _c(
                           "label",
@@ -55474,41 +56495,157 @@ var render = function() {
                           [_vm._v(" Post Graduation Subject")]
                         ),
                         _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.postGraduation,
-                              expression: "form.postGraduation"
-                            },
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.form.education == "post graduate",
-                              expression: "form.education=='post graduate'"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { type: "text", list: "postgraduation" },
-                          domProps: { value: _vm.form.postGraduation },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.postGraduation,
+                                expression: "form.postGraduation"
+                              },
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education == "post graduate",
+                                expression: "form.education=='post graduate'"
                               }
-                              _vm.$set(
-                                _vm.form,
-                                "postGraduation",
-                                $event.target.value
-                              )
+                            ],
+                            staticClass: "form-control",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.form,
+                                  "postGraduation",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
                             }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _vm._m(2)
+                          },
+                          [
+                            _c("option", { attrs: { value: "MA" } }, [
+                              _vm._v("MA")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "MCom" } }, [
+                              _vm._v("MCom")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "MSc" } }, [
+                              _vm._v("MSc")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "MS" } }, [
+                              _vm._v("MS")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "MD" } }, [
+                              _vm._v("MD")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "MCA" } }, [
+                              _vm._v("MCA")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Mtech" } }, [
+                              _vm._v("Mtech")
+                            ])
+                          ]
+                        )
                       ])
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _vm.form.education === "graduate" ||
+                    _vm.form.education === "post graduate"
+                      ? _c("div", { staticClass: "col-sm-4" }, [
+                          _vm.form.education === "graduate" ||
+                          _vm.form.education === "post graduate"
+                            ? _c("label", [_vm._v(" Year")])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.grad_year,
+                                  expression: "form.grad_year"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.form,
+                                    "grad_year",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c("option", { attrs: { value: "1st" } }, [
+                                _vm._v("1st")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "2nd" } }, [
+                                _vm._v("2nd")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "3rd" } }, [
+                                _vm._v("3rd")
+                              ]),
+                              _vm._v(" "),
+                              _vm.form.graduation === "Btech" ||
+                              _vm.form.graduation === "MBBS"
+                                ? _c("option", { attrs: { value: "4th" } }, [
+                                    _vm._v("4th")
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: _vm.form.graduation === "MBBS",
+                                      expression: "form.graduation==='MBBS'"
+                                    }
+                                  ],
+                                  attrs: { value: "5th" }
+                                },
+                                [_vm._v("5th")]
+                              )
+                            ]
+                          )
+                        ])
+                      : _vm._e()
                   ]
                 ),
                 _vm._v(" "),
@@ -55582,7 +56719,7 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(3)
+                _vm._m(1)
               ]
             )
           ])
@@ -55597,48 +56734,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [_c("h3", [_vm._v("Professional Details")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("datalist", { attrs: { id: "graduation" } }, [
-      _c("option", { attrs: { value: "BA" } }, [_vm._v("BA")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "BCom" } }, [_vm._v("BCom")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "BFA" } }, [_vm._v("BFA")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "BSc" } }, [_vm._v("BSc")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Btech" } }, [_vm._v("Btech")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "BCA" } }, [_vm._v("BCA")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "BBA" } }, [_vm._v("BBA")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "MBBS" } }, [_vm._v("MBBS")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("datalist", { attrs: { id: "postgraduation" } }, [
-      _c("option", { attrs: { value: "MA" } }, [_vm._v("MA")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "MCom" } }, [_vm._v("MCom")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "MSc" } }, [_vm._v("MSc")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "MS" } }, [_vm._v("MS")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "MD" } }, [_vm._v("MD")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "MCA" } }, [_vm._v("MCA")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Mtech" } }, [_vm._v("Mtech")])
-    ])
   },
   function() {
     var _vm = this
@@ -55741,6 +56836,84 @@ var render = function() {
                   }
                 },
                 [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.allowsearch,
+                            expression: "form.allowsearch"
+                          }
+                        ],
+                        staticClass: "form-check-in",
+                        class: {
+                          "is-invalid": _vm.form.errors.has("allowsearch")
+                        },
+                        attrs: {
+                          type: "radio",
+                          name: "allowsearch",
+                          value: "1"
+                        },
+                        domProps: {
+                          checked: _vm._q(_vm.form.allowsearch, "1")
+                        },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.form, "allowsearch", "1")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "allowserch" }
+                        },
+                        [_vm._v("I do not want my data in user search")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.allowsearch,
+                            expression: "form.allowsearch"
+                          }
+                        ],
+                        staticClass: "form-check-in",
+                        class: {
+                          "is-invalid": _vm.form.errors.has("allowsearch")
+                        },
+                        attrs: {
+                          type: "radio",
+                          name: "allowsearch",
+                          value: "0"
+                        },
+                        domProps: {
+                          checked: _vm._q(_vm.form.allowsearch, "0")
+                        },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.form, "allowsearch", "0")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "allowserch" }
+                        },
+                        [_vm._v("I want my data in user search")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
                   _c("div", { staticClass: "row" }, [
                     _c("div", { staticClass: "col-sm-6" }, [
                       _c(
@@ -56994,45 +58167,507 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "col-sm-6" }, [
                       _vm.form.occupation == "Govt" ||
-                      _vm.form.occupation == "private"
+                      _vm.form.occupation == "private" ||
+                      _vm.form.occupation == "self employed"
                         ? _c("div", { staticClass: "form-group" }, [
                             _c("label", { attrs: { for: "" } }, [
                               _vm._v("Department")
                             ]),
                             _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.form.department,
-                                  expression: "form.department"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { type: "text", list: "department" },
-                              domProps: { value: _vm.form.department },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.form,
-                                    "department",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            }),
+                            _vm.form.occupation == "private" ||
+                            _vm.form.occupation == "self employed"
+                              ? _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.form.department,
+                                        expression: "form.department"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    on: {
+                                      change: function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.$set(
+                                          _vm.form,
+                                          "department",
+                                          $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c("option", [
+                                      _vm._v(
+                                        "Accounts/ Banking / Finance / Tax"
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Accountant")]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Debt Recovery Agent")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Equity Dealer")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Financial Planner")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Insurance Agent")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Mutual Fund Agent")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Analytics")]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v(
+                                        "Analytics / Business Intelligence / Data Science"
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Back Office Operations")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Admin Executive")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Back Office")]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Claims Processing Executive")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Data Entry")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Helper")]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Human Resource (HR)")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("MIS Executive")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Office Assistant")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Office Boy")]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Personal Assistant")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Stenographer")]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Business Operations")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("BPO")]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Data Collection Executive")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Operations Executive")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Design")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Architecture")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Draftsman")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("DTP Operator")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Fashion Designer")]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Web / Graphic Design")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Front Desk Operations")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Cashier")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Customer Care")]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Public Relations (PR) Executive")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Receptionist/Front Desk")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Store Keeper")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Hospitality")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Air Hostess")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Bartender")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Cabin Crew")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Cook / Chef")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Waiter / Steward")]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("IT - Hardware & Software")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Android Developer")]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v(
+                                        "Application Programming / Maintenance / Architecture"
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Database Administrator")
+                                    ]),
+                                    _c("option", [
+                                      _vm._v("IT Software - ERP / CRM")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("IT Software - Frontend / Backend")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("IT Software - Mobile Development")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("IT Support - Hardware")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v(
+                                        "Network / Security / System Administration"
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Product / Project Management")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Software Developer")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Software Testing / QA")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Logistics / Supply Chain")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Delivery Boy")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Labourer")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Loader")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Merchandiser")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Manufacturing")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Machine Operator")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Packer")]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v(
+                                        "Production/ Quality Control/ Maintenance"
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Purchase / Procurement Executive")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Marketing")]),
+                                    _c("option", [_vm._v("Content Writer")]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Digital Marketing Expert")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Marketing Executive")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Non-IT Engineering")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Aeronautical Engineer")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Chemical Engineer")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Civil Engineer")]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Electrical Engineer")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Electronics Engineer")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v(
+                                        "Embedded / VLSI / ASIC / Chip Design"
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Engineering")]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Environmental Engineer")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Industrial Engineer")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Instrumentation Engineer")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Mechanical Engineer")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Telecommunications Engineer")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Pharmacy / Medical")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Doctor")]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Laboratory Assistant")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Medical Representative")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Nurse")]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Nursing Attendant/Wardboy")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Physiotherapist")]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Radiology Technician")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Sales")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Counter Sales")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Promoter")]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Sales / Business Development")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [
+                                      _vm._v("Telesales / Telemarketing")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Services")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Aayah")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Beautician")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Caretaker")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Carpenter")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Counselors")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Driver")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Fitness Trainer")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Gardener")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Hair Stylist")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Housekeeping")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Maid")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Massuese")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Photographer")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Plumber")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Security Guard")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Spot Boy")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Tailor")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Tutor / Teacher")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Technicians")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Electrician")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Fitter")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Mechanic")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Technician")]),
+                                    _vm._v(" "),
+                                    _c("option", [_vm._v("Tower Technician")])
+                                  ]
+                                )
+                              : _vm._e(),
                             _vm._v(" "),
                             _c(
-                              "datalist",
-                              { attrs: { id: "department" } },
-                              _vm._l(_vm.jobs, function(job) {
-                                return _c("option", [_vm._v(_vm._s(job))])
-                              }),
-                              0
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.form.occupation == "Govt",
+                                    expression: "form.occupation == 'Govt'"
+                                  },
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.department,
+                                    expression: "form.department"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "department",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c("option", [
+                                  _vm._v("Agriculture & Cooperation ")
+                                ]),
+                                _c("option", [
+                                  _vm._v("Animal Husbandry & Fishing ")
+                                ]),
+                                _c("option", [_vm._v("Art & Culture ")]),
+                                _c("option", [
+                                  _vm._v("Chemicals & Fertilizers ")
+                                ]),
+                                _c("option", [_vm._v("Coal & Mine ")]),
+                                _c("option", [_vm._v("Commerce & Industry ")]),
+                                _c("option", [
+                                  _vm._v(
+                                    "Communications & Information Technology ("
+                                  )
+                                ]),
+                                _c("option", [_vm._v("Defence ")]),
+                                _c("option", [_vm._v("Education & Training ")]),
+                                _c("option", [_vm._v("Employment & Labour ")]),
+                                _c("option", [_vm._v("Energy & Power ")]),
+                                _c("option", [
+                                  _vm._v("Environment & Natural Resources ")
+                                ]),
+                                _c("option", [
+                                  _vm._v("Finance, Banking & Insurance ")
+                                ]),
+                                _c("option", [
+                                  _vm._v("Food & Public Distribution ")
+                                ]),
+                                _c("option", [_vm._v("Forestry & Wildlife ")]),
+                                _c("option", [
+                                  _vm._v("Governance & Administration")
+                                ]),
+                                _c("option", [
+                                  _vm._v("Health & Family welfare ")
+                                ]),
+                                _c("option", [
+                                  _vm._v("Home affairs & National Security ")
+                                ]),
+                                _c("option", [
+                                  _vm._v("Housing & Urban Development ")
+                                ]),
+                                _c("option", [
+                                  _vm._v("Information & Broadcasting ")
+                                ]),
+                                _c("option", [_vm._v("International Affairs")]),
+                                _c("option", [_vm._v("Law & Justice")]),
+                                _c("option", [
+                                  _vm._v("People & Organisations ")
+                                ]),
+                                _c("option", [
+                                  _vm._v("Petroleum, Oil & Natural Gas")
+                                ]),
+                                _c("option", [
+                                  _vm._v("Rural Development & Panchayati Raj ")
+                                ]),
+                                _c("option", [
+                                  _vm._v("Science, Technology & Research")
+                                ]),
+                                _c("option", [
+                                  _vm._v("Social Justice & Empowerment ")
+                                ]),
+                                _c("option", [_vm._v("Tourism ")]),
+                                _c("option", [
+                                  _vm._v("Transport & Infrastructure")
+                                ]),
+                                _c("option", [_vm._v("Youth Affairs & Sports")])
+                              ]
                             )
                           ])
                         : _vm._e()
@@ -57070,7 +58705,7 @@ var render = function() {
                       staticClass: "row"
                     },
                     [
-                      _c("div", { staticClass: "col-sm-6" }, [
+                      _c("div", { staticClass: "col-sm-4" }, [
                         _c("div", { staticClass: "form-group" }, [
                           _c("label", { attrs: { for: "" } }, [
                             _vm._v("Education Level")
@@ -57177,7 +58812,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-6" }, [
+                      _c("div", { staticClass: "col-sm-4" }, [
                         _c("div", { staticClass: "form-group" }, [
                           _c("input", {
                             directives: [
@@ -57422,6 +59057,168 @@ var render = function() {
                             ]
                           ),
                           _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education === "9th",
+                                expression: "form.education ==='9th'"
+                              },
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.current_year,
+                                expression: "form.current_year"
+                              }
+                            ],
+                            staticClass: "form-check-input",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("current_year")
+                            },
+                            attrs: {
+                              type: "checkbox",
+                              name: "current_year",
+                              value: "true"
+                            },
+                            domProps: {
+                              checked: Array.isArray(_vm.form.current_year)
+                                ? _vm._i(_vm.form.current_year, "true") > -1
+                                : _vm.form.current_year
+                            },
+                            on: {
+                              change: function($event) {
+                                var $$a = _vm.form.current_year,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = "true",
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "current_year",
+                                        $$a.concat([$$v])
+                                      )
+                                  } else {
+                                    $$i > -1 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "current_year",
+                                        $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1))
+                                      )
+                                  }
+                                } else {
+                                  _vm.$set(_vm.form, "current_year", $$c)
+                                }
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.form.education === "9th",
+                                  expression: "form.education ==='9th'"
+                                }
+                              ]
+                            },
+                            [
+                              _vm._v(
+                                " are you appearing in class 9 in " +
+                                  _vm._s(_vm._f("getYear")(2020))
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education === "11th",
+                                expression: "form.education ==='11th'"
+                              },
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.current_year,
+                                expression: "form.current_year"
+                              }
+                            ],
+                            staticClass: "form-check-input",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("current_year")
+                            },
+                            attrs: {
+                              type: "checkbox",
+                              name: "current_year",
+                              value: "true"
+                            },
+                            domProps: {
+                              checked: Array.isArray(_vm.form.current_year)
+                                ? _vm._i(_vm.form.current_year, "true") > -1
+                                : _vm.form.current_year
+                            },
+                            on: {
+                              change: function($event) {
+                                var $$a = _vm.form.current_year,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = "true",
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "current_year",
+                                        $$a.concat([$$v])
+                                      )
+                                  } else {
+                                    $$i > -1 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "current_year",
+                                        $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1))
+                                      )
+                                  }
+                                } else {
+                                  _vm.$set(_vm.form, "current_year", $$c)
+                                }
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.form.education === "11th",
+                                  expression: "form.education ==='11th'"
+                                }
+                              ]
+                            },
+                            [
+                              _vm._v(
+                                " are you appearing in class 11 in " +
+                                  _vm._s(_vm._f("getYear")(2020))
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
                           _c(
                             "label",
                             {
@@ -57434,42 +59231,82 @@ var render = function() {
                                 }
                               ]
                             },
-                            [_vm._v(" Graduation Subject")]
+                            [_vm._v("Graduation Subject")]
                           ),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.graduation,
-                                expression: "form.graduation"
-                              },
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.form.education == "graduate",
-                                expression: "form.education=='graduate'"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { type: "text", list: "graduation" },
-                            domProps: { value: _vm.form.graduation },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.graduation,
+                                  expression: "form.graduation"
+                                },
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.form.education == "graduate",
+                                  expression: "form.education=='graduate'"
                                 }
-                                _vm.$set(
-                                  _vm.form,
-                                  "graduation",
-                                  $event.target.value
-                                )
+                              ],
+                              staticClass: "form-control",
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.form,
+                                    "graduation",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
                               }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm._m(1),
+                            },
+                            [
+                              _c("option", { attrs: { value: "BA" } }, [
+                                _vm._v("BA")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "BCom" } }, [
+                                _vm._v("BCom")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "BFA" } }, [
+                                _vm._v("BFA")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "BSc" } }, [
+                                _vm._v("BSc")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "Btech" } }, [
+                                _vm._v("Btech")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "BCA" } }, [
+                                _vm._v("BCA")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "BBA" } }, [
+                                _vm._v("BBA")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "MBBS" } }, [
+                                _vm._v("MBBS")
+                              ])
+                            ]
+                          ),
                           _vm._v(" "),
                           _c(
                             "label",
@@ -57487,41 +59324,158 @@ var render = function() {
                             [_vm._v(" Post Graduation Subject")]
                           ),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.postGraduation,
-                                expression: "form.postGraduation"
-                              },
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.form.education == "post graduate",
-                                expression: "form.education=='post graduate'"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { type: "text", list: "postgraduation" },
-                            domProps: { value: _vm.form.postGraduation },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.postGraduation,
+                                  expression: "form.postGraduation"
+                                },
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.form.education == "post graduate",
+                                  expression: "form.education=='post graduate'"
                                 }
-                                _vm.$set(
-                                  _vm.form,
-                                  "postGraduation",
-                                  $event.target.value
-                                )
+                              ],
+                              staticClass: "form-control",
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.form,
+                                    "postGraduation",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
                               }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm._m(2)
+                            },
+                            [
+                              _c("option", { attrs: { value: "MA" } }, [
+                                _vm._v("MA")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "MCom" } }, [
+                                _vm._v("MCom")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "MSc" } }, [
+                                _vm._v("MSc")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "MS" } }, [
+                                _vm._v("MS")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "MD" } }, [
+                                _vm._v("MD")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "MCA" } }, [
+                                _vm._v("MCA")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "Mtech" } }, [
+                                _vm._v("Mtech")
+                              ])
+                            ]
+                          )
                         ])
-                      ])
+                      ]),
+                      _vm._v(" "),
+                      _vm.form.education === "graduate" ||
+                      _vm.form.education === "post graduate"
+                        ? _c("div", { staticClass: "col-sm-4" }, [
+                            _vm.form.education === "graduate" ||
+                            _vm.form.education === "post graduate"
+                              ? _c("label", [_vm._v(" Year")])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.grad_year,
+                                    expression: "form.grad_year"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "grad_year",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c("option", { attrs: { value: "1st" } }, [
+                                  _vm._v("1st")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "2nd" } }, [
+                                  _vm._v("2nd")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "3rd" } }, [
+                                  _vm._v("3rd")
+                                ]),
+                                _vm._v(" "),
+                                _vm.form.graduation === "Btech" ||
+                                _vm.form.graduation === "MBBS"
+                                  ? _c("option", { attrs: { value: "4th" } }, [
+                                      _vm._v("4th")
+                                    ])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _c(
+                                  "option",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: _vm.form.graduation === "MBBS",
+                                        expression: "form.graduation==='MBBS'"
+                                      }
+                                    ],
+                                    attrs: { value: "5th" }
+                                  },
+                                  [_vm._v("5th")]
+                                )
+                              ]
+                            )
+                          ])
+                        : _vm._e()
                     ]
                   ),
                   _vm._v(" "),
@@ -57595,7 +59549,7 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _vm._m(1)
                 ]
               )
             ])
@@ -57611,48 +59565,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [_c("h3", [_vm._v("Professional Details")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("datalist", { attrs: { id: "graduation" } }, [
-      _c("option", { attrs: { value: "BA" } }, [_vm._v("BA")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "BCom" } }, [_vm._v("BCom")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "BFA" } }, [_vm._v("BFA")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "BSc" } }, [_vm._v("BSc")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Btech" } }, [_vm._v("Btech")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "BCA" } }, [_vm._v("BCA")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "BBA" } }, [_vm._v("BBA")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "MBBS" } }, [_vm._v("MBBS")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("datalist", { attrs: { id: "postgraduation" } }, [
-      _c("option", { attrs: { value: "MA" } }, [_vm._v("MA")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "MCom" } }, [_vm._v("MCom")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "MSc" } }, [_vm._v("MSc")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "MS" } }, [_vm._v("MS")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "MD" } }, [_vm._v("MD")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "MCA" } }, [_vm._v("MCA")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Mtech" } }, [_vm._v("Mtech")])
-    ])
   },
   function() {
     var _vm = this
