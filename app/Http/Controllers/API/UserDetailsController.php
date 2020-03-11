@@ -441,7 +441,6 @@ public function getuserdetail($id){
          'gender'=>'required|string|max:191',
          'dob'=>'required|string|max:191',
          'marriage_status'=>'required|string|max:191',
-         'blood_group'=>'required|sometimes|string',
          'father_name'=>'required|string|max:191',
          'mother_name'=>'required|string|max:191',
          'address'=>'required|string|max:191',
