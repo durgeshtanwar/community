@@ -450,7 +450,7 @@
                           <option value="MBBS">MBBS</option>
                        </select>
                         <label v-show="form.education ==='post graduate'" > Post Graduation Subject</label>
-                    <select v-model="form.postGraduation" v-show ="form.education=='post graduate'" class="form-control">
+                    <select v-model="form.post_graduation" v-show ="form.education=='post graduate'" class="form-control">
                         
                          <option value="MA">MA</option>
                          <option value="MCom">MCom</option>
@@ -545,7 +545,7 @@
               department:'',
               education:'',
               graduation:'',
-              postGraduation:'',
+              post_graduation:'',
               current_year:'',
               self_data:'no',
               password:'',

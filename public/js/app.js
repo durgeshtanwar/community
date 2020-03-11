@@ -5174,7 +5174,7 @@ __webpack_require__.r(__webpack_exports__);
         department: '',
         education: '',
         graduation: '',
-        postGraduation: '',
+        post_graduation: '',
         current_year: '',
         self_data: 'no',
         password: '',
@@ -5879,7 +5879,7 @@ __webpack_require__.r(__webpack_exports__);
         department: '',
         education: '',
         graduation: '',
-        postGraduation: '',
+        post_graduation: '',
         current_year: '',
         self_data: 'no',
         password: '',
@@ -56502,8 +56502,8 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.form.postGraduation,
-                                expression: "form.postGraduation"
+                                value: _vm.form.post_graduation,
+                                expression: "form.post_graduation"
                               },
                               {
                                 name: "show",
@@ -56525,7 +56525,7 @@ var render = function() {
                                   })
                                 _vm.$set(
                                   _vm.form,
-                                  "postGraduation",
+                                  "post_graduation",
                                   $event.target.multiple
                                     ? $$selectedVal
                                     : $$selectedVal[0]
@@ -59331,8 +59331,8 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.form.postGraduation,
-                                  expression: "form.postGraduation"
+                                  value: _vm.form.post_graduation,
+                                  expression: "form.post_graduation"
                                 },
                                 {
                                   name: "show",
@@ -59355,7 +59355,7 @@ var render = function() {
                                     })
                                   _vm.$set(
                                     _vm.form,
-                                    "postGraduation",
+                                    "post_graduation",
                                     $event.target.multiple
                                       ? $$selectedVal
                                       : $$selectedVal[0]
