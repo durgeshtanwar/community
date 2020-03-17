@@ -42,6 +42,8 @@
                           <option value="son">Son</option>
                           <option value="daughter">Daughter</option>
                           <option value="grand daughter">Grand Daughter</option>
+                          <option value="daughter in law">Daughter in law</option>
+                          <option value="son in law">Son in law</option>
                           <option value="grand son">Grand Son</option>
                           <option value="brother">Brother</option>
                           <option value="sister">Sister</option>
@@ -376,8 +378,8 @@
                       </div>
                   
                   <hr>
-                    <h3  v-show="form.occupation === 'student'">Educational Details</h3>
-                  <div class="row" v-show="form.occupation === 'student'">
+                    <h3>Educational Details</h3>
+                  <div class="row">
                     <div class="col-sm-4">
                   
                     <div class="form-group">
@@ -447,7 +449,7 @@
                         <option value="1st">1st</option>
                         <option value="2nd">2nd</option>
                         <option value="3rd">3rd</option>
-                        <option value="4th" v-if="form.graduation === 'Btech' || form.graduation==='MBBS'">4th</option>
+                        <option value="4th" v-if="form.graduation === 'Btech' || form.graduation==='MBBS' || form.graduation==='BFA'">4th</option>
                         <option value="5th" v-show ="form.graduation==='MBBS'">5th</option>
                         </select>
                       </div>
@@ -526,7 +528,7 @@
               gotra:'',
               photo:'',
               allowsearch:0,
-               grad_year:''
+              grad_year:''
             }),
             
            

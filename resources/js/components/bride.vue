@@ -39,7 +39,7 @@ import Filterbar from "./datatable/Filterbar";
               name:'mother_name',
               title:'Mother Name'
             },
-            'city','mobile','gotra',
+            'city','mobile','dob','gotra',
             '__slot:image'
 
             
