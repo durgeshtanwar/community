@@ -22,15 +22,15 @@
                           <label class="form-check-label"  v-if="userstatus===0"><h4>Are You Inserting your own data?</h4> </label>
                           <has-error :form="form" field="selfdata"></has-error>
                         </div>
-                       <div class="form-check">
+                       <!-- <div class="form-check">
                           <input class="form-check-input" v-if="userstatus===1"  @change="myuserdata" v-model="updatedata" type="checkbox" name="updatedata" value="true" :class="{'is-invalid': form.errors.has('matrimonial')}">
                           <label class="form-check-label"  v-if="userstatus===1"><h4>Update your data</h4> </label>
                           <has-error :form="form" field="selfdata"></has-error>
-                        </div> 
+                        </div>  -->
                         <div class="form-check">
                           <input type="radio" name="allowsearch" class="form-check-in" v-model="form.allowsearch" value= 1  :class="{'is-invalid': form.errors.has('allowsearch')}">
                           <label for="allowsearch" class="form-check-label">I do not want my data in user search</label>
-                           <input type="radio" name="allowsearch" class="form-check-in" v-model="form.allowsearch" value=0  :class="{'is-invalid': form.errors.has('allowsearch')}">
+                           <input type="radio" name="allowsearch" class="form-check-in" v-model="form.allowsearch" value=0  :class="{'is-invalid': form.errors.has('allowsearch')}" checked >
                           <label for="allowsearch" class="form-check-label">I want my data in user search</label>
                         </div>
                     </div>
@@ -118,6 +118,12 @@
                           <label class="form-check-label">Single</label>
                           <has-error :form="form" field="marriage_status"></has-error>
                         </div>
+
+                         <div class="form-check">
+                          <input class="form-check-input" value="widow" v-model="form.marriage_status" type="radio" name="marriage_status" checked="" :class="{'is-invalid': form.errors.has('marriage_status')}">
+                          <label class="form-check-label">Widow</label>
+                          <has-error :form="form" field="marriage_status"></has-error>
+                        </div>
                        
                           </div>
                            <div class="form-group">
@@ -170,7 +176,7 @@
                     </div>
                 </div>
                        <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                       <!-- text input -->
                       <div class="form-group">
                         <label>Fathers Name</label>
@@ -178,11 +184,18 @@
                       <has-error :form="form" field="father_name"></has-error>
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                        <div class="form-group">
                         <label>Mothers Name</label>
                         <input type="text" v-model="form.mother_name" class="form-control" placeholder="Mothers Name" name="mother_name" :class="{'is-invalid':form.errors.has('mother_name')}" >
                         <has-error :form="form" field="mother_name"></has-error>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                       <div class="form-group">
+                        <label>Spouse Name</label>
+                        <input type="text" v-model="form.spouse_name" class="form-control" placeholder="Mothers Name" name="mother_name" :class="{'is-invalid':form.errors.has('mother_name')}" >
+                        <has-error :form="form" field="spouse_name"></has-error>
                       </div>
                   </div>
                   </div>
@@ -251,7 +264,7 @@
                   <hr>
                   <div><h3>Professional Details</h3></div>
                   <div class="row">
-                      <div class="col-sm-6">
+                      <div class="col-sm-4">
                           <div class="form-group">
                               <label for="">Occupation</label>
                          <select v-model="form.occupation" @change="getjobs()" class="form-control" name="occupation" :class="{'is-invalid':form.errors.has('occupation')}">
@@ -260,13 +273,14 @@
                           <option value="self employed">Self Employed</option>
                           <option value="student">Student</option>
                           <option value="unemployed">Unemployed</option>
+                          <option value="retired">Retired</option>
                           <option value="house wife">House wife</option>
                         </select>
                         <has-error :form="form" field="occupation" ></has-error>
                           </div>
                           
                       </div>
-                      <div class="col-sm-6">
+                      <div class="col-sm-4">
                           <div class="form-group" v-if ="form.occupation == 'Govt' || form.occupation == 'private' || form.occupation == 'self employed'">
                               <label for="">Department</label>
                           <select v-if ="form.occupation == 'private' || form.occupation=='self employed'" v-model="form.department"   class="form-control">
@@ -395,12 +409,36 @@
                         </select>
                       </div>
                           </div>
-                          
+                          <div class="col-sm-4">
+                           <div class="form-group" v-if ="form.occupation != 'student'">
+                              <label for="">Highest education</label>
+                            <select name="Highest Education" id="" v-model="form.highest_education" class="form-control">
+                              <option value="5th pass">5th Pass</option>
+                              <option value="8th pass">8th Pass</option>
+                              <option value="10th pass">10th Pass</option>
+                              <option value="12th pass">12th Pass</option>
+                              <option value="BA">BA</option>
+                              <option value="BCom">BCom</option>
+                              <option value="BSc">BSc</option>
+                              <option value="BCA">BCA</option>
+                              <option value="Btech">Btech</option>
+                              <option value="LLB">LLB</option>
+                              <option value="BFA">BFA</option>
+                              <option value="MSc">MSc</option>
+                              <option value="MA">MA</option>
+                              <option value="MCom">MCom</option>
+                              <option value="MCA">MCA</option>
+                              <option value="other graduate degree">Other Graduate Degree</option>
+                              <option value="other postgraduate degree">Other Postgraduate Degree</option>
+                              <option value="illiterate">illiterate</option>
+                              
+                              </select>
+                          </div>
                       </div>
-                  
+                  </div>
                   <hr>
-                    <h3>Educational Details</h3>
-                  <div class="row">
+                    <h3 v-show="form.occupation=='student'">Educational Details</h3>
+                  <div class="row" v-show="form.occupation=='student'">
                     <div class="col-sm-4">
                   
                     <div class="form-group">
@@ -455,6 +493,7 @@
                     <select v-model="form.post_graduation" v-show ="form.education=='post graduate'" class="form-control">
                         
                          <option value="MA">MA</option>
+                         <option value="LLB">LLB</option>
                          <option value="MCom">MCom</option>
                          <option value="MSc">MSc</option>
                          <option value="MS">MS</option>
@@ -553,8 +592,10 @@
               password:'',
               gotra:'',
               photo:'',
-              allowsearch:0,
-              grad_year:''
+              allowsearch:'',
+              grad_year:'',
+              highest_education:'',
+              spouse_name:''
             }),
             
            

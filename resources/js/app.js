@@ -97,6 +97,7 @@ const routes = [
     { path: '/myJobs',component:require('./components/addjob1.vue').default},
     { path: '/settings',component:require('./components/admin/settings.vue').default},
     { path: '/userdirectory',component:require('./components/userdirectory.vue').default},
+    { path: '/test',component:require('./components/test.vue').default},
     { path: '*',component:require('./components/admin/404.vue').default},
 ]
 

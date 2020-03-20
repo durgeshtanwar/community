@@ -5254,6 +5254,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5290,8 +5329,10 @@ __webpack_require__.r(__webpack_exports__);
         password: '',
         gotra: '',
         photo: '',
-        allowsearch: 0,
-        grad_year: ''
+        allowsearch: '',
+        grad_year: '',
+        highest_education: '',
+        spouse_name: ''
       })
     };
   },
@@ -5961,6 +6002,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5998,7 +6080,9 @@ __webpack_require__.r(__webpack_exports__);
         gotra: '',
         photo: '',
         allowsearch: 0,
-        grad_year: ''
+        grad_year: '',
+        highest_education: '',
+        spouse_name: ''
       })
     };
   },
@@ -54332,75 +54416,6 @@ var render = function() {
                       1
                     ),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-check" },
-                      [
-                        _vm.userstatus === 1
-                          ? _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.updatedata,
-                                  expression: "updatedata"
-                                }
-                              ],
-                              staticClass: "form-check-input",
-                              class: {
-                                "is-invalid": _vm.form.errors.has("matrimonial")
-                              },
-                              attrs: {
-                                type: "checkbox",
-                                name: "updatedata",
-                                value: "true"
-                              },
-                              domProps: {
-                                checked: Array.isArray(_vm.updatedata)
-                                  ? _vm._i(_vm.updatedata, "true") > -1
-                                  : _vm.updatedata
-                              },
-                              on: {
-                                change: [
-                                  function($event) {
-                                    var $$a = _vm.updatedata,
-                                      $$el = $event.target,
-                                      $$c = $$el.checked ? true : false
-                                    if (Array.isArray($$a)) {
-                                      var $$v = "true",
-                                        $$i = _vm._i($$a, $$v)
-                                      if ($$el.checked) {
-                                        $$i < 0 &&
-                                          (_vm.updatedata = $$a.concat([$$v]))
-                                      } else {
-                                        $$i > -1 &&
-                                          (_vm.updatedata = $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1)))
-                                      }
-                                    } else {
-                                      _vm.updatedata = $$c
-                                    }
-                                  },
-                                  _vm.myuserdata
-                                ]
-                              }
-                            })
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.userstatus === 1
-                          ? _c("label", { staticClass: "form-check-label" }, [
-                              _c("h4", [_vm._v("Update your data")])
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c("has-error", {
-                          attrs: { form: _vm.form, field: "selfdata" }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
                     _c("div", { staticClass: "form-check" }, [
                       _c("input", {
                         directives: [
@@ -54455,7 +54470,8 @@ var render = function() {
                         attrs: {
                           type: "radio",
                           name: "allowsearch",
-                          value: "0"
+                          value: "0",
+                          checked: ""
                         },
                         domProps: {
                           checked: _vm._q(_vm.form.allowsearch, "0")
@@ -54962,6 +54978,62 @@ var render = function() {
                             })
                           ],
                           1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-check" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.marriage_status,
+                                  expression: "form.marriage_status"
+                                }
+                              ],
+                              staticClass: "form-check-input",
+                              class: {
+                                "is-invalid": _vm.form.errors.has(
+                                  "marriage_status"
+                                )
+                              },
+                              attrs: {
+                                value: "widow",
+                                type: "radio",
+                                name: "marriage_status",
+                                checked: ""
+                              },
+                              domProps: {
+                                checked: _vm._q(
+                                  _vm.form.marriage_status,
+                                  "widow"
+                                )
+                              },
+                              on: {
+                                change: function($event) {
+                                  return _vm.$set(
+                                    _vm.form,
+                                    "marriage_status",
+                                    "widow"
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("label", { staticClass: "form-check-label" }, [
+                              _vm._v("Widow")
+                            ]),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: {
+                                form: _vm.form,
+                                field: "marriage_status"
+                              }
+                            })
+                          ],
+                          1
                         )
                       ]
                     ),
@@ -55323,7 +55395,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-sm-6" }, [
+                  _c("div", { staticClass: "col-sm-4" }, [
                     _c(
                       "div",
                       { staticClass: "form-group" },
@@ -55371,7 +55443,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-6" }, [
+                  _c("div", { staticClass: "col-sm-4" }, [
                     _c(
                       "div",
                       { staticClass: "form-group" },
@@ -55413,6 +55485,54 @@ var render = function() {
                         _vm._v(" "),
                         _c("has-error", {
                           attrs: { form: _vm.form, field: "mother_name" }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-4" }, [
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("label", [_vm._v("Spouse Name")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.spouse_name,
+                              expression: "form.spouse_name"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("mother_name")
+                          },
+                          attrs: {
+                            type: "text",
+                            placeholder: "Mothers Name",
+                            name: "mother_name"
+                          },
+                          domProps: { value: _vm.form.spouse_name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "spouse_name",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.form, field: "spouse_name" }
                         })
                       ],
                       1
@@ -55725,7 +55845,7 @@ var render = function() {
                 _vm._m(0),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-sm-6" }, [
+                  _c("div", { staticClass: "col-sm-4" }, [
                     _c(
                       "div",
                       { staticClass: "form-group" },
@@ -55799,6 +55919,10 @@ var render = function() {
                               _vm._v("Unemployed")
                             ]),
                             _vm._v(" "),
+                            _c("option", { attrs: { value: "retired" } }, [
+                              _vm._v("Retired")
+                            ]),
+                            _vm._v(" "),
                             _c("option", { attrs: { value: "house wife" } }, [
                               _vm._v("House wife")
                             ])
@@ -55813,7 +55937,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-6" }, [
+                  _c("div", { staticClass: "col-sm-4" }, [
                     _vm.form.occupation == "Govt" ||
                     _vm.form.occupation == "private" ||
                     _vm.form.occupation == "self employed"
@@ -56293,696 +56417,170 @@ var render = function() {
                           )
                         ])
                       : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-4" }, [
+                    _vm.form.occupation != "student"
+                      ? _c("div", { staticClass: "form-group" }, [
+                          _c("label", { attrs: { for: "" } }, [
+                            _vm._v("Highest education")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.highest_education,
+                                  expression: "form.highest_education"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { name: "Highest Education", id: "" },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.form,
+                                    "highest_education",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c("option", { attrs: { value: "5th pass" } }, [
+                                _vm._v("5th Pass")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "8th pass" } }, [
+                                _vm._v("8th Pass")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "10th pass" } }, [
+                                _vm._v("10th Pass")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "12th pass" } }, [
+                                _vm._v("12th Pass")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "BA" } }, [
+                                _vm._v("BA")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "BCom" } }, [
+                                _vm._v("BCom")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "BSc" } }, [
+                                _vm._v("BSc")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "BCA" } }, [
+                                _vm._v("BCA")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "Btech" } }, [
+                                _vm._v("Btech")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "LLB" } }, [
+                                _vm._v("LLB")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "BFA" } }, [
+                                _vm._v("BFA")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "MSc" } }, [
+                                _vm._v("MSc")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "MA" } }, [
+                                _vm._v("MA")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "MCom" } }, [
+                                _vm._v("MCom")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "MCA" } }, [
+                                _vm._v("MCA")
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                { attrs: { value: "other graduate degree" } },
+                                [_vm._v("Other Graduate Degree")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: { value: "other postgraduate degree" }
+                                },
+                                [_vm._v("Other Postgraduate Degree")]
+                              ),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "illiterate" } }, [
+                                _vm._v("illiterate")
+                              ])
+                            ]
+                          )
+                        ])
+                      : _vm._e()
                   ])
                 ]),
                 _vm._v(" "),
                 _c("hr"),
                 _vm._v(" "),
-                _c("h3", [_vm._v("Educational Details")]),
+                _c(
+                  "h3",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.form.occupation == "student",
+                        expression: "form.occupation=='student'"
+                      }
+                    ]
+                  },
+                  [_vm._v("Educational Details")]
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-sm-4" }, [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "" } }, [
-                        _vm._v("Education Level")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.education,
-                              expression: "form.education"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { name: "education", id: "" },
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.form,
-                                "education",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "post graduate" } }, [
-                            _vm._v("Post Graduate")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "graduate" } }, [
-                            _vm._v("Graduate")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "12th" } }, [
-                            _vm._v("12th")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "11th" } }, [
-                            _vm._v("11th")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "10th" } }, [
-                            _vm._v("10th")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "9th" } }, [
-                            _vm._v("9th")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "8th" } }, [
-                            _vm._v("8th")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "7th" } }, [
-                            _vm._v("7th")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "6th" } }, [
-                            _vm._v("6th")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "5th" } }, [
-                            _vm._v("5th")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "4th" } }, [
-                            _vm._v("4th")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "3rd" } }, [
-                            _vm._v("3rd")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "2nd" } }, [
-                            _vm._v("2nd")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "1st" } }, [
-                            _vm._v("1st")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "LKG/UKG" } }, [
-                            _vm._v("LKG/UKG")
-                          ])
-                        ]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-4" }, [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.form.education === "10th",
-                            expression: "form.education ==='10th'"
-                          },
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.current_year,
-                            expression: "form.current_year"
-                          }
-                        ],
-                        staticClass: "form-check-input",
-                        class: {
-                          "is-invalid": _vm.form.errors.has("current_year")
-                        },
-                        attrs: {
-                          type: "checkbox",
-                          name: "current_year",
-                          value: "true"
-                        },
-                        domProps: {
-                          checked: Array.isArray(_vm.form.current_year)
-                            ? _vm._i(_vm.form.current_year, "true") > -1
-                            : _vm.form.current_year
-                        },
-                        on: {
-                          change: function($event) {
-                            var $$a = _vm.form.current_year,
-                              $$el = $event.target,
-                              $$c = $$el.checked ? true : false
-                            if (Array.isArray($$a)) {
-                              var $$v = "true",
-                                $$i = _vm._i($$a, $$v)
-                              if ($$el.checked) {
-                                $$i < 0 &&
-                                  _vm.$set(
-                                    _vm.form,
-                                    "current_year",
-                                    $$a.concat([$$v])
-                                  )
-                              } else {
-                                $$i > -1 &&
-                                  _vm.$set(
-                                    _vm.form,
-                                    "current_year",
-                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                  )
-                              }
-                            } else {
-                              _vm.$set(_vm.form, "current_year", $$c)
-                            }
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "label",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.form.education === "10th",
-                              expression: "form.education ==='10th'"
-                            }
-                          ]
-                        },
-                        [
-                          _vm._v(
-                            " are you appearing in class 10 in " +
-                              _vm._s(_vm._f("getYear")(2020))
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.form.education === "12th",
-                            expression: "form.education ==='12th'"
-                          },
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.current_year,
-                            expression: "form.current_year"
-                          }
-                        ],
-                        staticClass: "form-check-input",
-                        class: {
-                          "is-invalid": _vm.form.errors.has("current_year")
-                        },
-                        attrs: {
-                          type: "checkbox",
-                          name: "current_year",
-                          value: "true"
-                        },
-                        domProps: {
-                          checked: Array.isArray(_vm.form.current_year)
-                            ? _vm._i(_vm.form.current_year, "true") > -1
-                            : _vm.form.current_year
-                        },
-                        on: {
-                          change: function($event) {
-                            var $$a = _vm.form.current_year,
-                              $$el = $event.target,
-                              $$c = $$el.checked ? true : false
-                            if (Array.isArray($$a)) {
-                              var $$v = "true",
-                                $$i = _vm._i($$a, $$v)
-                              if ($$el.checked) {
-                                $$i < 0 &&
-                                  _vm.$set(
-                                    _vm.form,
-                                    "current_year",
-                                    $$a.concat([$$v])
-                                  )
-                              } else {
-                                $$i > -1 &&
-                                  _vm.$set(
-                                    _vm.form,
-                                    "current_year",
-                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                  )
-                              }
-                            } else {
-                              _vm.$set(_vm.form, "current_year", $$c)
-                            }
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "label",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.form.education === "12th",
-                              expression: "form.education ==='12th'"
-                            }
-                          ]
-                        },
-                        [
-                          _vm._v(
-                            " are you appearing in class 12 in " +
-                              _vm._s(_vm._f("getYear")(2020))
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.form.education === "8th",
-                            expression: "form.education ==='8th'"
-                          },
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.current_year,
-                            expression: "form.current_year"
-                          }
-                        ],
-                        staticClass: "form-check-input",
-                        class: {
-                          "is-invalid": _vm.form.errors.has("current_year")
-                        },
-                        attrs: {
-                          type: "checkbox",
-                          name: "current_year",
-                          value: "true"
-                        },
-                        domProps: {
-                          checked: Array.isArray(_vm.form.current_year)
-                            ? _vm._i(_vm.form.current_year, "true") > -1
-                            : _vm.form.current_year
-                        },
-                        on: {
-                          change: function($event) {
-                            var $$a = _vm.form.current_year,
-                              $$el = $event.target,
-                              $$c = $$el.checked ? true : false
-                            if (Array.isArray($$a)) {
-                              var $$v = "true",
-                                $$i = _vm._i($$a, $$v)
-                              if ($$el.checked) {
-                                $$i < 0 &&
-                                  _vm.$set(
-                                    _vm.form,
-                                    "current_year",
-                                    $$a.concat([$$v])
-                                  )
-                              } else {
-                                $$i > -1 &&
-                                  _vm.$set(
-                                    _vm.form,
-                                    "current_year",
-                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                  )
-                              }
-                            } else {
-                              _vm.$set(_vm.form, "current_year", $$c)
-                            }
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "label",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.form.education === "8th",
-                              expression: "form.education ==='8th'"
-                            }
-                          ]
-                        },
-                        [
-                          _vm._v(
-                            " are you appearing in class 8 in " +
-                              _vm._s(_vm._f("getYear")(2020))
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.form.education === "9th",
-                            expression: "form.education ==='9th'"
-                          },
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.current_year,
-                            expression: "form.current_year"
-                          }
-                        ],
-                        staticClass: "form-check-input",
-                        class: {
-                          "is-invalid": _vm.form.errors.has("current_year")
-                        },
-                        attrs: {
-                          type: "checkbox",
-                          name: "current_year",
-                          value: "true"
-                        },
-                        domProps: {
-                          checked: Array.isArray(_vm.form.current_year)
-                            ? _vm._i(_vm.form.current_year, "true") > -1
-                            : _vm.form.current_year
-                        },
-                        on: {
-                          change: function($event) {
-                            var $$a = _vm.form.current_year,
-                              $$el = $event.target,
-                              $$c = $$el.checked ? true : false
-                            if (Array.isArray($$a)) {
-                              var $$v = "true",
-                                $$i = _vm._i($$a, $$v)
-                              if ($$el.checked) {
-                                $$i < 0 &&
-                                  _vm.$set(
-                                    _vm.form,
-                                    "current_year",
-                                    $$a.concat([$$v])
-                                  )
-                              } else {
-                                $$i > -1 &&
-                                  _vm.$set(
-                                    _vm.form,
-                                    "current_year",
-                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                  )
-                              }
-                            } else {
-                              _vm.$set(_vm.form, "current_year", $$c)
-                            }
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "label",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.form.education === "9th",
-                              expression: "form.education ==='9th'"
-                            }
-                          ]
-                        },
-                        [
-                          _vm._v(
-                            " are you appearing in class 9 in " +
-                              _vm._s(_vm._f("getYear")(2020))
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.form.education === "11th",
-                            expression: "form.education ==='11th'"
-                          },
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.current_year,
-                            expression: "form.current_year"
-                          }
-                        ],
-                        staticClass: "form-check-input",
-                        class: {
-                          "is-invalid": _vm.form.errors.has("current_year")
-                        },
-                        attrs: {
-                          type: "checkbox",
-                          name: "current_year",
-                          value: "true"
-                        },
-                        domProps: {
-                          checked: Array.isArray(_vm.form.current_year)
-                            ? _vm._i(_vm.form.current_year, "true") > -1
-                            : _vm.form.current_year
-                        },
-                        on: {
-                          change: function($event) {
-                            var $$a = _vm.form.current_year,
-                              $$el = $event.target,
-                              $$c = $$el.checked ? true : false
-                            if (Array.isArray($$a)) {
-                              var $$v = "true",
-                                $$i = _vm._i($$a, $$v)
-                              if ($$el.checked) {
-                                $$i < 0 &&
-                                  _vm.$set(
-                                    _vm.form,
-                                    "current_year",
-                                    $$a.concat([$$v])
-                                  )
-                              } else {
-                                $$i > -1 &&
-                                  _vm.$set(
-                                    _vm.form,
-                                    "current_year",
-                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                  )
-                              }
-                            } else {
-                              _vm.$set(_vm.form, "current_year", $$c)
-                            }
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "label",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.form.education === "11th",
-                              expression: "form.education ==='11th'"
-                            }
-                          ]
-                        },
-                        [
-                          _vm._v(
-                            " are you appearing in class 11 in " +
-                              _vm._s(_vm._f("getYear")(2020))
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "label",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.form.education === "graduate",
-                              expression: "form.education ==='graduate'"
-                            }
-                          ]
-                        },
-                        [_vm._v("Graduation Subject")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.graduation,
-                              expression: "form.graduation"
-                            },
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.form.education == "graduate",
-                              expression: "form.education=='graduate'"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.form,
-                                "graduation",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "BA" } }, [
-                            _vm._v("BA")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "BCom" } }, [
-                            _vm._v("BCom")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "BFA" } }, [
-                            _vm._v("BFA")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "BSc" } }, [
-                            _vm._v("BSc")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "Btech" } }, [
-                            _vm._v("Btech")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "BCA" } }, [
-                            _vm._v("BCA")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "BBA" } }, [
-                            _vm._v("BBA")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "MBBS" } }, [
-                            _vm._v("MBBS")
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "label",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.form.education === "post graduate",
-                              expression: "form.education ==='post graduate'"
-                            }
-                          ]
-                        },
-                        [_vm._v(" Post Graduation Subject")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.post_graduation,
-                              expression: "form.post_graduation"
-                            },
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.form.education == "post graduate",
-                              expression: "form.education=='post graduate'"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.form,
-                                "post_graduation",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "MA" } }, [
-                            _vm._v("MA")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "MCom" } }, [
-                            _vm._v("MCom")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "MSc" } }, [
-                            _vm._v("MSc")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "MS" } }, [
-                            _vm._v("MS")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "MD" } }, [
-                            _vm._v("MD")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "MCA" } }, [
-                            _vm._v("MCA")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "Mtech" } }, [
-                            _vm._v("Mtech")
-                          ])
-                        ]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _vm.form.education === "graduate" ||
-                  _vm.form.education === "post graduate"
-                    ? _c("div", { staticClass: "col-sm-4" }, [
-                        _vm.form.education === "graduate" ||
-                        _vm.form.education === "post graduate"
-                          ? _c("label", [_vm._v(" Year")])
-                          : _vm._e(),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.form.occupation == "student",
+                        expression: "form.occupation=='student'"
+                      }
+                    ],
+                    staticClass: "row"
+                  },
+                  [
+                    _c("div", { staticClass: "col-sm-4" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", { attrs: { for: "" } }, [
+                          _vm._v("Education Level")
+                        ]),
                         _vm._v(" "),
                         _c(
                           "select",
@@ -56991,8 +56589,536 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.form.grad_year,
-                                expression: "form.grad_year"
+                                value: _vm.form.education,
+                                expression: "form.education"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { name: "education", id: "" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.form,
+                                  "education",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { value: "post graduate" } },
+                              [_vm._v("Post Graduate")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "graduate" } }, [
+                              _vm._v("Graduate")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "12th" } }, [
+                              _vm._v("12th")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "11th" } }, [
+                              _vm._v("11th")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "10th" } }, [
+                              _vm._v("10th")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "9th" } }, [
+                              _vm._v("9th")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "8th" } }, [
+                              _vm._v("8th")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "7th" } }, [
+                              _vm._v("7th")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "6th" } }, [
+                              _vm._v("6th")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "5th" } }, [
+                              _vm._v("5th")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "4th" } }, [
+                              _vm._v("4th")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "3rd" } }, [
+                              _vm._v("3rd")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "2nd" } }, [
+                              _vm._v("2nd")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "1st" } }, [
+                              _vm._v("1st")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "LKG/UKG" } }, [
+                              _vm._v("LKG/UKG")
+                            ])
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-4" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.form.education === "10th",
+                              expression: "form.education ==='10th'"
+                            },
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.current_year,
+                              expression: "form.current_year"
+                            }
+                          ],
+                          staticClass: "form-check-input",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("current_year")
+                          },
+                          attrs: {
+                            type: "checkbox",
+                            name: "current_year",
+                            value: "true"
+                          },
+                          domProps: {
+                            checked: Array.isArray(_vm.form.current_year)
+                              ? _vm._i(_vm.form.current_year, "true") > -1
+                              : _vm.form.current_year
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$a = _vm.form.current_year,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = "true",
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 &&
+                                    _vm.$set(
+                                      _vm.form,
+                                      "current_year",
+                                      $$a.concat([$$v])
+                                    )
+                                } else {
+                                  $$i > -1 &&
+                                    _vm.$set(
+                                      _vm.form,
+                                      "current_year",
+                                      $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1))
+                                    )
+                                }
+                              } else {
+                                _vm.$set(_vm.form, "current_year", $$c)
+                              }
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education === "10th",
+                                expression: "form.education ==='10th'"
+                              }
+                            ]
+                          },
+                          [
+                            _vm._v(
+                              " are you appearing in class 10 in " +
+                                _vm._s(_vm._f("getYear")(2020))
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.form.education === "12th",
+                              expression: "form.education ==='12th'"
+                            },
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.current_year,
+                              expression: "form.current_year"
+                            }
+                          ],
+                          staticClass: "form-check-input",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("current_year")
+                          },
+                          attrs: {
+                            type: "checkbox",
+                            name: "current_year",
+                            value: "true"
+                          },
+                          domProps: {
+                            checked: Array.isArray(_vm.form.current_year)
+                              ? _vm._i(_vm.form.current_year, "true") > -1
+                              : _vm.form.current_year
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$a = _vm.form.current_year,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = "true",
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 &&
+                                    _vm.$set(
+                                      _vm.form,
+                                      "current_year",
+                                      $$a.concat([$$v])
+                                    )
+                                } else {
+                                  $$i > -1 &&
+                                    _vm.$set(
+                                      _vm.form,
+                                      "current_year",
+                                      $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1))
+                                    )
+                                }
+                              } else {
+                                _vm.$set(_vm.form, "current_year", $$c)
+                              }
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education === "12th",
+                                expression: "form.education ==='12th'"
+                              }
+                            ]
+                          },
+                          [
+                            _vm._v(
+                              " are you appearing in class 12 in " +
+                                _vm._s(_vm._f("getYear")(2020))
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.form.education === "8th",
+                              expression: "form.education ==='8th'"
+                            },
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.current_year,
+                              expression: "form.current_year"
+                            }
+                          ],
+                          staticClass: "form-check-input",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("current_year")
+                          },
+                          attrs: {
+                            type: "checkbox",
+                            name: "current_year",
+                            value: "true"
+                          },
+                          domProps: {
+                            checked: Array.isArray(_vm.form.current_year)
+                              ? _vm._i(_vm.form.current_year, "true") > -1
+                              : _vm.form.current_year
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$a = _vm.form.current_year,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = "true",
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 &&
+                                    _vm.$set(
+                                      _vm.form,
+                                      "current_year",
+                                      $$a.concat([$$v])
+                                    )
+                                } else {
+                                  $$i > -1 &&
+                                    _vm.$set(
+                                      _vm.form,
+                                      "current_year",
+                                      $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1))
+                                    )
+                                }
+                              } else {
+                                _vm.$set(_vm.form, "current_year", $$c)
+                              }
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education === "8th",
+                                expression: "form.education ==='8th'"
+                              }
+                            ]
+                          },
+                          [
+                            _vm._v(
+                              " are you appearing in class 8 in " +
+                                _vm._s(_vm._f("getYear")(2020))
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.form.education === "9th",
+                              expression: "form.education ==='9th'"
+                            },
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.current_year,
+                              expression: "form.current_year"
+                            }
+                          ],
+                          staticClass: "form-check-input",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("current_year")
+                          },
+                          attrs: {
+                            type: "checkbox",
+                            name: "current_year",
+                            value: "true"
+                          },
+                          domProps: {
+                            checked: Array.isArray(_vm.form.current_year)
+                              ? _vm._i(_vm.form.current_year, "true") > -1
+                              : _vm.form.current_year
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$a = _vm.form.current_year,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = "true",
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 &&
+                                    _vm.$set(
+                                      _vm.form,
+                                      "current_year",
+                                      $$a.concat([$$v])
+                                    )
+                                } else {
+                                  $$i > -1 &&
+                                    _vm.$set(
+                                      _vm.form,
+                                      "current_year",
+                                      $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1))
+                                    )
+                                }
+                              } else {
+                                _vm.$set(_vm.form, "current_year", $$c)
+                              }
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education === "9th",
+                                expression: "form.education ==='9th'"
+                              }
+                            ]
+                          },
+                          [
+                            _vm._v(
+                              " are you appearing in class 9 in " +
+                                _vm._s(_vm._f("getYear")(2020))
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.form.education === "11th",
+                              expression: "form.education ==='11th'"
+                            },
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.current_year,
+                              expression: "form.current_year"
+                            }
+                          ],
+                          staticClass: "form-check-input",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("current_year")
+                          },
+                          attrs: {
+                            type: "checkbox",
+                            name: "current_year",
+                            value: "true"
+                          },
+                          domProps: {
+                            checked: Array.isArray(_vm.form.current_year)
+                              ? _vm._i(_vm.form.current_year, "true") > -1
+                              : _vm.form.current_year
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$a = _vm.form.current_year,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = "true",
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 &&
+                                    _vm.$set(
+                                      _vm.form,
+                                      "current_year",
+                                      $$a.concat([$$v])
+                                    )
+                                } else {
+                                  $$i > -1 &&
+                                    _vm.$set(
+                                      _vm.form,
+                                      "current_year",
+                                      $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1))
+                                    )
+                                }
+                              } else {
+                                _vm.$set(_vm.form, "current_year", $$c)
+                              }
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education === "11th",
+                                expression: "form.education ==='11th'"
+                              }
+                            ]
+                          },
+                          [
+                            _vm._v(
+                              " are you appearing in class 11 in " +
+                                _vm._s(_vm._f("getYear")(2020))
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education === "graduate",
+                                expression: "form.education ==='graduate'"
+                              }
+                            ]
+                          },
+                          [_vm._v("Graduation Subject")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.graduation,
+                                expression: "form.graduation"
+                              },
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education == "graduate",
+                                expression: "form.education=='graduate'"
                               }
                             ],
                             staticClass: "form-control",
@@ -57008,7 +57134,7 @@ var render = function() {
                                   })
                                 _vm.$set(
                                   _vm.form,
-                                  "grad_year",
+                                  "graduation",
                                   $event.target.multiple
                                     ? $$selectedVal
                                     : $$selectedVal[0]
@@ -57017,46 +57143,213 @@ var render = function() {
                             }
                           },
                           [
-                            _c("option", { attrs: { value: "1st" } }, [
-                              _vm._v("1st")
+                            _c("option", { attrs: { value: "BA" } }, [
+                              _vm._v("BA")
                             ]),
                             _vm._v(" "),
-                            _c("option", { attrs: { value: "2nd" } }, [
-                              _vm._v("2nd")
+                            _c("option", { attrs: { value: "BCom" } }, [
+                              _vm._v("BCom")
                             ]),
                             _vm._v(" "),
-                            _c("option", { attrs: { value: "3rd" } }, [
-                              _vm._v("3rd")
+                            _c("option", { attrs: { value: "BFA" } }, [
+                              _vm._v("BFA")
                             ]),
                             _vm._v(" "),
-                            _vm.form.graduation === "Btech" ||
-                            _vm.form.graduation === "MBBS" ||
-                            _vm.form.graduation === "BFA"
-                              ? _c("option", { attrs: { value: "4th" } }, [
-                                  _vm._v("4th")
-                                ])
-                              : _vm._e(),
+                            _c("option", { attrs: { value: "BSc" } }, [
+                              _vm._v("BSc")
+                            ]),
                             _vm._v(" "),
-                            _c(
-                              "option",
+                            _c("option", { attrs: { value: "Btech" } }, [
+                              _vm._v("Btech")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "BCA" } }, [
+                              _vm._v("BCA")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "BBA" } }, [
+                              _vm._v("BBA")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "MBBS" } }, [
+                              _vm._v("MBBS")
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            directives: [
                               {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value: _vm.form.graduation === "MBBS",
-                                    expression: "form.graduation==='MBBS'"
-                                  }
-                                ],
-                                attrs: { value: "5th" }
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education === "post graduate",
+                                expression: "form.education ==='post graduate'"
+                              }
+                            ]
+                          },
+                          [_vm._v(" Post Graduation Subject")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.post_graduation,
+                                expression: "form.post_graduation"
                               },
-                              [_vm._v("5th")]
-                            )
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education == "post graduate",
+                                expression: "form.education=='post graduate'"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.form,
+                                  "post_graduation",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "MA" } }, [
+                              _vm._v("MA")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "LLB" } }, [
+                              _vm._v("LLB")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "MCom" } }, [
+                              _vm._v("MCom")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "MSc" } }, [
+                              _vm._v("MSc")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "MS" } }, [
+                              _vm._v("MS")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "MD" } }, [
+                              _vm._v("MD")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "MCA" } }, [
+                              _vm._v("MCA")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Mtech" } }, [
+                              _vm._v("Mtech")
+                            ])
                           ]
                         )
                       ])
-                    : _vm._e()
-                ]),
+                    ]),
+                    _vm._v(" "),
+                    _vm.form.education === "graduate" ||
+                    _vm.form.education === "post graduate"
+                      ? _c("div", { staticClass: "col-sm-4" }, [
+                          _vm.form.education === "graduate" ||
+                          _vm.form.education === "post graduate"
+                            ? _c("label", [_vm._v(" Year")])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.grad_year,
+                                  expression: "form.grad_year"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.form,
+                                    "grad_year",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c("option", { attrs: { value: "1st" } }, [
+                                _vm._v("1st")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "2nd" } }, [
+                                _vm._v("2nd")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "3rd" } }, [
+                                _vm._v("3rd")
+                              ]),
+                              _vm._v(" "),
+                              _vm.form.graduation === "Btech" ||
+                              _vm.form.graduation === "MBBS" ||
+                              _vm.form.graduation === "BFA"
+                                ? _c("option", { attrs: { value: "4th" } }, [
+                                    _vm._v("4th")
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: _vm.form.graduation === "MBBS",
+                                      expression: "form.graduation==='MBBS'"
+                                    }
+                                  ],
+                                  attrs: { value: "5th" }
+                                },
+                                [_vm._v("5th")]
+                              )
+                            ]
+                          )
+                        ])
+                      : _vm._e()
+                  ]
+                ),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-sm-6" }, [
@@ -57803,6 +58096,62 @@ var render = function() {
                               })
                             ],
                             1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "form-check" },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.marriage_status,
+                                    expression: "form.marriage_status"
+                                  }
+                                ],
+                                staticClass: "form-check-input",
+                                class: {
+                                  "is-invalid": _vm.form.errors.has(
+                                    "marriage_status"
+                                  )
+                                },
+                                attrs: {
+                                  value: "widow",
+                                  type: "radio",
+                                  name: "marriage_status",
+                                  checked: ""
+                                },
+                                domProps: {
+                                  checked: _vm._q(
+                                    _vm.form.marriage_status,
+                                    "widow"
+                                  )
+                                },
+                                on: {
+                                  change: function($event) {
+                                    return _vm.$set(
+                                      _vm.form,
+                                      "marriage_status",
+                                      "widow"
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("label", { staticClass: "form-check-label" }, [
+                                _vm._v("Widow")
+                              ]),
+                              _vm._v(" "),
+                              _c("has-error", {
+                                attrs: {
+                                  form: _vm.form,
+                                  field: "marriage_status"
+                                }
+                              })
+                            ],
+                            1
                           )
                         ]
                       ),
@@ -58089,7 +58438,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-sm-6" }, [
+                    _c("div", { staticClass: "col-sm-4" }, [
                       _c(
                         "div",
                         { staticClass: "form-group" },
@@ -58137,7 +58486,7 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-6" }, [
+                    _c("div", { staticClass: "col-sm-4" }, [
                       _c(
                         "div",
                         { staticClass: "form-group" },
@@ -58179,6 +58528,54 @@ var render = function() {
                           _vm._v(" "),
                           _c("has-error", {
                             attrs: { form: _vm.form, field: "mother_name" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-4" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", [_vm._v("Spouse Name")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.spouse_name,
+                                expression: "form.spouse_name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("mother_name")
+                            },
+                            attrs: {
+                              type: "text",
+                              placeholder: "Mothers Name",
+                              name: "mother_name"
+                            },
+                            domProps: { value: _vm.form.spouse_name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "spouse_name",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "spouse_name" }
                           })
                         ],
                         1
@@ -58496,7 +58893,7 @@ var render = function() {
                   _vm._m(0),
                   _vm._v(" "),
                   _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-sm-6" }, [
+                    _c("div", { staticClass: "col-sm-4" }, [
                       _c(
                         "div",
                         { staticClass: "form-group" },
@@ -58570,6 +58967,10 @@ var render = function() {
                                 _vm._v("Unemployed")
                               ]),
                               _vm._v(" "),
+                              _c("option", { attrs: { value: "retired" } }, [
+                                _vm._v("Retired")
+                              ]),
+                              _vm._v(" "),
                               _c("option", { attrs: { value: "house wife" } }, [
                                 _vm._v("House wife")
                               ])
@@ -58584,7 +58985,7 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-6" }, [
+                    _c("div", { staticClass: "col-sm-4" }, [
                       _vm.form.occupation == "Govt" ||
                       _vm.form.occupation == "private" ||
                       _vm.form.occupation == "self employed"
@@ -59090,708 +59491,178 @@ var render = function() {
                             )
                           ])
                         : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-4" }, [
+                      _vm.form.occupation != "student"
+                        ? _c("div", { staticClass: "form-group" }, [
+                            _c("label", { attrs: { for: "" } }, [
+                              _vm._v("Highest education")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.highest_education,
+                                    expression: "form.highest_education"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { name: "Highest Education", id: "" },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "highest_education",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c("option", { attrs: { value: "5th pass" } }, [
+                                  _vm._v("5th Pass")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "8th pass" } }, [
+                                  _vm._v("8th Pass")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "option",
+                                  { attrs: { value: "10th pass" } },
+                                  [_vm._v("10th Pass")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "option",
+                                  { attrs: { value: "12th pass" } },
+                                  [_vm._v("12th Pass")]
+                                ),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "BA" } }, [
+                                  _vm._v("BA")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "BCom" } }, [
+                                  _vm._v("BCom")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "BSc" } }, [
+                                  _vm._v("BSc")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "BCA" } }, [
+                                  _vm._v("BCA")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "Btech" } }, [
+                                  _vm._v("Btech")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "LLB" } }, [
+                                  _vm._v("LLB")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "BFA" } }, [
+                                  _vm._v("BFA")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "MSc" } }, [
+                                  _vm._v("MSc")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "MA" } }, [
+                                  _vm._v("MA")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "MCom" } }, [
+                                  _vm._v("MCom")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "MCA" } }, [
+                                  _vm._v("MCA")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "option",
+                                  { attrs: { value: "other graduate degree" } },
+                                  [_vm._v("Other Graduate Degree")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: {
+                                      value: "other postgraduate degree"
+                                    }
+                                  },
+                                  [_vm._v("Other Postgraduate Degree")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "option",
+                                  { attrs: { value: "illiterate" } },
+                                  [_vm._v("illiterate")]
+                                )
+                              ]
+                            )
+                          ])
+                        : _vm._e()
                     ])
                   ]),
                   _vm._v(" "),
                   _c("hr"),
                   _vm._v(" "),
-                  _c("h3", [_vm._v("Educational Details")]),
+                  _c(
+                    "h3",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.occupation == "student",
+                          expression: "form.occupation=='student'"
+                        }
+                      ]
+                    },
+                    [_vm._v("Educational Details")]
+                  ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-sm-4" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", { attrs: { for: "" } }, [
-                          _vm._v("Education Level")
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.education,
-                                expression: "form.education"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { name: "education", id: "" },
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.form,
-                                  "education",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              }
-                            }
-                          },
-                          [
-                            _c(
-                              "option",
-                              { attrs: { value: "post graduate" } },
-                              [_vm._v("Post Graduate")]
-                            ),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "graduate" } }, [
-                              _vm._v("Graduate")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "12th" } }, [
-                              _vm._v("12th")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "11th" } }, [
-                              _vm._v("11th")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "10th" } }, [
-                              _vm._v("10th")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "9th" } }, [
-                              _vm._v("9th")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "8th" } }, [
-                              _vm._v("8th")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "7th" } }, [
-                              _vm._v("7th")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "6th" } }, [
-                              _vm._v("6th")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "5th" } }, [
-                              _vm._v("5th")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "4th" } }, [
-                              _vm._v("4th")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "3rd" } }, [
-                              _vm._v("3rd")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "2nd" } }, [
-                              _vm._v("2nd")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "1st" } }, [
-                              _vm._v("1st")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "LKG/UKG" } }, [
-                              _vm._v("LKG/UKG")
-                            ])
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-4" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.form.education === "10th",
-                              expression: "form.education ==='10th'"
-                            },
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.current_year,
-                              expression: "form.current_year"
-                            }
-                          ],
-                          staticClass: "form-check-input",
-                          class: {
-                            "is-invalid": _vm.form.errors.has("current_year")
-                          },
-                          attrs: {
-                            type: "checkbox",
-                            name: "current_year",
-                            value: "true"
-                          },
-                          domProps: {
-                            checked: Array.isArray(_vm.form.current_year)
-                              ? _vm._i(_vm.form.current_year, "true") > -1
-                              : _vm.form.current_year
-                          },
-                          on: {
-                            change: function($event) {
-                              var $$a = _vm.form.current_year,
-                                $$el = $event.target,
-                                $$c = $$el.checked ? true : false
-                              if (Array.isArray($$a)) {
-                                var $$v = "true",
-                                  $$i = _vm._i($$a, $$v)
-                                if ($$el.checked) {
-                                  $$i < 0 &&
-                                    _vm.$set(
-                                      _vm.form,
-                                      "current_year",
-                                      $$a.concat([$$v])
-                                    )
-                                } else {
-                                  $$i > -1 &&
-                                    _vm.$set(
-                                      _vm.form,
-                                      "current_year",
-                                      $$a
-                                        .slice(0, $$i)
-                                        .concat($$a.slice($$i + 1))
-                                    )
-                                }
-                              } else {
-                                _vm.$set(_vm.form, "current_year", $$c)
-                              }
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.form.education === "10th",
-                                expression: "form.education ==='10th'"
-                              }
-                            ]
-                          },
-                          [
-                            _vm._v(
-                              " are you appearing in class 10 in " +
-                                _vm._s(_vm._f("getYear")(2020))
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.form.education === "12th",
-                              expression: "form.education ==='12th'"
-                            },
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.current_year,
-                              expression: "form.current_year"
-                            }
-                          ],
-                          staticClass: "form-check-input",
-                          class: {
-                            "is-invalid": _vm.form.errors.has("current_year")
-                          },
-                          attrs: {
-                            type: "checkbox",
-                            name: "current_year",
-                            value: "true"
-                          },
-                          domProps: {
-                            checked: Array.isArray(_vm.form.current_year)
-                              ? _vm._i(_vm.form.current_year, "true") > -1
-                              : _vm.form.current_year
-                          },
-                          on: {
-                            change: function($event) {
-                              var $$a = _vm.form.current_year,
-                                $$el = $event.target,
-                                $$c = $$el.checked ? true : false
-                              if (Array.isArray($$a)) {
-                                var $$v = "true",
-                                  $$i = _vm._i($$a, $$v)
-                                if ($$el.checked) {
-                                  $$i < 0 &&
-                                    _vm.$set(
-                                      _vm.form,
-                                      "current_year",
-                                      $$a.concat([$$v])
-                                    )
-                                } else {
-                                  $$i > -1 &&
-                                    _vm.$set(
-                                      _vm.form,
-                                      "current_year",
-                                      $$a
-                                        .slice(0, $$i)
-                                        .concat($$a.slice($$i + 1))
-                                    )
-                                }
-                              } else {
-                                _vm.$set(_vm.form, "current_year", $$c)
-                              }
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.form.education === "12th",
-                                expression: "form.education ==='12th'"
-                              }
-                            ]
-                          },
-                          [
-                            _vm._v(
-                              " are you appearing in class 12 in " +
-                                _vm._s(_vm._f("getYear")(2020))
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.form.education === "8th",
-                              expression: "form.education ==='8th'"
-                            },
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.current_year,
-                              expression: "form.current_year"
-                            }
-                          ],
-                          staticClass: "form-check-input",
-                          class: {
-                            "is-invalid": _vm.form.errors.has("current_year")
-                          },
-                          attrs: {
-                            type: "checkbox",
-                            name: "current_year",
-                            value: "true"
-                          },
-                          domProps: {
-                            checked: Array.isArray(_vm.form.current_year)
-                              ? _vm._i(_vm.form.current_year, "true") > -1
-                              : _vm.form.current_year
-                          },
-                          on: {
-                            change: function($event) {
-                              var $$a = _vm.form.current_year,
-                                $$el = $event.target,
-                                $$c = $$el.checked ? true : false
-                              if (Array.isArray($$a)) {
-                                var $$v = "true",
-                                  $$i = _vm._i($$a, $$v)
-                                if ($$el.checked) {
-                                  $$i < 0 &&
-                                    _vm.$set(
-                                      _vm.form,
-                                      "current_year",
-                                      $$a.concat([$$v])
-                                    )
-                                } else {
-                                  $$i > -1 &&
-                                    _vm.$set(
-                                      _vm.form,
-                                      "current_year",
-                                      $$a
-                                        .slice(0, $$i)
-                                        .concat($$a.slice($$i + 1))
-                                    )
-                                }
-                              } else {
-                                _vm.$set(_vm.form, "current_year", $$c)
-                              }
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.form.education === "8th",
-                                expression: "form.education ==='8th'"
-                              }
-                            ]
-                          },
-                          [
-                            _vm._v(
-                              " are you appearing in class 8 in " +
-                                _vm._s(_vm._f("getYear")(2020))
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.form.education === "9th",
-                              expression: "form.education ==='9th'"
-                            },
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.current_year,
-                              expression: "form.current_year"
-                            }
-                          ],
-                          staticClass: "form-check-input",
-                          class: {
-                            "is-invalid": _vm.form.errors.has("current_year")
-                          },
-                          attrs: {
-                            type: "checkbox",
-                            name: "current_year",
-                            value: "true"
-                          },
-                          domProps: {
-                            checked: Array.isArray(_vm.form.current_year)
-                              ? _vm._i(_vm.form.current_year, "true") > -1
-                              : _vm.form.current_year
-                          },
-                          on: {
-                            change: function($event) {
-                              var $$a = _vm.form.current_year,
-                                $$el = $event.target,
-                                $$c = $$el.checked ? true : false
-                              if (Array.isArray($$a)) {
-                                var $$v = "true",
-                                  $$i = _vm._i($$a, $$v)
-                                if ($$el.checked) {
-                                  $$i < 0 &&
-                                    _vm.$set(
-                                      _vm.form,
-                                      "current_year",
-                                      $$a.concat([$$v])
-                                    )
-                                } else {
-                                  $$i > -1 &&
-                                    _vm.$set(
-                                      _vm.form,
-                                      "current_year",
-                                      $$a
-                                        .slice(0, $$i)
-                                        .concat($$a.slice($$i + 1))
-                                    )
-                                }
-                              } else {
-                                _vm.$set(_vm.form, "current_year", $$c)
-                              }
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.form.education === "9th",
-                                expression: "form.education ==='9th'"
-                              }
-                            ]
-                          },
-                          [
-                            _vm._v(
-                              " are you appearing in class 9 in " +
-                                _vm._s(_vm._f("getYear")(2020))
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.form.education === "11th",
-                              expression: "form.education ==='11th'"
-                            },
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.current_year,
-                              expression: "form.current_year"
-                            }
-                          ],
-                          staticClass: "form-check-input",
-                          class: {
-                            "is-invalid": _vm.form.errors.has("current_year")
-                          },
-                          attrs: {
-                            type: "checkbox",
-                            name: "current_year",
-                            value: "true"
-                          },
-                          domProps: {
-                            checked: Array.isArray(_vm.form.current_year)
-                              ? _vm._i(_vm.form.current_year, "true") > -1
-                              : _vm.form.current_year
-                          },
-                          on: {
-                            change: function($event) {
-                              var $$a = _vm.form.current_year,
-                                $$el = $event.target,
-                                $$c = $$el.checked ? true : false
-                              if (Array.isArray($$a)) {
-                                var $$v = "true",
-                                  $$i = _vm._i($$a, $$v)
-                                if ($$el.checked) {
-                                  $$i < 0 &&
-                                    _vm.$set(
-                                      _vm.form,
-                                      "current_year",
-                                      $$a.concat([$$v])
-                                    )
-                                } else {
-                                  $$i > -1 &&
-                                    _vm.$set(
-                                      _vm.form,
-                                      "current_year",
-                                      $$a
-                                        .slice(0, $$i)
-                                        .concat($$a.slice($$i + 1))
-                                    )
-                                }
-                              } else {
-                                _vm.$set(_vm.form, "current_year", $$c)
-                              }
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.form.education === "11th",
-                                expression: "form.education ==='11th'"
-                              }
-                            ]
-                          },
-                          [
-                            _vm._v(
-                              " are you appearing in class 11 in " +
-                                _vm._s(_vm._f("getYear")(2020))
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.form.education === "graduate",
-                                expression: "form.education ==='graduate'"
-                              }
-                            ]
-                          },
-                          [_vm._v("Graduation Subject")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.graduation,
-                                expression: "form.graduation"
-                              },
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.form.education == "graduate",
-                                expression: "form.education=='graduate'"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.form,
-                                  "graduation",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              }
-                            }
-                          },
-                          [
-                            _c("option", { attrs: { value: "BA" } }, [
-                              _vm._v("BA")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "BCom" } }, [
-                              _vm._v("BCom")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "BFA" } }, [
-                              _vm._v("BFA")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "BSc" } }, [
-                              _vm._v("BSc")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "Btech" } }, [
-                              _vm._v("Btech")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "BCA" } }, [
-                              _vm._v("BCA")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "BBA" } }, [
-                              _vm._v("BBA")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "MBBS" } }, [
-                              _vm._v("MBBS")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.form.education === "post graduate",
-                                expression: "form.education ==='post graduate'"
-                              }
-                            ]
-                          },
-                          [_vm._v(" Post Graduation Subject")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.post_graduation,
-                                expression: "form.post_graduation"
-                              },
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.form.education == "post graduate",
-                                expression: "form.education=='post graduate'"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.form,
-                                  "post_graduation",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              }
-                            }
-                          },
-                          [
-                            _c("option", { attrs: { value: "MA" } }, [
-                              _vm._v("MA")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "MCom" } }, [
-                              _vm._v("MCom")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "MSc" } }, [
-                              _vm._v("MSc")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "MS" } }, [
-                              _vm._v("MS")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "MD" } }, [
-                              _vm._v("MD")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "MCA" } }, [
-                              _vm._v("MCA")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "Mtech" } }, [
-                              _vm._v("Mtech")
-                            ])
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _vm.form.education === "graduate" ||
-                    _vm.form.education === "post graduate"
-                      ? _c("div", { staticClass: "col-sm-4" }, [
-                          _vm.form.education === "graduate" ||
-                          _vm.form.education === "post graduate"
-                            ? _c("label", [_vm._v(" Year")])
-                            : _vm._e(),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.occupation == "student",
+                          expression: "form.occupation=='student'"
+                        }
+                      ],
+                      staticClass: "row"
+                    },
+                    [
+                      _c("div", { staticClass: "col-sm-4" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { attrs: { for: "" } }, [
+                            _vm._v("Education Level")
+                          ]),
                           _vm._v(" "),
                           _c(
                             "select",
@@ -59800,8 +59671,537 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.form.grad_year,
-                                  expression: "form.grad_year"
+                                  value: _vm.form.education,
+                                  expression: "form.education"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { name: "education", id: "" },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.form,
+                                    "education",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { value: "post graduate" } },
+                                [_vm._v("Post Graduate")]
+                              ),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "graduate" } }, [
+                                _vm._v("Graduate")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "12th" } }, [
+                                _vm._v("12th")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "11th" } }, [
+                                _vm._v("11th")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "10th" } }, [
+                                _vm._v("10th")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "9th" } }, [
+                                _vm._v("9th")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "8th" } }, [
+                                _vm._v("8th")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "7th" } }, [
+                                _vm._v("7th")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "6th" } }, [
+                                _vm._v("6th")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "5th" } }, [
+                                _vm._v("5th")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "4th" } }, [
+                                _vm._v("4th")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "3rd" } }, [
+                                _vm._v("3rd")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "2nd" } }, [
+                                _vm._v("2nd")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "1st" } }, [
+                                _vm._v("1st")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "LKG/UKG" } }, [
+                                _vm._v("LKG/UKG")
+                              ])
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-4" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education === "10th",
+                                expression: "form.education ==='10th'"
+                              },
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.current_year,
+                                expression: "form.current_year"
+                              }
+                            ],
+                            staticClass: "form-check-input",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("current_year")
+                            },
+                            attrs: {
+                              type: "checkbox",
+                              name: "current_year",
+                              value: "true"
+                            },
+                            domProps: {
+                              checked: Array.isArray(_vm.form.current_year)
+                                ? _vm._i(_vm.form.current_year, "true") > -1
+                                : _vm.form.current_year
+                            },
+                            on: {
+                              change: function($event) {
+                                var $$a = _vm.form.current_year,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = "true",
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "current_year",
+                                        $$a.concat([$$v])
+                                      )
+                                  } else {
+                                    $$i > -1 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "current_year",
+                                        $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1))
+                                      )
+                                  }
+                                } else {
+                                  _vm.$set(_vm.form, "current_year", $$c)
+                                }
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.form.education === "10th",
+                                  expression: "form.education ==='10th'"
+                                }
+                              ]
+                            },
+                            [
+                              _vm._v(
+                                " are you appearing in class 10 in " +
+                                  _vm._s(_vm._f("getYear")(2020))
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education === "12th",
+                                expression: "form.education ==='12th'"
+                              },
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.current_year,
+                                expression: "form.current_year"
+                              }
+                            ],
+                            staticClass: "form-check-input",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("current_year")
+                            },
+                            attrs: {
+                              type: "checkbox",
+                              name: "current_year",
+                              value: "true"
+                            },
+                            domProps: {
+                              checked: Array.isArray(_vm.form.current_year)
+                                ? _vm._i(_vm.form.current_year, "true") > -1
+                                : _vm.form.current_year
+                            },
+                            on: {
+                              change: function($event) {
+                                var $$a = _vm.form.current_year,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = "true",
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "current_year",
+                                        $$a.concat([$$v])
+                                      )
+                                  } else {
+                                    $$i > -1 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "current_year",
+                                        $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1))
+                                      )
+                                  }
+                                } else {
+                                  _vm.$set(_vm.form, "current_year", $$c)
+                                }
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.form.education === "12th",
+                                  expression: "form.education ==='12th'"
+                                }
+                              ]
+                            },
+                            [
+                              _vm._v(
+                                " are you appearing in class 12 in " +
+                                  _vm._s(_vm._f("getYear")(2020))
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education === "8th",
+                                expression: "form.education ==='8th'"
+                              },
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.current_year,
+                                expression: "form.current_year"
+                              }
+                            ],
+                            staticClass: "form-check-input",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("current_year")
+                            },
+                            attrs: {
+                              type: "checkbox",
+                              name: "current_year",
+                              value: "true"
+                            },
+                            domProps: {
+                              checked: Array.isArray(_vm.form.current_year)
+                                ? _vm._i(_vm.form.current_year, "true") > -1
+                                : _vm.form.current_year
+                            },
+                            on: {
+                              change: function($event) {
+                                var $$a = _vm.form.current_year,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = "true",
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "current_year",
+                                        $$a.concat([$$v])
+                                      )
+                                  } else {
+                                    $$i > -1 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "current_year",
+                                        $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1))
+                                      )
+                                  }
+                                } else {
+                                  _vm.$set(_vm.form, "current_year", $$c)
+                                }
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.form.education === "8th",
+                                  expression: "form.education ==='8th'"
+                                }
+                              ]
+                            },
+                            [
+                              _vm._v(
+                                " are you appearing in class 8 in " +
+                                  _vm._s(_vm._f("getYear")(2020))
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education === "9th",
+                                expression: "form.education ==='9th'"
+                              },
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.current_year,
+                                expression: "form.current_year"
+                              }
+                            ],
+                            staticClass: "form-check-input",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("current_year")
+                            },
+                            attrs: {
+                              type: "checkbox",
+                              name: "current_year",
+                              value: "true"
+                            },
+                            domProps: {
+                              checked: Array.isArray(_vm.form.current_year)
+                                ? _vm._i(_vm.form.current_year, "true") > -1
+                                : _vm.form.current_year
+                            },
+                            on: {
+                              change: function($event) {
+                                var $$a = _vm.form.current_year,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = "true",
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "current_year",
+                                        $$a.concat([$$v])
+                                      )
+                                  } else {
+                                    $$i > -1 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "current_year",
+                                        $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1))
+                                      )
+                                  }
+                                } else {
+                                  _vm.$set(_vm.form, "current_year", $$c)
+                                }
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.form.education === "9th",
+                                  expression: "form.education ==='9th'"
+                                }
+                              ]
+                            },
+                            [
+                              _vm._v(
+                                " are you appearing in class 9 in " +
+                                  _vm._s(_vm._f("getYear")(2020))
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.form.education === "11th",
+                                expression: "form.education ==='11th'"
+                              },
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.current_year,
+                                expression: "form.current_year"
+                              }
+                            ],
+                            staticClass: "form-check-input",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("current_year")
+                            },
+                            attrs: {
+                              type: "checkbox",
+                              name: "current_year",
+                              value: "true"
+                            },
+                            domProps: {
+                              checked: Array.isArray(_vm.form.current_year)
+                                ? _vm._i(_vm.form.current_year, "true") > -1
+                                : _vm.form.current_year
+                            },
+                            on: {
+                              change: function($event) {
+                                var $$a = _vm.form.current_year,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = "true",
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "current_year",
+                                        $$a.concat([$$v])
+                                      )
+                                  } else {
+                                    $$i > -1 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "current_year",
+                                        $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1))
+                                      )
+                                  }
+                                } else {
+                                  _vm.$set(_vm.form, "current_year", $$c)
+                                }
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.form.education === "11th",
+                                  expression: "form.education ==='11th'"
+                                }
+                              ]
+                            },
+                            [
+                              _vm._v(
+                                " are you appearing in class 11 in " +
+                                  _vm._s(_vm._f("getYear")(2020))
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.form.education === "graduate",
+                                  expression: "form.education ==='graduate'"
+                                }
+                              ]
+                            },
+                            [_vm._v("Graduation Subject")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.graduation,
+                                  expression: "form.graduation"
+                                },
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.form.education == "graduate",
+                                  expression: "form.education=='graduate'"
                                 }
                               ],
                               staticClass: "form-control",
@@ -59818,7 +60218,7 @@ var render = function() {
                                     })
                                   _vm.$set(
                                     _vm.form,
-                                    "grad_year",
+                                    "graduation",
                                     $event.target.multiple
                                       ? $$selectedVal
                                       : $$selectedVal[0]
@@ -59827,46 +60227,215 @@ var render = function() {
                               }
                             },
                             [
-                              _c("option", { attrs: { value: "1st" } }, [
-                                _vm._v("1st")
+                              _c("option", { attrs: { value: "BA" } }, [
+                                _vm._v("BA")
                               ]),
                               _vm._v(" "),
-                              _c("option", { attrs: { value: "2nd" } }, [
-                                _vm._v("2nd")
+                              _c("option", { attrs: { value: "BCom" } }, [
+                                _vm._v("BCom")
                               ]),
                               _vm._v(" "),
-                              _c("option", { attrs: { value: "3rd" } }, [
-                                _vm._v("3rd")
+                              _c("option", { attrs: { value: "BFA" } }, [
+                                _vm._v("BFA")
                               ]),
                               _vm._v(" "),
-                              _vm.form.graduation === "Btech" ||
-                              _vm.form.graduation === "MBBS" ||
-                              _vm.form.graduation === "BFA"
-                                ? _c("option", { attrs: { value: "4th" } }, [
-                                    _vm._v("4th")
-                                  ])
-                                : _vm._e(),
+                              _c("option", { attrs: { value: "BSc" } }, [
+                                _vm._v("BSc")
+                              ]),
                               _vm._v(" "),
-                              _c(
-                                "option",
+                              _c("option", { attrs: { value: "Btech" } }, [
+                                _vm._v("Btech")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "BCA" } }, [
+                                _vm._v("BCA")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "BBA" } }, [
+                                _vm._v("BBA")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "MBBS" } }, [
+                                _vm._v("MBBS")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            {
+                              directives: [
                                 {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: _vm.form.graduation === "MBBS",
-                                      expression: "form.graduation==='MBBS'"
-                                    }
-                                  ],
-                                  attrs: { value: "5th" }
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.form.education === "post graduate",
+                                  expression:
+                                    "form.education ==='post graduate'"
+                                }
+                              ]
+                            },
+                            [_vm._v(" Post Graduation Subject")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.post_graduation,
+                                  expression: "form.post_graduation"
                                 },
-                                [_vm._v("5th")]
-                              )
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.form.education == "post graduate",
+                                  expression: "form.education=='post graduate'"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.form,
+                                    "post_graduation",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c("option", { attrs: { value: "MA" } }, [
+                                _vm._v("MA")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "LLB" } }, [
+                                _vm._v("LLB")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "MCom" } }, [
+                                _vm._v("MCom")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "MSc" } }, [
+                                _vm._v("MSc")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "MS" } }, [
+                                _vm._v("MS")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "MD" } }, [
+                                _vm._v("MD")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "MCA" } }, [
+                                _vm._v("MCA")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "Mtech" } }, [
+                                _vm._v("Mtech")
+                              ])
                             ]
                           )
                         ])
-                      : _vm._e()
-                  ]),
+                      ]),
+                      _vm._v(" "),
+                      _vm.form.education === "graduate" ||
+                      _vm.form.education === "post graduate"
+                        ? _c("div", { staticClass: "col-sm-4" }, [
+                            _vm.form.education === "graduate" ||
+                            _vm.form.education === "post graduate"
+                              ? _c("label", [_vm._v(" Year")])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.grad_year,
+                                    expression: "form.grad_year"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "grad_year",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c("option", { attrs: { value: "1st" } }, [
+                                  _vm._v("1st")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "2nd" } }, [
+                                  _vm._v("2nd")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "3rd" } }, [
+                                  _vm._v("3rd")
+                                ]),
+                                _vm._v(" "),
+                                _vm.form.graduation === "Btech" ||
+                                _vm.form.graduation === "MBBS" ||
+                                _vm.form.graduation === "BFA"
+                                  ? _c("option", { attrs: { value: "4th" } }, [
+                                      _vm._v("4th")
+                                    ])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _c(
+                                  "option",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: _vm.form.graduation === "MBBS",
+                                        expression: "form.graduation==='MBBS'"
+                                      }
+                                    ],
+                                    attrs: { value: "5th" }
+                                  },
+                                  [_vm._v("5th")]
+                                )
+                              ]
+                            )
+                          ])
+                        : _vm._e()
+                    ]
+                  ),
                   _vm._v(" "),
                   _c("div", { staticClass: "row" }, [
                     _c("div", { staticClass: "col-sm-6" }, [
@@ -78733,6 +79302,9 @@ var routes = [{
   path: '/userdirectory',
   component: __webpack_require__(/*! ./components/userdirectory.vue */ "./resources/js/components/userdirectory.vue")["default"]
 }, {
+  path: '/test',
+  component: __webpack_require__(/*! ./components/test.vue */ "./resources/js/components/test.vue")["default"]
+}, {
   path: '*',
   component: __webpack_require__(/*! ./components/admin/404.vue */ "./resources/js/components/admin/404.vue")["default"]
 }];
@@ -80866,6 +81438,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_showdirectory_vue_vue_type_template_id_0588b856___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/components/test.vue":
+/*!******************************************!*\
+  !*** ./resources/js/components/test.vue ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__["default"])(
+  script,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+component.options.__file = "resources/js/components/test.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 

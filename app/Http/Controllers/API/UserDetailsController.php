@@ -50,8 +50,6 @@ public function __construct()
            'email'=>'string|max:255|nullable|',
            'mobile'=>'sometimes|string|max:20|nullable',
            'blood_group'=>'nullable|string',
-           'father_name'=>'required|string|max:191',
-           'mother_name'=>'required|string|max:191',
            'address'=>'required|string|max:191',
            'city'=>'required|string|max:191',
            'state'=>'required|string|max:191',
@@ -125,7 +123,8 @@ public function __construct()
     $userdetail->family_id = Auth::User()->family_id;
     $userdetail->allowsearch = $request->allowsearch;
     $userdetail->grad_year = $request->grad_year;
-
+    $userdetail->highest_education = $request->highest_education;
+    $userdetail->spouse_name = $request->spouse_name;
     $userdetail->save();
 }
 
@@ -188,8 +187,6 @@ public function __construct()
       $per_page = request()->has('per_page')?(int) request()->per_page : null;
       $pagination = $query->paginate($per_page);
       $pagination->appends([
-
-
 
           'sort'=>request()->sort,
           'filter'=>request()->filter,
@@ -257,9 +254,8 @@ $this->validate($request,[
     'dob'=>'required|string|max:191',
     'marriage_status'=>'required|string|max:191',
     'blood_group'=>'nullable|string',
-    'father_name'=>'required|string|max:191',
-    'mother_name'=>'required|string|max:191',
-    'address'=>'required|string|max:191',
+    
+      'address'=>'required|string|max:191',
     'city'=>'required|string|max:191',
     'state'=>'required|string|max:191',
     'occupation'=>'required|string|max:191',
