@@ -2977,6 +2977,124 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4185,6 +4303,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -7008,6 +7127,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -51264,11 +51384,10 @@ var render = function() {
                         [_vm._v("Title")]
                       ),
                       _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "col-sm-10" },
-                        [
-                          _c("input", {
+                      _c("div", { staticClass: "col-sm-10" }, [
+                        _c(
+                          "select",
+                          {
                             directives: [
                               {
                                 name: "model",
@@ -51279,26 +51398,309 @@ var render = function() {
                             ],
                             staticClass: "form-control",
                             class: {
-                              "is-invalid": _vm.form.errors.has("title")
+                              "is-invalid": _vm.form.errors.has("skill")
                             },
-                            attrs: { type: "text", name: "title" },
-                            domProps: { value: _vm.form.title },
+                            attrs: {
+                              name: "skill",
+                              id: "exampleFormControlSelect1"
+                            },
                             on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(_vm.form, "title", $event.target.value)
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.form,
+                                  "title",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
                               }
                             }
-                          }),
-                          _vm._v(" "),
-                          _c("has-error", {
-                            attrs: { form: _vm.form, field: "title" }
-                          })
-                        ],
-                        1
-                      )
+                          },
+                          [
+                            _c("option", [
+                              _vm._v("Accounts/ Banking / Finance / Tax")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Accountant")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Pujari")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Debt Recovery Agent")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Equity Dealer")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Financial Planner")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Insurance Agent")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Mutual Fund Agent")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Analytics")]),
+                            _vm._v(" "),
+                            _c("option", [
+                              _vm._v(
+                                "Analytics / Business Intelligence / Data Science"
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Back Office Operations")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Admin Executive")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Back Office")]),
+                            _vm._v(" "),
+                            _c("option", [
+                              _vm._v("Claims Processing Executive")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Data Entry")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Helper")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Human Resource (HR)")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("MIS Executive")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Office Assistant")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Office Boy")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Personal Assistant")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Stenographer")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Business Operations")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("BPO")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Data Collection Executive")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Operations Executive")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Design")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Architecture")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Draftsman")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("DTP Operator")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Fashion Designer")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Web / Graphic Design")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Front Desk Operations")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Cashier")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Customer Care")]),
+                            _vm._v(" "),
+                            _c("option", [
+                              _vm._v("Public Relations (PR) Executive")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Receptionist/Front Desk")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Store Keeper")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Hospitality")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Air Hostess")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Bartender")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Cabin Crew")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Cook / Chef")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Waiter / Steward")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("IT - Hardware & Software")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Android Developer")]),
+                            _vm._v(" "),
+                            _c("option", [
+                              _vm._v(
+                                "Application Programming / Maintenance / Architecture"
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Database Administrator")]),
+                            _c("option", [_vm._v("IT Software - ERP / CRM")]),
+                            _vm._v(" "),
+                            _c("option", [
+                              _vm._v("IT Software - Frontend / Backend")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", [
+                              _vm._v("IT Software - Mobile Development")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("IT Support - Hardware")]),
+                            _vm._v(" "),
+                            _c("option", [
+                              _vm._v(
+                                "Network / Security / System Administration"
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("option", [
+                              _vm._v("Product / Project Management")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Software Developer")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Software Testing / QA")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Logistics / Supply Chain")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Delivery Boy")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Labourer")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Loader")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Merchandiser")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Manufacturing")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Machine Operator")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Packer")]),
+                            _vm._v(" "),
+                            _c("option", [
+                              _vm._v("Production/ Quality Control/ Maintenance")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", [
+                              _vm._v("Purchase / Procurement Executive")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Marketing")]),
+                            _c("option", [_vm._v("Content Writer")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Digital Marketing Expert")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Marketing Executive")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Non-IT Engineering")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Aeronautical Engineer")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Chemical Engineer")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Civil Engineer")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Electrical Engineer")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Electronics Engineer")]),
+                            _vm._v(" "),
+                            _c("option", [
+                              _vm._v("Embedded / VLSI / ASIC / Chip Design")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Engineering")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Environmental Engineer")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Industrial Engineer")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Instrumentation Engineer")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Mechanical Engineer")]),
+                            _vm._v(" "),
+                            _c("option", [
+                              _vm._v("Telecommunications Engineer")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Pharmacy / Medical")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Doctor")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Laboratory Assistant")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Medical Representative")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Nurse")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Nursing Attendant/Wardboy")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Physiotherapist")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Radiology Technician")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Sales")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Counter Sales")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Promoter")]),
+                            _vm._v(" "),
+                            _c("option", [
+                              _vm._v("Sales / Business Development")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Telesales / Telemarketing")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Services")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Aayah")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Beautician")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Caretaker")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Carpenter")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Counselors")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Driver")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Fitness Trainer")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Gardener")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Hair Stylist")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Housekeeping")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Maid")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Massuese")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Photographer")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Plumber")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Security Guard")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Spot Boy")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Tailor")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Tutor / Teacher")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Technicians")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Electrician")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Fitter")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Mechanic")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Technician")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Tower Technician")])
+                          ]
+                        )
+                      ])
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group row" }, [
@@ -53724,6 +54126,8 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("option", [_vm._v("Accountant")]),
+                      _vm._v(" "),
+                      _c("option", [_vm._v("Pujari")]),
                       _vm._v(" "),
                       _c("option", [_vm._v("Debt Recovery Agent")]),
                       _vm._v(" "),
@@ -62249,6 +62653,8 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("option", [_vm._v("Accountant")]),
+                              _vm._v(" "),
+                              _c("option", [_vm._v("Pujari")]),
                               _vm._v(" "),
                               _c("option", [_vm._v("Debt Recovery Agent")]),
                               _vm._v(" "),

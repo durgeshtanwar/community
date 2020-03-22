@@ -77,6 +77,7 @@
                    <select  class="form-control" name="apply_for"  :class="{ 'is-invalid': form.errors.has('apply_for') }" id="exampleFormControlSelect1" v-model="form.apply_for">
                      <option>Accounts/ Banking / Finance / Tax</option>
                         <option>Accountant</option>
+                        <option>Pujari</option>
                         <option>Debt Recovery Agent</option>
                         <option>Equity Dealer</option>
                         <option>Financial Planner</option>

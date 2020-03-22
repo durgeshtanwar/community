@@ -22,6 +22,7 @@
                    <select  class="form-control" name="skill"  :class="{ 'is-invalid': form.errors.has('skill') }" id="exampleFormControlSelect1" v-model="form.skill">
                     <option>Accounts/ Banking / Finance / Tax</option>
                         <option>Accountant</option>
+                        <option>Pujari</option>
                         <option>Debt Recovery Agent</option>
                         <option>Equity Dealer</option>
                         <option>Financial Planner</option>
