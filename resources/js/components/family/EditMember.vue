@@ -325,6 +325,7 @@
                         <option>Manufacturing</option>
                         <option>Machine Operator</option>
                         <option>Packer</option>
+                        <option>Pujari</option>
                         <option>Production/ Quality Control/ Maintenance</option>
                         <option>Purchase / Procurement Executive</option>
                         <option>Marketing</option><option>Content Writer</option>
