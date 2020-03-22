@@ -194,7 +194,7 @@
                   <div class="col-sm-4">
                        <div class="form-group">
                         <label>Spouse Name</label>
-                        <input type="text" v-model="form.spouse_name" class="form-control" placeholder="Mothers Name" name="mother_name" :class="{'is-invalid':form.errors.has('mother_name')}" >
+                        <input type="text" v-model="form.spouse_name" class="form-control" placeholder="Spouse Name" name="mother_name" :class="{'is-invalid':form.errors.has('mother_name')}" >
                         <has-error :form="form" field="spouse_name"></has-error>
                       </div>
                   </div>
@@ -347,6 +347,7 @@
                         <option>Manufacturing</option>
                         <option>Machine Operator</option>
                         <option>Packer</option>
+                        <option>Pujari</option>
                         <option>Production/ Quality Control/ Maintenance</option>
                         <option>Purchase / Procurement Executive</option>
                         <option>Marketing</option><option>Content Writer</option>
@@ -722,7 +723,7 @@
          console.log(file);
           let reader = new FileReader();
            
-           if(file['size']<2111775){
+           if(file['size']<10111775){
               reader.onloadend = (file) => {
            // console.log('RESULT', reader.result)
            this.form.photo = reader.result;
