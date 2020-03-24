@@ -178,7 +178,7 @@ public function __construct()
       if($request->exists('filter')) {
           $query->where(function($q) use($request){
             $value = "%{$request->filter}%";
-            $q->where('name','like',$value)
+            $q->where('users_details.name','like',$value)
                   ->orWhere('father_name','like',$value)
                   ->orWhere('city','like',$value)
                   ->orWhere('mother_name','like',$value); 
@@ -223,7 +223,7 @@ public function __construct()
       if($request->exists('filter')) {
           $query->where(function($q) use($request){
             $value = "%{$request->filter}%";
-            $q->where('name','like',$value)
+            $q->where('users_details.name','like',$value)
                   ->orWhere('father_name','like',$value)
                   ->orWhere('city','like',$value)
                   ->orWhere('mother_name','like',$value); 
@@ -524,6 +524,62 @@ public function getuserdetail($id){
     ->header('Access-Control-Allow-Methods','GET');
 }
 
+public function loadgrooms(){
+ $query = DB::table('users_details')
+            ->join('users','users_details.user_id','=','users.id')
+            ->select('users_details.*','users.gotra','users.image')
+            ->where('users_details.gender','like','male')
+            ->where('matrimonial','like','1')
+            ->paginate(10);
 
+ return $query;           
+
+}
+public function getgrooms(){
+
+    $name =  $_GET['name'];
+    $gotra =  $_GET['gotra'];
+    $city =  $_GET['city'];
+
+    $query = DB::table('users_details')
+            ->join('users','users_details.user_id','=','users.id')
+            ->select('users_details.*','users.gotra','users.image')
+            ->where('users_details.gender','like','male')
+            ->where('matrimonial','like','1')
+            ->where('users_details.name','like',"%$name%")
+            ->where('users.gotra','like',"%$gotra%")
+            ->where('users_details.city','like',"%$city%")
+            ->paginate(10);
+    return $query;
+}
+
+public function getbrides(){
+
+    $name =  $_GET['name'];
+    $gotra =  $_GET['gotra'];
+    $city =  $_GET['city'];
+
+    $query = DB::table('users_details')
+            ->join('users','users_details.user_id','=','users.id')
+            ->select('users_details.*','users.gotra','users.image')
+            ->where('users_details.gender','like','female')
+            ->where('matrimonial','like','1')
+            ->where('users_details.name','like',"%$name%")
+            ->where('users.gotra','like',"%$gotra%")
+            ->where('users_details.city','like',"%$city%")
+            ->paginate(10);
+    return $query;
+}
+public function loadbrides(){
+    $query = DB::table('users_details')
+               ->join('users','users_details.user_id','=','users.id')
+               ->select('users_details.*','users.gotra','users.image')
+               ->where('users_details.gender','like','female')
+               ->where('matrimonial','like','1')
+               ->paginate(10);
+   
+    return $query;           
+   
+   }
 
 }

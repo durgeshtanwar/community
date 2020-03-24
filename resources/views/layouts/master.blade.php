@@ -279,13 +279,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <router-link to="/bride" class="nav-link active">
+                  <router-link to="/getbride" class="nav-link active">
                     <i class="fas pink fa-female nav-icon"></i>
                     <p>Bride</p>
                   </router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link to="/groom" class="nav-link">
+                  <router-link to="/getgroom" class="nav-link">
                     <i class="fas fa-male blue nav-icon"></i>
                     <p>Groom</p>
                   </router-link>>

@@ -72,6 +72,11 @@ Route::get('checkAuth/{id}','API\UserDetailsController@checkAuth');
 Route::get('getuserdetail/{id}','API\UserDetailsController@getuserdetail');
 Route::put('updateuserdetails/{id}','API\UserDetailsController@updateuserdetails');
 
+Route::get('loadgrooms','API\UserDetailsController@loadgrooms');
+Route::get('getgrooms','API\UserDetailsController@getgrooms');
+
+Route::get('loadbrides','API\UserDetailsController@loadbrides');
+Route::get('getbrides','API\UserDetailsController@getbrides');
 
 //Route::get('getFamilyMembers','API\FamilyController@getFamilyMembers');
 
