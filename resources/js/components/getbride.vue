@@ -5,7 +5,7 @@
              <form class="form-horizontal" @submit.prevent="getbrides"> 
                    <div class="row mt-3">  
                     
-                     <div class="col-3">
+                     <div class="col-md-3">
                      <div class="form-group">  
                        <input v-model="form.name" type="text" name="name"
                           class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" placeholder="search by name">
@@ -13,21 +13,21 @@
                      </div>
                      </div>
 
-                     <div class="col-3">
+                     <div class="col-md-3">
                         <div class="form-group">
                          <input v-model="form.gotra" type="text" name="gotra"
                           class="form-control" :class="{ 'is-invalid': form.errors.has('gotra') }" placeholder="search by gotra">
                          <has-error :form="form" field="gotra" ></has-error>     
                      </div>
                      </div>
-                     <div class="col-3">
+                     <div class="col-md-3">
                         <div class="form group">
                          <input v-model="form.city" type="text" name="city"
                           class="form-control" :class="{ 'is-invalid': form.errors.has('city') }" placeholder="search by city">
                          <has-error :form="form" field="city"  ></has-error>   
                      </div>
                      </div>
-                     <div class="col-3">
+                     <div class="col-md-3">
                          <div class="form-group">
                         <button class="btn btn-success">Submit</button>  
                         </div>

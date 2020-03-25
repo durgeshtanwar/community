@@ -61593,7 +61593,7 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "row mt-3" }, [
-              _c("div", { staticClass: "col-3" }, [
+              _c("div", { staticClass: "col-md-3" }, [
                 _c(
                   "div",
                   { staticClass: "form-group" },
@@ -61633,7 +61633,7 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-3" }, [
+              _c("div", { staticClass: "col-md-3" }, [
                 _c(
                   "div",
                   { staticClass: "form-group" },
@@ -61673,7 +61673,7 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-3" }, [
+              _c("div", { staticClass: "col-md-3" }, [
                 _c(
                   "div",
                   { staticClass: "form group" },
@@ -61769,7 +61769,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-3" }, [
+    return _c("div", { staticClass: "col-md-3" }, [
       _c("div", { staticClass: "form-group" }, [
         _c("button", { staticClass: "btn btn-success" }, [_vm._v("Submit")])
       ])
@@ -61845,7 +61845,7 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "row mt-3" }, [
-              _c("div", { staticClass: "col-3" }, [
+              _c("div", { staticClass: "col-md-3" }, [
                 _c(
                   "div",
                   { staticClass: "form-group" },
@@ -61885,7 +61885,7 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-3" }, [
+              _c("div", { staticClass: "col-md-3" }, [
                 _c(
                   "div",
                   { staticClass: "form-group" },
@@ -61925,7 +61925,7 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-3" }, [
+              _c("div", { staticClass: "col-md-3" }, [
                 _c(
                   "div",
                   { staticClass: "form group" },
@@ -62021,7 +62021,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-3" }, [
+    return _c("div", { staticClass: "col-md-3" }, [
       _c("div", { staticClass: "form-group" }, [
         _c("button", { staticClass: "btn btn-success" }, [_vm._v("Submit")])
       ])
