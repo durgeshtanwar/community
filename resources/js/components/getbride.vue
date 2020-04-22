@@ -61,7 +61,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="bride in brides" :key="bride.id">
+                    <tr v-for="bride in brides.data" :key="bride.id">
                       <td>{{bride.name}}</td>
                       <td>{{bride.father_name}}</td>
                       <td>{{bride.mother_name}}</td>
@@ -78,7 +78,8 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-            <!-- <pagination :data="news" @pagination-change-page="getResults"></pagination> -->
+            <pagination :data="brides" 
+            @pagination-change-page="getResults"></pagination>
             </div>
             </div>
             <!-- /.card -->
@@ -102,10 +103,14 @@ export default {
    },
    methods: {
        loadbrides(){
-           axios.get('api/loadbrides').then(({data})=>(this.brides = data.data));
+           axios.get('api/loadbrides').then(({data})=>(this.brides = data));
        },
        getbrides(){
-           axios.get('api/getbrides?city='+this.form.city+'&name='+this.form.name+'&gotra='+this.form.gotra).then(({data})=>(this.brides = data.data));
+           axios.get('api/getbrides?city='+this.form.city+'&name='+this.form.name+'&gotra='+this.form.gotra).then(({data})=>(this.brides = data));
+       },
+       getResults(page = 1) {
+         axios.get('api/loadbrides?page='+ page)
+         .then(response => {this.brides = response.data});
        }
    },
    created(){

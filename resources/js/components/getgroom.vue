@@ -61,7 +61,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="groom in grooms" :key="groom.id">
+                    <tr v-for="groom in grooms.data" :key="groom.id">
                       <td>{{groom.name}}</td>
                       <td>{{groom.father_name}}</td>
                       <td>{{groom.mother_name}}</td>
@@ -78,7 +78,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-            <!-- <pagination :data="news" @pagination-change-page="getResults"></pagination> -->
+            <pagination :data="grooms" @pagination-change-page="getResults"></pagination>
             </div>
             </div>
             <!-- /.card -->
@@ -102,10 +102,14 @@ export default {
    },
    methods: {
        loadgrooms(){
-           axios.get('api/loadgrooms').then(({data})=>(this.grooms = data.data));
+           axios.get('api/loadgrooms').then(({data})=>(this.grooms = data));
        },
        getgrooms(){
-           axios.get('api/getgrooms?city='+this.form.city+'&name='+this.form.name+'&gotra='+this.form.gotra).then(({data})=>(this.grooms = data.data));
+           axios.get('api/getgrooms?city='+this.form.city+'&name='+this.form.name+'&gotra='+this.form.gotra).then(({data})=>(this.grooms = data));
+       },
+       getResults(page = 1) {
+         axios.get('api/loadgrooms?page='+ page)
+         .then(response => {this.brides = response.data});
        }
    },
    created(){

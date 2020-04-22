@@ -78,6 +78,9 @@ Route::get('getgrooms','API\UserDetailsController@getgrooms');
 Route::get('loadbrides','API\UserDetailsController@loadbrides');
 Route::get('getbrides','API\UserDetailsController@getbrides');
 
+Route::get('getmembers','API\UserDetailsController@getmembers');
+Route::get('loadmembers','API\UserDetailsController@loadmembers');
+
 //Route::get('getFamilyMembers','API\FamilyController@getFamilyMembers');
 
 //Route::get('my_applications','API')
