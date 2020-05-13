@@ -64,4 +64,12 @@ $fa-font-path:"../webfonts";
 .inner h3{
     font-size:16px;
 }
+
 }
+@media (min-width: 768px) {
+    .collapse.dont-collapse-sm {
+      display: block;
+      height: auto !important;
+      visibility: visible;
+    }
+  }

@@ -6899,6 +6899,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -62291,10 +62294,13 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "col-12" }, [
       _c("div", [
+        _vm._m(0),
+        _vm._v(" "),
         _c(
           "form",
           {
-            staticClass: "form-horizontal",
+            staticClass: "form-horizontal collapse dont-collapse-sm",
+            attrs: { id: "collapseExample" },
             on: {
               submit: function($event) {
                 $event.preventDefault()
@@ -62550,19 +62556,19 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _vm._m(0)
+              _vm._m(1)
             ])
           ]
         ),
         _vm._v(" "),
         _c("div", { staticClass: "card" }, [
-          _vm._m(1),
+          _vm._m(2),
           _vm._v(" "),
           _c("div", { staticClass: "card-body table-responsive p-0" }, [
             _c("div", { staticClass: "row" }),
             _vm._v(" "),
             _c("table", { staticClass: "table table-hover" }, [
-              _vm._m(2),
+              _vm._m(3),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -62605,6 +62611,31 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-success btn-block mb-2 mt-2 d-lg-none",
+        attrs: {
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#collapseExample",
+          "aria-expanded": "false",
+          "aria-controls": "collapseExample"
+        }
+      },
+      [
+        _vm._v("\r\n  Search "),
+        _c("i", {
+          staticClass: "fa fa-search",
+          attrs: { "aria-hidden": "true" }
+        })
+      ]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

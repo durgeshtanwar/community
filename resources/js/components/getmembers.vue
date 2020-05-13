@@ -2,7 +2,10 @@
 <div class="container">
     <div class="col-12">
         <div>
-             <form class="form-horizontal" @submit.prevent="getmembers"> 
+           <button class="btn btn-success btn-block mb-2 mt-2 d-lg-none" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  Search <i class="fa fa-search" aria-hidden="true"></i>
+  </button>
+             <form class="form-horizontal collapse dont-collapse-sm" @submit.prevent="getmembers" id="collapseExample"> 
                    <div class="row mt-3">  
                     
                      <div class="col-md-3">
