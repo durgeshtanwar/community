@@ -6589,6 +6589,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -6642,6 +6659,23 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6902,10 +6936,198 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       members: {},
+      cities: {},
       form: new Form({
         name: '',
         occupation: '',
@@ -6940,6 +7162,14 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('api/loadmembers?page=' + page).then(function (response) {
         _this3.members = response.data;
       });
+    },
+    getcity: function getcity() {
+      var _this4 = this;
+
+      axios.get('api/getcities/' + this.form.state).then(function (_ref3) {
+        var data = _ref3.data;
+        return _this4.cities = data;
+      }); //console.log(this.cities.target.value);
     }
   },
   created: function created() {
@@ -61824,11 +62054,10 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-3" }, [
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("input", {
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "select",
+                    {
                       directives: [
                         {
                           name: "model",
@@ -61838,29 +62067,98 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      class: { "is-invalid": _vm.form.errors.has("gotra") },
-                      attrs: {
-                        type: "text",
-                        name: "gotra",
-                        placeholder: "search by gotra"
-                      },
-                      domProps: { value: _vm.form.gotra },
+                      attrs: { name: "gotra", "aria-placeholder": "Gotra" },
                       on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "gotra", $event.target.value)
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.form,
+                            "gotra",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
                         }
                       }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "gotra" }
-                    })
-                  ],
-                  1
-                )
+                    },
+                    [
+                      _c("option", { attrs: { value: " " } }, [
+                        _vm._v(" Not Applicable")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Kuvera" } }, [
+                        _vm._v(" Kuvera")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Mathuria" } }, [
+                        _vm._v("Mathuria")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Kataria" } }, [
+                        _vm._v("Kataria")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Chaparwal" } }, [
+                        _vm._v("Chaparwal")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Jangla" } }, [
+                        _vm._v("Jangla")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Mundhara" } }, [
+                        _vm._v("Mundhara")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Baladh" } }, [
+                        _vm._v("Baladh")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Aasiwal" } }, [
+                        _vm._v("Aasiwal")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Devera" } }, [
+                        _vm._v("Devera")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Lllad" } }, [
+                        _vm._v("Lllad")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Hatila" } }, [
+                        _vm._v("Hatila")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Bhartani" } }, [
+                        _vm._v("Bhartani")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Sanvlera" } }, [
+                        _vm._v("Sanvlera")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Heergota" } }, [
+                        _vm._v("Heergota")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Bheenmaal" } }, [
+                        _vm._v("Bheenmaal")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Medatwal Aboti" } }, [
+                        _vm._v("Medatwal Aboti")
+                      ])
+                    ]
+                  )
+                ])
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-3" }, [
@@ -62086,11 +62384,10 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-3" }, [
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("input", {
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "select",
+                    {
                       directives: [
                         {
                           name: "model",
@@ -62100,29 +62397,98 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      class: { "is-invalid": _vm.form.errors.has("gotra") },
-                      attrs: {
-                        type: "text",
-                        name: "gotra",
-                        placeholder: "search by gotra"
-                      },
-                      domProps: { value: _vm.form.gotra },
+                      attrs: { name: "gotra", "aria-placeholder": "Gotra" },
                       on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "gotra", $event.target.value)
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.form,
+                            "gotra",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
                         }
                       }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "gotra" }
-                    })
-                  ],
-                  1
-                )
+                    },
+                    [
+                      _c("option", { attrs: { value: " " } }, [
+                        _vm._v(" Not Applicable")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Kuvera" } }, [
+                        _vm._v(" Kuvera")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Mathuria" } }, [
+                        _vm._v("Mathuria")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Kataria" } }, [
+                        _vm._v("Kataria")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Chaparwal" } }, [
+                        _vm._v("Chaparwal")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Jangla" } }, [
+                        _vm._v("Jangla")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Mundhara" } }, [
+                        _vm._v("Mundhara")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Baladh" } }, [
+                        _vm._v("Baladh")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Aasiwal" } }, [
+                        _vm._v("Aasiwal")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Devera" } }, [
+                        _vm._v("Devera")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Lllad" } }, [
+                        _vm._v("Lllad")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Hatila" } }, [
+                        _vm._v("Hatila")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Bhartani" } }, [
+                        _vm._v("Bhartani")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Sanvlera" } }, [
+                        _vm._v("Sanvlera")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Heergota" } }, [
+                        _vm._v("Heergota")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Bheenmaal" } }, [
+                        _vm._v("Bheenmaal")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Medatwal Aboti" } }, [
+                        _vm._v("Medatwal Aboti")
+                      ])
+                    ]
+                  )
+                ])
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-3" }, [
@@ -62315,6 +62681,8 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
+                    _c("label", [_vm._v(" Name ")]),
+                    _vm._v(" "),
                     _c("input", {
                       directives: [
                         {
@@ -62351,11 +62719,12 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-3" }, [
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("input", {
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v(" Gotra ")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
                       directives: [
                         {
                           name: "model",
@@ -62365,29 +62734,98 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      class: { "is-invalid": _vm.form.errors.has("gotra") },
-                      attrs: {
-                        type: "text",
-                        name: "gotra",
-                        placeholder: "search by gotra"
-                      },
-                      domProps: { value: _vm.form.gotra },
+                      attrs: { name: "gotra", "aria-placeholder": "Gotra" },
                       on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "gotra", $event.target.value)
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.form,
+                            "gotra",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
                         }
                       }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "gotra" }
-                    })
-                  ],
-                  1
-                )
+                    },
+                    [
+                      _c("option", { attrs: { value: " " } }, [
+                        _vm._v(" Not Applicable")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Kuvera" } }, [
+                        _vm._v(" Kuvera")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Mathuria" } }, [
+                        _vm._v("Mathuria")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Kataria" } }, [
+                        _vm._v("Kataria")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Chaparwal" } }, [
+                        _vm._v("Chaparwal")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Jangla" } }, [
+                        _vm._v("Jangla")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Mundhara" } }, [
+                        _vm._v("Mundhara")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Baladh" } }, [
+                        _vm._v("Baladh")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Aasiwal" } }, [
+                        _vm._v("Aasiwal")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Devera" } }, [
+                        _vm._v("Devera")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Lllad" } }, [
+                        _vm._v("Lllad")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Hatila" } }, [
+                        _vm._v("Hatila")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Bhartani" } }, [
+                        _vm._v("Bhartani")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Sanvlera" } }, [
+                        _vm._v("Sanvlera")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Heergota" } }, [
+                        _vm._v("Heergota")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Bheenmaal" } }, [
+                        _vm._v("Bheenmaal")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Medatwal Aboti" } }, [
+                        _vm._v("Medatwal Aboti")
+                      ])
+                    ]
+                  )
+                ])
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-3" }, [
@@ -62395,34 +62833,74 @@ var render = function() {
                   "div",
                   { staticClass: "form group" },
                   [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.occupation,
-                          expression: "form.occupation"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("occupation")
-                      },
-                      attrs: {
-                        type: "text",
-                        name: "occupation",
-                        placeholder: "search by occupation"
-                      },
-                      domProps: { value: _vm.form.occupation },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                    _c("label", { attrs: { for: "" } }, [_vm._v("Occupation")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.occupation,
+                            expression: "form.occupation"
                           }
-                          _vm.$set(_vm.form, "occupation", $event.target.value)
+                        ],
+                        staticClass: "form-control",
+                        class: {
+                          "is-invalid": _vm.form.errors.has("occupation")
+                        },
+                        attrs: { name: "occupation" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.form,
+                              "occupation",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
                         }
-                      }
-                    }),
+                      },
+                      [
+                        _c("option", { attrs: { value: "Govt" } }, [
+                          _vm._v("Government Job")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "private" } }, [
+                          _vm._v("Private Job")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "self employed" } }, [
+                          _vm._v("Self Employed")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "student" } }, [
+                          _vm._v("Student")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "unemployed" } }, [
+                          _vm._v("Unemployed")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "retired" } }, [
+                          _vm._v("Retired")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "house wife" } }, [
+                          _vm._v("House wife")
+                        ])
+                      ]
+                    ),
                     _vm._v(" "),
                     _c("has-error", {
                       attrs: { form: _vm.form, field: "occupation" }
@@ -62433,12 +62911,329 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-3" }, [
-                _c(
-                  "div",
-                  { staticClass: "form group" },
-                  [
-                    _c("input", {
+                _c("div", { staticClass: "form group" }, [
+                  _vm.form.occupation == "private" ||
+                  _vm.form.occupation == "Govt" ||
+                  _vm.form.occupation == "self employed"
+                    ? _c("label", [_vm._v("Department")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.form.occupation == "private" ||
+                  _vm.form.occupation == "self employed"
+                    ? _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.department,
+                              expression: "form.department"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "department",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", [
+                            _vm._v("Accounts/ Banking / Finance / Tax")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Accountant")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Debt Recovery Agent")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Equity Dealer")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Financial Planner")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Insurance Agent")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Mutual Fund Agent")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Analytics")]),
+                          _vm._v(" "),
+                          _c("option", [
+                            _vm._v(
+                              "Analytics / Business Intelligence / Data Science"
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Back Office Operations")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Admin Executive")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Back Office")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Claims Processing Executive")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Data Entry")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Helper")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Human Resource (HR)")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("MIS Executive")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Office Assistant")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Office Boy")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Personal Assistant")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Stenographer")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Business Operations")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("BPO")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Data Collection Executive")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Operations Executive")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Design")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Architecture")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Draftsman")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("DTP Operator")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Fashion Designer")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Web / Graphic Design")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Front Desk Operations")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Cashier")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Customer Care")]),
+                          _vm._v(" "),
+                          _c("option", [
+                            _vm._v("Public Relations (PR) Executive")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Receptionist/Front Desk")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Store Keeper")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Hospitality")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Air Hostess")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Bartender")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Cabin Crew")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Cook / Chef")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Waiter / Steward")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("IT - Hardware & Software")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Android Developer")]),
+                          _vm._v(" "),
+                          _c("option", [
+                            _vm._v(
+                              "Application Programming / Maintenance / Architecture"
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Database Administrator")]),
+                          _c("option", [_vm._v("IT Software - ERP / CRM")]),
+                          _vm._v(" "),
+                          _c("option", [
+                            _vm._v("IT Software - Frontend / Backend")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [
+                            _vm._v("IT Software - Mobile Development")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("IT Support - Hardware")]),
+                          _vm._v(" "),
+                          _c("option", [
+                            _vm._v("Network / Security / System Administration")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [
+                            _vm._v("Product / Project Management")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Software Developer")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Software Testing / QA")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Logistics / Supply Chain")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Delivery Boy")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Labourer")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Loader")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Merchandiser")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Manufacturing")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Machine Operator")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Packer")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Pujari")]),
+                          _vm._v(" "),
+                          _c("option", [
+                            _vm._v("Production/ Quality Control/ Maintenance")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [
+                            _vm._v("Purchase / Procurement Executive")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Marketing")]),
+                          _c("option", [_vm._v("Content Writer")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Digital Marketing Expert")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Marketing Executive")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Non-IT Engineering")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Aeronautical Engineer")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Chemical Engineer")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Civil Engineer")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Electrical Engineer")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Electronics Engineer")]),
+                          _vm._v(" "),
+                          _c("option", [
+                            _vm._v("Embedded / VLSI / ASIC / Chip Design")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Engineering")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Environmental Engineer")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Industrial Engineer")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Instrumentation Engineer")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Mechanical Engineer")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Telecommunications Engineer")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Pharmacy / Medical")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Doctor")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Laboratory Assistant")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Medical Representative")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Nurse")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Nursing Attendant/Wardboy")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Physiotherapist")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Radiology Technician")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Sales")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Counter Sales")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Promoter")]),
+                          _vm._v(" "),
+                          _c("option", [
+                            _vm._v("Sales / Business Development")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Telesales / Telemarketing")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Services")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Aayah")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Beautician")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Caretaker")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Carpenter")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Counselors")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Driver")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Fitness Trainer")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Gardener")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Hair Stylist")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Housekeeping")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Maid")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Massuese")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Photographer")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Plumber")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Security Guard")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Spot Boy")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Tailor")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Tutor / Teacher")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Technicians")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Electrician")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Fitter")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Mechanic")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Technician")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Tower Technician")])
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
                       directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.occupation == "Govt",
+                          expression: "form.occupation == 'Govt'"
+                        },
                         {
                           name: "model",
                           rawName: "v-model",
@@ -62447,31 +63242,68 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("department")
-                      },
-                      attrs: {
-                        type: "text",
-                        name: "department",
-                        placeholder: "search by department"
-                      },
-                      domProps: { value: _vm.form.department },
                       on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "department", $event.target.value)
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.form,
+                            "department",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
                         }
                       }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "department" }
-                    })
-                  ],
-                  1
-                )
+                    },
+                    [
+                      _c("option", [_vm._v("Agriculture & Cooperation ")]),
+                      _c("option", [_vm._v("Animal Husbandry & Fishing ")]),
+                      _c("option", [_vm._v("Art & Culture ")]),
+                      _c("option", [_vm._v("Chemicals & Fertilizers ")]),
+                      _c("option", [_vm._v("Coal & Mine ")]),
+                      _c("option", [_vm._v("Commerce & Industry ")]),
+                      _c("option", [
+                        _vm._v("Communications & Information Technology (")
+                      ]),
+                      _c("option", [_vm._v("Defence ")]),
+                      _c("option", [_vm._v("Education & Training ")]),
+                      _c("option", [_vm._v("Employment & Labour ")]),
+                      _c("option", [_vm._v("Energy & Power ")]),
+                      _c("option", [
+                        _vm._v("Environment & Natural Resources ")
+                      ]),
+                      _c("option", [_vm._v("Finance, Banking & Insurance ")]),
+                      _c("option", [_vm._v("Food & Public Distribution ")]),
+                      _c("option", [_vm._v("Forestry & Wildlife ")]),
+                      _c("option", [_vm._v("Governance & Administration")]),
+                      _c("option", [_vm._v("Health & Family welfare ")]),
+                      _c("option", [
+                        _vm._v("Home affairs & National Security ")
+                      ]),
+                      _c("option", [_vm._v("Housing & Urban Development ")]),
+                      _c("option", [_vm._v("Information & Broadcasting ")]),
+                      _c("option", [_vm._v("International Affairs")]),
+                      _c("option", [_vm._v("Law & Justice")]),
+                      _c("option", [_vm._v("People & Organisations ")]),
+                      _c("option", [_vm._v("Petroleum, Oil & Natural Gas")]),
+                      _c("option", [
+                        _vm._v("Rural Development & Panchayati Raj ")
+                      ]),
+                      _c("option", [_vm._v("Science, Technology & Research")]),
+                      _c("option", [_vm._v("Social Justice & Empowerment ")]),
+                      _c("option", [_vm._v("Tourism ")]),
+                      _c("option", [_vm._v("Transport & Infrastructure")]),
+                      _c("option", [_vm._v("Youth Affairs & Sports")])
+                    ]
+                  )
+                ])
               ])
             ]),
             _vm._v(" "),
@@ -62481,32 +63313,185 @@ var render = function() {
                   "div",
                   { staticClass: "form group" },
                   [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.state,
-                          expression: "form.state"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: { "is-invalid": _vm.form.errors.has("state") },
-                      attrs: {
-                        type: "text",
-                        name: "state",
-                        placeholder: "search by state"
-                      },
-                      domProps: { value: _vm.form.state },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                    _c("label", [_vm._v("State")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.state,
+                            expression: "form.state"
                           }
-                          _vm.$set(_vm.form, "state", $event.target.value)
+                        ],
+                        staticClass: "form-control",
+                        class: { "is-invalid": _vm.form.errors.has("state") },
+                        attrs: { name: "state" },
+                        on: {
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "state",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            },
+                            function($event) {
+                              return _vm.getcity()
+                            }
+                          ]
                         }
-                      }
-                    }),
+                      },
+                      [
+                        _c("option", { attrs: { value: "Rajasthan" } }, [
+                          _vm._v("Rajasthan")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Andhra Pradesh" } }, [
+                          _vm._v("Andhra Pradesh")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "Arunachal Pradesh" } },
+                          [_vm._v("Arunachal Pradesh")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Assam" } }, [
+                          _vm._v("Assam")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Bihar" } }, [
+                          _vm._v("Bihar")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Chhattisgarh" } }, [
+                          _vm._v("Chhattisgarh")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "Dadra & Nagar Haveli" } },
+                          [_vm._v("Dadra & Nagar Haveli")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Daman & Diu" } }, [
+                          _vm._v("Daman & Diu")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Delhi" } }, [
+                          _vm._v("Delhi")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Goa" } }, [
+                          _vm._v("Goa")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Gujarat" } }, [
+                          _vm._v("Gujarat")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Haryana" } }, [
+                          _vm._v("Haryana")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Himachal Pradesh" } }, [
+                          _vm._v(" Himachal Pradesh")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Jammu & Kashmir" } }, [
+                          _vm._v("Jammu & Kashmir")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Jharkhand" } }, [
+                          _vm._v("Jharkhand")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Karnataka" } }, [
+                          _vm._v("Karnataka")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Kerela" } }, [
+                          _vm._v("Kerela")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Lakshadweep" } }, [
+                          _vm._v("Lakshadweep")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Madhya Pradesh" } }, [
+                          _vm._v("Madhya Pradesh")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Manipur" } }, [
+                          _vm._v("Manipur")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Maharashtra" } }, [
+                          _vm._v("Maharashtra")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Meghalaya" } }, [
+                          _vm._v("Meghalaya")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Mizoram" } }, [
+                          _vm._v("Mizoram")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Nagaland" } }, [
+                          _vm._v("Nagaland")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Orissa" } }, [
+                          _vm._v("Orissa")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Pondicherry" } }, [
+                          _vm._v("Pondicherry")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Punjab" } }, [
+                          _vm._v("Punjab")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Sikkim" } }, [
+                          _vm._v("Sikkim")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Tripura" } }, [
+                          _vm._v("Tripura")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Tamil Nadu" } }, [
+                          _vm._v("Tamil Nadu")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Uttrakhand" } }, [
+                          _vm._v("Uttrakhand")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Uttar Pradesh" } }, [
+                          _vm._v("Uttar Pradesh")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "West Bengal" } }, [
+                          _vm._v("West Bengal")
+                        ])
+                      ]
+                    ),
                     _vm._v(" "),
                     _c("has-error", {
                       attrs: { form: _vm.form, field: "state" }
@@ -62517,11 +63502,12 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-3" }, [
-                _c(
-                  "div",
-                  { staticClass: "form group" },
-                  [
-                    _c("input", {
+                _c("label", [_vm._v("City")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form group" }, [
+                  _c(
+                    "select",
+                    {
                       directives: [
                         {
                           name: "model",
@@ -62531,29 +63517,32 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      class: { "is-invalid": _vm.form.errors.has("city") },
-                      attrs: {
-                        type: "text",
-                        name: "city",
-                        placeholder: "search by city"
-                      },
-                      domProps: { value: _vm.form.city },
                       on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "city", $event.target.value)
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.form,
+                            "city",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
                         }
                       }
+                    },
+                    _vm._l(_vm.cities, function(city) {
+                      return _c("option", [_vm._v(_vm._s(city))])
                     }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "city" }
-                    })
-                  ],
-                  1
-                )
+                    0
+                  )
+                ])
               ]),
               _vm._v(" "),
               _vm._m(1)
@@ -62561,7 +63550,7 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card mt-3" }, [
           _vm._m(2),
           _vm._v(" "),
           _c("div", { staticClass: "card-body table-responsive p-0" }, [
@@ -62642,7 +63631,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-3" }, [
       _c("div", { staticClass: "form-group" }, [
-        _c("button", { staticClass: "btn btn-success" }, [_vm._v("Submit")])
+        _c("button", { staticClass: "btn btn-success mt-3" }, [
+          _vm._v("Submit")
+        ])
       ])
     ])
   },

@@ -15,9 +15,26 @@
 
                      <div class="col-md-3">
                         <div class="form-group">
-                         <input v-model="form.gotra" type="text" name="gotra"
-                          class="form-control" :class="{ 'is-invalid': form.errors.has('gotra') }" placeholder="search by gotra">
-                         <has-error :form="form" field="gotra" ></has-error>     
+                          <select class="form-control" name="gotra" aria-placeholder="Gotra" v-model='form.gotra'>
+                                    <option value=" "> Not Applicable</option>
+                                    <option value="Kuvera"> Kuvera</option>
+                                    <option value="Mathuria">Mathuria</option>
+                                    <option value="Kataria">Kataria</option>
+                                    <option value="Chaparwal">Chaparwal</option>
+                                    <option value="Jangla">Jangla</option>
+                                    <option value="Mundhara">Mundhara</option>
+                                    <option value="Baladh">Baladh</option>
+                                    <option value="Aasiwal">Aasiwal</option>
+                                    <option value="Devera">Devera</option>
+                                    <option value="Lllad">Lllad</option>
+                                    <option value="Hatila">Hatila</option>
+                                    <option value="Bhartani">Bhartani</option>
+                                    <option value="Sanvlera">Sanvlera</option>
+                                    <option value="Heergota">Heergota</option>
+                                    <option value="Bheenmaal">Bheenmaal</option>
+                                    <option value="Medatwal Aboti">Medatwal Aboti</option>
+
+                                </select>      
                      </div>
                      </div>
                      <div class="col-md-3">
