@@ -573,7 +573,7 @@ public function getbrides(){
 public function loadbrides(){
     $query = DB::table('users_details')
                ->join('users','users_details.user_id','=','users.id')
-               ->select('users_details.*','users.gotra','users.image')
+               ->select('users_details.*','users.gotra','users.pur','users.image')
                ->where('users_details.gender','like','female')
                ->where('matrimonial','like','1')
                ->paginate(10);
@@ -585,7 +585,7 @@ public function loadbrides(){
 public function loadmembers(){
     $query = DB::table('users_details')
                ->join('users','users_details.user_id','=','users.id')
-               ->select('users_details.*','users.gotra')
+               ->select('users_details.*','users.gotra','users.pur')
                ->where('users_details.allowsearch','like','0')
                ->paginate(10);
 
@@ -597,18 +597,20 @@ public function getmembers(){
     $name =  $_GET['name'];
     $gotra =  $_GET['gotra'];
     $occupation =  $_GET['occupation'];
+    $pur =  $_GET['pur'];
     $department =  $_GET['department'];
     $state =  $_GET['state'];
     $city =  $_GET['city'];
 
     $query = DB::table('users_details')
             ->join('users','users_details.user_id','=','users.id')
-            ->select('users_details.*','users.usertype','users.gotra')
+            ->select('users_details.*','users.usertype','users.gotra','users.pur')
             ->where('users_details.allowsearch','like','0')
             ->where('users_details.name','like',"%$name%")
             ->where('users_details.occupation','like',"%$occupation%")
             ->where('users_details.department','like',"%$department%")
             ->where('users.gotra','like',"%$gotra%")
+           ->where('users.pur','like',"%$pur%")
             ->where('users_details.state','like',"%$state%")
             ->where('users_details.city','like',"%$city%")
             ->paginate(10);

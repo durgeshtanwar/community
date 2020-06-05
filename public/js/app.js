@@ -5413,6 +5413,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -6765,7 +6766,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -7123,6 +7123,90 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -7134,7 +7218,8 @@ __webpack_require__.r(__webpack_exports__);
         department: '',
         city: '',
         state: '',
-        gotra: ''
+        gotra: '',
+        pur: ''
       })
     };
   },
@@ -7150,7 +7235,7 @@ __webpack_require__.r(__webpack_exports__);
     getmembers: function getmembers() {
       var _this2 = this;
 
-      axios.get('api/getmembers?city=' + this.form.city + '&name=' + this.form.name + '&gotra=' + this.form.gotra + '&state=' + this.form.state + '&occupation=' + this.form.occupation + '&department=' + this.form.department).then(function (_ref2) {
+      axios.get('api/getmembers?city=' + this.form.city + '&name=' + this.form.name + '&gotra=' + this.form.gotra + '&state=' + this.form.state + '&occupation=' + this.form.occupation + '&department=' + this.form.department + '&pur=' + this.form.pur).then(function (_ref2) {
         var data = _ref2.data;
         return _this2.members = data;
       });
@@ -7818,7 +7903,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -57007,6 +57091,10 @@ var render = function() {
                               [_vm._v("Self Employed")]
                             ),
                             _vm._v(" "),
+                            _c("option", { attrs: { value: "business" } }, [
+                              _vm._v(" Self Business")
+                            ]),
+                            _vm._v(" "),
                             _c("option", { attrs: { value: "student" } }, [
                               _vm._v("Student")
                             ]),
@@ -62880,6 +62968,10 @@ var render = function() {
                           _vm._v("Private Job")
                         ]),
                         _vm._v(" "),
+                        _c("option", { attrs: { value: "self business" } }, [
+                          _vm._v("Self Business")
+                        ]),
+                        _vm._v(" "),
                         _c("option", { attrs: { value: "self employed" } }, [
                           _vm._v("Self Employed")
                         ]),
@@ -63309,6 +63401,340 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "row mt-3" }, [
               _c("div", { staticClass: "col-md-3" }, [
+                _c("div", { staticClass: "form group" }, [
+                  _c("label", { attrs: { for: "" } }, [_vm._v("Pur")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.pur,
+                          expression: "form.pur"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { name: "pur", "aria-placeholder": "Gotra" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.form,
+                            "pur",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "NA" } }, [
+                        _vm._v("Not applicable")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "उरवार" } }, [
+                        _vm._v("उरवार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "मखापवार" } }, [
+                        _vm._v("मखापवार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "देवकुलियार" } }, [
+                        _vm._v("देवकुलियार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "पडरीयार" } }, [
+                        _vm._v("पडरीयार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "अदइयार" } }, [
+                        _vm._v("अदइयार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "पवइयार" } }, [
+                        _vm._v("पवइयार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "क्षत्रवार" } }, [
+                        _vm._v("क्षत्रवार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "जम्मुवार" } }, [
+                        _vm._v("जम्मुवार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "भड़रियार" } }, [
+                        _vm._v("भड़रियार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "खंटवार" } }, [
+                        _vm._v("खंटवार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "केरियार" } }, [
+                        _vm._v("केरियार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "छेरियार" } }, [
+                        _vm._v("छेरियार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "कुरईचियार" } }, [
+                        _vm._v("कुरईचियार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "भलुनियार" } }, [
+                        _vm._v("भलुनियार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "डुमरियार" } }, [
+                        _vm._v("डुमरियार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "बाड़वार" } }, [
+                        _vm._v("बाड़वार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "सरइयार" } }, [
+                        _vm._v("सरइयार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "योतियार" } }, [
+                        _vm._v("योतियार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "शिकरौरियार" } }, [
+                        _vm._v("शिकरौरियार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "मोलियार" } }, [
+                        _vm._v("मोलियार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ऐआर" } }, [
+                        _vm._v("ऐआर")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "रहदौलीयार" } }, [
+                        _vm._v("रहदौलीयार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "अवधियार" } }, [
+                        _vm._v("अवधियार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "पुतियार" } }, [
+                        _vm._v("पुतियार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "उल्लार्क" } }, [
+                        _vm._v("उल्लार्क")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "लोलार्क" } }, [
+                        _vm._v("लोलार्क")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "बालार्क" } }, [
+                        _vm._v("बालार्क")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "कोणार्क" } }, [
+                        _vm._v("कोणार्क")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "पुण्डार्क" } }, [
+                        _vm._v("पुण्डार्क")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "चारणार्क" } }, [
+                        _vm._v("चारणार्क")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "मार्कंडेय" } }, [
+                        _vm._v("मार्कंडेय")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "देवडीहा" } }, [
+                        _vm._v("देवडीहा")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "गुन्सइयाँ" } }, [
+                        _vm._v("गुन्सइयाँ")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "महुरसिया" } }, [
+                        _vm._v("महुरसिया")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "डूमरौरी" } }, [
+                        _vm._v("डूमरौरी")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "सपहा" } }, [
+                        _vm._v("सपहा")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "गुलसैया" } }, [
+                        _vm._v("गुलसैया")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "मल्लौर्क" } }, [
+                        _vm._v("मल्लौर्क")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "हरहसिया" } }, [
+                        _vm._v("हरहसिया")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "देवलसिया" } }, [
+                        _vm._v("देवलसिया")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "वरुणार्क" } }, [
+                        _vm._v("वरुणार्क")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "कुण्डार्क" } }, [
+                        _vm._v("कुण्डार्क")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "विलसैया" } }, [
+                        _vm._v("विलसैया")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "श्वेतभद्र" } }, [
+                        _vm._v("श्वेतभद्र")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "पंचकंठी" } }, [
+                        _vm._v("पंचकंठी")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "डूडरियार" } }, [
+                        _vm._v("डूडरियार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "पठकौलियार" } }, [
+                        _vm._v("पठकौलियार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "पंचहाय" } }, [
+                        _vm._v("पंचहाय")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "सियरी" } }, [
+                        _vm._v("सियरी")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "कुकरौंधा" } }, [
+                        _vm._v("कुकरौंधा")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "मोरियार" } }, [
+                        _vm._v("मोरियार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "मिहिर/मिहीमगौरियार" } }, [
+                        _vm._v("मिहिर/मिहीमगौरियार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "वेरियार" } }, [
+                        _vm._v("वेरियार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "मेहोशवार" } }, [
+                        _vm._v("मेहोशवार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "सौरियार" } }, [
+                        _vm._v("सौरियार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "पुनरखिया" } }, [
+                        _vm._v("पुनरखिया")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "देवहाय" } }, [
+                        _vm._v("देवहाय")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "शुंडार्क" } }, [
+                        _vm._v("शुंडार्क")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "यत्थय" } }, [
+                        _vm._v("यत्थय")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ठकुर मेराँव" } }, [
+                        _vm._v("ठकुर मेराँव")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "डिहिक" } }, [
+                        _vm._v("डिहिक")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "भड़रियार" } }, [
+                        _vm._v("भड़रियार")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "चंडरोह" } }, [
+                        _vm._v("चंडरोह")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "खजुरहा" } }, [
+                        _vm._v("खजुरहा")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "पट्टिश" } }, [
+                        _vm._v("पट्टिश")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "काझ" } }, [
+                        _vm._v("काझ")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "कपिश्य" } }, [
+                        _vm._v("कपिश्य")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "परसन" } }, [
+                        _vm._v("परसन")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "खंडसूपक" } }, [
+                        _vm._v("खंडसूपक")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "बालिबाघ" } }, [
+                        _vm._v("बालिबाघ")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "पिपरोहा" } }, [
+                        _vm._v("पिपरोहा")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "बड़सापी" } }, [
+                        _vm._v("बड़सापी")
+                      ])
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-3" }, [
                 _c(
                   "div",
                   { staticClass: "form group" },
@@ -63575,7 +64001,9 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(member.mobile))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(member.gotra))])
+                    _c("td", [_vm._v(_vm._s(member.gotra))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(member.pur))])
                   ])
                 }),
                 0
@@ -63665,7 +64093,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Mobile Number")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Gotra")])
+        _c("th", [_vm._v("Gotra")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Pur")])
       ])
     ])
   }

@@ -140,7 +140,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <router-link to="/dashboard" class="brand-link">
       <img src="./images/logo.png" alt="" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-bold">Shakdwipiya Pariwar</span>
+      <span class="brand-text font-weight-bold">Shakdwipiya</span>
     </router-link>
 
     <!-- Sidebar -->

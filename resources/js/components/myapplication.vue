@@ -29,7 +29,6 @@
                       <td>{{user.name}}</td>
                       <td>{{user.apply_for}}</td>
                       <td>{{user.contact_number}} </td>
-                    
                       <td>{{user.city}}</td>
                       <td>{{user.status}}</td>
                       <td> 

@@ -33,7 +33,6 @@
                                     <option value="Heergota">Heergota</option>
                                     <option value="Bheenmaal">Bheenmaal</option>
                                     <option value="Medatwal Aboti">Medatwal Aboti</option>
-
                                 </select>      
                      </div>
                      </div>
