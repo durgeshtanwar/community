@@ -49,7 +49,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $validator = Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'gender'=>['required','string'],
             'email' => ['string', 'email', 'max:255', 'nullable'],
@@ -58,7 +58,10 @@ class RegisterController extends Controller
             'family_head'=>['required','string','max:255'],
             'gotra' => ['required','string','max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'code'=>['required','string','exists:users,code']
         ]);
+
+       return $validator;
     }
 
     /**
@@ -77,7 +80,9 @@ class RegisterController extends Controller
         $familyId = $family->id;
 
         $kuldevi = explode('|',$data['gotra'],2);
-        
+        User::where('code',$data['code'])
+         ->update(['code'=>rand(pow(10, 5-1), pow(10, 5)-1)]);
+
         return User::create([
             'username'=>'SHA'.rand(pow(10, 6-1), pow(10, 6)-1),
             'name' => $data['name'],
