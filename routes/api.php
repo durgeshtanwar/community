@@ -53,7 +53,7 @@ Route::put('updatePhoto','API\UserController@updatePhoto');
 Route::put('updateUserType/{id}','API\UserDetailsController@updateUserType');
 Route::get('usercounts','API\UserDetailsController@usercounts');
 Route::get('getuserdirectory','API\UserDetailsController@getuserdirectory');
-
+Route::put('updateUser/{id}','API\UserController@updateUser');
 Route::get('directorycounts','API\SettingsController@directorycounts');
 Route::get('eventcounts','API\SettingsController@eventcounts');
 Route::get('groomcount','API\SettingsController@groomcount');
@@ -80,6 +80,8 @@ Route::get('getbrides','API\UserDetailsController@getbrides');
 
 Route::get('getmembers','API\UserDetailsController@getmembers');
 Route::get('loadmembers','API\UserDetailsController@loadmembers');
+
+Route::get('getusers','API\UserController@getusers');
 
 //Route::get('getFamilyMembers','API\FamilyController@getFamilyMembers');
 

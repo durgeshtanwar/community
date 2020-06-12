@@ -376,7 +376,8 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-            <pagination :data="members" @pagination-change-page="getResults"></pagination>
+                         <pagination v-show="this.mode==false" :data="members" @pagination-change-page="getResults"></pagination>
+                         <pagination v-show="this.mode==true" :data="members" @pagination-change-page="getmembers"></pagination>
             </div>
             </div>
             <!-- /.card -->
@@ -390,6 +391,7 @@
 export default {
    data() {
        return {
+          mode :false,
            members:{},
            cities:{},
            form: new Form({
@@ -407,8 +409,9 @@ export default {
        loadmembers(){
            axios.get('api/loadmembers').then(({data})=>(this.members = data));
        },
-       getmembers(){
-           axios.get('api/getmembers?city='+this.form.city+'&name='+this.form.name+'&gotra='+this.form.gotra +'&state='+this.form.state + '&occupation='+this.form.occupation + '&department='+this.form.department +'&pur='+this.form.pur).then(({data})=>(this.members = data));
+       getmembers(page = 1){
+           this.mode= true;
+           axios.get('api/getmembers?city='+this.form.city+'&name='+this.form.name+'&gotra='+this.form.gotra +'&state='+this.form.state + '&occupation='+this.form.occupation + '&department='+this.form.department +'&pur='+this.form.pur +'&page='+page).then(({data})=>(this.members = data));
        },
         getResults(page = 1) {
          axios.get('api/loadmembers?page='+ page)

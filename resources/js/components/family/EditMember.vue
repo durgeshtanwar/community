@@ -421,7 +421,7 @@
                   <hr>
                     <h3 v-show="form.occupation=='student'">Educational Details</h3>
                   <div v-show="form.occupation=='student'" class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                   
                     <div class="form-group">
                       <label for ="">Education Level</label>
@@ -444,7 +444,7 @@
                       </select>
                     </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                       <div class="form-group">
                       <input class="form-check-input" v-show="form.education ==='10th'" v-model="form.current_year" type="checkbox" name="current_year" value="true" :class="{'is-invalid': form.errors.has('current_year')}">
                      <label v-show="form.education ==='10th'" > are you appearing in class 10 in {{ 2020 | getYear}}</label>
@@ -485,7 +485,7 @@
                        </select>
                       </div>
                     </div>
-                    <div class="col-sm-4" v-if="form.education === 'graduate' || form.education === 'post graduate'">
+                    <div class="col-sm-3" v-if="form.education === 'graduate' || form.education === 'post graduate'">
                       <label v-if="form.education === 'graduate' || form.education==='post graduate'"> Year</label>
                         <select class="form-control" v-model="form.grad_year">
                         <option value="1st">1st</option>
@@ -494,6 +494,11 @@
                         <option value="4th" v-if="form.graduation === 'Btech' || form.graduation==='MBBS' || form.graduation==='BFA'">4th</option>
                         <option value="5th" v-show ="form.graduation==='MBBS'">5th</option>
                         </select>
+                      </div>
+                      <div class="col-sm-3" >
+                        <label>percentage</label>
+                        <input type="text" v-model="form.percentage" class="form-control" placeholder="Percentage" name="percentage" :class="{'is-invalid':form.errors.has('percentage')}" >
+                        <has-error :form="form" field="spouse_name"></has-error>
                       </div>
                     </div>
                  <div class="row">
@@ -572,7 +577,8 @@
               allowsearch:0,
               grad_year:'',
               highest_education:'',
-              spouse_name:''
+              spouse_name:'',
+              percentage:''
             }),
             
            

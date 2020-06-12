@@ -82,7 +82,10 @@
                       <div class="carousel-inner">
                         <div class="carousel-item active">
                           <img class="d-block w-100" src="/images/suryabhagwan.jpeg" alt="First slide">
-                        </div>
+                          </div>
+                           <div class="carousel-item">
+                          <img class="d-block w-100" src="/images/suryabhagwan.jpeg" alt="First slide">
+                          </div>
                         
                       </div>
                       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

@@ -100,6 +100,7 @@ const routes = [
     { path: '/getgroom',component:require('./components/getgroom.vue').default},
     { path: '/getbride',component:require('./components/getbride.vue').default},
     { path: '/getmembers',component:require('./components/getmembers.vue').default},
+    { path: '/reports',component:require('./components/admin/reportsdashboard.vue').default},
 
 
     { path: '*',component:require('./components/admin/404.vue').default},

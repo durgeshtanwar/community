@@ -125,6 +125,7 @@ public function __construct()
     $userdetail->grad_year = $request->grad_year;
     $userdetail->highest_education = $request->highest_education;
     $userdetail->spouse_name = $request->spouse_name;
+    $userdetail->percentage = $request->percentage;
     $userdetail->save();
 }
 
@@ -613,7 +614,7 @@ public function getmembers(){
            ->where('users.pur','like',"%$pur%")
             ->where('users_details.state','like',"%$state%")
             ->where('users_details.city','like',"%$city%")
-            ->paginate(10);
+            ->paginate(2);
 
     return $query;        
 

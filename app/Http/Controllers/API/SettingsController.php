@@ -162,7 +162,9 @@ class SettingsController extends Controller
         $directory->update($request->all());  
      }
      public function directorycounts(){
-        return $directory = DB::table('directory')->count();
+        return $directory = DB::table('users_details')
+                            ->where('allowsearch','like','0')
+                            ->count();
     }
     public function eventcounts(){
         return $event = DB::table('events')->count();

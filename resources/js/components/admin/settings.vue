@@ -146,6 +146,34 @@
               </div>
             </div>
       </div>
+      <div class="col-md-6">
+        <div class="card card-widget widget-user-2">
+              <!-- Add the bg color to the header using any of the bg-* classes -->
+              <div class="widget-user-header bg-success">
+                <div class="widget-user-image">
+                  <img class="img-circle" src="/images/job.png" alt="User Avatar">
+                </div>
+                <!-- /.widget-user-image -->
+                <h3 class="widget-user-username">Jobs Portfolio</h3>
+                <h5 class="widget-user-desc"><router-link to='/jobdashboard' class="text-white"> Manage Jobs</router-link></h5>
+              </div>
+              <div class="card-footer p-0">
+                <ul class="nav flex-column">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      Total Jobs Posted <span class="float-right badge bg-primary">{{jobsCount}}</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      Total Applicants <span class="float-right badge bg-info">{{applicantsCount}}</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              </div>
+            </div>
+      </div>
 
     </div>
         

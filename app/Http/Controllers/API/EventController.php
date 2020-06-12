@@ -82,7 +82,7 @@ class EventController extends Controller
         $details = $request['event_name'];
         Notification::send($users, new Events($details));
         $dob = $request->$request['date'];
-        $newDate = date("m-d-Y", strtotime($dob));  
+        $newDate = date("d-m-Y", strtotime($dob));  
         return Event::create([
             'event_name'=>$request['event_name'],
             'date'=>$newDate,

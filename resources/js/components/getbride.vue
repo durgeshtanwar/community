@@ -95,8 +95,8 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-            <pagination :data="brides" 
-            @pagination-change-page="getResults"></pagination>
+            <pagination :data="brides" v-show="this.mode==false" @pagination-change-page="getResults"></pagination>
+            <pagination :data="brides" v-show="this.mode==true" @pagination-change-page="getbrides"></pagination>
             </div>
             </div>
             <!-- /.card -->
@@ -110,6 +110,7 @@
 export default {
    data() {
        return {
+          mode:false,
            brides:{},
            form: new Form({
                city:'',
@@ -122,8 +123,9 @@ export default {
        loadbrides(){
            axios.get('api/loadbrides').then(({data})=>(this.brides = data));
        },
-       getbrides(){
-           axios.get('api/getbrides?city='+this.form.city+'&name='+this.form.name+'&gotra='+this.form.gotra).then(({data})=>(this.brides = data));
+       getbrides(page = 1){
+         this.mode = true;
+           axios.get('api/getbrides?city='+this.form.city+'&name='+this.form.name+'&gotra='+this.form.gotra + '&page='+page).then(({data})=>(this.brides = data));
        },
        getResults(page = 1) {
          axios.get('api/loadbrides?page='+ page)
