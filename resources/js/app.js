@@ -24,6 +24,12 @@ Vue.use(VueProgressBar,{
     height: '10px'
 });
 
+import Print from 'vue-print-nb'
+// Global instruction 
+Vue.use(Print);
+
+
+
 import Vuetable from 'vuetable-2'
 Vue.use(Vuetable);
 window.Vuetable = Vuetable;
@@ -101,6 +107,8 @@ const routes = [
     { path: '/getbride',component:require('./components/getbride.vue').default},
     { path: '/getmembers',component:require('./components/getmembers.vue').default},
     { path: '/reports',component:require('./components/admin/reportsdashboard.vue').default},
+    { path: '/jobapplicants',component:require('./components/reports/jobapplicants.vue').default},
+    { path: '/totaljobs',component:require('./components/reports/jobs.vue').default},
 
 
     { path: '*',component:require('./components/admin/404.vue').default},

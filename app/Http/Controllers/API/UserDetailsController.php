@@ -255,8 +255,7 @@ $this->validate($request,[
     'dob'=>'required|string|max:191',
     'marriage_status'=>'required|string|max:191',
     'blood_group'=>'nullable|string',
-    
-      'address'=>'required|string|max:191',
+    'address'=>'required|string|max:191',
     'city'=>'required|string|max:191',
     'state'=>'required|string|max:191',
     'occupation'=>'required|string|max:191',
@@ -465,12 +464,16 @@ public function getuserdetail($id){
                DB::table('users')
                ->where('id', $userid)
                ->update(['image' => $imageName,
-                          'name' => $request['name']  ]);
+                          'name' => $request['name'],
+                          'gender'=> $request['gender'],
+                          'password' => Hash::make($request['password'])]);
          
           }       
           DB::table('users')
           ->where('id', $userid)
-          ->update(['name' => $request['name']  ]);
+          ->update(['name' => $request['name'],
+          'gender'=> $request['gender'],
+          'password' => Hash::make($request['password'])]);
 
         //   DB::table('users_details')
         //   ->where('user_id', $userid)
@@ -614,7 +617,7 @@ public function getmembers(){
            ->where('users.pur','like',"%$pur%")
             ->where('users_details.state','like',"%$state%")
             ->where('users_details.city','like',"%$city%")
-            ->paginate(2);
+            ->paginate(10);
 
     return $query;        
 

@@ -114,7 +114,18 @@ class UserController extends Controller
         ]);
 
         $user =  User::findOrFail($id);
-        $user->update($request->all());
+        $data = [
+            'name'=>$request['name'],
+            'email' => $request['email'],
+            'mobile'=>$request['mobile'],
+            'password'=>Hash::make($request['password']),
+            'gender'=>$request['gender'],
+            'family_cast'=>$request['family_cast'],
+            'family_head'=>$request['family_head'],
+            'gotra'=>$request['gotra'],
+            'usertype'=>$request['usertype']
+        ];
+        $user->update($data);
 
         DB::table('users_details')
             ->where('user_id',$id)
@@ -179,24 +190,7 @@ class UserController extends Controller
         return ['message'=> 'user updated successfully'];  
     }
 
-    public function updateUser(Request $request){
-
-        $this->validate($request,[
-            'name' => 'required|string|max:191',
-            'email'=>'required|string|email|max:255|',
-            'mobile'=>'required|string|max:10|unique:users',
-            'password'=>'required|sometimes|string|min:8',
-            'gender'=>'required',
-            'family_cast'=>'required|string|min:4',
-            'family_head'=>'required|string|max:191',
-            'gotra'=>'required',
-            
-            //'code'=>'string|max:191|exists:users,code'
-        ]);
-
-        $user =  User::findOrFail($id);
-        $user->update($request->all());
-    }
+    
 
     // Function to get users after searchin
     public function getusers(){

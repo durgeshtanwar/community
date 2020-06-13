@@ -1,6 +1,7 @@
 <template>
     <div class="container ">
         <div class="col-12 mt-5">
+         
                 <button class="btn btn-success btn-block mb-2 mt-2 d-lg-none" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
   Search <i class="fa fa-search" aria-hidden="true"></i>
   </button>
@@ -43,7 +44,7 @@
                      </div>
                      <div class="col-md-4">
                         <div class="form-group">  
-                       <label> Userame </label>
+                       <label> Username </label>
                        <input v-model="search.username" type="text" name="name"
                           class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" placeholder="search by username">
                          <has-error :form="search" field="name" ></has-error>     
@@ -203,7 +204,7 @@
                    </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
-                <table class="table table-hover">
+                <table class="table table-hover" id="printTable">
                   <thead>
                     <tr>
                       <th>ID</th>
@@ -216,7 +217,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="user in users.data" :key="user.id">
+                    <tr v-for="user in users.data" :key="user.username">
                       <td>{{user.username}}</td>
                       <td>{{user.name}}</td>
                       <td>{{user.email}}</td>
@@ -232,10 +233,13 @@
                   
                   </tbody>
                 </table>
+                
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-            <pagination :data="users" @pagination-change-page="getResults"></pagination>
+            <pagination :data="users" v-show="this.mode==false" @pagination-change-page="getResults"></pagination>
+            <pagination :data="users" v-show="this.mode==true" @pagination-change-page="getUsers"></pagination>
+             <button class="btn btn-success" v-print="printObj">Print</button>
             </div>
             </div>
             <!-- /.card -->
@@ -395,6 +399,15 @@
                                     <option value="बड़सापी">बड़सापी</option>
                                 </select>
        </div>
+
+       <div class="form-group">
+         <label>Usertype</label>
+       <select class="form-control" name="gotra" aria-placeholder="Gotra" v-model='form.usertype'>
+         <option value="Select user type" disabled selected>Select Your Gotra</option>
+         <option value="member">Member</option>
+         <option value="family">Family</option>
+         </select>
+       </div>
        
 
            <div class="form-group">
@@ -408,7 +421,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Create New User</button>
+        <button type="submit" class="btn btn-primary">Edit User</button>
       </div>
       </form>
     </div>
@@ -423,6 +436,13 @@
       data() {
         return {
           users:{},
+          mode:false,
+            printObj: {
+              id: "printTable",
+              popTitle: 'Shakdwipiya Pariwar Users Admin Area',
+              extraCss: 'https://www.google.com,https://www.google.com',
+             
+            },
           cities:{},
           // editmode:false,
          search : new Form({
@@ -445,7 +465,7 @@
             password:'',
             gotra:'', 
             pur:'',
-            usertype:'family'
+            usertype:''
           })
         }
       },
@@ -491,7 +511,9 @@
          axios.get('api/user').then(({data})=>(this.users = data));
           
         },
+        
         getUsers(page=1){
+          this.mode=true;
           axios.get('api/getusers?name='+this.search.name+'&gotra='+this.search.gotra+'&username='+this.search.username+'&state='+this.search.state+'&city='+this.search.city+'&pur='+this.search.pur+'&page='+page).then(({data})=>(this.users = data));
         },
         createUser() {

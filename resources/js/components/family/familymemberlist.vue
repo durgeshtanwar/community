@@ -32,8 +32,8 @@
                       <td><span class="tag tag-success">{{user.usertype}}</span></td>
                       <td> 
                         <router-link :to="{ name: 'editmember', query: {userid:user.id}}">Edit</router-link> |
-                             <a href="#"  class="mr-2" @click="editModel(user)"> <i class="fa fa-edit"></i>  </a>
-                          <a href="#" v-if="user.id!=authuser" @click="deleteuser(user.id)" class= "ml-2"><i class="fa fa-trash red"></i></a>
+                             <a href="#" v-if="usertype=='family' || usertype=='admin'" class="mr-2" @click="editModel(user)"> <i class="fa fa-edit"></i>  </a>
+                          <a href="#" v-if="user.id!=authuser && usertype == 'family'" @click="deleteuser(user.id)" class= "ml-2"><i class="fa fa-trash red"></i></a>
                       </td>
                     </tr>
                   
@@ -95,6 +95,7 @@
         return {
           users:{},
           authuser :'',
+          usertype:'',
           editmode:false,
           form: new Form({
             id:'',
@@ -144,6 +145,7 @@
         loadUsers(){
          axios.get('api/familyuserlist').then(({data})=>(this.users = data));
          axios.get('api/getAuthenticatedUser').then(({data})=>(this.authuser = data));
+         axios.get('api/getusertype').then(({data})=>(this.usertype = data));
           
         },
         createUser() {

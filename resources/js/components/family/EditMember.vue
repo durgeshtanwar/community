@@ -249,6 +249,7 @@
                           <option value="Govt">Government Job</option>
                           <option value="private">Private Job</option>
                           <option value="self employed">Self Employed</option>
+                          <option value="self business">Self Business</option>
                           <option value="student">Student</option>
                           <option value="unemployed">Unemployed</option>
                           <option value="retired">Retired</option>

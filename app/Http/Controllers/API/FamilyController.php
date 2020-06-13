@@ -28,6 +28,9 @@ public function familyusers()
 public function getAuthenticatedUser(){
   return Auth::User()->id;
 }
+public function getUserType(){
+  return Auth::User()->usertype;
+}
 
     
 }

@@ -82,6 +82,7 @@ Route::get('getmembers','API\UserDetailsController@getmembers');
 Route::get('loadmembers','API\UserDetailsController@loadmembers');
 
 Route::get('getusers','API\UserController@getusers');
+Route::get('getusertype','API\FamilyController@getusertype');
 
 //Route::get('getFamilyMembers','API\FamilyController@getFamilyMembers');
 
