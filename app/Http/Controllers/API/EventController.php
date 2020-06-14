@@ -85,7 +85,7 @@ class EventController extends Controller
         $newDate = date("d-m-Y", strtotime($dob));  
         return Event::create([
             'event_name'=>$request['event_name'],
-            'date'=>$newDate,
+            'date'=>$request['date'],
             'event_venue'=>$request['event_venue'],
             'remarks'=>$request['remarks']
         ]);
@@ -124,7 +124,7 @@ class EventController extends Controller
         $newDate = date("m-d-Y", strtotime($dob));  
         $data = [
             'event_name'=>$request['event_name'],
-            'date'=>$newDate,
+            'date'=>$request['date'],
             'event_venue'=>$request['event_venue'],
             'remarks'=>$request['remarks']
         ];

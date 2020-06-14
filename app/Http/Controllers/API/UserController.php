@@ -104,7 +104,7 @@ class UserController extends Controller
             'name' => 'required|string|max:191',
             'email'=>'required|string|email|max:255',
             'mobile'=>'required|string|max:10',
-            'password'=>'required|sometimes|string|min:8',
+            'password'=>'nullable|string|min:8',
             'gender'=>'required',
             'family_cast'=>'required|string|min:4',
             'family_head'=>'required|string|max:191',
@@ -212,6 +212,26 @@ class UserController extends Controller
                 ->where('users.pur','like',"%$pur%")
                 ->where('users_details.state','like',"%$state%")
                 ->where('users_details.city','like',"%$city%")
+                ->paginate(10);
+        return $query;
+    }
+    public function getJobSeekers(){
+        $name =  $_GET['name'];
+        
+        $city =  $_GET['city'];
+       
+        $state = $_GET['state'];
+        
+       $apply_for =  $_GET['apply_for'];
+  
+        
+    
+        $query = DB::table('apply_jobs')
+                ->select('*')
+                ->where('name','like',"%$name%")
+                ->where('state','like',"%$state%")
+                ->where('apply_for','like',"%$apply_for%")
+                ->where('city','like',"%$city%")
                 ->paginate(10);
         return $query;
     }

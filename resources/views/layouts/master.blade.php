@@ -256,10 +256,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
           @can('isAdmin')
           <li class="nav-item">
-            <router-link to="/users" class="nav-link">
+            <router-link to="/settings" class="nav-link">
               <i class="nav-icon yellow fas fa-users-cog"></i>
               <p>
-               Users
+               Admin Area
                 <span class="right badge badge-danger">New</span>
               </p>
             </router-link>

@@ -406,6 +406,7 @@
          <option value="Select user type" disabled selected>Select Your Gotra</option>
          <option value="member">Member</option>
          <option value="family">Family</option>
+         <option value="admin">Admin</option>
          </select>
        </div>
        
@@ -539,6 +540,7 @@
           this.form.reset();
         $('#addNew').modal('show');
         this.form.fill(user);
+        this.form.password = '';
         },
         updateUser(){
           this.form.put('api/user/'+ this.form.id).then(()=>{

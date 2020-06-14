@@ -622,6 +622,22 @@ public function getmembers(){
     return $query;        
 
 }
+public function getacademic(){
+
+    $education = $_GET['education'];
+    $present_year =  $_GET['present_year'];
+    $percentage_range =  $_GET['percentage_range'];
+
+    $query = DB::table('users_details')
+        ->select('name','education','percentage','mobile','state','city')
+        ->where('education','like',"%$education%")
+        ->where('present_year','like',"%$present_year%")
+        ->where('percentage','>=',$percentage_range)
+        ->where('current_year','like',true)
+        ->paginate(10);
+        return $query;
+
+}
 
 
 }

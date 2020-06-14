@@ -106,10 +106,10 @@ const routes = [
     { path: '/getgroom',component:require('./components/getgroom.vue').default},
     { path: '/getbride',component:require('./components/getbride.vue').default},
     { path: '/getmembers',component:require('./components/getmembers.vue').default},
-    { path: '/reports',component:require('./components/admin/reportsdashboard.vue').default},
+    // { path: '/reports',component:require('./components/admin/reportsdashboard.vue').default},
     { path: '/jobapplicants',component:require('./components/reports/jobapplicants.vue').default},
     { path: '/totaljobs',component:require('./components/reports/jobs.vue').default},
-
+    { path: '/academic',component:require('./components/admin/academic.vue').default},
 
     { path: '*',component:require('./components/admin/404.vue').default},
 ]

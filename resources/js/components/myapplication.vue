@@ -198,14 +198,54 @@
                       :form="form" field="apply_for"></has-error>
                     </div>
                   </div>
-
+                  <div class="form-group row">
+                     <label class="col-sm-2 col-form-label">State</label>
+                    <div class="col-sm-10">
+                    <select @change="getcity()" v-model="form.state" class="form-control" name="state" :class="{'is-invalid':form.errors.has('state')}">
+                          <option value="Rajasthan">Rajasthan</option>
+                          <option value="Andhra Pradesh">Andhra Pradesh</option>
+                          <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                          <option value="Assam">Assam</option>
+                          <option value="Bihar">Bihar</option>
+                          <option value="Chhattisgarh">Chhattisgarh</option>
+                          <option value="Dadra & Nagar Haveli">Dadra & Nagar Haveli</option>
+                          <option value="Daman & Diu">Daman & Diu</option>
+                          <option value="Delhi">Delhi</option>
+                          <option value="Goa">Goa</option>
+                          <option value="Gujarat">Gujarat</option>
+                          <option value="Haryana">Haryana</option>
+                          <option value="Himachal Pradesh"> Himachal Pradesh</option>
+                          <option value="Jammu & Kashmir">Jammu & Kashmir</option>
+                          <option value="Jharkhand">Jharkhand</option>
+                          <option value="Karnataka">Karnataka</option>
+                          <option value="Kerela">Kerela</option>
+                          <option value="Lakshadweep">Lakshadweep</option>
+                          <option value="Madhya Pradesh">Madhya Pradesh</option>
+                          <option value="Manipur">Manipur</option>
+                          <option value="Maharashtra">Maharashtra</option>
+                          <option value="Meghalaya">Meghalaya</option>
+                          <option value="Mizoram">Mizoram</option>
+                          <option value="Nagaland">Nagaland</option>
+                          <option value="Orissa">Orissa</option>
+                          <option value="Pondicherry">Pondicherry</option>
+                          <option value="Punjab">Punjab</option>
+                          <option value="Sikkim">Sikkim</option>
+                          <option value="Tripura">Tripura</option>
+                          <option value="Tamil Nadu">Tamil Nadu</option>
+                          <option value="Uttrakhand">Uttrakhand</option>
+                          <option value="Uttar Pradesh">Uttar Pradesh</option>
+                          <option value="West Bengal">West Bengal</option>
+                          
+                        </select>
+                    </div>
+                  </div>
                  
                   <div class="form-group row">
                     <label class="col-sm-2 col-form-label">City</label>
                     <div class="col-sm-10">
-                     <input v-model="form.city" type="text" name="city"
-                          class="form-control" :class="{ 'is-invalid': form.errors.has('city') }">
-                         <has-error :form="form" field="city"></has-error>
+                     <select v-model='form.city' class="form-control" >
+                                 <option v-for="city in cities">{{city}}</option>
+                            </select>   
                     </div>
                   </div>
                   
@@ -240,12 +280,14 @@
         return {
           editmode:false,
            news:{},
+           cities:{},
             form: new Form ({
          id:'',        
         name: '',
         apply_for:'',
         city:'',
-        contact_number:''
+        contact_number:'',
+        state:''
 
       })
         }
@@ -256,6 +298,11 @@
           this.form.reset();
         $('#addNew').modal('show');
         },
+        getcity(){
+            
+            axios.get('api/getcities/'+this.form.state).then(({data})=>(this.cities = data));
+           //console.log(this.cities.target.value);
+          },
         
         // Edit mode for the user 
          editModel(user){

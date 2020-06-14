@@ -23,7 +23,7 @@ class JobsController extends Controller
      */
     public function __construct()
     {
-      $this->middleware('auth:api');
+     $this->middleware('auth:api');
         
     }
 
@@ -111,13 +111,14 @@ class JobsController extends Controller
             'apply_for'=>'required|string|max:191',
             'city'=>'required|string|max:191',
             'contact_number'=>'required|string|max:191'
-
+            
         ]);
         $data = [
             'name'=>$request['name'],
             'apply_for'=>$request['apply_for'],
             'contact_number'=>$request['contact_number'],
             'city'=>$request['city'],
+            'state'=>$request['state'],
             'status'=>'available',
             'user_id'=>$userid
         ];
@@ -264,6 +265,29 @@ class JobsController extends Controller
     public function getjoblist($type){
         $result = DB::table('jobslist')->where('job',$type)->pluck('jobType');
         return $result;
+    }
+
+    public function acquirejobs(){
+        return Application::latest()->paginate(20);
+    }
+
+    public function getJobSeekers(){
+        $name =  $_GET['name'];
+        
+        $city =  $_GET['city'];
+       
+        $state = $_GET['state'];
+       
+     
+    
+        $query = DB::table('apply_jobs')
+                ->select('apply_jobs.*')
+                ->where('apply_jobs.name','like',"%$name%")
+               
+                ->where('apply_jobs.state','like',"%$state%")
+                ->where('apply_jobs.city','like',"%$city%")
+                ->paginate(10);
+        return $query;
     }
 
 }
