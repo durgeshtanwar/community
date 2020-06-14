@@ -127,7 +127,7 @@
                 </div>
                 <!-- /.widget-user-image -->
                 <h3 class="widget-user-username">Jobs Portfolio</h3>
-                <h5 class="widget-user-desc"><router-link to='/jobdashboard' class="text-white"> Manage Jobs</router-link></h5>
+                <h5 class="widget-user-desc"><router-link to='/jobapplicants' class="text-white"> Manage Jobs</router-link></h5>
               </div>
               <div class="card-footer p-0">
                 <ul class="nav flex-column">
@@ -154,8 +154,8 @@
                   <img class="img-circle" src="/images/job.png" alt="User Avatar">
                 </div>
                 <!-- /.widget-user-image -->
-                <h3 class="widget-user-username">Jobs Portfolio</h3>
-                <h5 class="widget-user-desc"><router-link to='/jobdashboard' class="text-white"> Manage Jobs</router-link></h5>
+                <h3 class="widget-user-username">Academic</h3>
+                <h5 class="widget-user-desc"><router-link to='/academic' class="text-white"> Manage Students</router-link></h5>
               </div>
               <div class="card-footer p-0">
                 <ul class="nav flex-column">

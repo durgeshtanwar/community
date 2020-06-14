@@ -57514,7 +57514,10 @@ var render = function() {
               [
                 _c(
                   "router-link",
-                  { staticClass: "text-white", attrs: { to: "/jobdashboard" } },
+                  {
+                    staticClass: "text-white",
+                    attrs: { to: "/jobapplicants" }
+                  },
                   [_vm._v(" Manage Jobs")]
                 )
               ],
@@ -57552,7 +57555,7 @@ var render = function() {
             _vm._m(10),
             _vm._v(" "),
             _c("h3", { staticClass: "widget-user-username" }, [
-              _vm._v("Jobs Portfolio")
+              _vm._v("Academic")
             ]),
             _vm._v(" "),
             _c(
@@ -57561,8 +57564,8 @@ var render = function() {
               [
                 _c(
                   "router-link",
-                  { staticClass: "text-white", attrs: { to: "/jobdashboard" } },
-                  [_vm._v(" Manage Jobs")]
+                  { staticClass: "text-white", attrs: { to: "/academic" } },
+                  [_vm._v(" Manage Students")]
                 )
               ],
               1
