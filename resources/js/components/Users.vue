@@ -239,7 +239,7 @@
               <div class="card-footer">
             <pagination :data="users" v-show="this.mode==false" @pagination-change-page="getResults"></pagination>
             <pagination :data="users" v-show="this.mode==true" @pagination-change-page="getUsers"></pagination>
-             <button class="btn btn-success" v-print="printObj">Print</button>
+             
             </div>
             </div>
             <!-- /.card -->

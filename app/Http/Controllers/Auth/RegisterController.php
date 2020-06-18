@@ -58,7 +58,7 @@ class RegisterController extends Controller
             'family_head'=>['required','string','max:255'],
             'gotra' => ['required','string','max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'code'=>['required','string','exists:users,code']
+           // 'code'=>['required','string','exists:users,code']
         ]);
 
        return $validator;
@@ -83,7 +83,7 @@ class RegisterController extends Controller
         User::where('code',$data['code'])
          ->update(['code'=>rand(pow(10, 5-1), pow(10, 5)-1)]);
 
-        return User::create([
+        $data = User::create([
             'username'=>'SHA'.rand(pow(10, 6-1), pow(10, 6)-1),
             'name' => $data['name'],
             'email' => $data['email'],
@@ -101,5 +101,15 @@ class RegisterController extends Controller
             'code'=>rand(pow(10, 5-1), pow(10, 5)-1),
             'madeFor'=>'self'
         ]);
+
+        $api_key = '55EE848A1E208D';
+        $contacts = $data->mobile;
+        $from = 'SMSMSG';
+        $sms_text = urlencode("Hello $data->name your username is $data->username");
+        $api_url = "http://byebyesms.com/app/smsapi/index.php?key=".$api_key."&campaign=9951&routeid=7&type=text&contacts=".$contacts."&senderid=".$from."&msg=".$sms_text;
+       // dd($data->mobile);
+        file_get_contents($api_url);
+        
+        return $data;
     }
 }

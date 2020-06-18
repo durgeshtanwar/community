@@ -151,6 +151,7 @@ class UserController extends Controller
         //$this->authorize('isAdmin');
         
         $this->authorize('isFamily');
+        $this->authorize('isAdmin');
         $user->delete();
        
 
