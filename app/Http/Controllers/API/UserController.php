@@ -150,13 +150,17 @@ class UserController extends Controller
 
         //$this->authorize('isAdmin');
         
-        $this->authorize('isFamily');
-        $this->authorize('isAdmin');
+       $family = $this->authorize('isFamily');
+      // $admin = $this->authorize('isAdmin');
+    //    
+
         $user->delete();
        
 
         DB::table('users_details')->where('user_id','LIKE',$id)->delete();
-        return ['message'=>"user deleted"];
+        return ['message'=>"user deleted",
+        'family'=>$family
+                ];
   }
 
     public function updatePhoto(Request $request){

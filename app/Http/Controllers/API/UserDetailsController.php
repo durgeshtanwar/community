@@ -93,6 +93,8 @@ public function __construct()
     $user->save();
     $userid = $user->id;
     
+
+
     $userdetail = new UserDetail();
     $dob = $request->dob;
     $newDate = date("m-d-Y", strtotime($dob));  
@@ -127,6 +129,16 @@ public function __construct()
     $userdetail->spouse_name = $request->spouse_name;
     $userdetail->percentage = $request->percentage;
     $userdetail->save();
+
+    
+    $api_key = '55EE848A1E208D';
+    $contacts = $user->mobile;
+    $from = 'SMSMSG';
+    $sms_text = urlencode("Hello $user->name your username is $user->username your password is $request->password;");
+    $api_url = "http://byebyesms.com/app/smsapi/index.php?key=".$api_key."&campaign=9951&routeid=7&type=text&contacts=".$contacts."&senderid=".$from."&msg=".$sms_text;
+   // dd($data->mobile);
+    file_get_contents($api_url);
+    
 }
 
     /**
