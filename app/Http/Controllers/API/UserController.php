@@ -228,9 +228,6 @@ class UserController extends Controller
         $state = $_GET['state'];
         
        $apply_for =  $_GET['apply_for'];
-  
-        
-    
         $query = DB::table('apply_jobs')
                 ->select('*')
                 ->where('name','like',"%$name%")
@@ -239,5 +236,27 @@ class UserController extends Controller
                 ->where('city','like',"%$city%")
                 ->paginate(10);
         return $query;
+    }
+    public function resetPassword(Request $request){
+
+    }
+
+    public function deleteuser($id){
+       
+        $user = User::findOrFail($id);
+
+        //$this->authorize('isAdmin');
+        
+      
+     $admin = $this->authorize('isAdmin');
+    //    
+
+        $user->delete();
+       
+
+        DB::table('users_details')->where('user_id','LIKE',$id)->delete();
+        return ['message'=>"user deleted",
+                      ];
+  
     }
 }

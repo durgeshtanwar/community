@@ -88,7 +88,9 @@ Route::get('acquirejobs','API\JobsController@acquirejobs');
 Route::get('getjobseekers','API\UserController@getJobSeekers');
 
 Route::get('getacademic','API\UserDetailsController@getacademic');
+Route::get('getusertype','API\SettingsController@getusertype');
 
+Route::delete('deleteuser/{id}','API\UserController@deleteuser');
 //Route::get('getFamilyMembers','API\FamilyController@getFamilyMembers');
 
 //Route::get('my_applications','API')

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Directory;
+use Auth;
 
 
 class SettingsController extends Controller
@@ -191,6 +192,10 @@ class SettingsController extends Controller
     }
     public function jobApplicantsCount(){
         return $jobs = DB::table('apply_jobs')->count();
+    }
+
+    public function getusertype(){
+        return $usertype = Auth::user()->usertype;
     }
 
 }

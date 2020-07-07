@@ -4,7 +4,7 @@
         <div class="col-12 mt-5">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Users</h3>
+                <h3 class="card-title">News</h3>
                 <div class="card-tools">
                     <button class="btn btn-success" data-toggle="modal" data-target="#addNew">Add New News
                         <i class="fas fa-user-plus"></i>

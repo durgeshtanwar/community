@@ -488,7 +488,7 @@
           }).then((result) => {
 
             // send   request to the server
-            this.form.delete('api/user/'+id).then(()=>{
+            this.form.delete('api/deleteuser/'+id).then(()=>{
                if (result.value) {
               Swal.fire(
                 'Deleted!',

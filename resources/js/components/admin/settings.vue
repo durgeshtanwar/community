@@ -1,5 +1,9 @@
 <template>
-<div>
+<div class="container"> 
+  <div  v-show="usertype !='admin'">
+  <h2> You are not Authorized to view this page....</h2>
+  <router-link to="/dashboard"> Go to dashboard</router-link></div>
+ <div  v-show="usertype =='admin'">
   <div class="row">
     <div class="col-md-12 mt-3">
     <div class="callout callout-success">
@@ -71,7 +75,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Directory</span>
-                <span class="info-box-number"><router-link class="text-white" to="/addtodirectory">Manage Directory</router-link></span>
+                <!-- <span class="info-box-number"><router-link class="text-white" to="/addtodirectory">Manage Directory</router-link></span> -->
                 
                 
               </div>
@@ -157,33 +161,20 @@
                 <h3 class="widget-user-username">Academic</h3>
                 <h5 class="widget-user-desc"><router-link to='/academic' class="text-white"> Manage Students</router-link></h5>
               </div>
-              <div class="card-footer p-0">
-                <ul class="nav flex-column">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      Total Jobs Posted <span class="float-right badge bg-primary">{{jobsCount}}</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      Total Applicants <span class="float-right badge bg-info">{{applicantsCount}}</span>
-                    </a>
-                  </li>
-                  
-                </ul>
-              </div>
+             
             </div>
       </div>
 
     </div>
         
 </div>
-
+</div>
 </template>
 <script>
 export default {
     data(){
       return {
+        usertype:'',
         dcount :'', 
         eventcount:'',
         groomcount:'',
@@ -195,6 +186,8 @@ export default {
     },
     methods: {
      loadUsers(){
+
+          axios.get('api/getusertype').then(({data})=>this.usertype=data);
            axios.get('api/directorycounts').then(({data})=>(this.dcount=data));
            axios.get('api/eventcounts').then(({data})=>(this.eventcount=data));
            axios.get('api/groomcount').then(({data})=>(this.groomcount=data));

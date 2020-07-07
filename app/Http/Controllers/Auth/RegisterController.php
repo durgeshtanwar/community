@@ -58,7 +58,7 @@ class RegisterController extends Controller
             'family_head'=>['required','string','max:255'],
             'gotra' => ['required','string','max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-             'code'=>['required','string','exists:users,code']
+            'code'=>['required','string','exists:users,code']
         ]);
 
        return $validator;

@@ -3014,7 +3014,7 @@ __webpack_require__.r(__webpack_exports__);
         confirmButtonText: 'Yes, delete it!'
       }).then(function (result) {
         // send   request to the server
-        _this2.form["delete"]('api/user/' + id).then(function () {
+        _this2.form["delete"]('api/deleteuser/' + id).then(function () {
           if (result.value) {
             Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
           }
@@ -4652,19 +4652,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      usertype: '',
       dcount: '',
       eventcount: '',
       groomcount: '',
@@ -4678,32 +4669,36 @@ __webpack_require__.r(__webpack_exports__);
     loadUsers: function loadUsers() {
       var _this = this;
 
-      axios.get('api/directorycounts').then(function (_ref) {
+      axios.get('api/getusertype').then(function (_ref) {
         var data = _ref.data;
+        return _this.usertype = data;
+      });
+      axios.get('api/directorycounts').then(function (_ref2) {
+        var data = _ref2.data;
         return _this.dcount = data;
       });
-      axios.get('api/eventcounts').then(function (_ref2) {
-        var data = _ref2.data;
+      axios.get('api/eventcounts').then(function (_ref3) {
+        var data = _ref3.data;
         return _this.eventcount = data;
       });
-      axios.get('api/groomcount').then(function (_ref3) {
-        var data = _ref3.data;
+      axios.get('api/groomcount').then(function (_ref4) {
+        var data = _ref4.data;
         return _this.groomcount = data;
       });
-      axios.get('api/bridecount').then(function (_ref4) {
-        var data = _ref4.data;
+      axios.get('api/bridecount').then(function (_ref5) {
+        var data = _ref5.data;
         return _this.bridecount = data;
       });
-      axios.get('api/familycount').then(function (_ref5) {
-        var data = _ref5.data;
+      axios.get('api/familycount').then(function (_ref6) {
+        var data = _ref6.data;
         return _this.familycount = data;
       });
-      axios.get('api/jobsCount').then(function (_ref6) {
-        var data = _ref6.data;
+      axios.get('api/jobsCount').then(function (_ref7) {
+        var data = _ref7.data;
         return _this.jobsCount = data;
       });
-      axios.get('api/jobApplicantsCount').then(function (_ref7) {
-        var data = _ref7.data;
+      axios.get('api/jobApplicantsCount').then(function (_ref8) {
+        var data = _ref8.data;
         return _this.applicantsCount = data;
       });
     }
@@ -53207,23 +53202,7 @@ var render = function() {
               ],
               attrs: { data: _vm.users },
               on: { "pagination-change-page": _vm.getUsers }
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                directives: [
-                  {
-                    name: "print",
-                    rawName: "v-print",
-                    value: _vm.printObj,
-                    expression: "printObj"
-                  }
-                ],
-                staticClass: "btn btn-success"
-              },
-              [_vm._v("Print")]
-            )
+            })
           ],
           1
         )
@@ -57334,268 +57313,275 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._m(0),
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.usertype != "admin",
+            expression: "usertype !='admin'"
+          }
+        ]
+      },
+      [
+        _c("h2", [_vm._v(" You are not Authorized to view this page....")]),
+        _vm._v(" "),
+        _c("router-link", { attrs: { to: "/dashboard" } }, [
+          _vm._v(" Go to dashboard")
+        ])
+      ],
+      1
+    ),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-3 col-sm-6 col-12" }, [
-        _c("div", { staticClass: "info-box" }, [
-          _vm._m(1),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.usertype == "admin",
+            expression: "usertype =='admin'"
+          }
+        ]
+      },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-3 col-sm-6 col-12" }, [
+            _c("div", { staticClass: "info-box" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-box-content" }, [
+                _c("span", { staticClass: "info-box-text" }, [
+                  _vm._v("Directory")
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "info-box-number" }, [
+                  _vm._v(_vm._s(_vm.dcount) + " ")
+                ])
+              ])
+            ])
+          ]),
           _vm._v(" "),
-          _c("div", { staticClass: "info-box-content" }, [
-            _c("span", { staticClass: "info-box-text" }, [_vm._v("Directory")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "info-box-number" }, [
-              _vm._v(_vm._s(_vm.dcount) + " ")
+          _c("div", { staticClass: "col-md-3 col-sm-6 col-12" }, [
+            _c("div", { staticClass: "info-box" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-box-content" }, [
+                _c("span", { staticClass: "info-box-text" }, [
+                  _vm._v("Events")
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "info-box-number" }, [
+                  _vm._v(_vm._s(_vm.eventcount))
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-3 col-sm-6 col-12" }, [
+            _c("div", { staticClass: "info-box" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-box-content" }, [
+                _c("span", { staticClass: "info-box-text" }, [
+                  _vm._v("Matrimonial Counts")
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "info-box-number" }, [
+                  _vm._v(" Number of Grooms - " + _vm._s(_vm.groomcount))
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "info-box-number" }, [
+                  _vm._v(" Number of Brides - " + _vm._s(_vm.bridecount))
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-3 col-sm-6 col-12" }, [
+            _c("div", { staticClass: "info-box" }, [
+              _vm._m(4),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-box-content" }, [
+                _c("span", { staticClass: "info-box-text" }, [
+                  _vm._v("Families")
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "info-box-number" }, [
+                  _vm._v(_vm._s(_vm.familycount))
+                ])
+              ])
             ])
           ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3 col-sm-6 col-12" }, [
-        _c("div", { staticClass: "info-box" }, [
-          _vm._m(2),
-          _vm._v(" "),
-          _c("div", { staticClass: "info-box-content" }, [
-            _c("span", { staticClass: "info-box-text" }, [_vm._v("Events")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "info-box-number" }, [
-              _vm._v(_vm._s(_vm.eventcount))
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3 col-sm-6 col-12" }, [
-        _c("div", { staticClass: "info-box" }, [
-          _vm._m(3),
-          _vm._v(" "),
-          _c("div", { staticClass: "info-box-content" }, [
-            _c("span", { staticClass: "info-box-text" }, [
-              _vm._v("Matrimonial Counts")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "info-box-number" }, [
-              _vm._v(" Number of Grooms - " + _vm._s(_vm.groomcount))
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "info-box-number" }, [
-              _vm._v(" Number of Brides - " + _vm._s(_vm.bridecount))
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3 col-sm-6 col-12" }, [
-        _c("div", { staticClass: "info-box" }, [
-          _vm._m(4),
-          _vm._v(" "),
-          _c("div", { staticClass: "info-box-content" }, [
-            _c("span", { staticClass: "info-box-text" }, [_vm._v("Families")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "info-box-number" }, [
-              _vm._v(_vm._s(_vm.familycount))
-            ])
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("div", { staticClass: "info-box bg-success" }, [
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
           _vm._m(5),
           _vm._v(" "),
-          _c("div", { staticClass: "info-box-content" }, [
-            _c("span", { staticClass: "info-box-text" }, [_vm._v("Directory")]),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "info-box-number" },
-              [
+          _c("div", { staticClass: "col-md-3" }, [
+            _c("div", { staticClass: "info-box bg-warning" }, [
+              _vm._m(6),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-box-content" }, [
+                _c("span", { staticClass: "info-box-text" }, [
+                  _vm._v("Events")
+                ]),
+                _vm._v(" "),
                 _c(
-                  "router-link",
-                  {
-                    staticClass: "text-white",
-                    attrs: { to: "/addtodirectory" }
-                  },
-                  [_vm._v("Manage Directory")]
+                  "span",
+                  { staticClass: "info-box-number" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "text-dark",
+                        attrs: { to: "/editevents" }
+                      },
+                      [_vm._v("Manage Events")]
+                    )
+                  ],
+                  1
                 )
-              ],
-              1
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("div", { staticClass: "info-box bg-warning" }, [
-          _vm._m(6),
-          _vm._v(" "),
-          _c("div", { staticClass: "info-box-content" }, [
-            _c("span", { staticClass: "info-box-text" }, [_vm._v("Events")]),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "info-box-number" },
-              [
-                _c(
-                  "router-link",
-                  { staticClass: "text-dark", attrs: { to: "/editevents" } },
-                  [_vm._v("Manage Events")]
-                )
-              ],
-              1
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("div", { staticClass: "info-box bg-danger" }, [
-          _vm._m(7),
-          _vm._v(" "),
-          _c("div", { staticClass: "info-box-content" }, [
-            _c("span", { staticClass: "info-box-text" }, [_vm._v("Users")]),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "info-box-number" },
-              [
-                _c(
-                  "router-link",
-                  { staticClass: "text-white", attrs: { to: "/users" } },
-                  [_vm._v("Users Management")]
-                )
-              ],
-              1
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("div", { staticClass: "info-box bg-info" }, [
-          _vm._m(8),
-          _vm._v(" "),
-          _c("div", { staticClass: "info-box-content" }, [
-            _c("span", { staticClass: "info-box-text" }, [_vm._v("News")]),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "info-box-number" },
-              [
-                _c(
-                  "router-link",
-                  { staticClass: "text-white", attrs: { to: "/insertnews" } },
-                  [_vm._v("News Management")]
-                )
-              ],
-              1
-            )
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("div", { staticClass: "card card-widget widget-user-2" }, [
-          _c("div", { staticClass: "widget-user-header bg-success" }, [
-            _vm._m(9),
-            _vm._v(" "),
-            _c("h3", { staticClass: "widget-user-username" }, [
-              _vm._v("Jobs Portfolio")
-            ]),
-            _vm._v(" "),
-            _c(
-              "h5",
-              { staticClass: "widget-user-desc" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "text-white",
-                    attrs: { to: "/jobapplicants" }
-                  },
-                  [_vm._v(" Manage Jobs")]
-                )
-              ],
-              1
-            )
+              ])
+            ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-footer p-0" }, [
-            _c("ul", { staticClass: "nav flex-column" }, [
-              _c("li", { staticClass: "nav-item" }, [
-                _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                  _vm._v("\r\n                      Total Jobs Posted "),
-                  _c("span", { staticClass: "float-right badge bg-primary" }, [
-                    _vm._v(_vm._s(_vm.jobsCount))
-                  ])
-                ])
+          _c("div", { staticClass: "col-md-3" }, [
+            _c("div", { staticClass: "info-box bg-danger" }, [
+              _vm._m(7),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-box-content" }, [
+                _c("span", { staticClass: "info-box-text" }, [_vm._v("Users")]),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "info-box-number" },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "text-white", attrs: { to: "/users" } },
+                      [_vm._v("Users Management")]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-3" }, [
+            _c("div", { staticClass: "info-box bg-info" }, [
+              _vm._m(8),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-box-content" }, [
+                _c("span", { staticClass: "info-box-text" }, [_vm._v("News")]),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "info-box-number" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "text-white",
+                        attrs: { to: "/insertnews" }
+                      },
+                      [_vm._v("News Management")]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "card card-widget widget-user-2" }, [
+              _c("div", { staticClass: "widget-user-header bg-success" }, [
+                _vm._m(9),
+                _vm._v(" "),
+                _c("h3", { staticClass: "widget-user-username" }, [
+                  _vm._v("Jobs Portfolio")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "h5",
+                  { staticClass: "widget-user-desc" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "text-white",
+                        attrs: { to: "/jobapplicants" }
+                      },
+                      [_vm._v(" Manage Jobs")]
+                    )
+                  ],
+                  1
+                )
               ]),
               _vm._v(" "),
-              _c("li", { staticClass: "nav-item" }, [
-                _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                  _vm._v("\r\n                      Total Applicants "),
-                  _c("span", { staticClass: "float-right badge bg-info" }, [
-                    _vm._v(_vm._s(_vm.applicantsCount))
+              _c("div", { staticClass: "card-footer p-0" }, [
+                _c("ul", { staticClass: "nav flex-column" }, [
+                  _c("li", { staticClass: "nav-item" }, [
+                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                      _vm._v("\r\n                      Total Jobs Posted "),
+                      _c(
+                        "span",
+                        { staticClass: "float-right badge bg-primary" },
+                        [_vm._v(_vm._s(_vm.jobsCount))]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "nav-item" }, [
+                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                      _vm._v("\r\n                      Total Applicants "),
+                      _c("span", { staticClass: "float-right badge bg-info" }, [
+                        _vm._v(_vm._s(_vm.applicantsCount))
+                      ])
+                    ])
                   ])
                 ])
               ])
             ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("div", { staticClass: "card card-widget widget-user-2" }, [
-          _c("div", { staticClass: "widget-user-header bg-success" }, [
-            _vm._m(10),
-            _vm._v(" "),
-            _c("h3", { staticClass: "widget-user-username" }, [
-              _vm._v("Academic")
-            ]),
-            _vm._v(" "),
-            _c(
-              "h5",
-              { staticClass: "widget-user-desc" },
-              [
-                _c(
-                  "router-link",
-                  { staticClass: "text-white", attrs: { to: "/academic" } },
-                  [_vm._v(" Manage Students")]
-                )
-              ],
-              1
-            )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-footer p-0" }, [
-            _c("ul", { staticClass: "nav flex-column" }, [
-              _c("li", { staticClass: "nav-item" }, [
-                _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                  _vm._v("\r\n                      Total Jobs Posted "),
-                  _c("span", { staticClass: "float-right badge bg-primary" }, [
-                    _vm._v(_vm._s(_vm.jobsCount))
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "nav-item" }, [
-                _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                  _vm._v("\r\n                      Total Applicants "),
-                  _c("span", { staticClass: "float-right badge bg-info" }, [
-                    _vm._v(_vm._s(_vm.applicantsCount))
-                  ])
-                ])
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "card card-widget widget-user-2" }, [
+              _c("div", { staticClass: "widget-user-header bg-success" }, [
+                _vm._m(10),
+                _vm._v(" "),
+                _c("h3", { staticClass: "widget-user-username" }, [
+                  _vm._v("Academic")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "h5",
+                  { staticClass: "widget-user-desc" },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "text-white", attrs: { to: "/academic" } },
+                      [_vm._v(" Manage Students")]
+                    )
+                  ],
+                  1
+                )
               ])
             ])
           ])
         ])
-      ])
-    ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -57649,8 +57635,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "info-box-icon" }, [
-      _c("i", { staticClass: "fas fa-bookmark" })
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "info-box bg-success" }, [
+        _c("span", { staticClass: "info-box-icon" }, [
+          _c("i", { staticClass: "fas fa-bookmark" })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info-box-content" }, [
+          _c("span", { staticClass: "info-box-text" }, [_vm._v("Directory")])
+        ])
+      ])
     ])
   },
   function() {
@@ -67691,7 +67685,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [_vm._v("Users")]),
+      _c("h3", { staticClass: "card-title" }, [_vm._v("News")]),
       _vm._v(" "),
       _c("div", { staticClass: "card-tools" }, [
         _c(
