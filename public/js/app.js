@@ -53202,7 +53202,23 @@ var render = function() {
               ],
               attrs: { data: _vm.users },
               on: { "pagination-change-page": _vm.getUsers }
-            })
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                directives: [
+                  {
+                    name: "print",
+                    rawName: "v-print",
+                    value: _vm.printObj,
+                    expression: "printObj"
+                  }
+                ],
+                staticClass: "btn btn-success"
+              },
+              [_vm._v("Print")]
+            )
           ],
           1
         )
