@@ -82,7 +82,7 @@ class RegisterController extends Controller
         $kuldevi = explode('|',$data['gotra'],2);
         User::where('code',$data['code'])
          ->update(['code'=>rand(pow(10, 5-1), pow(10, 5)-1)]);
-
+        $password = $data['password'];
         $data = User::create([
             'username'=>'SHA'.rand(pow(10, 6-1), pow(10, 6)-1),
             'name' => $data['name'],
@@ -105,7 +105,7 @@ class RegisterController extends Controller
         $api_key = '55EE848A1E208D';
         $contacts = $data->mobile;
         $from = 'SMSMSG';
-        $sms_text = urlencode("Hello $data->name your username is $data->username");
+        $sms_text = urlencode("Hello $data->name your username is $data->username and password is $password");
         $api_url = "http://byebyesms.com/app/smsapi/index.php?key=".$api_key."&campaign=9951&routeid=7&type=text&contacts=".$contacts."&senderid=".$from."&msg=".$sms_text;
        // dd($data->mobile);
         file_get_contents($api_url);

@@ -34,3 +34,5 @@ Route::get("markasread",function(){
 
 //Route::get('{path}','HomeController@index')->where('path','([A-z\d-\/_.]+)?');
 Route::get('{path}',"HomeController@index")->where( 'path', '([A-z\d\-\/_.]+)' );
+
+Route::post('/forgetpassword','ForgetPassword@index');

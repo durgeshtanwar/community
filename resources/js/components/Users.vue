@@ -1,6 +1,9 @@
 <template>
     <div class="container ">
-        <div class="col-12 mt-5">
+       <div  v-show="usertype !='admin'">
+  <h2> You are not Authorized to view this page....</h2>
+  <router-link to="/dashboard"> Go to dashboard</router-link></div>
+        <div class="col-12 mt-5"  v-show="usertype =='admin'">
          
                 <button class="btn btn-success btn-block mb-2 mt-2 d-lg-none" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
   Search <i class="fa fa-search" aria-hidden="true"></i>
@@ -445,6 +448,7 @@
              
             },
           cities:{},
+          usertype:'',
           // editmode:false,
          search : new Form({
            name:'',
@@ -509,6 +513,8 @@
             });
 		},
         loadUsers(){
+          
+          axios.get('api/getusertype').then(({data})=>this.usertype=data);
          axios.get('api/user').then(({data})=>(this.users = data));
           
         },

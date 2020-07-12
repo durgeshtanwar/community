@@ -251,12 +251,8 @@ class UserController extends Controller
      $admin = $this->authorize('isAdmin');
     //    
 
-        $user->delete();
-       
-
-        DB::table('users_details')->where('user_id','LIKE',$id)->delete();
-        return ['message'=>"user deleted",
-                      ];
-  
+       $user->delete();
+       DB::table('users_details')->where('user_id','LIKE',$id)->delete();
+       return ['message'=>"user deleted",];  
     }
 }
