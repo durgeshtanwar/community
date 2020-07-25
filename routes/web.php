@@ -15,7 +15,9 @@ use App\Notifications\AdminSpeaks;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
+Route::get('/forgetusername',function(){
+    return view('forgetusername');
+});
 Route::get('/', function () {
     $user= Auth::user();
     User::find($user->id)->notify(new AdminSpeaks);
@@ -36,3 +38,5 @@ Route::get("markasread",function(){
 Route::get('{path}',"HomeController@index")->where( 'path', '([A-z\d\-\/_.]+)' );
 
 Route::post('/forgetpassword','ForgetPassword@index');
+Route::post('/forgetusername','ForgetPassword@forgetusername');
+
